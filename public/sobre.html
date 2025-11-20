@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLynx Tech - Sobre Nós</title>
+    <meta name="description" content="Conheça a NextLynx Tech: equipa jovem, experiente e apaixonada por design gráfico, trabalhos académicos e tecnologia em Moçambique.">
+    <meta name="keywords" content="sobre NextLynx Tech, equipa, missão, visão, valores, Nampula, design, tecnologia Moçambique">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --secondary: #f093fb;
+            --success: #38ef7d;
+            --warning: #f5576c;
+            --info: #00f2fe;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --header-bg: #8B0000;
+            --header-text: #ffffff;
+            --footer-bg: #1a1a1a;
+            --footer-text: #ffffff;
+            --footer-title: #ffffff;
+            --footer-muted: #cccccc;
+            --footer-border: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* ====================== HEADER IGUAL AO TERMOS.HTML ====================== */
+        
+/* ====================== HEADER COMPACTO E PREENCHIDO ====================== */
+        .header-container {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.8rem 0; /* header bem compacto */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+        }
+
+        .header-container .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* tudo em uma linha */
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo-animate {
+            height: 45px; /* logo maior mas ainda compacto */
+            width: auto;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+        }
+
+        .logo-animate:hover {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem; /* texto menor e mais compacto */
+            font-weight: 900;
+            margin: 0;
+            color: white;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            letter-spacing: 16px; /* espaçamento reduzido */
+            white-space: nowrap;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* menu mais apertado */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: white;
+            font-weight: 600;
+            font-size: 1rem; /* letras menores */
+            padding: 0.4rem 0.7rem !important;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #00f2fe;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 60%;
+        }
+
+        .btn-orcamento {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 6px 18px rgba(255, 193, 7, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+         /* MENU DE TRÊS PONTINHOS VERTICAIS (⋮) NO CANTO DIREITO */
+        .menu-vertical {
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .menu-vertical:hover {
+            color: #00f2fe;
+            transform: rotate(90deg);
+        }
+
+        .dropdown-menu {
+            background: #8B0000;
+            border: 2px solid #00f2fe;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            min-width: 220px;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: #00f2fe;
+            color: #2c3e50;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-orcamento:hover {
+            transform: translateY(-4px);
+            background: #ffca2c;
+            box-shadow: 0 12px 30px rgba(255, 193, 7, 0.7);
+        }
+
+
+        /* RESPONSIVO HEADER */
+        @media (max-width: 1200px) {
+            .logo-animate { height: 80px; }
+            .logo-text { font-size: 1.7rem; }
+            nav ul { gap: 0.6rem; }
+        }
+        @media (max-width: 992px) {
+            .logo-animate { height: 75px; }
+            .logo-text { font-size: 1.5rem; }
+            .nav-link { font-size: 0.95rem; }
+        }
+        @media (max-width: 768px) {
+            .logo-animate { height: 70px; }
+            .logo-text { font-size: 1.4rem; }
+            nav ul { gap: 0.4rem; }
+        }
+        @media (max-width: 576px) {
+            .logo-animate { height: 60px; }
+            .logo-text { font-size: 1.2rem; }
+            nav ul { gap: 0.3rem; flex-wrap: nowrap; overflow-x: auto; }
+        }
+        @media (max-width: 400px) {
+            .logo-animate { height: 55px; }
+            .logo-text { font-size: 1.1rem; }
+        }
+
+        /* ====================== HERO COM ANIMAÇÃO E COR AZUL ====================== */
+        .sobre-hero {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 8rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .sobre-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.12);
+            transform: rotate(30deg);
+            animation: shine 18s infinite;
+        }
+
+        .sobre-title {
+            font-size: 4.8rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            animation: slideInDown 1.2s ease-out;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .sobre-subtitle {
+            font-size: 1.8rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1.4s ease-out;
+            font-weight: 300;
+        }
+
+        .sobre-btn {
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: bounce 2s infinite;
+        }
+
+        .sobre-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            background: #f8f9fa;
+        }
+
+        /* ====================== SOBRE NÓS ====================== */
+        .sobre-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .sobre-img {
+            width: 280px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid var(--primary-light);
+            box-shadow: 0 15px 40px rgba(106,17,203,0.3);
+        }
+
+        .missao, .visao, .valores {
+            background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
+            border-radius: 25px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .missao h3, .visao h3, .valores h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .valores ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .valores li {
+            font-size: 1.2rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 2.5rem;
+        }
+
+        .valores li::before {
+            content: "✓";
+            color: var(--success);
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        .stats {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Desenvolvedor */
+        .dev-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin: 5rem 0;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(106,17,203,0.3);
+        }
+
+        .dev-info h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .dev-info p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        /* Footer igual ao termos.html */
+        .footer-container {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 0 3rem;
+            margin-top: 5rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+            transition: transform 0.4s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: white;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-warning);
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+        .footer-link {
+            color: #cccccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 25px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .footer-info h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-info p {
+            color: #cccccc;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+
+        .footer-bottom a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .admin-link {
+            color: #666;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: block;
+            margin-top: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a.admin-link[href*="admin.html"]:not([href=""]) {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .admin-link:hover {
+            color: #aaa;
+            text-decoration: underline;
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 12px 35px rgba(37,211,102,0.5);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 20px 45px rgba(37,211,102,0.7);
+            background: #128c7e;
+        }
+
+        .btn-whatsapp i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-120px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%) rotate(30deg); }
+            50% { transform: translateX(100%) rotate(30deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER IGUAL AO TERMOS.HTML -->
+    <header class="header-container">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <div class="logo-container">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                    <h1 class="logo-text">NextLynx Tech</h1>
+                </div>
+
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                        <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                        <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
+
+                   <!-- 3 pontinhos verticais -->
+                    <div class="dropdown">
+                        <span class="menu-vertical" data-bs-toggle="dropdown" aria-expanded="false">⋮</span>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
+                            <li><a class="dropdown-item" href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                            <li><a class="dropdown-item" href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home"></i> Voltar ao Menu</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero com animação e cor azul -->
+    <section class="sobre-hero">
+        <div class="container">
+            <h1 class="sobre-title">Sobre a NextLynx Tech</h1>
+            <p class="sobre-subtitle">A tua equipa de confiança em design gráfico, trabalhos académicos e tecnologia em Moçambique</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="sobre-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 text-center">
+                    <img src="img/logo.jpg" alt="Equipe NextLynx Tech" class="sobre-img">
+                </div>
+                <div class="col-lg-7">
+                    <h2 class="text-primary mb-4">Quem Somos</h2>
+                    <p class="lead mb-4">Somos uma equipa jovem, criativa e altamente qualificada, sediada em Nampula, com mais de 5 anos de experiência a entregar projetos de excelência para estudantes, empresas e instituições em todo o país.</p>
+                    <p>Formados em Design Gráfico, Informática e Gestão, combinamos criatividade técnica com conhecimento académico profundo para oferecer soluções vibrantes, modernas e eficazes.</p>
+                    <p>Trabalhamos com estudantes da UEM, UCM, UniLúrio, ISCTEM, UP Maputo e muitas outras universidades — e já ajudámos mais de 1.200 clientes a alcançar os seus objetivos.</p>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-5">
+                <div class="col-md-4">
+                    <div class="missao">
+                        <h3>🚀 Missão</h3>
+                        <p>Transformar ideias em resultados reais através de design impactante e tecnologia acessível, ajudando estudantes e empresas a destacarem-se no mercado.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="visao">
+                        <h3>🌟 Visão</h3>
+                        <p>Ser a referência nacional em serviços digitais criativos até 2027, com presença em todas as províncias de Moçambique.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="valores">
+                        <h3>💎 Valores</h3>
+                        <ul>
+                            <li>Inovação constante</li>
+                            <li>Qualidade premium</li>
+                            <li>Entrega rápida</li>
+                            <li>Preço justo</li>
+                            <li>Atendimento próximo</li>
+                            <li>Confiança total</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estatísticas -->
+            <div class="stats mt-5">
+                <div class="container">
+                    <div class="row text-center">
+                        <div class="col-6 col-md-3">
+                            <div class="stat-number">+1.200</div>
+                            <p class="stat-label">Clientes Satisfeitos</p>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="stat-number">+2.500</div>
+                            <p class="stat-label">Projetos Entregues</p>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="stat-number">5+</div>
+                            <p class="stat-label">Anos de Experiência</p>
+                        </div>
+                        <div class="col-6 col-md-3">
+                            <div class="stat-number">24h</div>
+                            <p class="stat-label">Resposta Média</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informação do Desenvolvedor -->
+            <div class="dev-info mt-5">
+                <h5>Atenciosamente, <i><strong>NextLynx Tech</strong> </i></h5>
+                <p>Promovendo inovação em realidade  | Consultoria Académica e Soluções Digitais em Design & Tecnologia</p>
+                <p>Transformando ideias em realidade digital desde 2020</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer 100% IGUAL AO TERMOS.HTML -->
+    <footer class="footer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 text-center text-lg-start">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+                    <p class="text-muted">Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 text-center">
+                    <h5 class="footer-title">Navegação</h5>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="servicos.html" class="footer-link">Serviços</a>
+                    <a href="portfolio.html" class="footer-link">Portfólio</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 text-center">
+                    <h5 class="footer-title">Suporte</h5>
+                    <a href="contactos.html" class="footer-link">Contactos</a>
+                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
+                </div>
+                <div class="col-lg-4 mb-4 text-center text-lg-start">
+                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+                        <h5>Localização</h5>
+                        <p>Cidade de Nampula</p>
+                        <p class="mt-3"><strong>Email:</strong> nextlynxtech@gmail.com</p>
+                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                        <p>+258 872 394 433 </p>
+                        <p>+258 868 712 546 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+                <p class="small mt-2">
+                    <a href="politica-privacidade.html">Política de Privacidade</a> •
+                    <a href="termos.html">Termos de Uso</a>
+                </p>
+            </div>
+
+        </div>
+    <div class="footer-bottom">
+    <P><strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+</div>
+    </footer>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="https://wa.me/258868187201?text=Olá, quero saber mais sobre a NextLynx Tech!" class="btn-whatsapp" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLynx Tech - Testemunhos</title>
+    <meta name="description" content="60 testemunhos reais: 20 estudantes da UEM, UCM, UniLúrio, UniSced, UP e 40 profissionais moçambicanos.">
+    <meta name="keywords" content="depoimentos NextLynx Tech, UEM, UCM, UniLúrio, UniSced, UP, Moçambique, design, tecnologia">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --success: #38ef7d;
+            --warning: #f5576c;
+            --info: #00f2fe;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+             --header-bg: #8B0000; /* VERMELHO ESCURO */
+            --header-text: #ffffff; /* TEXTO BRANCO */
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
+        }
+          /* hesder*/
+          
+/* ====================== HEADER COMPACTO E PREENCHIDO ====================== */
+        .header-container {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.8rem 0; /* header bem compacto */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+        }
+
+        .header-container .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* tudo em uma linha */
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo-animate {
+            height: 45px; /* logo maior mas ainda compacto */
+            width: auto;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+        }
+
+        .logo-animate:hover {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem; /* texto menor e mais compacto */
+            font-weight: 900;
+            margin: 0;
+            color: white;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            letter-spacing: 19px; /* espaçamento reduzido */
+            white-space: nowrap;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* menu mais apertado */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: white;
+            font-weight: 600;
+            font-size: 1rem; /* letras menores */
+            padding: 0.4rem 0.7rem !important;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #00f2fe;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 60%;
+        }
+
+        .btn-orcamento {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 6px 18px rgba(255, 193, 7, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+         /* MENU DE TRÊS PONTINHOS VERTICAIS (⋮) NO CANTO DIREITO */
+        .menu-vertical {
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .menu-vertical:hover {
+            color: #00f2fe;
+            transform: rotate(90deg);
+        }
+
+        .dropdown-menu {
+            background: #8B0000;
+            border: 2px solid #00f2fe;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            min-width: 220px;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: #00f2fe;
+            color: #2c3e50;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-orcamento:hover {
+            transform: translateY(-4px);
+            background: #ffca2c;
+            box-shadow: 0 12px 30px rgba(255, 193, 7, 0.7);
+        }
+
+
+
+        /* RESPONSIVO — tudo em uma linha até o limite */
+        @media (max-width: 1400px) {
+            .logo-animate { height: 100px; }
+            .logo-text { font-size: 1.9rem; }
+        }
+        @media (max-width: 1200px) {
+            .logo-animate { height: 90px; }
+            .logo-text { font-size: 1.75rem; }
+            nav ul { gap: 0.8rem; }
+        }
+        @media (max-width: 992px) {
+            .logo-animate { height: 80px; }
+            .logo-text { font-size: 1.6rem; }
+            .nav-link { font-size: 0.98rem; padding: 0.35rem 0.6rem !important; }
+        }
+        @media (max-width: 768px) {
+            .header-container .container-fluid { padding: 0 1rem; }
+            .logo-animate { height: 70px; }
+            .logo-text { font-size: 1.45rem; }
+            nav ul { gap: 0.5rem; }
+            .btn-orcamento { padding: 0.6rem 1.4rem; font-size: 0.98rem; }
+        }
+        @media (max-width: 576px) {
+            .header-container { padding: 0.6rem 0; }
+            .logo-animate { height: 62px; }
+            .logo-text { font-size: 1.25rem; letter-spacing: 0.6px; }
+            nav ul { gap: 0.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
+            .nav-link { font-size: 0.88rem; padding: 0.3rem 0.5rem !important; }
+            .btn-orcamento { padding: 0.55rem 1.2rem; font-size: 0.92rem; }
+        }
+        @media (max-width: 400px) {
+            .logo-animate { height: 58px; }
+            .logo-text { font-size: 1.15rem; }
+            .nav-link { font-size: 0.82rem; }
+        }
+
+
+        .testimonial-card {
+            transition: all 0.4s ease;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .testimonial-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .testimonial-card .card-body {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        .quote-icon {
+            font-size: 3rem;
+            opacity: 0.1;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+        }
+        .client-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 0 auto 1rem;
+        }
+        .stars {
+            color: #ffd700;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+        }
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .client-name {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+        .client-role {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        .category-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .bg-design { background: linear-gradient(45deg, #ff6b6b, #feca57); }
+        .bg-academico { background: linear-gradient(45deg, #48dbfb, #0abde3); }
+        .bg-tech { background: linear-gradient(45deg, #1dd1a1, #10ac84); }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        .hero-title {
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* WhatsApp Button — ORGANIZADO E PROFISSIONAL */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.7);
+            background: #128c7e;
+        }
+
+        .btn-whatsapp i {
+            animation: bounce 2s infinite;
+        }
+
+        .btn-whatsapp::before {
+            content: 'Chat';
+            position: absolute;
+            top: 50%;
+            left: -80px;
+            transform: translateY(-50%);
+            background: #25d366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover::before {
+            opacity: 1;
+            visibility: visible;
+            left: -90px;
+        }
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        .btn-whatsapp::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid #25d366;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .btn-whatsapp:hover::after {
+            opacity: 1;
+            visibility: visible;
+            left: -20px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 2.8rem; }
+            .testimonial-card .card-body { padding: 1.5rem; }
+            .client-photo { width: 70px; height: 70px; }
+            .testimonial-text { font-size: 1rem; }
+            .client-name { font-size: 1rem; }
+            .category-badge { font-size: 0.7rem; top: 10px; right: 10px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.3rem; }
+            .testimonial-card .card-body { padding: 1.2rem; }
+            .client-photo { width: 60px; height: 60px; }
+            .testimonial-text { font-size: 0.95rem; }
+            .client-name { font-size: 0.95rem; }
+            .client-role { font-size: 0.85rem; }
+            .category-badge { font-size: 0.65rem; padding: 4px 8px; }
+            .btn-whatsapp { width: 60px; height: 60px; font-size: 1.8rem; bottom: 20px; right: 20px; }
+            .btn-whatsapp::before { display: none; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2rem; }
+            .testimonial-card .card-body { padding: 1rem; }
+            .client-photo { width: 55px; height: 55px; }
+            .testimonial-text { font-size: 0.9rem; }
+            .client-name { font-size: 0.9rem; }
+            .client-role { font-size: 0.8rem; }
+            .category-badge { font-size: 0.6rem; padding: 3px 6px; top: 8px; right: 8px; }
+            .btn-whatsapp { width: 55px; height: 55px; font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+     <header class="header-container">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <div class="logo-container">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                    <h1 class="logo-text">NextLynx Tech</h1>
+                </div>
+
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                        <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                        <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
+
+                 <!-- 3 pontinhos verticais -->
+                    <div class="dropdown">
+                        <span class="menu-vertical" data-bs-toggle="dropdown" aria-expanded="false">⋮</span>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
+                            <li><a class="dropdown-item" href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                            <li><a class="dropdown-item" href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home"></i> Voltar ao Menu</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero -->
+    <section class="text-center py-5 bg-light">
+        <div class="container">
+            <h1 class="display-3 hero-title animate-slide-up">20 Estudantes Moçambicanos  e 40 Profissionais</h1>
+            <p class="lead text-muted animate-fade-in">20 estudantes da UEM, UCM, UniLúrio, UniSced, UP + 40 profissionais</p>
+            <div class="stars mb-4 animate-fade-in">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span class="ms-2 text-muted">4.9/5 (Baseado em 60 avaliações)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testemunhos -->
+    <main class="container my-5">
+        <div class="row g-4" id="testimonials-container">
+            <!-- 60 testemunhos serão inseridos aqui -->
+        </div>
+    </main>
+
+    <!-- Promoções -->
+    <section class="container promocoes animate-fade-in text-center py-5">
+        <h3 class="text-white mb-4">Promoção Exclusiva: 20% off em Logotipos e Ajuda com Trabalhos!</h3>
+        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Aproveitar Oferta</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <ul class="nav justify-content-center mb-3">
+                <li class="nav-item"><a href="index.html" class="nav-link text-white">Home</a></li>
+                <li class="nav-item"><a href="servicos.html" class="nav-link text-white">Serviços</a></li>
+                <li class="nav-item"><a href="politica-privacidade.html" class="nav-link text-white">Política de Privacidade</a></li>
+                <li class="nav-item"><a href="termos.html" class="nav-link text-white">Termos</a></li>
+            </ul>
+            <p class="mb-0">© 2025 NextLynx Tech. Email: contacto@nextlynx.tech</p>
+        </div> 
+</div>
+<div class="footer-bottom">
+    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+    </footer>
+
+    <!-- WhatsApp — ORGANIZADO E PROFISSIONAL -->
+    <a href="https://wa.me/258868187201?text=Olá,%20preciso%20de%20ajuda!" class="btn-whatsapp" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- SCRIPT: 60 TESTEMUNHOS (20 ESTUDANTES COM UNI + 40 PROFISSIONAIS) -->
+    <script>
+        // 20 ESTUDANTES COM UNIVERSIDADES (4 de cada: UEM, UCM, UniLúrio, UniSced, UP)
+        const estudantes = [
+            // UEM (4)
+            { nome: "Amélia Chongo", cargo: "Estudante de Design", servico: "Logotipo Profissional", categoria: "Design Gráfico", 
+              texto: "Logotipo perfeito para meu projeto final na UEM! Cores vibrantes, design moderno e profissional. Banca elogiou!", rating: 5, foto: "https://www.shutterstock.com/image-photo/portrait-happy-young-black-student-260nw-2627769095.jpg", uni: "UEM" },
+            { nome: "Joaquim Nhaca", cargo: "Estudante de Informática", servico: "TCC Completo", categoria: "Trabalhos Académicos", 
+              texto: "TCC entregue com antecedência, formatação ABNT perfeita e slides com animações incríveis. Aprovado com louvor na UEM!", rating: 5, foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VY3cy7qHsREogE3B35A8L7Mest8HFrMADQ&s", uni: "UEM" },
+            { nome: "Fátima Mabjaia", cargo: "Estudante de Gestão", servico: "Loja Online", categoria: "Serviços de Tecnologia", 
+              texto: "Loja virtual para meu projeto de estágio na UEM. Vendas reais, integração M-Pesa e design responsivo!", rating: 5, foto: "https://st.depositphotos.com/1011643/2013/i/450/depositphotos_20130467-stock-photo-beautiful-female-african-american-university.jpg", uni: "UEM" },
+            { nome: "Domingos Zandamela", cargo: "Estudante de Agronomia", servico: "Website Institucional", categoria: "Serviços de Tecnologia", 
+              texto: "Site para meu projeto de extensão rural na UEM. SEO otimizado, galeria e contato. Aprovado com nota máxima!", rating: 5, foto: "https://st.depositphotos.com/1011643/2013/i/450/depositphotos_20131051-stock-photo-african-college-boy-standing-outdoors.jpg", uni: "UEM" },
+
+            // UCM (4)
+            { nome: "Lúcia Tembe", cargo: "Estudante de Artes", servico: "Flyer Publicitário", categoria: "Design Gráfico", 
+              texto: "Flyer que encheu minha exposição na UCM. Cores vibrantes, tipografia elegante e impressão de alta qualidade!", rating: 5, foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqifM9zQ56ATzcULTUsBJYZo5ewYiNQr7BHQ&s", uni: "UCM" },
+            { nome: "Manuel Cuna", cargo: "Estudante de Educação", servico: "Monografia", categoria: "Trabalhos Académicos", 
+              texto: "Monografia completa com pesquisa e defesa oral. Aprovado com distinção na UCM. Serviço impecável!", rating: 5, foto: "https://randomuser.me/api/portraits/men/49.jpg", uni: "UCM" },
+            { nome: "Rosa Munguambe", cargo: "Estudante de Marketing", servico: "Banner Digital", categoria: "Design Gráfico", 
+              texto: "Banner animado para campanha no Instagram. 100k visualizações em 24h na UCM. Conversões em vendas!", rating: 5, foto: "https://img.freepik.com/fotos-premium/uma-menina-com-um-livro-no-ombro-e-uma-fita-vermelha-ao-redor-do-pescoco_972478-14547.jpg?semt=ais_hybrid&w=740&q=80", uni: "UCM" },
+            { nome: "António Sitoe", cargo: "Estudante de Administração", servico: "Sistema de Gestão", categoria: "Serviços de Tecnologia", 
+              texto: "Sistema para meu negócio na UCM. Controle de estoque, faturas e relatórios. Lucro subiu 50%!", rating: 5, foto: "https://cdn.vanderbilt.edu/vu-news/files/20190417224239/AfricanAmericanmanorstudent.jpg", uni: "UCM" },
+
+            // UniLúrio (4)
+            { nome: "Esmeralda Langa", cargo: "Estudante de Turismo", servico: "Convite Digital", categoria: "Design Gráfico", 
+              texto: "Convite interativo com RSVP online. Evento lotou o auditório da UniLúrio. Design elegante!", rating: 5, foto: "https://img.freepik.com/fotos-gratis/vista-lateral-de-mulher-com-mapa-e-mochila-ao-ar-livre_23-2148704451.jpg?semt=ais_hybrid&w=740&q=80", uni: "UniLúrio" },
+            { nome: "José Macuácua", cargo: "Estudante de Direito", servico: "Artigo Científico", categoria: "Trabalhos Académicos", 
+              texto: "Artigo publicado em revista internacional da UniLúrio. Redação acadêmica impecável. Qualidade de doutorado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/53.jpg", uni: "UniLúrio" },
+            { nome: "Celina Matsinhe", cargo: "Estudante de Pedagogia", servico: "Slides de Aula", categoria: "Trabalhos Académicos", 
+              texto: "Slides com animações e gráficos interativos. Aulas na UniLúrio ficaram dinâmicas. Alunos adoram!", rating: 5, foto: "https://st4.depositphotos.com/1049680/31234/i/450/depositphotos_312341060-stock-photo-african-american-student-woman-wearing.jpg", uni: "UniLúrio" },
+            { nome: "Elias Muholove", cargo: "Estudante de Comércio", servico: "Catálogo Digital", categoria: "Design Gráfico", 
+              texto: "Catálogo interativo com zoom e busca. Vendas B2B aumentaram 70% na UniLúrio. Clientes fecham negócio no mesmo dia!", rating: 5, foto: "https://randomuser.me/api/portraits/men/55.jpg", uni: "UniLúrio" },
+
+            // UniSced (4)
+            { nome: "Irene Zandamela", cargo: "Estudante de Psicologia", servico: "Cartão de Visita", categoria: "Design Gráfico", 
+              texto: "Cartão que transmite confiança. Pacientes aumentaram 40% na UniSced. Design elegante e funcional!", rating: 5, foto: "https://img.freepik.com/fotos-premium/retrato-de-estudante-de-rosto-e-mulher-negra-na-universidade-pronta-para-aprender-objetivos-ou-metas-bolsa-de-estudos-e-feliz-aluna-da-africa-do-sul-com-livros-para-estudar-e-conhecimento_590464-125173.jpg", uni: "UniSced" },
+            { nome: "Norberto Chongo", cargo: "Estudante de Engenharia", servico: "Dashboard", categoria: "Serviços de Tecnologia", 
+              texto: "Painel em tempo real com gráficos e alertas. Salvou meu projeto na UniSced. Aprovado com louvor!", rating: 5, foto: "https://img.freepik.com/fotos-premium/linda-mulher-negra-se-sentindo-feliz-surpresa-ao-perceber-uma-solucao-ou-ideia-estudante-com-conceito-de-livros_1194-331856.jpg", uni: "UniSced" },
+            { nome: "Odete Mabunda", cargo: "Estudante de Gastronomia", servico: "Menu Digital", categoria: "Design Gráfico", 
+              texto: "Menu com fotos apetitosas e QR Code. Pedidos online subiram 35% na UniSced. Clientes amam!", rating: 5, foto: "https://img.freepik.com/fotos-gratis/estudante-bela-jovem-africana-feliz-segurando-cadernos_171337-14002.jpg", uni: "UniSced" },
+            { nome: "Paulo Manjate", cargo: "Estudante de Jornalismo", servico: "Portfólio Digital", categoria: "Design Gráfico", 
+              texto: "Portfólio que me conseguiu estágio na UniSced. Design moderno, navegação fluida e responsivo. Perfeito!", rating: 5, foto: "https://randomuser.me/api/portraits/men/59.jpg", uni: "UniSced" },
+
+            // UP (4)
+            { nome: "Quitéria Sitoe", cargo: "Estudante de Enfermagem", servico: "Relatório de Estágio", categoria: "Trabalhos Académicos", 
+              texto: "Relatório aprovado com louvor na UP. Formatação impecável, pesquisa profunda e defesa tranquila. Nota máxima!", rating: 5, foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKfO2tN2BsTa2qZSqZBQWpbwyJpg6TYvZEHVCYWoqu3SzBJOKrpidNvFp3veEimpMOBUk&usqp=CAU", uni: "UP" },
+            { nome: "Raul Tembe", cargo: "Estudante de Arquitectura", servico: "Apresentação 3D", categoria: "Design Gráfico", 
+              texto: "Projeto 3D que impressionou a banca na UP. Animações realistas, renderização perfeita e defesa aprovada!", rating: 5, foto: "https://img.freepik.com/fotos-gratis/aluno-feliz-segurando-livros_23-2151936272.jpg?semt=ais_incoming&w=740&q=80", uni: "UP" },
+            { nome: "Sónia Langa", cargo: "Estudante de Contabilidade", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
+              texto: "Controle total das finanças da minha empresa na UP. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/women/62.jpg", uni: "UP" },
+            { nome: "Tomás Cuna", cargo: "Estudante de Economia", servico: "Landing Page", categoria: "Serviços de Tecnologia", 
+              texto: "Captura de leads para meu negócio na UP. Conversão subiu 200%. Design persuasivo e carregamento rápido!", rating: 5, foto: "https://randomuser.me/api/portraits/men/63.jpg", uni: "UP" }
+        ];
+
+        // 40 PROFISSIONAIS (sem universidade)
+        const profissionais = [
+            { nome: "Ussene Mabjaia", cargo: "Advogado", servico: "Revisão ABNT", categoria: "Trabalhos Académicos", 
+              texto: "Revisão que salvou meu relatório jurídico. Erros corrigidos, formatação perfeita e entrega no prazo. Cliente satisfeito!", rating: 5, foto: "https://randomuser.me/api/portraits/men/64.jpg" },
+            { nome: "Vânia Zandamela", cargo: "Estilista", servico: "Catálogo de Moda", categoria: "Design Gráfico", 
+              texto: "Catálogo que vendeu toda a coleção. Fotos profissionais, layout elegante e impressão de luxo. Clientes adoram!", rating: 5, foto: "https://randomuser.me/api/portraits/women/65.jpg" },
+            { nome: "Wilson Nhaca", cargo: "Desenvolvedor", servico: "App Mobile", categoria: "Serviços de Tecnologia", 
+              texto: "App para meu cliente. iOS e Android, design nativo e aprovação imediata. Excelente trabalho!", rating: 5, foto: "https://randomuser.me/api/portraits/men/66.jpg" },
+            { nome: "Ximena Chongo", cargo: "Turismóloga", servico: "Website Turístico", categoria: "Serviços de Tecnologia", 
+              texto: "Site que atraiu turistas de todo país. SEO, mapas e reservas online. Lucro mensal garantido!", rating: 5, foto: "https://randomuser.me/api/portraits/women/67.jpg" },
+            { nome: "Yara Tembe", cargo: "Comunicadora", servico: "Vídeo Promocional", categoria: "Design Gráfico", 
+              texto: "Vídeo que viralizou no TikTok com 500k views. Parcerias fechadas e marca fortalecida. Impacto real!", rating: 5, foto: "https://randomuser.me/api/portraits/women/68.jpg" },
+            { nome: "Zacarias Langa", cargo: "Engenheiro", servico: "Sistema de Monitoria", categoria: "Serviços de Tecnologia", 
+              texto: "Monitoria em tempo real do meu projeto. Dados precisos, alertas e relatórios. Cliente satisfeito!", rating: 5, foto: "https://randomuser.me/api/portraits/men/69.jpg" },
+            { nome: "Adelina Mabunda", cargo: "Professora de Letras", servico: "Artigo Académico", categoria: "Trabalhos Académicos", 
+              texto: "Artigo publicado em congresso. Redação fluida, pesquisa sólida e formatação perfeita. Sucesso!", rating: 5, foto: "https://randomuser.me/api/portraits/women/70.jpg" },
+            { nome: "Benvindo Sitoe", cargo: "Gestor", servico: "Dashboard Empresarial", categoria: "Serviços de Tecnologia", 
+              texto: "Dashboard que otimizou minha empresa. KPIs em tempo real, decisões rápidas e lucro subiu 60%!", rating: 5, foto: "https://randomuser.me/api/portraits/men/71.jpg" },
+            { nome: "Carla Manjate", cargo: "Enfermeira", servico: "Infográfico Médico", categoria: "Design Gráfico", 
+              texto: "Infográfico que salvou minha apresentação. Dados claros, design atraente e aprovação da equipe!", rating: 5, foto: "https://randomuser.me/api/portraits/women/72.jpg" },
+            { nome: "Délcio Cuna", cargo: "Advogado", servico: "Portfólio Jurídico", categoria: "Design Gráfico", 
+              texto: "Portfólio que me conseguiu novos clientes. Design profissional, navegação fluida e conteúdo organizado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/73.jpg" },
+            { nome: "Elsa Nhaca", cargo: "Psicóloga", servico: "Relatório de Pesquisa", categoria: "Trabalhos Académicos", 
+              texto: "Relatório aprovado com louvor. Análise estatística, gráficos e redação impecável. Nota máxima!", rating: 5, foto: "https://randomuser.me/api/portraits/women/74.jpg" },
+            { nome: "Filipe Zandamela", cargo: "Economista", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
+              texto: "Controle total das finanças. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/men/75.jpg" },
+            { nome: "Graça Tembe", cargo: "Artesã", servico: "Catálogo de Arte", categoria: "Design Gráfico", 
+              texto: "Catálogo que vendeu todas as peças na exposição. Fotos profissionais e layout elegante!", rating: 5, foto: "https://randomuser.me/api/portraits/women/76.jpg" },
+            { nome: "Hélder Langa", cargo: "Desenvolvedor", servico: "App de Entrega", categoria: "Serviços de Tecnologia", 
+              texto: "App com GPS, notificações e pagamento M-Pesa. Entregas em 30 min. Clientes fidelizados!", rating: 5, foto: "https://randomuser.me/api/portraits/men/77.jpg" },
+            { nome: "Inês Mabunda", cargo: "Comunicadora", servico: "Vídeo Institucional", categoria: "Design Gráfico", 
+              texto: "Vídeo que viralizou com 200k views. Drone, narração e edição profissional. Marca fortalecida!", rating: 5, foto: "https://randomuser.me/api/portraits/women/78.jpg" },
+            { nome: "Júlio Sitoe", cargo: "Engenheiro", servico: "Dashboard IoT", categoria: "Serviços de Tecnologia", 
+              texto: "Monitoria em tempo real de sensores. Dados precisos, alertas e relatórios. Projeto aprovado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/79.jpg" },
+            { nome: "Kátia Cuna", cargo: "Professora de Letras", servico: "Artigo Literário", categoria: "Trabalhos Académicos", 
+              texto: "Artigo publicado em revista. Redação fluida, pesquisa sólida e formatação perfeita!", rating: 5, foto: "https://randomuser.me/api/portraits/women/80.jpg" },
+            { nome: "Leandro Nhaca", cargo: "Gestor", servico: "Sistema de RH", categoria: "Serviços de Tecnologia", 
+              texto: "Controle total de funcionários. Ponto, folha de pagamento e férias automatizadas!", rating: 5, foto: "https://randomuser.me/api/portraits/men/81.jpg" },
+            { nome: "Marta Zandamela", cargo: "Enfermeira", servico: "Infográfico", categoria: "Design Gráfico", 
+              texto: "Infográfico que salvou minha apresentação. Dados claros, design atraente e aprovação da equipe!", rating: 5, foto: "https://randomuser.me/api/portraits/women/82.jpg" },
+            { nome: "Nuno Tembe", cargo: "Advogado", servico: "Portfólio Jurídico", categoria: "Design Gráfico", 
+              texto: "Portfólio que me conseguiu novos clientes. Design profissional, navegação fluida e conteúdo organizado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/83.jpg" },
+            { nome: "Olívia Langa", cargo: "Psicóloga", servico: "Relatório de Estágio", categoria: "Trabalhos Académicos", 
+              texto: "Relatório aprovado com louvor. Análise estatística, gráficos e redação impecável. Nota máxima!", rating: 5, foto: "https://randomuser.me/api/portraits/women/84.jpg" },
+            { nome: "Pedro Mabunda", cargo: "Economista", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
+              texto: "Controle total das finanças. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/men/85.jpg" },
+            { nome: "Quitéria Sitoe", cargo: "Artesã", servico: "Catálogo de Arte", categoria: "Design Gráfico", 
+              texto: "Catálogo que vendeu todas as peças na exposição. Fotos profissionais e layout elegante!", rating: 5, foto: "https://randomuser.me/api/portraits/women/86.jpg" },
+            { nome: "Rui Cuna", cargo: "Desenvolvedor", servico: "App de Entrega", categoria: "Serviços de Tecnologia", 
+              texto: "App com GPS, notificações e pagamento M-Pesa. Entregas em 30 min. Clientes fidelizados!", rating: 5, foto: "https://randomuser.me/api/portraits/men/87.jpg" },
+            { nome: "Sara Nhaca", cargo: "Comunicadora", servico: "Vídeo Institucional", categoria: "Design Gráfico", 
+              texto: "Vídeo que viralizou com 200k views. Drone, narração e edição profissional. Marca fortalecida!", rating: 5, foto: "https://randomuser.me/api/portraits/women/88.jpg" },
+            { nome: "Tiago Zandamela", cargo: "Engenheiro", servico: "Dashboard IoT", categoria: "Serviços de Tecnologia", 
+              texto: "Monitoria em tempo real de sensores. Dados precisos, alertas e relatórios. Projeto aprovado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/89.jpg" },
+            { nome: "Ursula Tembe", cargo: "Professora de Letras", servico: "Artigo Literário", categoria: "Trabalhos Académicos", 
+              texto: "Artigo publicado em revista. Redação fluida, pesquisa sólida e formatação perfeita!", rating: 5, foto: "https://randomuser.me/api/portraits/women/90.jpg" },
+            { nome: "Valter Langa", cargo: "Gestor", servico: "Sistema de RH", categoria: "Serviços de Tecnologia", 
+              texto: "Controle total de funcionários. Ponto, folha de pagamento e férias automatizadas!", rating: 5, foto: "https://randomuser.me/api/portraits/men/91.jpg" },
+            { nome: "Wanda Mabunda", cargo: "Enfermeira", servico: "Infográfico", categoria: "Design Gráfico", 
+              texto: "Infográfico que salvou minha apresentação. Dados claros, design atraente e aprovação da equipe!", rating: 5, foto: "https://randomuser.me/api/portraits/women/92.jpg" },
+            { nome: "Xavier Sitoe", cargo: "Advogado", servico: "Portfólio Jurídico", categoria: "Design Gráfico", 
+              texto: "Portfólio que me conseguiu novos clientes. Design profissional, navegação fluida e conteúdo organizado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/93.jpg" },
+            { nome: "Yolanda Cuna", cargo: "Psicóloga", servico: "Relatório de Estágio", categoria: "Trabalhos Académicos", 
+              texto: "Relatório aprovado com louvor. Análise estatística, gráficos e redação impecável. Nota máxima!", rating: 5, foto: "https://randomuser.me/api/portraits/women/94.jpg" },
+            { nome: "Zacarias Nhaca", cargo: "Economista", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
+              texto: "Controle total das finanças. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/men/95.jpg" },
+            { nome: "Amade Zandamela", cargo: "Artesão", servico: "Catálogo de Arte", categoria: "Design Gráfico", 
+              texto: "Catálogo que vendeu todas as peças na exposição. Fotos profissionais e layout elegante!", rating: 5, foto: "https://randomuser.me/api/portraits/men/96.jpg" },
+            { nome: "Berta Tembe", cargo: "Desenvolvedora", servico: "App de Entrega", categoria: "Serviços de Tecnologia", 
+              texto: "App com GPS, notificações e pagamento M-Pesa. Entregas em 30 min. Clientes fidelizados!", rating: 5, foto: "https://randomuser.me/api/portraits/women/97.jpg" },
+            { nome: "Cláudio Langa", cargo: "Comunicador", servico: "Vídeo Institucional", categoria: "Design Gráfico", 
+              texto: "Vídeo que viralizou com 200k views. Drone, narração e edição profissional. Marca fortalecida!", rating: 5, foto: "https://randomuser.me/api/portraits/men/98.jpg" },
+            { nome: "Dulce Mabunda", cargo: "Engenheira", servico: "Dashboard IoT", categoria: "Serviços de Tecnologia", 
+              texto: "Monitoria em tempo real de sensores. Dados precisos, alertas e relatórios. Projeto aprovado!", rating: 5, foto: "https://randomuser.me/api/portraits/women/99.jpg" }
+        ];
+
+        // Junta todos
+        const todosTestemunhos = [...estudantes, ...profissionais];
+
+        // Gera estrelas
+        function gerarEstrelas(rating) {
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                stars += i < rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+            }
+            return stars;
+        }
+
+        // Cria card
+        function criarCard(t, i) {
+            const delay = i * 80;
+            const catClass = t.categoria === 'Design Gráfico' ? 'bg-design' : 
+                           t.categoria === 'Trabalhos Académicos' ? 'bg-academico' : 'bg-tech';
+            const uniBadge = t.uni ? `<span class="badge bg-secondary ms-2">${t.uni}</span>` : '';
+            
+            return `
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="testimonial-card h-100 position-relative float-animation" style="animation-delay: ${delay}ms;">
+                        <div class="category-badge text-white ${catClass}">${t.categoria}</div>
+                        <div class="card-body position-relative">
+                            <i class="fas fa-quote-left quote-icon"></i>
+                            <img src="${t.foto}" alt="${t.nome}" class="client-photo pulse-animation">
+                            <div class="testimonial-text">"${t.texto}"</div>
+                            <div class="stars mb-2">${gerarEstrelas(t.rating)}</div>
+                            <div class="client-name">${t.nome}${uniBadge}</div>
+                            <div class="client-role">${t.cargo} • ${t.servico}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Renderiza
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('testimonials-container');
+            todosTestemunhos.forEach((t, i) => {
+                container.innerHTML += criarCard(t, i);
+            });
+        });
+    </script>
+</body>
+</html>

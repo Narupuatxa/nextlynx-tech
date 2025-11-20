@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLynx Tech - FAQ</title>
+    <meta name="description" content="30 perguntas frequentes com respostas claras e coloridas.">
+    <meta name="keywords" content="FAQ NextLynx Tech, APA, ABNT, TCC, sistema de gestão, design gráfico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --success: #38ef7d;
+            --warning: #f5576c;
+            --info: #00f2fe;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --header-bg: #8B0000; /* VERMELHO ESCURO */
+            --header-text: #ffffff; /* TEXTO BRANCO */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Header - FUNDO VERMELHO ESCURO */
+       
+/* ====================== HEADER COMPACTO E PREENCHIDO ====================== */
+        .header-container {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.8rem 0; /* header bem compacto */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+        }
+
+        .header-container .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* tudo em uma linha */
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo-animate {
+            height: 45px; /* logo maior mas ainda compacto */
+            width: auto;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+        }
+
+        .logo-animate:hover {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem; /* texto menor e mais compacto */
+            font-weight: 900;
+            margin: 0;
+            color: white;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            letter-spacing: 16px; /* espaçamento reduzido */
+            white-space: nowrap;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* menu mais apertado */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: white;
+            font-weight: 600;
+            font-size: 1rem; /* letras menores */
+            padding: 0.4rem 0.7rem !important;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #00f2fe;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 60%;
+        }
+
+        .btn-orcamento {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 6px 18px rgba(255, 193, 7, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+         /* MENU DE TRÊS PONTINHOS VERTICAIS (⋮) NO CANTO DIREITO */
+        .menu-vertical {
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .menu-vertical:hover {
+            color: #00f2fe;
+            transform: rotate(90deg);
+        }
+
+        .dropdown-menu {
+            background: #8B0000;
+            border: 2px solid #00f2fe;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            min-width: 220px;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: #00f2fe;
+            color: #2c3e50;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-orcamento:hover {
+            transform: translateY(-4px);
+            background: #ffca2c;
+            box-shadow: 0 12px 30px rgba(255, 193, 7, 0.7);
+        }
+
+
+        /* RESPONSIVO — tudo em uma linha até telas muito pequenas */
+        @media (max-width: 1200px) {
+            .logo-animate { height: 80px; }
+            .logo-text { font-size: 1.7rem; }
+            nav ul { gap: 0.6rem; }
+        }
+
+        @media (max-width: 992px) {
+            .logo-animate { height: 75px; }
+            .logo-text { font-size: 1.5rem; }
+            .nav-link { font-size: 0.95rem; padding: 0.35rem 0.6rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            .header-container .container-fluid { padding: 0 1rem; }
+            .logo-animate { height: 70px; }
+            .logo-text { font-size: 1.4rem; }
+            nav ul { gap: 0.4rem; }
+            .btn-orcamento { padding: 0.6rem 1.3rem; font-size: 0.95rem; }
+        }
+
+        @media (max-width: 576px) {
+            .header-container { padding: 0.5rem 0; }
+            .logo-animate { height: 60px; }
+            .logo-text { font-size: 1.2rem; letter-spacing: 0.5px; }
+            nav ul { gap: 0.3rem; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .nav-link { font-size: 0.85rem; padding: 0.3rem 0.5rem !important; }
+            .btn-orcamento { padding: 0.55rem 1.2rem; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 400px) {
+            .logo-animate { height: 55px; }
+            .logo-text { font-size: 1.1rem; }
+            .nav-link { font-size: 0.8rem; }
+        }
+
+
+        .faq-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .faq-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.15);
+            transform: rotate(30deg);
+            animation: shine 12s infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%) rotate(30deg); }
+            50% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .faq-title {
+            font-weight: 900;
+            font-size: 4.5rem;
+            text-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            margin-bottom: 1rem;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .faq-subtitle {
+            font-size: 1.6rem;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 900px;
+            margin: 0 auto;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .faq-icon {
+            font-size: 7rem;
+            opacity: 0.2;
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .faq-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 30px;
+            margin-bottom: 2.5rem;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .faq-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .faq-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+        }
+
+        .faq-question {
+            padding: 2.5rem;
+            cursor: pointer;
+            position: relative;
+            background: white;
+            transition: all 0.4s ease;
+        }
+
+        .faq-question h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin: 0;
+            color: #2c3e50;
+            transition: color 0.3s ease;
+            padding-right: 80px;
+        }
+
+        .faq-question:hover h3 {
+            color: var(--primary);
+        }
+
+        .faq-toggle-btn {
+            position: absolute;
+            right: 2.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4);
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .faq-item.open .faq-toggle-btn {
+            background: var(--gradient-warning);
+            transform: translateY(-50%) rotate(180deg);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+        }
+
+        .faq-toggle-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 12px 35px rgba(106, 17, 203, 0.5);
+        }
+
+        .faq-answer {
+            padding: 0 2.5rem 2.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+            background: #f8f9fa;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 1200px;
+            padding-top: 2rem;
+        }
+
+        .faq-category {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: pulse 2.5s infinite;
+        }
+
+        .cat-design { background: var(--gradient-warning); color: white; }
+        .cat-academico { background: var(--gradient-success); color: white; }
+        .cat-tech { background: var(--gradient-info); color: white; }
+        .cat-geral { background: var(--gradient-primary); color: white; }
+
+        /* LISTA SEM CHECKMARK — APENAS TEXTO */
+        .faq-list {
+            padding-left: 0;
+            margin: 1.2rem 0;
+            list-style: none;
+        }
+
+        .faq-list li {
+            margin-bottom: 1rem;
+            padding-left: 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            position: relative;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-25px); }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-120px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .faq-stats {
+            background: white;
+            border-radius: 35px;
+            padding: 3rem;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            margin-bottom: 4rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #6c757d;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        /* Botão WhatsApp Flutuante */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.7);
+            background: #128c7e;
+        }
+
+        .btn-whatsapp i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* LINK DO ADMIN - VISÍVEL APENAS PARA VOCÊ */
+        .admin-link {
+            color: #666;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: block;
+            margin-top: 1rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        a.admin-link[href*="admin.html"]:not([href=""]) {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .admin-link:hover {
+            color: #aaa;
+            text-decoration: underline;
+        }
+
+        /* Promoções */
+        .promocoes {
+            background: var(--gradient-warning);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Footer */
+        .footer-container {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 0 3rem;
+            margin-top: 5rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+            transition: transform 0.4s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: white;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-warning);
+            border-radius: 2px;
+        }
+
+        .footer-link {
+            color: #cccccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            padding-left: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: translateX(12px);
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 25px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-info h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-info p {
+            color: #cccccc;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        .footer-bottom a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 1200px) {
+            .faq-container { max-width: 960px; }
+        }
+
+        @media (max-width: 992px) {
+            .faq-title { font-size: 3.5rem; }
+            .faq-subtitle { font-size: 1.4rem; }
+            .faq-question h3 { font-size: 1.25rem; }
+            .faq-toggle-btn { width: 50px; height: 50px; font-size: 1.3rem; right: 1.5rem; }
+            .faq-answer { padding: 0 1.5rem 1.5rem; }
+            .faq-category { font-size: 0.85rem; }
+            .faq-list li { font-size: 1rem; }
+            .logo-animate { height: 75px; }
+            .logo-text { font-size: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .faq-header { padding: 3rem 0; }
+            .faq-title { font-size: 3rem; }
+            .faq-subtitle { font-size: 1.2rem; }
+            .faq-question { padding: 2rem 1.5rem; }
+            .faq-question h3 { font-size: 1.15rem; padding-right: 60px; }
+            .faq-toggle-btn { width: 45px; height: 45px; font-size: 1.2rem; right: 1rem; }
+            .faq-answer { padding: 0 1.5rem 1.5rem; }
+            .faq-category { font-size: 0.8rem; padding: 0.4rem 1rem; }
+            .faq-list li { font-size: 0.95rem; }
+            .btn-whatsapp { width: 60px; height: 60px; font-size: 1.8rem; bottom: 20px; right: 20px; }
+            .logo-animate { height: 65px; }
+            .logo-text { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 576px) {
+            .faq-header { padding: 2.5rem 0; }
+            .faq-title { font-size: 2.5rem; }
+            .faq-subtitle { font-size: 1.1rem; }
+            .faq-question { padding: 1.5rem 1rem; }
+            .faq-question h3 { font-size: 1.05rem; padding-right: 50px; }
+            .faq-toggle-btn { width: 40px; height: 40px; font-size: 1.1rem; right: 0.8rem; }
+            .faq-answer { padding: 0 1rem 1rem; }
+            .faq-category { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+            .faq-list li { font-size: 0.9rem; }
+            .btn-whatsapp { width: 55px; height: 55px; font-size: 1.6rem; }
+            .logo-animate { height: 55px; }
+            .logo-text { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+     <header class="header-container">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <div class="logo-container">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                    <h1 class="logo-text">NextLynx Tech</h1>
+                </div>
+
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                        <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                        <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
+
+                   <!-- 3 pontinhos verticais -->
+                    <div class="dropdown">
+                        <span class="menu-vertical" data-bs-toggle="dropdown" aria-expanded="false">⋮</span>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
+                            <li><a class="dropdown-item" href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                            <li><a class="dropdown-item" href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home"></i> Voltar ao Menu</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero FAQ -->
+    <section class="faq-header">
+        <div class="container position-relative">
+            <h1 class="faq-title">Perguntas Frequentes</h1>
+            <p class="faq-subtitle">Tudo sobre nossos serviços com respostas claras e profissionais</p>
+            <i class="fas fa-question-circle faq-icon"></i>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="container faq-stats">
+        <div class="row text-center">
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">30</div>
+                <p class="stat-label">Perguntas Respondidas</p>
+            </div>
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">APA</div>
+                <p class="stat-label">Formatação Profissional</p>
+            </div>
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">24h</div>
+                <p class="stat-label">Resposta Média</p>
+            </div>
+            <div class="col-md-3 stat-item">
+                <div class="stat-number">100%</div>
+                <p class="stat-label">Satisfação Garantida</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ List -->
+    <main class="container faq-container">
+        <div id="faqList">
+            <!-- 30 FAQs serão inseridas aqui via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Promoções -->
+    <section class="container promocoes text-center py-5">
+        <h3 class="text-white mb-4">Dúvidas? Fale Conosco!</h3>
+        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Solicitar Orçamento</a>
+    </section>
+
+    <!-- Footer Completo -->
+    <footer class="footer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="footer-logo">
+                    <p class="text-muted">Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+                    <div class="footer-social">
+                        <a href="https://facebook.com/nextlynxtech" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://instagram.com/nextlynxtech" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/nextlynxtech" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/258868187201" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Navegação</h5>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="servicos.html" class="footer-link">Serviços</a>
+                    <a href="portfolio.html" class="footer-link">Portfólio</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Suporte</h5>
+                    <a href="contactos.html" class="footer-link">Contactos</a>
+                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-info">
+                        <h5>Localização</h5>
+                        <p>Cidade de Nampula</p>
+                        <p class="mt-3"><strong>Email:</strong> nextlynxtech@gmail.com</p>
+                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                        <p>+258 872 394 433 </p>
+                        <p>+258 868 712 546 </p>
+
+                        <!-- LINK DO ADMIN - VISÍVEL APENAS COM ?admin=true -->
+                        <a href="admin.html?admin=true" class="admin-link">
+                            <i class="fas fa-user-shield"></i> Painel do Administrador
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+                <p class="small mt-2">
+                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                    <a href="termos.html">Termos de Uso</a> •
+                    <a href="sobre.html">Sobre nós</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+</div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/258868187201?text=Olá,%20tenho%20uma%20dúvida!" class="btn-whatsapp" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- SCRIPT: 30 FAQs com Animações e Botões Visíveis -->
+    <script>
+        // 30 Perguntas Frequentes (TOD-AS COMPLETAS)
+        const faqs = [
+            // 1. APA 6ª Edição
+            { 
+                pergunta: "Vocês fazem formatação completa em APA 6ª edição?", 
+                resposta: `<p>Sim, formatação 100% conforme <strong>APA 6ª edição</strong>:</p>
+                          <ul class="faq-list">
+                            <li><strong>Título e abstract:</strong> centralizados, com running head</li>
+                            <li><strong>Citações no texto:</strong> (Autor, Ano) ou Autor (Ano)</li>
+                            <li><strong>Referências:</strong> ordem alfabética, com DOIs quando disponíveis</li>
+                            <li><strong>Tabelas e figuras:</strong> numeradas, com títulos e notas</li>
+                            <li><strong>Margens e espaçamento:</strong> 1 polegada, espaçamento duplo</li>
+                          </ul>
+                          <p>Incluímos verificação de consistência e adaptação para diferentes áreas (Psicologia, Educação, etc.).</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 2. APA 7ª Edição
+            { 
+                pergunta: "E a APA 7ª edição, também oferecem?", 
+                resposta: `<p>Claro! Formatação completa conforme <strong>APA 7ª edição</strong>:</p>
+                          <ul class="faq-list">
+                            <li><strong>Título:</strong> centralizado, negrito, sem running head (exceto teses)</li>
+                            <li><strong>Citações:</strong> até 20 autores na referência</li>
+                            <li><strong>DOIs:</strong> formatados como URLs clicáveis</li>
+                            <li><strong>Fontes:</strong> flexíveis (Calibri 11, Arial 11, Times 12)</li>
+                            <li><strong>Bias-free language:</strong> linguagem inclusiva e neutra</li>
+                          </ul>
+                          <p>Atualizamos automaticamente conforme a versão solicitada.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 3. ABNT
+            { 
+                pergunta: "Vocês seguem rigorosamente as normas ABNT?", 
+                resposta: `<p>Sim, formatação 100% conforme <strong>ABNT NBR 14724</strong> (2023):</p>
+                          <ul class="faq-list">
+                            <li><strong>Estrutura:</strong> capa, folha de rosto, sumário automático</li>
+                            <li><strong>Paginação:</strong> pré-textual em romano, textual em arábico</li>
+                            <li><strong>Margens:</strong> 3cm esquerda, 2cm direita, superior e inferior</li>
+                            <li><strong>Citações:</strong> NBR 10520 (diretas/indiretas)</li>
+                            <li><strong>Referências:</strong> NBR 6023 (livros, artigos, sites)</li>
+                          </ul>
+                          <p>Entregamos com checklist de conformidade ABNT.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 4. Artigo Científico
+            { 
+                pergunta: "Vocês criam artigos científicos para publicação?", 
+                resposta: `<p>Sim, artigos completos para revistas nacionais e internacionais:</p>
+                          <ul class="faq-list">
+                            <li><strong>Estrutura IMRAD:</strong> Introdução, Métodos, Resultados, Discussão</li>
+                            <li><strong>Redação técnica:</strong> linguagem acadêmica, precisão científica</li>
+                            <li><strong>Formatação:</strong> APA, ABNT, Vancouver ou norma da revista</li>
+                            <li><strong>Submissão:</strong> plataformas (SciELO, Elsevier, Springer)</li>
+                            <li><strong>Acompanhamento:</strong> até aprovação ou resposta a revisores</li>
+                          </ul>
+                          <p>Incluímos carta de submissão e revisão de revisores.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 5. Sistema de Gestão
+            { 
+                pergunta: "O que é um sistema de gestão de negócios personalizado?", 
+                resposta: `<p>É uma solução digital sob medida para automatizar sua empresa:</p>
+                          <ul class="faq-list">
+                            <li><strong>Estoque:</strong> entrada/saída, alertas de mínimo</li>
+                            <li><strong>Faturação:</strong> emissão com IVA e retenção</li>
+                            <li><strong>CRM:</strong> cadastro de clientes, histórico de vendas</li>
+                            <li><strong>Relatórios:</strong> financeiros, gráficos, exportação</li>
+                            <li><strong>Acesso:</strong> web e app mobile, multi-usuário</li>
+                          </ul>
+                          <p>Desenvolvido conforme o seu modelo de negócio.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 6. TCC Completo
+            { 
+                pergunta: "Como funciona o serviço de TCC completo?", 
+                resposta: `<p>Processo em 6 etapas estruturadas:</p>
+                          <ol class="faq-list" style="list-style: decimal; padding-left: 1.5rem;">
+                            <li><strong>Briefing:</strong> tema, objetivos, diretrizes</li>
+                            <li><strong>Pesquisa:</strong> bases acadêmicas nacionais/internacionais</li>
+                            <li><strong>Redação:</strong> introdução, revisão, metodologia, resultados</li>
+                            <li><strong>Formatação:</strong> ABNT ou APA conforme solicitação</li>
+                            <li><strong>Slides:</strong> apresentação com animações para defesa</li>
+                            <li><strong>Entrega:</strong> PDF, Word, revisões ilimitadas</li>
+                          </ol>
+                          <p>Acompanhamento semanal via WhatsApp.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 7. Slides de Defesa
+            { 
+                pergunta: "Vocês fazem slides para defesa de TCC?", 
+                resposta: `<p>Apresentação profissional com:</p>
+                          <ul class="faq-list">
+                            <li>Design corporativo personalizado</li>
+                            <li>Animações suaves e transições</li>
+                            <li>Gráficos, tabelas e imagens de alta qualidade</li>
+                            <li>Notas do orador para cada slide</li>
+                            <li>Compatibilidade com PowerPoint e Google Slides</li>
+                          </ul>
+                          <p>Pronta para impressionar a banca!</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 8. Website Institucional
+            { 
+                pergunta: "Como é o processo de criação de um website institucional?", 
+                resposta: `<p>Processo em 5 etapas:</p>
+                          <ol class="faq-list" style="list-style: decimal; padding-left: 1.5rem;">
+                            <li>Reunião para definir objetivos e público-alvo</li>
+                            <li>Criação de wireframes e design mockups</li>
+                            <li>Desenvolvimento frontend/backend</li>
+                            <li>Testes de usabilidade e responsividade</li>
+                            <li>Lançamento com treinamento básico</li>
+                          </ol>
+                          <p>Entrega com painel admin para atualizações.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 9. Logotipo
+            { 
+                pergunta: "Vocês criam logotipos profissionais?", 
+                resposta: `<p>Sim, logotipos únicos e memoráveis:</p>
+                          <ul class="faq-list">
+                            <li>Briefing detalhado sobre a marca</li>
+                            <li>3-5 propostas de design</li>
+                            <li>Revisões ilimitadas até aprovação</li>
+                            <li>Entrega em SVG, PNG, JPG, AI</li>
+                            <li>Manual de uso da marca</li>
+                          </ul>
+                          <p>Design que reflete a essência do seu negócio.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 10. Loja Online
+            { 
+                pergunta: "Vocês fazem lojas online completas?", 
+                resposta: `<p>Loja completa com:</p>
+                          <ul class="faq-list">
+                            <li>Carrinho de compras</li>
+                            <li>Gestão de produtos/estoque</li>
+                            <li>Cupons de desconto</li>
+                            <li>Integração com transportadoras</li>
+                            <li>Painel admin intuitivo</li>
+                          </ul>
+                          <p>Pronta para vender 24h por dia.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 11. Revisão de Texto
+            { 
+                pergunta: "Vocês fazem revisão de textos acadêmicos?", 
+                resposta: `<p>Revisão completa com 3 etapas:</p>
+                          <ul class="faq-list">
+                            <li><strong>Ortografia e gramática:</strong> correção de erros</li>
+                            <li><strong>Coerência e coesão:</strong> fluxo do texto</li>
+                            <li><strong>Normas técnicas:</strong> ABNT/APA conforme solicitação</li>
+                          </ul>
+                          <p>Relatório de alterações e sugestões de melhoria.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 12. Catálogo Digital
+            { 
+                pergunta: "Como é a criação de um catálogo digital?", 
+                resposta: `<p>Catálogo interativo com:</p>
+                          <ul class="faq-list">
+                            <li>Páginas navegáveis</li>
+                            <li>Zoom em produtos</li>
+                            <li>Busca por categoria</li>
+                            <li>Botão WhatsApp para pedidos</li>
+                            <li>Versão PDF para download</li>
+                          </ul>
+                          <p>Aumenta conversões em até 70%.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 13. Sistema de Faturação
+            { 
+                pergunta: "Vocês criam sistemas de faturação?", 
+                resposta: `<p>Sistema completo de faturação:</p>
+                          <ul class="faq-list">
+                            <li>Emissão de faturas com IVA e retenção</li>
+                            <li>Integração com M-Pesa e e-Mola</li>
+                            <li>Relatórios diários, semanais e mensais</li>
+                            <li>Exportação para Excel e PDF</li>
+                            <li>Backup automático na nuvem</li>
+                          </ul>
+                          <p>Conformidade com legislação moçambicana.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 14. Flyer Publicitário
+            { 
+                pergunta: "Vocês fazem flyers e cartazes promocionais?", 
+                resposta: `<p>Materiais promocionais com:</p>
+                          <ul class="faq-list">
+                            <li>Design atrativo e chamativo</li>
+                            <li>Cores vibrantes e tipografia moderna</li>
+                            <li>Impressão em alta resolução</li>
+                            <li>Versões para redes sociais</li>
+                            <li>QR Code para links</li>
+                          </ul>
+                          <p>Perfeito para eventos e promoções.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 15. Dashboard
+            { 
+                pergunta: "O que é um dashboard administrativo?", 
+                resposta: `<p>Painel de controle com:</p>
+                          <ul class="faq-list">
+                            <li>Gráficos em tempo real</li>
+                            <li>KPIs personalizados</li>
+                            <li>Filtros por data/período</li>
+                            <li>Exportação para Excel/PDF</li>
+                            <li>Acesso seguro por login</li>
+                          </ul>
+                          <p>Visão completa do seu negócio em um clique.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 16. Integração M-Pesa
+            { 
+                pergunta: "Vocês integram pagamentos com M-Pesa?", 
+                resposta: `<p>Integração completa com M-Pesa:</p>
+                          <ul class="faq-list">
+                            <li>Pagamentos instantâneos</li>
+                            <li>Confirmação por SMS</li>
+                            <li>Relatórios de transações</li>
+                            <li>Segurança com criptografia</li>
+                            <li>Testes em ambiente sandbox</li>
+                          </ul>
+                          <p>Checkout rápido e confiável.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 17. Identidade Visual
+            { 
+                pergunta: "Vocês criam identidades visuais completas?", 
+                resposta: `<p>Pacote completo com:</p>
+                          <ul class="faq-list">
+                            <li>Logotipo principal e variações</li>
+                            <li>Paleta de cores e tipografia</li>
+                            <li>Cartão de visita e papel timbrado</li>
+                            <li>Assinatura de email</li>
+                            <li>Manual de uso da marca</li>
+                          </ul>
+                          <p>Identidade coesa e profissional.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 18. Plano de Negócios
+            { 
+                pergunta: "Vocês fazem planos de negócios?", 
+                resposta: `<p>Plano completo com:</p>
+                          <ul class="faq-list">
+                            <li>Análise de mercado</li>
+                            <li>Estudo financeiro</li>
+                            <li>Plano operacional</li>
+                            <li>Estratégias de marketing</li>
+                            <li>Projeções de 3-5 anos</li>
+                          </ul>
+                          <p>Pronta para investidores.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 19. Integração Transportadoras
+            { 
+                pergunta: "Vocês integram com transportadoras?", 
+                resposta: `<p>Integração com:</p>
+                          <ul class="faq-list">
+                            <li>Cálculo automático de frete</li>
+                            <li>Rastreamento em tempo real</li>
+                            <li>Etiquetas de envio</li>
+                            <li>Atualização de status</li>
+                            <li>Relatórios de entregas</li>
+                          </ul>
+                          <p>Logística simplificada.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 20. Apresentações Corporativas
+            { 
+                pergunta: "Vocês fazem apresentações corporativas?", 
+                resposta: `<p>Apresentações profissionais com:</p>
+                          <ul class="faq-list">
+                            <li>Design corporativo</li>
+                            <li>Animações suaves</li>
+                            <li>Gráficos interativos</li>
+                            <li>Vídeos embed</li>
+                            <li>Notas do orador</li>
+                          </ul>
+                          <p>Perfeitas para reuniões e pitches.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 21. Sistema de Ponto
+            { 
+                pergunta: "Vocês criam sistemas de ponto eletrônico?", 
+                resposta: `<p>Sistema biométrico ou digital com:</p>
+                          <ul class="faq-list">
+                            <li>Registro por impressão digital</li>
+                            <li>Controle de horários</li>
+                            <li>Cálculo automático de horas extras</li>
+                            <li>Relatórios para folha de pagamento</li>
+                            <li>Integração com RH</li>
+                          </ul>
+                          <p>Conformidade com legislação laboral.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 22. Design de Embalagens
+            { 
+                pergunta: "Vocês fazem design de embalagens?", 
+                resposta: `<p>Embalagens personalizadas com:</p>
+                          <ul class="faq-list">
+                            <li>Mockups 3D realistas</li>
+                            <li>Dielines para impressão</li>
+                            <li>Cores Pantone</li>
+                            <li>Especificações técnicas</li>
+                            <li>Testes de legibilidade</li>
+                          </ul>
+                          <p>Prontas para produção.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 23. App Mobile
+            { 
+                pergunta: "Vocês desenvolvem apps mobile?", 
+                resposta: `<p>Desenvolvimento completo:</p>
+                          <ul class="faq-list">
+                            <li>Design de interfaces (UI/UX)</li>
+                            <li>Desenvolvimento nativo ou híbrido</li>
+                            <li>Integração com APIs</li>
+                            <li>Testes em dispositivos reais</li>
+                            <li>Publicação nas lojas</li>
+                          </ul>
+                          <p>App funcional e intuitivo.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 24. Relatórios de Pesquisas
+            { 
+                pergunta: "Vocês fazem relatórios de pesquisa?", 
+                resposta: `<p>Relatórios completos com:</p>
+                          <ul class="faq-list">
+                            <li>Metodologia detalhada</li>
+                            <li>Análise estatística</li>
+                            <li>Gráficos e tabelas</li>
+                            <li>Discussão de resultados</li>
+                            <li>Conclusões e recomendações</li>
+                          </ul>
+                          <p>Prontos para publicação.</p>`, 
+                categoria: "Trabalhos Académicos"
+            },
+            // 25. Sistema CRM
+            { 
+                pergunta: "O que é um sistema CRM?", 
+                resposta: `<p>Customer Relationship Management com:</p>
+                          <ul class="faq-list">
+                            <li>Cadastro de clientes</li>
+                            <li>Histórico de interações</li>
+                            <li>Funil de vendas</li>
+                            <li>Follow-up automático</li>
+                            <li>Relatórios de conversão</li>
+                          </ul>
+                          <p>Aumenta fidelização e vendas.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 26. Cartões de Visita Digitais
+            { 
+                pergunta: "Vocês criam cartões de visita digitais?", 
+                resposta: `<p>Cartões interativos com:</p>
+                          <ul class="faq-list">
+                            <li>Link QR para compartilhar</li>
+                            <li>Bio, contatos e redes sociais</li>
+                            <li>Design personalizado</li>
+                            <li>Compartilhamento via WhatsApp</li>
+                            <li>Atualização em tempo real</li>
+                          </ul>
+                          <p>Profissionalismo moderno.</p>`, 
+                categoria: "Design Gráfico"
+            },
+            // 27. SEO para Sites
+            { 
+                pergunta: "Sites incluem otimização para Google?", 
+                resposta: `<p>Sim, com SEO técnico:</p>
+                          <ul class="faq-list">
+                            <li>Meta tags otimizadas</li>
+                            <li>Velocidade de carregamento</li>
+                            <li>Estrutura de headings</li>
+                            <li>Sitemap e robots.txt</li>
+                            <li>Imagens otimizadas</li>
+                          </ul>
+                          <p>Melhor posicionamento orgânico.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 28. Hospedagem
+            { 
+                pergunta: "Vocês oferecem hospedagem para sites?", 
+                resposta: `<p>Hospedagem premium com:</p>
+                          <ul class="faq-list">
+                            <li>SSL gratuito (HTTPS)</li>
+                            <li>Backup diário</li>
+                            <li>CDN global</li>
+                            <li>Suporte 24/7</li>
+                            <li>Domínio .com incluído no 1º ano</li>
+                          </ul>
+                          <p>Site sempre online e seguro.</p>`, 
+                categoria: "Serviços de Tecnologia"
+            },
+            // 29. Política de Revisões
+            { 
+                pergunta: "Como funciona a política de revisões?", 
+                resposta: `<p>Revisões ilimitadas com:</p>
+                          <ul class="faq-list">
+                            <li>Ajustes de conteúdo</li>
+                            <li>Mudanças de design</li>
+                            <li>Alterações funcionais</li>
+                            <li>Feedback detalhado</li>
+                            <li>Prazo de 48h por revisão</li>
+                          </ul>
+                          <p>Até você aprovar 100%.</p>`, 
+                categoria: "Geral"
+            },
+            // 30. TEM MAIS DÚVIDAS?
+            { 
+                pergunta: "Tem mais dúvidas?", 
+                resposta: `<p><strong>Sim, estamos aqui para ajudar!</strong></p>
+                          <p>Fale agora com nossa equipe via WhatsApp — resposta em até <strong>5 minutos</strong>!</p>
+                          <p>Clique no botão flutuante verde ou envie "FAQ" para <strong>84 123 4567</strong>.</p>
+                          <p>Seja sobre APA, ABNT, TCC, sistemas de gestão ou qualquer serviço — <strong>pergunte!</strong></p>`, 
+                categoria: "Geral"
+            }
+        ];
+
+        // Cria item FAQ
+        function criarFAQ(faq, index) {
+            const categoriaClass = faq.categoria === 'Design Gráfico' ? 'cat-design' : 
+                                 faq.categoria === 'Trabalhos Académicos' ? 'cat-academico' : 
+                                 faq.categoria === 'Serviços de Tecnologia' ? 'cat-tech' : 'cat-geral';
+            
+            return `
+                <div class="faq-item" style="animation-delay: ${index * 150}ms;">
+                    <div class="faq-question">
+                        <h3>${faq.pergunta}</h3>
+                        <div class="faq-toggle-btn">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="faq-answer">
+                        <span class="faq-category ${categoriaClass}">${faq.categoria}</span>
+                        ${faq.resposta}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Renderiza FAQs
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqList = document.getElementById('faqList');
+            
+            faqs.forEach((faq, i) => {
+                faqList.innerHTML += criarFAQ(faq, i);
+            });
+
+            // Animação de entrada
+            const items = document.querySelectorAll('.faq-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            items.forEach(item => observer.observe(item));
+
+            // Expansão ao clicar
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', () => {
+                    const item = question.parentElement;
+                    item.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

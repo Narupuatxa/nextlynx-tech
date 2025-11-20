@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vantagens de um Sistema de Gestão Online - NextLynx Tech</title>
+    <meta name="description" content="Descubra como um sistema de gestão online aumenta eficiência, reduz custos e escala seu negócio. NextLynx Tech entrega soluções personalizadas com M-Pesa e dashboard em tempo real.">
+    <meta name="keywords" content="sistema gestão online, ERP Moçambique, NextLynx Tech, M-Pesa">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --secondary: #f093fb;
+            --success: #38ef7d;
+            --warning: #f5576c;
+            --info: #00f2fe;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                --header-bg: #8B0000; /* VERMELHO ESCURO */
+            --header-text: #ffffff; /* TEXTO BRANCO */
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+       .header-container {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.9rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 30px rgba(139, 0, 0, 0.6);
+            width: 100%;
+        }
+
+        .header-container .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            padding: 0 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-shrink: 0;
+        }
+
+        .logo-animate {
+            height: 110px;
+            width: auto;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 5px 12px rgba(0,0,0,0.5));
+        }
+
+        .logo-animate:hover {
+            transform: scale(1.1) rotate(6deg);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin: 0;
+            color: white;
+            text-shadow: 0 3px 12px rgba(0,0,0,0.6);
+            letter-spacing: 0.8px;
+            white-space: nowrap;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: white;
+            font-weight: 600;
+            font-size: 1.05rem;
+            padding: 0.4rem 0.8rem !important;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2.5px;
+            background: #00f2fe;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 65%;
+        }
+
+        .btn-orcamento {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            white-space: nowrap;
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        .btn-orcamento:hover {
+            transform: translateY(-4px);
+            background: #ffca2c;
+            box-shadow: 0 12px 32px rgba(255, 193, 7, 0.7);
+        }
+
+        /* RESPONSIVO — tudo em uma linha até o limite */
+        @media (max-width: 1400px) {
+            .logo-animate { height: 100px; }
+            .logo-text { font-size: 1.9rem; }
+        }
+        @media (max-width: 1200px) {
+            .logo-animate { height: 90px; }
+            .logo-text { font-size: 1.75rem; }
+            nav ul { gap: 0.8rem; }
+        }
+        @media (max-width: 992px) {
+            .logo-animate { height: 80px; }
+            .logo-text { font-size: 1.6rem; }
+            .nav-link { font-size: 0.98rem; padding: 0.35rem 0.6rem !important; }
+        }
+        @media (max-width: 768px) {
+            .header-container .container-fluid { padding: 0 1rem; }
+            .logo-animate { height: 70px; }
+            .logo-text { font-size: 1.45rem; }
+            nav ul { gap: 0.5rem; }
+            .btn-orcamento { padding: 0.6rem 1.4rem; font-size: 0.98rem; }
+        }
+        @media (max-width: 576px) {
+            .header-container { padding: 0.6rem 0; }
+            .logo-animate { height: 62px; }
+            .logo-text { font-size: 1.25rem; letter-spacing: 0.6px; }
+            nav ul { gap: 0.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
+            .nav-link { font-size: 0.88rem; padding: 0.3rem 0.5rem !important; }
+            .btn-orcamento { padding: 0.55rem 1.2rem; font-size: 0.92rem; }
+        }
+        @media (max-width: 400px) {
+            .logo-animate { height: 58px; }
+            .logo-text { font-size: 1.15rem; }
+            .nav-link { font-size: 0.82rem; }
+        }
+
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.15);
+            transform: rotate(30deg);
+            animation: shine 18s infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%) rotate(30deg); }
+            50% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            margin-bottom: 1.5rem;
+            animation: slideInDown 1.2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1.4s ease-out;
+            font-weight: 300;
+        }
+
+        .hero-btn {
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: bounce 2s infinite;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            background: #f8f9fa;
+        }
+
+        .hero-icon {
+            font-size: 12rem;
+            opacity: 0.15;
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        /* Article Section */
+        .article-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .article-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 35px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .article-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--info);
+            position: relative;
+        }
+
+        .article-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 120px;
+            height: 6px;
+            background: var(--gradient-info);
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 5px 15px rgba(0, 242, 254, 0.4);
+        }
+
+        .article-meta {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #6c757d;
+            font-size: 1.1rem;
+        }
+
+        .article-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 30px;
+            margin-bottom: 3rem;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            transition: all 0.6s ease;
+        }
+
+        .article-img:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .article-content {
+            font-size: 1.2rem;
+            line-height: 2;
+            color: #444;
+            margin-bottom: 3rem;
+            text-align: justify;
+        }
+
+        .article-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--info);
+            text-align: center;
+        }
+
+        .article-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .article-content ul li {
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-left: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .article-content ul li:hover {
+            transform: translateX(8px);
+            color: var(--info);
+        }
+
+        .article-content ul li::before {
+            content: "\f0b1";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--info);
+            font-size: 1.3rem;
+        }
+
+        .article-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--gradient-info);
+            border-radius: 30px;
+            color: white;
+            margin: 3rem 0;
+            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.3);
+        }
+
+        .article-cta h3 {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .article-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .btn-cta {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(255, 193, 7, 0.4);
+            animation: pulse 2s infinite;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 193, 7, 0.6);
+            background: #ffca2c;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: var(--info);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 242, 254, 0.3);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            margin-top: 2rem;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 242, 254, 0.4);
+            background: #00e0e0;
+        }
+
+        /* Footer */
+        .footer-container {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 0 3rem;
+            margin-top: 5rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+            transition: transform 0.4s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: white;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-warning);
+            border-radius: 2px;
+        }
+
+        .footer-link {
+            color: #cccccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            padding-left: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: white;
+            transform: translateX(12px);
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 25px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-info h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-info p {
+            color: #cccccc;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        .footer-bottom a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 80px;
+            height: 80px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.6);
+            z-index: 1000;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.2);
+            box-shadow: 0 20px 50px rgba(37, 211, 102, 0.8);
+            background: #128c7e;
+        }
+
+        .btn-whatsapp i {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from { transform: translateY(-120px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.5rem; }
+            .article-title { font-size: 2.5rem; }
+            .article-img { height: 300px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .hero-btn { padding: 1rem 2rem; font-size: 1.2rem; }
+            .btn-whatsapp { width: 65px; height: 65px; font-size: 2rem; bottom: 20px; right: 20px; }
+            .article-title { font-size: 2.2rem; }
+            .article-img { height: 250px; }
+            .article-content { font-size: 1.1rem; }
+            .article-content h3 { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.3rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .article-title { font-size: 2rem; }
+            .article-img { height: 200px; }
+            .article-content { font-size: 1rem; }
+            .article-content h3 { font-size: 1.5rem; }
+            .article-cta h3 { font-size: 1.8rem; }
+            .article-cta p { font-size: 1.1rem; }
+            .btn-cta { padding: 1rem 2.5rem; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <!-- Header -->
+    <header class="header-container">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <div class="logo-container">
+                    <img src="../img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                    <h1 class="logo-text">NextLynx Tech</h1>
+                </div>
+
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="../index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="../servicos.html" class="nav-link">Serviços</a></li>
+                        <li class="nav-item"><a href="../portfolio.html" class="nav-link">Portfólio</a></li>
+                        <li class="nav-item"><a href="../blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="../contactos.html" class="nav-link">Contactos</a></li>
+                        <li class="nav-item"><a href="../termos.html" class="nav-link">Testemunhos</a></li>
+                        <li class="nav-item"><a href="../faq.html" class="nav-link">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container position-relative">
+            <h1 class="hero-title">Vantagens de um Sistema de Gestão Online</h1>
+            <p class="hero-subtitle">Para PMEs em Moçambique: eficiência, escalabilidade e integração com M-Pesa</p>
+            <a href="#artigo" class="btn hero-btn">
+                Conhecer os Benefícios
+            </a>
+            <i class="fas fa-cogs hero-icon"></i>
+        </div>
+    </section>
+
+    <!-- Article Section -->
+    <section class="article-section" id="artigo">
+        <div class="container">
+            <div class="article-container">
+                <h2 class="article-title">6 Vantagens de Ter um Sistema de Gestão Online</h2>
+                <p class="article-meta">
+                    <i class="fas fa-calendar-alt"></i> Atualizado em 08 de Novembro de 2025  
+                    <i class="fas fa-user"></i> Por NextLynx Tech  
+                    <i class="fas fa-clock"></i> 6 min de leitura
+                </p>
+
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" class="article-img" alt="Sistema de Gestão Online">
+
+                <div class="article-content">
+                    <p><strong>Gerir um negócio sem um sistema é como navegar sem bússola.</strong> Na NextLynx Tech, já entregamos <strong>mais de 80 sistemas personalizados</strong> para PMEs em Moçambique. Neste artigo, revelamos <strong>6 vantagens reais</strong> de um sistema de gestão online que <strong>reduz custos, aumenta vendas e escala seu negócio</strong>.</p>
+
+                    <h3>1. Controle Total em Tempo Real</h3>
+                    <p>Acesse estoque, vendas e finanças <strong>de qualquer lugar</strong>. Nosso dashboard mostra:</p>
+                    <ul>
+                        <li>Vendas do dia em tempo real</li>
+                        <li>Produtos com estoque baixo</li>
+                        <li>Relatórios de lucro por categoria</li>
+                    </ul>
+
+                    <h3>2. Integração com M-Pesa e Bancos</h3>
+                    <p>Receba pagamentos instantâneos. <strong>NextLynx Tech</strong> integra com:</p>
+                    <ul>
+                        <li>M-Pesa (automático)</li>
+                        <li>e-Mola</li>
+                        <li>Transferências bancárias</li>
+                    </ul>
+                    <p>Cliente paga → sistema atualiza → estoque diminui → fatura emitida.</p>
+
+                    <h3>3. Redução de Erros Humanos</h3>
+                    <p>Elimine planilhas manuais. <strong>Erro zero</strong> em:</p>
+                    <ul>
+                        <li>Cálculo de IVA</li>
+                        <li>Emissão de faturas</li>
+                        <li>Controle de prazos de validade</li>
+                    </ul>
+
+                    <h3>4. Escalabilidade Sem Dor de Cabeça</h3>
+                    <p>Cresça de 10 para 1000 clientes sem mudar de sistema. <strong>NextLynx Tech</strong> usa cloud escalável.</p>
+
+                    <h3>5. Acesso Multi-Usuário com Permissões</h3>
+                    <p>Defina níveis:</p>
+                    <ul>
+                        <li>Admin: tudo</li>
+                        <li>Vendedor: apenas vendas</li>
+                        <li>Armazém: apenas estoque</li>
+                    </ul>
+
+                    <h3>6. Relatórios Automáticos e Inteligentes</h3>
+                    <p>Receba por email:</p>
+                    <ul>
+                        <li>Relatório diário de vendas</li>
+                        <li>Previsão de estoque</li>
+                        <li>Clientes com dívidas</li>
+                    </ul>
+
+                    <div class="article-cta">
+                        <h3>Seu Negócio Merece um Sistema Profissional</h3>
+                        <p>NextLynx Tech entrega sistema completo em 15 dias: estoque, vendas, faturas, M-Pesa, relatórios. Suporte 24/7!</p>
+                        <a href="../pedir-orcamento.html" class="btn btn-cta">
+                            <i class="fas fa-rocket"></i> Solicitar Sistema Agora
+                        </a>
+                    </div>
+
+                    <p><strong>Conclusão:</strong> Um sistema de gestão online <strong>aumenta lucro em até 40%</strong> e <strong>reduz tempo de gestão em 70%</strong>. Deixe a NextLynx Tech automatizar seu negócio.</p>
+                </div>
+
+                <div class="text-center">
+                    <a href="../blog.html" class="btn-back">
+                        <i class="fas fa-arrow-left"></i> Voltar ao Blog
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <img src="../img/logo1.png" alt="NextLynx Tech" class="footer-logo">
+                    <p class="text-muted">Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/258868187201?text=Olá, quero slides animados para minha defesa de TCC!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Navegação</h5>
+                    <a href="../index.html" class="footer-link">Home</a>
+                    <a href="../servicos.html" class="footer-link">Serviços</a>
+                    <a href="../portfolio.html" class="footer-link">Portfólio</a>
+                    <a href="../blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Suporte</h5>
+                    <a href="../contactos.html" class="footer-link">Contactos</a>
+                    <a href="../testemunhos.html" class="footer-link">Testemunhos</a>
+                    <a href="../faq.html" class="footer-link">FAQ</a>
+                    <a href="../pedir-orcamento.html" class="footer-link">Orçamento</a>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-info">
+                        <h5>Localização</h5>
+                        <p>Cidade de Nampula</p>
+                        <p class="mt-3"><strong>Email:</strong> nextlynxtech@gmail.com</p>
+                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                 <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+                <p class="small mt-2">
+                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                    <a href="termos.html">Termos de Uso</a> •
+                    <a href="sobre.html">Sobre nós</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/258868187201?text=Olá, quero um sistema de gestão para minha empresa!" class="btn-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

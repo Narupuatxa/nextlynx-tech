@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NextLynx Tech - Política de Privacidade</title>
+    <meta name="description" content="Política de privacidade completa da NextLynx Tech: proteção de dados, uso seguro, direitos do cliente em Moçambique.">
+    <meta name="keywords" content="política de privacidade, NextLynx Tech, proteção de dados, RGPD, Moçambique">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --success: #38ef7d;
+            --warning: #f5576c;
+            --info: #00f2fe;
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            --header-bg: #8B0000; /* VERMELHO ESCURO */
+            --header-text: #ffffff; /* TEXTO BRANCO */
+        }
+        
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--gradient-bg);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        
+/* ====================== HEADER COMPACTO E PREENCHIDO ====================== */
+        .header-container {
+            background: var(--header-bg);
+            color: var(--header-text);
+            padding: 0.8rem 0; /* header bem compacto */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
+        }
+
+        .header-container .container-fluid {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: nowrap; /* tudo em uma linha */
+            gap: 1rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo-animate {
+            height: 44px; /* logo maior mas ainda compacto */
+            width: auto;
+            transition: all 0.4s ease;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+        }
+
+        .logo-animate:hover {
+            transform: scale(1.12) rotate(6deg);
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem; /* texto menor e mais compacto */
+            font-weight: 900;
+            margin: 0;
+            color: white;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+            letter-spacing: 14.5px; /* espaçamento reduzido */
+            white-space: nowrap;
+        }
+
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem; /* menu mais apertado */
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            flex-wrap: nowrap;
+        }
+
+        .nav-link {
+            color: white;
+            font-weight: 600;
+            font-size: 1rem; /* letras menores */
+            padding: 0.4rem 0.7rem !important;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #00f2fe;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #00f2fe;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 60%;
+        }
+
+        .btn-orcamento {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 0.65rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            white-space: nowrap;
+            box-shadow: 0 6px 18px rgba(255, 193, 7, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+         /* MENU DE TRÊS PONTINHOS VERTICAIS (⋮) NO CANTO DIREITO */
+        .menu-vertical {
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .menu-vertical:hover {
+            color: #00f2fe;
+            transform: rotate(90deg);
+        }
+
+        .dropdown-menu {
+            background: #8B0000;
+            border: 2px solid #00f2fe;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            min-width: 220px;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: #00f2fe;
+            color: #2c3e50;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-orcamento:hover {
+            transform: translateY(-4px);
+            background: #ffca2c;
+            box-shadow: 0 12px 30px rgba(255, 193, 7, 0.7);
+        }
+
+
+
+
+
+        /* RESPONSIVO — tudo em uma linha até telas muito pequenas */
+        @media (max-width: 1200px) {
+            .logo-animate { height: 80px; }
+            .logo-text { font-size: 1.7rem; }
+            nav ul { gap: 0.6rem; }
+        }
+
+        @media (max-width: 992px) {
+            .logo-animate { height: 75px; }
+            .logo-text { font-size: 1.5rem; }
+            .nav-link { font-size: 0.95rem; padding: 0.35rem 0.6rem !important; }
+        }
+
+        @media (max-width: 768px) {
+            .header-container .container-fluid { padding: 0 1rem; }
+            .logo-animate { height: 70px; }
+            .logo-text { font-size: 1.4rem; }
+            nav ul { gap: 0.4rem; }
+            .btn-orcamento { padding: 0.6rem 1.3rem; font-size: 0.95rem; }
+        }
+
+        @media (max-width: 576px) {
+            .header-container { padding: 0.5rem 0; }
+            .logo-animate { height: 60px; }
+            .logo-text { font-size: 1.2rem; letter-spacing: 0.5px; }
+            nav ul { gap: 0.3rem; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .nav-link { font-size: 0.85rem; padding: 0.3rem 0.5rem !important; }
+            .btn-orcamento { padding: 0.55rem 1.2rem; font-size: 0.9rem; }
+        }
+
+        @media (max-width: 400px) {
+            .logo-animate { height: 55px; }
+            .logo-text { font-size: 1.1rem; }
+            .nav-link { font-size: 0.8rem; }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 7rem 0 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.15);
+            transform: rotate(30deg);
+            animation: shine 18s infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% { transform: translateX(-100%) rotate(30deg); }
+            50% { transform: translateX(100%) rotate(30deg); }
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            margin-bottom: 1.5rem;
+            animation: slideInDown 1.2s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            opacity: 0.95;
+            max-width: 900px;
+            margin: 0 auto 2.5rem;
+            animation: fadeInUp 1.4s ease-out;
+            font-weight: 300;
+        }
+
+        .hero-btn {
+            background: white;
+            color: var(--primary);
+            font-weight: 700;
+            padding: 1.3rem 3rem;
+            border-radius: 50px;
+            font-size: 1.4rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            animation: bounce 2s infinite;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+            background: #f8f9fa;
+        }
+
+        .hero-icon {
+            font-size: 12rem;
+            opacity: 0.15;
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            animation: float 15s ease-in-out infinite;
+        }
+
+        /* Privacy Section */
+        .privacy-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .privacy-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .privacy-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 120px;
+            height: 6px;
+            background: var(--gradient-warning);
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 5px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .privacy-subtitle {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin: 3rem 0 1.5rem;
+            padding-left: 1rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .privacy-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .privacy-list {
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .privacy-list li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .privacy-list li::before {
+            content: '🔒';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .privacy-highlight {
+            background: rgba(106, 17, 203, 0.08);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--primary);
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--dark);
+        }
+
+        .privacy-contact {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .privacy-contact h5 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-contact p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .btn-privacy {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .btn-privacy:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.4);
+            background: var(--primary-light);
+        }
+
+        /* Footer */
+        .footer-container {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 0 3rem;
+            margin-top: 5rem;
+        }
+
+        .footer-logo {
+            height: 70px;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+            transition: transform 0.4s ease;
+        }
+
+        .footer-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .footer-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: white;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-warning);
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+
+        .footer-link {
+            color: #cccccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .footer-link:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+        }
+
+        .footer-info {
+            background: rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            border-radius: 25px;
+            margin-top: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .footer-info h5 {
+            color: white;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-info p {
+            color: #cccccc;
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        .footer-bottom a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.7);
+            background: #128c7e;
+        }
+
+        .btn-whatsapp i {
+            animation: bounce 2s infinite;
+        }
+
+        .btn-whatsapp::before {
+            content: 'Chat';
+            position: absolute;
+            top: 50%;
+            left: -80px;
+            transform: translateY(-50%);
+            background: #25d366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover::before {
+            opacity: 1;
+            visibility: visible;
+            left: -90px;
+        }
+        .btn-orcamento {
+            background: #ffc107;
+            color: #2c3e50;
+            font-weight: 700;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            white-space: nowrap;
+            box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+         /* MENU DE TRÊS PONTINHOS VERTICAIS (⋮) NO CANTO DIREITO */
+        .menu-vertical {
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+
+        .menu-vertical:hover {
+            color: #00f2fe;
+            transform: rotate(90deg);
+        }
+
+        .dropdown-menu {
+            background: #8B0000;
+            border: 2px solid #00f2fe;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            min-width: 220px;
+        }
+
+        .dropdown-item {
+            color: white;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: #00f2fe;
+            color: #2c3e50;
+            padding-left: 2rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+
+        .btn-whatsapp::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid #25d366;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .btn-whatsapp:hover::after {
+            opacity: 1;
+            visibility: visible;
+            left: -20px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes slideInDown {
+            from { transform: translateY(-120px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.5rem; }
+            .privacy-title { font-size: 2.8rem; }
+            .privacy-subtitle { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .hero-btn { padding: 1rem 2rem; font-size: 1.2rem; }
+            .privacy-title { font-size: 2.3rem; }
+            .privacy-subtitle { font-size: 1.3rem; }
+            .privacy-text, .privacy-list li { font-size: 1rem; }
+            .btn-whatsapp { width: 60px; height: 60px; font-size: 1.8rem; bottom: 20px; right: 20px; }
+            .btn-whatsapp::before { display: none; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.3rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .privacy-title { font-size: 2rem; }
+            .privacy-subtitle { font-size: 1.2rem; }
+            .privacy-text, .privacy-list li { font-size: 0.95rem; }
+            .btn-privacy { padding: 0.8rem 1.8rem; font-size: 1rem; }
+            .btn-whatsapp { width: 55px; height: 55px; font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+   <header class="header-container">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between flex-wrap">
+                <div class="logo-container">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                    <h1 class="logo-text">NextLynx Tech</h1>
+                </div>
+
+                <nav>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                        <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                        <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                        <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                    </ul>
+                </nav>
+
+                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
+
+                <!-- 3 pontinhos verticais -->
+                    <div class="dropdown">
+                        <span class="menu-vertical" data-bs-toggle="dropdown" aria-expanded="false">⋮</span>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
+                            <li><a class="dropdown-item" href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
+                            <li><a class="dropdown-item" href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home"></i> Voltar ao Menu</a></li>
+                        </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container position-relative">
+            <h1 class="hero-title">Política de Privacidade</h1>
+            <p class="hero-subtitle">A tua confiança é a nossa prioridade. Protegemos os teus dados com segurança e transparência.</p>
+            <a href="#privacy" class="btn hero-btn">
+                Ler Política
+            </a>
+            <i class="fas fa-shield-alt hero-icon"></i>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="privacy-section" id="privacy">
+        <div class="container">
+            <h2 class="privacy-title">Política de Privacidade - NextLynx Tech</h2>
+            <p class="privacy-text">Na <strong>NextLynx Tech</strong>, a privacidade dos nossos clientes é inegociável. Operamos em Moçambique com total conformidade às melhores práticas internacionais de proteção de dados, incluindo princípios do RGPD. Esta política explica como coletamos, usamos, armazenamos e protegemos as tuas informações.</p>
+
+            <h3 class="privacy-subtitle">1. Dados Coletados</h3>
+            <ul class="privacy-list">
+                <li><strong>Nome completo</strong> e <strong>e-mail</strong> (para contato e faturação)</li>
+                <li><strong>Número de telefone</strong> (opcional, apenas para comunicação via WhatsApp)</li>
+                <li><strong>Mensagens enviadas</strong> via formulário ou WhatsApp</li>
+                <li><strong>Ficheiros enviados</strong> (ex: briefings, imagens, documentos)</li>
+            </ul>
+            <p class="privacy-text"><strong>Não coletamos dados sensíveis</strong> como CPF, BI, dados bancários ou informações de saúde.</p>
+
+            <h3 class="privacy-subtitle">2. Finalidade do Uso</h3>
+            <p class="privacy-text">Os dados são usados exclusivamente para:</p>
+            <ul class="privacy-list">
+                <li>Prestar o serviço contratado (design, TCC, website)</li>
+                <li>Enviar orçamentos, atualizações e entregas</li>
+                <li>Manter histórico de projetos (para suporte futuro)</li>
+                <li>Enviar newsletter (apenas com consentimento explícito)</li>
+            </ul>
+
+            <h3 class="privacy-subtitle">3. Armazenamento Seguro</h3>
+            <div class="privacy-highlight">
+                <strong>Todos os dados são armazenados no Supabase</strong> com criptografia em repouso e em trânsito. Acesso restrito apenas à equipe autorizada. Backups automáticos e protegidos.
+            </div>
+
+            <h3 class="privacy-subtitle">4. Retenção de Dados</h3>
+            <ul class="privacy-list">
+                <li>Mensagens e ficheiros: <strong>apagados após 12 meses</strong> do fim do projeto</li>
+                <li>Dados de contato: mantidos enquanto houver interesse comercial</li>
+                <li>Você pode solicitar exclusão a qualquer momento</li>
+            </ul>
+
+            <h3 class="privacy-subtitle">5. Compartilhamento</h3>
+            <p class="privacy-text"><strong>Nunca vendemos ou compartilhamos dados com terceiros</strong>. Exceções apenas por ordem judicial ou com consentimento expresso.</p>
+
+            <h3 class="privacy-subtitle">6. Cookies e Analytics</h3>
+            <p class="privacy-text">Usamos cookies apenas para melhorar a experiência no site (ex: lembrar preferências). Não usamos Google Analytics nem rastreadores de terceiros.</p>
+
+            <h3 class="privacy-subtitle">7. Direitos do Titular</h3>
+            <ul class="privacy-list">
+                <li>Acessar todos os seus dados</li>
+                <li>Solicitar correção ou exclusão</li>
+                <li>Revogar consentimento (newsletter)</li>
+                <li>Baixar seus dados em formato legível</li>
+            </ul>
+
+            <h3 class="privacy-subtitle">8. Segurança</h3>
+            <p class="privacy-text">Adotamos medidas técnicas e administrativas para prevenir acesso não autorizado, perda ou vazamento de dados. Em caso de incidente, notificaremos em até 72 horas.</p>
+
+            <div class="privacy-contact">
+                <h5>Exercer Seus Direitos ou Tirar Dúvidas?</h5>
+                <p>Entre em contato diretamente. Respondemos em até 48 horas úteis.</p>
+                <a href="https://wa.me/258868187201" class="btn-privacy">
+                    <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+                </a>
+                <p class="mt-3"><strong>E-mail:</strong> nextlynxtech@gmail.com</p>
+            </div>
+
+            <p class="privacy-text text-center"><small>Última atualização: 16 de Novembro de 2025</small></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 text-center text-lg-start">
+                    <img src="img/logo1.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
+                    <p class="text-muted">Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 text-center">
+                    <h5 class="footer-title">Navegação</h5>
+                    <a href="index.html" class="footer-link">Home</a>
+                    <a href="servicos.html" class="footer-link">Serviços</a>
+                    <a href="portfolio.html" class="footer-link">Portfólio</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 text-center">
+                    <h5 class="footer-title">Suporte</h5>
+                    <a href="contactos.html" class="footer-link">Contactos</a>
+                    <a href="testemunhos.html" class="footer-link">Testemunhos</a>
+                    <a href="faq.html" class="footer-link">FAQ</a>
+                    <a href="pedir-orcamento.html" class="footer-link">Orçamento</a>
+                </div>
+                <div class="col-lg-4 mb-4 text-center text-lg-start">
+                    <div class="footer-info mx-auto mx-lg-0" style="max-width: 300px;">
+                        <h5>Localização</h5>
+                        <p>Cidade de Nampula</p>
+                        <p class="mt-3"><strong>Email:</strong> nextlynxtech@gmail.com</p>
+                        <p><strong>WhatsApp:</strong> +258 868 187 201</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
+                <p class="small mt-2">
+                    <a href="politica-privacidade.html">Política de Privacidade</a> • 
+                   <a href="termos.html">Termos de Uso</a> •
+                    <a href="sobre.html">Sobre nós</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+    <P> <strong>Abdul Narupuaxta</strong> • Consultor Académico e Soluções Digitais em Design & Tecnologia</P>
+</div>
+    </footer>
+
+    <!-- Chat WhatsApp Flutuante -->
+    <a href="https://wa.me/258868187201?text=Olá,%20tenho%20dúvidas%20sobre%20a%20Política%20de%20Privacidade!" class="btn-whatsapp" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
