@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6a11cb;
+              --primary: #6a11cb;
             --primary-light: #a55eea;
             --secondary: #f093fb;
             --success: #38ef7d;
@@ -20,10 +20,18 @@
             --dark: #2c3e50;
             --light: #f8f9fa;
             --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-success: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
             --gradient-warning: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-info: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
             --gradient-bg: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            --header-bg: #8B0000;
-            --header-text: #ffffff;
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-design-bg: #ff6b6b;
+            --card-academico-bg: #4ecdc4;
+            --card-tech-bg: #1a535c;
+            --text-light: #ffffff;
+            --text-dark: #2c3e50;
+            --header-bg: #8B0000; /* VERMELHO ESCURO */
+            --header-text: #ffffff; /* TEXTO BRANCO */
             --footer-bg: #1a1a1a;
             --footer-text: #ffffff;
             --footer-title: #ffffff;
@@ -196,29 +204,40 @@
 
 
         /* RESPONSIVO HEADER */
+        /* RESPONSIVO — tudo em uma linha até o limite */
+        @media (max-width: 1400px) {
+            .logo-animate { height: 100px; }
+            .logo-text { font-size: 1.9rem; }
+        }
         @media (max-width: 1200px) {
-            .logo-animate { height: 80px; }
-            .logo-text { font-size: 1.7rem; }
-            nav ul { gap: 0.6rem; }
+            .logo-animate { height: 90px; }
+            .logo-text { font-size: 1.75rem; }
+            nav ul { gap: 0.8rem; }
         }
         @media (max-width: 992px) {
-            .logo-animate { height: 75px; }
-            .logo-text { font-size: 1.5rem; }
-            .nav-link { font-size: 0.95rem; }
+            .logo-animate { height: 80px; }
+            .logo-text { font-size: 1.6rem; }
+            .nav-link { font-size: 0.98rem; padding: 0.35rem 0.6rem !important; }
         }
         @media (max-width: 768px) {
+            .header-container .container-fluid { padding: 0 1rem; }
             .logo-animate { height: 70px; }
-            .logo-text { font-size: 1.4rem; }
-            nav ul { gap: 0.4rem; }
+            .logo-text { font-size: 1.45rem; }
+            nav ul { gap: 0.5rem; }
+            .btn-orcamento { padding: 0.6rem 1.4rem; font-size: 0.98rem; }
         }
         @media (max-width: 576px) {
-            .logo-animate { height: 60px; }
-            .logo-text { font-size: 1.2rem; }
-            nav ul { gap: 0.3rem; flex-wrap: nowrap; overflow-x: auto; }
+            .header-container { padding: 0.6rem 0; }
+            .logo-animate { height: 62px; }
+            .logo-text { font-size: 1.25rem; letter-spacing: 0.6px; }
+            nav ul { gap: 0.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px; }
+            .nav-link { font-size: 0.88rem; padding: 0.3rem 0.5rem !important; }
+            .btn-orcamento { padding: 0.55rem 1.2rem; font-size: 0.92rem; }
         }
         @media (max-width: 400px) {
-            .logo-animate { height: 55px; }
-            .logo-text { font-size: 1.1rem; }
+            .logo-animate { height: 58px; }
+            .logo-text { font-size: 1.15rem; }
+            .nav-link { font-size: 0.82rem; }
         }
 
         /* ====================== HERO COM ANIMAÇÃO E COR AZUL ====================== */
@@ -575,47 +594,144 @@
             0%, 100% { transform: translateX(-100%) rotate(30deg); }
             50% { transform: translateX(100%) rotate(30deg); }
         }
+
+         /* RESPONSIVO TOTAL */
+        @media (max-width: 992px) {
+            .hero-title { font-size: 3.8rem; }
+            .hero-subtitle { font-size: 1.5rem; }
+            .section-title, .publicidade-title { font-size: 2.8rem; }
+            .service-img, .pub-img { height: 220px; }
+            .solicitar-form { padding: 1.2rem; }
+            .form-control-sm, .form-select-sm { padding: 0.7rem 0.9rem; font-size: 0.9rem; }
+            .btn-solicitar { padding: 0.8rem 1.2rem; font-size: 1rem; }
+            .logo-animate { height: 75px; }
+            .logo-text { font-size: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .hero-btn { padding: 1rem 2rem; font-size: 1.2rem; }
+            .service-card, .pub-img { margin-bottom: 3rem; }
+            .btn-whatsapp { width: 65px; height: 65px; font-size: 2rem; bottom: 20px; right: 20px; }
+            .service-img, .pub-img { height: 200px; }
+            .solicitar-form { padding: 1rem; }
+            .form-control-sm, .form-select-sm { padding: 0.65rem 0.85rem; font-size: 0.85rem; }
+            .btn-solicitar { padding: 0.75rem 1rem; font-size: 0.95rem; }
+            .service-list li { font-size: 1rem; padding-left: 2rem; }
+            .service-list li::before { font-size: 1.1rem; }
+            .logo-animate { height: 65px; }
+            .logo-text { font-size: 1.8rem; }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title { font-size: 2.3rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .section-title, .publicidade-title { font-size: 2.2rem; }
+            .nav-link { font-size: 0.9rem; padding: 0.5rem !important; }
+            .service-img, .pub-img { height: 180px; }
+            .solicitar-form { padding: 0.9rem; }
+            .form-control-sm, .form-select-sm { padding: 0.6rem 0.8rem; font-size: 0.8rem; }
+            .btn-solicitar { padding: 0.7rem 0.9rem; font-size: 0.9rem; }
+            .service-list li { font-size: 0.95rem; padding-left: 1.8rem; }
+            .service-list li::before { font-size: 1rem; }
+            .pub-caption { font-size: 1.1rem; }
+            .footer-info { padding: 1.5rem; }
+            .footer-info p { font-size: 0.9rem; }
+            .logo-animate { height: 55px; }
+            .logo-text { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 400px) {
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .section-title, .publicidade-title { font-size: 2rem; }
+            .service-img, .pub-img { height: 160px; }
+            .solicitar-form { padding: 0.8rem; }
+            .form-control-sm, .form-select-sm { padding: 0.55rem 0.75rem; font-size: 0.75rem; }
+            .btn-solicitar { padding: 0.65rem 0.85rem; font-size: 0.85rem; }
+            .service-list li { font-size: 0.9rem; padding-left: 1.6rem; }
+            .service-list li::before { font-size: 0.9rem; }
+            .pub-caption { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
 
     <!-- HEADER IGUAL AO TERMOS.HTML -->
-    <header class="header-container">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                <div class="logo-container">
-                    <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
-                    <h1 class="logo-text">NextLynx Tech</h1>
-                </div>
+    <!-- HEADER PERFEITO — MOBILE: 3 barras + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
+<header class="header-container">
+    <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between">
 
-                <nav>
-                    <ul class="nav">
-                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
-                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
-                        <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
-                        <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <!-- Logo + Nome (sempre visível) -->
+            <div class="logo-container">
+                <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                <h1 class="logo-text">NextLynx Tech</h1>
+            </div>
+
+            <!-- MENU HORIZONTAL — SÓ DESKTOP -->
+            <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
+                <ul class="nav gap-4">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                    <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- DIREITA: Botão Orçamento (desktop) + 3 barras (mobile) + 3 pontinhos (todas as telas) -->
+            <div class="d-flex align-items-center gap-3">
+
+                <!-- Botão Orçamento — só desktop -->
+                <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">Pedir Orçamento</a>
+
+                <!-- 3 BARRAS HAMBURGER — SÓ MOBILE -->
+                <button class="btn p-0 text-white fs-2 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenu">
+                    ☰
+                </button>
+
+                <!-- 3 PONTINHOS VERTICAIS — TODAS AS TELAS -->
+                <div class="dropdown">
+                    <button class="btn p-0 text-white fs-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ⋮
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="background:#8B0000; min-width:260px;">
+                        <li><a class="dropdown-item text-white py-3" href="sobre.html"><i class="fas fa-users me-3"></i>Sobre Nós</a></li>
+                        <li><a class="dropdown-item text-white py-3" href="termos.html"><i class="fas fa-file-contract me-3"></i>Termos de Uso</a></li>
+                        <li><a class="dropdown-item text-white py-3" href="politica-privacidade.html"><i class="fas fa-shield-alt me-3"></i>Política de Privacidade</a></li>
+                        <li><hr class="dropdown-divider border-secondary"></li>
+                        <li><a class="dropdown-item text-white py-3" href="index.html"><i class="fas fa-home me-3"></i>Voltar ao Menu</a></li>
                     </ul>
-                </nav>
-
-                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
-
-                   <!-- 3 pontinhos verticais -->
-                    <div class="dropdown">
-                        <span class="menu-vertical" data-bs-toggle="dropdown" aria-expanded="false">⋮</span>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
-                            <li><a class="dropdown-item" href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
-                            <li><a class="dropdown-item" href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home"></i> Voltar ao Menu</a></li>
-                        </ul>
-                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+
+    <!-- MENU OFFCANVAS — SÓ MOBILE (abre com as 3 barras) -->
+    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mainMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column text-center">
+                <li class="nav-item my-3"><a href="index.html" class="nav-link text-white fs-3">Home</a></li>
+                <li class="nav-item my-3"><a href="servicos.html" class="nav-link text-white fs-3">Serviços</a></li>
+                <li class="nav-item my-3"><a href="portfolio.html" class="nav-link text-white fs-3">Portfólio</a></li>
+                <li class="nav-item my-3"><a href="blog.html" class="nav-link text-white fs-3">Blog</a></li>
+                <li class="nav-item my-3"><a href="contactos.html" class="nav-link text-white fs-3">Contactos</a></li>
+                <li class="nav-item my-3"><a href="testemunhos.html" class="nav-link text-white fs-3">Testemunhos</a></li>
+                <li class="nav-item my-3"><a href="faq.html" class="nav-link text-white fs-3">FAQ</a></li>
+                <li class="mt-5"><a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">Pedir Orçamento</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
 
     <!-- Hero com animação e cor azul -->
     <section class="sobre-hero">

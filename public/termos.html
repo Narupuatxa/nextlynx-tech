@@ -686,42 +686,80 @@
 </head>
 <body>
     <!-- Header -->
-     <header class="header-container">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between flex-wrap">
-                <div class="logo-container">
-                    <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
-                    <h1 class="logo-text">NextLynx Tech</h1>
-                </div>
+     <!-- HEADER PERFEITO — MOBILE: 3 barras + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
+<header class="header-container">
+    <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between">
 
-                <nav>
-                    <ul class="nav">
-                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                        <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
-                        <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                        <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
-                        <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
-                        <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+            <!-- Logo + Nome (sempre visível) -->
+            <div class="logo-container">
+                <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
+                <h1 class="logo-text">NextLynx Tech</h1>
+            </div>
+
+            <!-- MENU HORIZONTAL — SÓ DESKTOP -->
+            <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
+                <ul class="nav gap-4">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                    <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                </ul>
+            </nav>
+
+            <!-- DIREITA: Botão Orçamento (desktop) + 3 barras (mobile) + 3 pontinhos (todas as telas) -->
+            <div class="d-flex align-items-center gap-3">
+
+                <!-- Botão Orçamento — só desktop -->
+                <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">Pedir Orçamento</a>
+
+                <!-- 3 BARRAS HAMBURGER — SÓ MOBILE -->
+                <button class="btn p-0 text-white fs-2 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenu">
+                    ☰
+                </button>
+
+                <!-- 3 PONTINHOS VERTICAIS — TODAS AS TELAS -->
+                <div class="dropdown">
+                    <button class="btn p-0 text-white fs-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        ⋮
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="background:#8B0000; min-width:260px;">
+                        <li><a class="dropdown-item text-white py-3" href="sobre.html"><i class="fas fa-users me-3"></i>Sobre Nós</a></li>
+                        <li><a class="dropdown-item text-white py-3" href="termos.html"><i class="fas fa-file-contract me-3"></i>Termos de Uso</a></li>
+                        <li><a class="dropdown-item text-white py-3" href="politica-privacidade.html"><i class="fas fa-shield-alt me-3"></i>Política de Privacidade</a></li>
+                        <li><hr class="dropdown-divider border-secondary"></li>
+                        <li><a class="dropdown-item text-white py-3" href="index.html"><i class="fas fa-home me-3"></i>Voltar ao Menu</a></li>
                     </ul>
-                </nav>
-
-                <a href="pedir-orcamento.html" class="btn btn-orcamento">Pedir Orçamento</a>
-
-                 <!-- 3 pontinhos verticais -->
-                    <div class="dropdown">
-                        <span class="menu-vertical" data-bs-toggle="dropdown" aria-expanded="false">⋮</span>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="sobre.html"><i class="fas fa-users"></i> Sobre Nós</a></li>
-                            <li><a class="dropdown-item" href="termos.html"><i class="fas fa-file-contract"></i> Termos de Uso</a></li>
-                            <li><a class="dropdown-item" href="politica-privacidade.html"><i class="fas fa-shield-alt"></i> Política de Privacidade</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="index.html"><i class="fas fa-home"></i> Voltar ao Menu</a></li>
-                        </ul>
-                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </div>
+
+    <!-- MENU OFFCANVAS — SÓ MOBILE (abre com as 3 barras) -->
+    <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mainMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column text-center">
+                <li class="nav-item my-3"><a href="index.html" class="nav-link text-white fs-3">Home</a></li>
+                <li class="nav-item my-3"><a href="servicos.html" class="nav-link text-white fs-3">Serviços</a></li>
+                <li class="nav-item my-3"><a href="portfolio.html" class="nav-link text-white fs-3">Portfólio</a></li>
+                <li class="nav-item my-3"><a href="blog.html" class="nav-link text-white fs-3">Blog</a></li>
+                <li class="nav-item my-3"><a href="contactos.html" class="nav-link text-white fs-3">Contactos</a></li>
+                <li class="nav-item my-3"><a href="testemunhos.html" class="nav-link text-white fs-3">Testemunhos</a></li>
+                <li class="nav-item my-3"><a href="faq.html" class="nav-link text-white fs-3">FAQ</a></li>
+                <li class="mt-5"><a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">Pedir Orçamento</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container position-relative">
@@ -798,7 +836,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-4 text-center text-lg-start">
                     <img src="img/logo1.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
-                    <p class="text-muted">Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
+                    <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
                     <div class="footer-social">
                         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
