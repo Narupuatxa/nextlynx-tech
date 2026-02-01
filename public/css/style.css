@@ -40,3 +40,99 @@ header img.logo-animate { height: 40px; animation: pulse 2s infinite; } /* Anima
 
 /* Responsivo: Para Mobile */
 @media (max-width: 768px) { .nav { flex-direction: column; } .btn-whatsapp { width: 50px; height: 50px; } }
+
+
+/* ====================== HEADER COMPACTO E RESPONSIVO ====================== */
+.header-container {
+    background: var(--header-bg); /* #8B0000 */
+    color: var(--header-text);
+    padding: 0.5rem 0;            /* bem fino verticalmente */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.header-container .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-animate {
+    height: 55px;                 /* menor que antes */
+    transition: transform 0.3s ease;
+}
+
+.logo-animate:hover {
+    transform: scale(1.08);
+}
+
+.logo-text {
+    font-size: 1.4rem;            /* menor */
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Menu horizontal (desktop) */
+nav ul {
+    gap: 1.2rem !important;       /* Bootstrap gap-4 é grande demais → override */
+}
+
+.nav-link {
+    font-size: 0.98rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem !important;
+    transition: color 0.25s;
+}
+
+.nav-link:hover {
+    color: #00f2fe;
+}
+
+/* Botão Orçamento */
+.btn-orcamento {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.95rem;
+}
+
+/* Hamburger oficial Bootstrap (mobile) */
+.navbar-toggler {
+    border: none;
+    padding: 0.4rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    /* Torna branco no fundo vermelho escuro */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2.5' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    width: 1.7em;
+    height: 1.7em;
+}
+
+/* 3 pontinhos (ellipsis vertical) */
+.dropdown button {
+    font-size: 1.8rem;            /* ⋮ maior e clicável */
+    line-height: 1;
+}
+
+/* Offcanvas ajustes */
+.offcanvas {
+    width: 80% !important;        /* mais largo em mobile para melhor legibilidade */
+    max-width: 320px;
+}
+
+.offcanvas-body .nav-link {
+    font-size: 1.3rem;
+    padding: 1rem 0;
+}
