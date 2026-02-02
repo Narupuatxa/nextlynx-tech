@@ -1197,7 +1197,7 @@ nav ul {
             // Carrega serviços do Supabase
             async function loadServicos() {
                 try {
-                    const res = await fetch('/api/servicos');
+                    const res = await fetch('/servicos');
                     if (!res.ok) throw new Error('Erro no servidor');
                     const servicos = await res.json();
                     document.querySelectorAll('.solicitar-form').forEach(form => {
