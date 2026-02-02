@@ -11,16 +11,16 @@ const app = express();
 // =============================================
 // MIDDLEWARE
 // =============================================
-app.use(cors({ origin: '*' }));  // ← permite Vercel, localhost, etc.
+app.use(cors({ origin: '*' }));  // ← permite todos os domínios (Vercel + localhost)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // =============================================
-// SUPABASE - usa env vars (obrigatório no deploy)
+// SUPABASE - usa variáveis de ambiente
 // =============================================
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
+const supabaseUrl = process.env.SUPABASE_URL || 'https://qgbblhwojxuknlhkeusy.supabase.co';
+const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0';
 
 if (!supabaseUrl || !supabaseKey) {
   console.error('SUPABASE_URL ou SUPABASE_ANON_KEY não definidas!');
@@ -35,7 +35,7 @@ fs.mkdirSync(path.join(__dirname, 'tmp'), { recursive: true });
 const upload = multer({ dest: path.join(__dirname, 'tmp/') });
 
 // =============================================
-// TODAS AS TUAS ROTAS (copiei iguais)
+// ROTAS (mantidas iguais, mas com path correto)
 // =============================================
 
 // 1. LISTAR SERVIÇOS
@@ -73,7 +73,7 @@ app.post('/submit', async (req, res) => {
   res.json({ success: true, message: 'Solicitação enviada com sucesso!' });
 });
 
-// ... (mantém TODAS as outras rotas exatamente como estão: newsletter, pedidos admin, PUT/DELETE, portfolio, blog_posts, testemunhos, faq, promocoes, sobre, admin-login, etc.)
+// ... (mantém todas as outras rotas iguais: /subscribe, /api/pedidos, PUT/DELETE pedidos, /api/portfolio, etc.)
 
 // Página Admin
 app.get('/admin', (req, res) => {
@@ -81,6 +81,14 @@ app.get('/admin', (req, res) => {
 });
 
 // =============================================
-// EXPORTA PARA VERCEL (serverless) - NÃO USA app.listen()
+// EXPORTA PARA VERCEL (serverless)
 // =============================================
 module.exports = app;
+
+// Para rodar localmente
+if (require.main === module) {
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`NextLynx Tech rodando em http://localhost:${port}`);
+  });
+}
