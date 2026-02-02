@@ -39,7 +39,7 @@ const upload = multer({ dest: path.join(__dirname, 'tmp/') });
 // =============================================
 
 // 1. LISTAR SERVIÇOS
-app.get('/servicos', async (req, res) => {
+app.get('/api/servicos', async (req, res) => {
   const { data: servicos, error } = await supabase
     .from('servicos')
     .select('*')

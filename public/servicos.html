@@ -1197,7 +1197,7 @@ nav ul {
             // Carrega serviços do Supabase
             async function loadServicos() {
                 try {
-                    const res = await fetch('/servicos');
+                    const res = await fetch('/api/servicos');
                     if (!res.ok) throw new Error('Erro no servidor');
                     const servicos = await res.json();
                     document.querySelectorAll('.solicitar-form').forEach(form => {
@@ -1258,43 +1258,6 @@ nav ul {
             }
         });
     </script>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const supabase = Supabase.createClient(
-    'https://qgbblhwojxuknlhkeusy.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
-  );
-
-  async function loadServicos() {
-    try {
-      const { data, error } = await supabase
-        .from('servicos')
-        .select('*')
-        .order('categoria', { ascending: true })
-        .order('titulo', { ascending: true });
-
-      if (error) throw error;
-
-      document.querySelectorAll('.solicitar-form').forEach(form => {
-        const categoria = form.dataset.categoria;
-        const select = form.querySelector('select[name="servico_id"]');
-        select.innerHTML = '<option value="">Selecione o serviço</option>';
-        const filtered = data.filter(s => s.categoria === categoria);
-        filtered.forEach(s => {
-          const opt = document.createElement('option');
-          opt.value = s.id;
-          opt.textContent = s.titulo;
-          select.appendChild(opt);
-        });
-      });
-    } catch (err) {
-      console.error('Erro ao carregar serviços:', err);
-    }
-  }
-
-  loadServicos();
-</script>
 
 </body>
 </html>
