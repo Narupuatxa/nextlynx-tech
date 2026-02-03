@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const url = window.location.href;
             const text = document.title;
             if (btn.dataset.platform === 'whatsapp') {
-                window.open(`https://wa.me/258841234567?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
+                window.open(`https://wa.me/258868187201?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
             } else if (btn.dataset.platform === 'facebook') {
                 window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
             }
