@@ -11,10 +11,15 @@ const port = 3000;
 // =============================================
 // MIDDLEWARE
 // =============================================
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: '*' }));  // ← Alterado para permitir todos (Render + localhost)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+// Serve index.html na raiz (importante para Render)
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 // =============================================
 // SUPABASE
