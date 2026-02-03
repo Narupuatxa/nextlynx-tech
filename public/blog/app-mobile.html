@@ -46,158 +46,147 @@
         }
 
         /* Header */
-        /* ====================== HEADER COMPACTO E PREENCHIDO ====================== */
-        .header-container {
-            background: var(--header-bg);
-            color: var(--header-text);
-            padding: 0.8rem 0; /* header bem compacto */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 8px 25px rgba(139, 0, 0, 0.5);
-        }
+      .header-container {
+    background: var(--header-bg);
+    color: var(--header-text);
+    padding: 0.6rem 0;           /* ainda mais fino */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 18px rgba(139, 0, 0, 0.45);
+}
 
-        .header-container .container-fluid {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: nowrap; /* tudo em uma linha */
-            gap: 1rem;
-        }
+.header-container .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-shrink: 0;
-        }
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
 
-        .logo-animate {
-            height: 45px; /* logo maior mas ainda compacto */
-            width: auto;
-            transition: all 0.4s ease;
-            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
-        }
+.logo-animate {
+    height: 70px;                /* desktop já começa menor */
+    width: auto;
+    transition: all 0.35s ease;
+}
 
-        .logo-animate:hover {
-            transform: scale(1.12) rotate(6deg);
-        }
+.logo-animate:hover {
+    transform: scale(1.08) rotate(4deg);
+}
 
-        .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem; /* texto menor e mais compacto */
-            font-weight: 900;
-            margin: 0;
-            color: white;
-            text-shadow: 0 3px 10px rgba(0,0,0,0.5);
-            letter-spacing: 16.5px; /* espaçamento reduzido */
-            white-space: nowrap;
-        }
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.6rem;           /* bem menor que  antes */
+    font-weight: 900;
+    margin: 0;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    letter-spacing: 1.8px;       /* espaçamento bem mais apertado */
+    white-space: nowrap;
+}
 
-        nav {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
+/* Menu horizontal */
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
 
-        nav ul {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem; /* menu mais apertado */
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            flex-wrap: nowrap;
-        }
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;                 /* itens mais colados */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
 
-        .nav-link {
-            color: white;
-            font-weight: 600;
-            font-size: 1rem; /* letras menores */
-            padding: 0.4rem 0.7rem !important;
-            white-space: nowrap;
-            transition: all 0.3s ease;
-        }
+.nav-link {
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;          /* letras menores desde o desktop */
+    padding: 0.35rem 0.65rem !important;
+    white-space: nowrap;
+    transition: all 0.25s ease;
+}
 
-        .nav-link:hover {
-            color: #00f2fe;
-        }
+.nav-link:hover {
+    color: #00f2fe;
+}
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #00f2fe;
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+/* Botão orçamento */
+.btn-orcamento {
+    background: #ffc107;
+    color: #2c3e50;
+    font-weight: 700;
+    padding: 0.55rem 1.3rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px rgba(255, 193, 7, 0.45);
+}
 
-        .nav-link:hover::after {
-            width: 60%;
-        }
+/* Ícone 3 pontinhos */
+.menu-vertical {
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    padding: 0.4rem;
+}
 
-        .btn-orcamento {
-            background: #ffc107;
-            color: #2c3e50;
-            font-weight: 700;
-            padding: 0.65rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            white-space: nowrap;
-            box-shadow: 0 6px 18px rgba(255, 193, 7, 0.5);
-            animation: pulse 2s infinite;
-        }
+/* ------------------ MEDIA QUERIES – AGRESSIVAS ------------------ */
 
-         /* MENU DE TRÊS PONTINHOS VERTICAIS (⋮) NO CANTO DIREITO */
-        .menu-vertical {
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 0.5rem;
-        }
+@media (max-width: 1200px) {
+    .logo-animate { height: 64px; }
+    .logo-text     { font-size: 1.45rem; letter-spacing: 1.4px; }
+    .nav-link      { font-size: 0.92rem; padding: 0.3rem 0.6rem !important; }
+}
 
-        .menu-vertical:hover {
-            color: #00f2fe;
-            transform: rotate(90deg);
-        }
+@media (max-width: 992px) {
+    .logo-animate { height: 58px; }
+    .logo-text     { font-size: 1.35rem; letter-spacing: 1.2px; }
+    .btn-orcamento { padding: 0.5rem 1.1rem; font-size: 0.9rem; }
+}
 
-        .dropdown-menu {
-            background: #8B0000;
-            border: 2px solid #00f2fe;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-            min-width: 220px;
-        }
+@media (max-width: 820px) {
+    nav ul {
+        gap: 0.4rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.3rem; /* evita corte feio no scroll */
+    }
+    .nav-link {
+        font-size: 0.88rem;
+        padding: 0.3rem 0.55rem !important;
+    }
+}
 
-        .dropdown-item {
-            color: white;
-            padding: 0.9rem 1.5rem;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
+@media (max-width: 768px) {
+    .header-container        { padding: 0.5rem 0; }
+    .logo-animate            { height: 52px; }
+    .logo-text               { font-size: 1.2rem; letter-spacing: 0.9px; }
+    .btn-orcamento           { display: none; } /* esconde em mobile – já tem no offcanvas */
+    .menu-vertical           { font-size: 2rem; }
+}
 
-        .dropdown-item:hover {
-            background: #00f2fe;
-            color: #2c3e50;
-            padding-left: 2rem;
-        }
+@media (max-width: 576px) {
+    .logo-container          { gap: 8px; }
+    .logo-animate            { height: 48px; }
+    .logo-text               { font-size: 1.05rem; letter-spacing: 0.7px; }
+    .header-container .container-fluid { padding-left: 0.8rem; padding-right: 0.8rem; }
+}
 
-        .dropdown-item i {
-            width: 20px;
-            margin-right: 10px;
-        }
-
-        .btn-orcamento:hover {
-            transform: translateY(-4px);
-            background: #ffca2c;
-            box-shadow: 0 12px 30px rgba(255, 193, 7, 0.7);
-        }
-
-
+@media (max-width: 400px) {
+    .logo-animate { height: 42px; }
+    .logo-text    { font-size: 0.95rem; letter-spacing: 0.5px; }
+}
         /* Hero Section */
         .hero-section {
             background: var(--gradient-hero);
@@ -660,45 +649,56 @@
 </head>
 <body>
     <!-- Header -->
-     <!-- HEADER PERFEITO — MOBILE: 3 barras + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
+   <!-- HEADER PERFEITO — MOBILE: Hamburger + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
 <header class="header-container">
-    <div class="container-fluid px-4">
-        <div class="d-flex align-items-center justify-content-between">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between w-100">
 
-            <!-- Logo + Nome (sempre visível) -->
+            <!-- Logo + Nome -->
             <div class="logo-container">
                 <img src="../img/logo1.png" alt="NextLynx Tech" class="logo-animate">
                 <h1 class="logo-text">NextLynx Tech</h1>
             </div>
 
-            <!-- MENU HORIZONTAL — SÓ DESKTOP -->
+            <!-- MENU HORIZONTAL — SÓ A PARTIR DE lg (≥992px) -->
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
-                <ul class="nav gap-4">
-                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
-                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
-                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
-                    <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
-                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                <ul class="nav">
+                    <li class="nav-item"><a href="../index.html"      class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="../servicos.html"   class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="../portfolio.html"  class="nav-link">Portfólio</a></li>
+                    <li class="nav-item"><a href="../blog.html"       class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="../contactos.html"  class="nav-link">Contactos</a></li>
+                    <li class="nav-item"><a href="../testemunhos.html"class="nav-link">Testemunhos</a></li>
+                    <li class="nav-item"><a href="../faq.html"        class="nav-link">FAQ</a></li>
                 </ul>
             </nav>
 
-            <!-- DIREITA: Botão Orçamento (desktop) + 3 barras (mobile) + 3 pontinhos (todas as telas) -->
+            <!-- DIREITA: Orçamento (desktop) + Hamburger (mobile) + 3 pontinhos (todas telas) -->
             <div class="d-flex align-items-center gap-3">
+                <!-- Orçamento só em desktop -->
+                <a href="../pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
+                    Pedir Orçamento
+                </a>
 
-                <!-- Botão Orçamento — só desktop -->
-                <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">Pedir Orçamento</a>
-
-                <!-- 3 BARRAS HAMBURGER — SÓ MOBILE -->
-                <button class="btn p-0 text-white fs-2 d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainMenu">
-                    ☰
+                <!-- Hamburger oficial — SÓ MOBILE -->
+                <button class="navbar-toggler d-lg-none" 
+                        type="button" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#mainMenu" 
+                        aria-controls="mainMenu" 
+                        aria-expanded="false" 
+                        aria-label="Abrir menu principal">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- 3 PONTINHOS VERTICAIS — TODAS AS TELAS -->
+                <!-- 3 pontinhos verticais — TODAS AS TELAS -->
                 <div class="dropdown">
-                    <button class="btn p-0 text-white fs-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        ⋮
+                    <button class="btn p-0 text-white" 
+                            type="button" 
+                            data-bs-toggle="dropdown" 
+                            aria-expanded="false"
+                            aria-label="Mais opções">
+                        <i class="fas fa-ellipsis-v fs-4"></i>  <!-- Mais consistente que ⋮ -->
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="background:#8B0000; min-width:260px;">
                         <li><a class="dropdown-item text-white py-3" href="../sobre.html"><i class="fas fa-users me-3"></i>Sobre Nós</a></li>
@@ -712,26 +712,31 @@
         </div>
     </div>
 
-    <!-- MENU OFFCANVAS — SÓ MOBILE (abre com as 3 barras) -->
+    <!-- MENU OFFCANVAS — MOBILE -->
     <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mainMenu">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            <h5 class="offcanvas-title">Menu NextLynx Tech</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
         </div>
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
-                <li class="nav-item my-3"><a href="../index.html" class="nav-link text-white fs-3">Home</a></li>
-                <li class="nav-item my-3"><a href="../servicos.html" class="nav-link text-white fs-3">Serviços</a></li>
-                <li class="nav-item my-3"><a href="../portfolio.html" class="nav-link text-white fs-3">Portfólio</a></li>
-                <li class="nav-item my-3"><a href="../blog.html" class="nav-link text-white fs-3">Blog</a></li>
-                <li class="nav-item my-3"><a href="../contactos.html" class="nav-link text-white fs-3">Contactos</a></li>
-                <li class="nav-item my-3"><a href="../testemunhos.html" class="nav-link text-white fs-3">Testemunhos</a></li>
-                <li class="nav-item my-3"><a href="../faq.html" class="nav-link text-white fs-3">FAQ</a></li>
-                <li class="mt-5"><a href="../pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">Pedir Orçamento</a></li>
+                <li class="nav-item my-3"><a href="../index.html"      class="nav-link text-white fs-4">Home</a></li>
+                <li class="nav-item my-3"><a href="../servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="../portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
+                <li class="nav-item my-3"><a href="../blog.html"       class="nav-link text-white fs-4">Blog</a></li>
+                <li class="nav-item my-3"><a href="../contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
+                <li class="nav-item my-3"><a href="../testemunhos.html"class="nav-link text-white fs-4">Testemunhos</a></li>
+                <li class="nav-item my-3"><a href="../faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
+                <li class="mt-5">
+                    <a href="../pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
+                        Pedir Orçamento
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 </header>
+
 
 
     <!-- Hero Section -->
@@ -882,8 +887,8 @@
                 <p>© 2025 NextLynx Tech. Todos os direitos reservados.</p>
                 <p class="small mt-2">
                     <a href="../politica-privacidade.html">Política de Privacidade</a> • 
-                     <a href="termos.html">Termos de Uso</a> •
-                    <a href="sobre.html">Sobre nós</a>
+                     <a href="../termos.html">Termos de Uso</a> •
+                    <a href="../sobre.html">Sobre nós</a>
                 </p>
             </div>
         </div>
