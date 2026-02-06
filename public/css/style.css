@@ -58,6 +58,7 @@ header img.logo-animate { height: 40px; animation: pulse 2s infinite; } /* Anima
     padding-right: 1rem;
 }
 
+
 .logo-container {
     display: flex;
     align-items: center;
@@ -74,12 +75,15 @@ header img.logo-animate { height: 40px; animation: pulse 2s infinite; } /* Anima
 }
 
 .logo-text {
-    font-size: 1.4rem;            /* menor */
+    font-size: 1.6rem;            /* menor */
     font-weight: 900;
     letter-spacing: 1.2px;
     margin: 0;
     white-space: nowrap;
 }
+
+
+
 
 /* Menu horizontal (desktop) */
 nav ul {
