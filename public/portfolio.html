@@ -1015,10 +1015,10 @@ Logotipo moderno com tipografia tecnológica e paleta de cores
                     <img src="img/logo1.png" alt="NextLynx Tech" class="footer-logo d-block mx-auto mx-lg-0">
                     <p>Soluções digitais vibrantes para estudantes e empresas em Moçambique.</p>
                     <div class="footer-social">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://web.facebook.com/?locale=pt_BR&_rdc=1&_rdr#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/nextlynxtech/" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.linkedin.com/in/next-lynx-tech-45442a3ab/?isSelfProfile=true" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4 text-center">
@@ -1061,12 +1061,35 @@ Logotipo moderno com tipografia tecnológica e paleta de cores
     </footer>
 
     <!-- Chat WhatsApp Flutuante — ORGANIZADO -->
-    <a href="https://wa.me/258868187201?text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" class="btn-whatsapp" title="Fale conosco no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Botão WhatsApp Flutuante (único e organizado) -->
+<a href="https://wa.me/258868187201?text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!" 
+   class="btn-whatsapp" 
+   id="whatsapp-float"
+   title="Fale conosco no WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
+<!-- Script leve para WhatsApp Web (não desorganiza o botão) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.getElementById('whatsapp-float');
+    
+    btn.addEventListener('click', function(e) {
+      // Detecta desktop (largura > 992px e sem toque)
+      const isDesktop = window.innerWidth > 992 && !('ontouchstart' in window);
+      
+      if (isDesktop) {
+        // Abre WhatsApp Web diretamente
+        const webUrl = 'https://web.whatsapp.com/send?phone=258868187201&text=Olá,%20quero%20um%20orçamento%20para%20meu%20projeto!';
+        window.open(webUrl, '_blank', 'noopener,noreferrer,width=600,height=800');
+        
+        // Previne o wa.me padrão para não abrir duas abas
+        e.preventDefault();
+      }
+      // No mobile, o wa.me abre o app normalmente
+    });
+  });
+</script>
 
     <!-- SCRIPT: Animações + Cards Adicionais -->
     <script>
