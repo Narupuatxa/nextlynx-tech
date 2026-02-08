@@ -581,7 +581,7 @@ nav ul {
         }
 
         /* Responsive */
-       /* RESPONSIVO - medidas consistentes com todas as outras páginas */
+     /* RESPONSIVO - medidas IGUAIS às da página principal e testemunhos */
 
 @media (max-width: 992px) {
     .hero-title       { font-size: 3.5rem; }
@@ -596,22 +596,24 @@ nav ul {
     .hero-title       { font-size: 2.8rem; }
     .hero-subtitle    { font-size: 1.2rem; }
     .hero-btn         { padding: 1rem 2rem; font-size: 1.1rem; }
+    
+    /* Ajustes específicos para contactos */
+    .contact-card     { padding: 2rem; }
+    .contact-info     { padding: 2rem; }
+    .info-item        { margin-bottom: 1.5rem; padding: 1rem; }
+    .form-control, 
+    .form-select      { font-size: 1rem; padding: 0.9rem 1.3rem; }
+    
     .btn-whatsapp     { 
-        width: 65px; 
-        height: 65px; 
-        font-size: 2rem; 
+        width: 60px; 
+        height: 60px; 
+        font-size: 1.8rem; 
         bottom: 20px; 
         right: 20px; 
     }
-    .footer-info      { padding: 1.5rem; }
     .professional-img { height: 250px; }
     .logo-animate     { height: 65px; }
     .logo-text        { font-size: 1.8rem; }
-    
-    /* Ajuste para elementos comuns em contactos (formulários, mapas, cards) */
-    .contact-card, .form-group, .service-card { 
-        margin-bottom: 2rem; 
-    }
 }
 
 @media (max-width: 576px) {
@@ -620,16 +622,26 @@ nav ul {
     .section-title    { font-size: 2rem; }
     .nav-link         { font-size: 0.9rem; padding: 0.5rem !important; }
     .footer-title     { font-size: 1.2rem; }
+    
+    /* Ajustes finos para contactos em mobile pequeno */
+    .contact-card     { padding: 1.5rem; }
+    .contact-info     { padding: 1.5rem; }
+    .info-item        { margin-bottom: 1.2rem; padding: 0.8rem; }
+    .info-icon        { font-size: 1.8rem; min-width: 45px; }
+    .info-content h5  { font-size: 1.1rem; }
+    .info-content p   { font-size: 0.98rem; }
+    .form-control, 
+    .form-select      { font-size: 0.95rem; padding: 0.8rem 1.2rem; }
+    
+    .btn-whatsapp     { 
+        width: 55px; 
+        height: 55px; 
+        font-size: 1.6rem; 
+    }
     .professional-img { height: 200px; }
     .logo-animate     { height: 55px; }
     .logo-text        { font-size: 1.6rem; }
-    
-    /* Ajuste fino para mobile pequeno */
-    .contact-card, .form-group, .service-card { 
-        margin-bottom: 1.8rem; 
-    }
 }
-
     </style>
 </head>
 <body>
