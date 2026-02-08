@@ -478,9 +478,8 @@ nav ul {
         /* Footer - COMPLETO COMO NO FAQ */
        
 
-
- /* Footer — CENTRALIZADO */
-      .footer-container {
+/* Footer — CENTRALIZADO */
+        .footer-container {
             background: #1a1a1a;
             color: white;
             padding: 4rem 0 2.5rem;
@@ -605,6 +604,104 @@ nav ul {
             color: white;
             text-decoration: underline;
         }
+
+        /* WhatsApp Button — ORGANIZADO E PROFISSIONAL */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.7);
+            background: #128c7e;
+        }
+
+        .btn-whatsapp i {
+            animation: bounce 2s infinite;
+        }
+
+        .btn-whatsapp::before {
+            content: 'Chat';
+            position: absolute;
+            top: 50%;
+            left: -80px;
+            transform: translateY(-50%);
+            background: #25d366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover::before {
+            opacity: 1;
+            visibility: visible;
+            left: -90px;
+        }
+        .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 2.5rem;
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #cccccc;
+        }
+
+        .btn-whatsapp::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: -15px;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid #25d366;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .btn-whatsapp:hover::after {
+            opacity: 1;
+            visibility: visible;
+            left: -20px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+ 
         /* LINK DO ADMIN - VISÍVEL APENAS COM ?admin=true */
         .admin-link {
             color: #666;
@@ -651,13 +748,6 @@ nav ul {
     .form-control, 
     .form-select      { font-size: 1rem; padding: 0.9rem 1.3rem; }
     
-    .btn-whatsapp     { 
-        width: 60px; 
-        height: 60px; 
-        font-size: 1.8rem; 
-        bottom: 20px; 
-        right: 20px; 
-    }
     .professional-img { height: 250px; }
     .logo-animate     { height: 65px; }
     .logo-text        { font-size: 1.8rem; }
