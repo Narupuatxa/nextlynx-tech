@@ -674,9 +674,6 @@ nav ul {
         }
 
         /* RESPONSIVO - medidas consistentes com FAQ, testemunhos, serviços e index */
-
-        /* RESPONSIVO - medidas IGUAIS às da página principal, testemunhos, contactos e serviços */
-
 @media (max-width: 992px) {
     .hero-title       { font-size: 3.5rem; }
     .hero-subtitle    { font-size: 1.4rem; }
@@ -690,28 +687,22 @@ nav ul {
     .hero-title       { font-size: 2.8rem; }
     .hero-subtitle    { font-size: 1.2rem; }
     .hero-btn         { padding: 1rem 2rem; font-size: 1.1rem; }
-    
-    /* Ajustes específicos para o blog */
-    .blog-card        { 
-        margin-bottom: 2rem; 
-        padding: 1.2rem; 
-    }
-    .blog-img         { height: 220px; }
-    .blog-title       { font-size: 1.5rem; }
-    .blog-text        { font-size: 1rem; }
-    .blog-date        { font-size: 0.85rem; }
-    
     .btn-whatsapp     { 
-        width: 60px; 
-        height: 60px; 
-        font-size: 1.8rem; 
+        width: 65px; 
+        height: 65px; 
+        font-size: 2rem; 
         bottom: 20px; 
         right: 20px; 
     }
-    
+    .footer-info      { padding: 1.5rem; }
     .professional-img { height: 250px; }
     .logo-animate     { height: 65px; }
     .logo-text        { font-size: 1.8rem; }
+    
+    /* Ajuste comum para cards/artigos em mobile */
+    .blog-card, .post-card, .service-card { 
+        margin-bottom: 2rem; 
+    }
 }
 
 @media (max-width: 576px) {
@@ -720,26 +711,14 @@ nav ul {
     .section-title    { font-size: 2rem; }
     .nav-link         { font-size: 0.9rem; padding: 0.5rem !important; }
     .footer-title     { font-size: 1.2rem; }
-    
-    /* Ajustes finos para mobile pequeno no blog */
-    .blog-card        { 
-        margin-bottom: 1.8rem; 
-        padding: 1rem; 
-    }
-    .blog-img         { height: 200px; }
-    .blog-title       { font-size: 1.35rem; }
-    .blog-text        { font-size: 0.95rem; }
-    .blog-date        { font-size: 0.8rem; }
-    
-    .btn-whatsapp     { 
-        width: 55px; 
-        height: 55px; 
-        font-size: 1.6rem; 
-    }
-    
     .professional-img { height: 200px; }
     .logo-animate     { height: 55px; }
     .logo-text        { font-size: 1.6rem; }
+    
+    /* Ajuste fino para mobile pequeno */
+    .blog-card, .post-card, .service-card { 
+        margin-bottom: 1.8rem; 
+    }
 }
     </style>
 </head>
