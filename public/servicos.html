@@ -11,6 +11,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
+
+
+/* CORREÇÃO DE SCROLL TREMENTE / ABANAR EM TELEMÓVEL */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;              /* impede scroll horizontal */
+    overscroll-behavior: none;       /* desativa o "bounce" elástico nas bordas */
+    -webkit-overflow-scrolling: touch; /* melhora o scroll suave no iOS */
+    touch-action: pan-y pinch-zoom;  /* permite scroll vertical + zoom, bloqueia horizontal */
+}
+
+/* Evita recalculo louco do layout quando há elementos fixed animados */
+body {
+    position: relative;
+}
+
+/* Botão WhatsApp e notificações: menos "agressivos" em mobile */
+@media (max-width: 992px) {
+    .btn-whatsapp {
+        animation: none !important;          /* desativa pulse temporariamente */
+        transform: scale(1) !important;
+        transition: none !important;
+    }
+    
+    .notification {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+
+
+
         :root {
             --primary: #6a11cb;
             --primary-light: #a55eea;
@@ -151,6 +187,36 @@ nav ul {
 }
 
 /* ------------------ MEDIA QUERIES – AGRESSIVAS ------------------ */
+
+/* Medidas IGUAIS às que funcionaram bem nos testemunhos, contactos, serviços, blog, etc. */
+@media (max-width: 992px) {
+    .logo-animate     { height: 75px; }
+    .logo-text        { font-size: 2rem; }
+    .btn-orcamento    { padding: 0.5rem 1.1rem; font-size: 0.9rem; }
+}
+
+@media (max-width: 768px) {
+    .header-container { padding: 0.5rem 0; }
+    .logo-animate     { height: 65px; }
+    .logo-text        { font-size: 1.8rem; letter-spacing: 0.9px; }
+    .btn-orcamento    { display: none; } /* esconde em mobile – já tem no offcanvas */
+    .menu-vertical    { font-size: 2rem; }
+}
+
+@media (max-width: 576px) {
+    .logo-container          { gap: 8px; }
+    .logo-animate            { height: 55px; }
+    .logo-text               { font-size: 1.6rem; letter-spacing: 0.7px; }
+    .header-container .container-fluid { padding-left: 0.8rem; padding-right: 0.8rem; }
+}
+
+/* Ajuste muito pequeno (opcional, mas mantido para consistência) */
+@media (max-width: 400px) {
+    .logo-animate { height: 52px; }
+    .logo-text    { font-size: 1.4rem; letter-spacing: 0.6px; }
+}
+
+
   
         /* Hero Section */
         .hero-section {
@@ -803,6 +869,7 @@ nav ul {
 
         /* Responsive */
      /* RESPONSIVO - medidas consistentes com as outras páginas (FAQ, testemunhos, index) */
+/* RESPONSIVO - medidas IGUAIS às da página principal e testemunhos */
 
 @media (max-width: 992px) {
     .hero-title       { font-size: 3.5rem; }
@@ -817,15 +884,25 @@ nav ul {
     .hero-title       { font-size: 2.8rem; }
     .hero-subtitle    { font-size: 1.2rem; }
     .hero-btn         { padding: 1rem 2rem; font-size: 1.1rem; }
-    .service-card     { margin-bottom: 2rem; } /* ajustado para serviços */
+    
+    /* Ajustes específicos para serviços */
+    .service-card     { 
+        margin-bottom: 2rem; 
+        padding: 1.2rem; 
+    }
+    .service-img      { height: 220px; }
+    .service-title    { font-size: 1.7rem; }
+    .service-text     { font-size: 1rem; }
+    .service-list li  { font-size: 0.95rem; }
+    
     .btn-whatsapp     { 
-        width: 65px; 
-        height: 65px; 
-        font-size: 2rem; 
+        width: 60px; 
+        height: 60px; 
+        font-size: 1.8rem; 
         bottom: 20px; 
         right: 20px; 
     }
-    .footer-info      { padding: 1.5rem; }
+    
     .professional-img { height: 250px; }
     .logo-animate     { height: 65px; }
     .logo-text        { font-size: 1.8rem; }
@@ -837,10 +914,31 @@ nav ul {
     .section-title    { font-size: 2rem; }
     .nav-link         { font-size: 0.9rem; padding: 0.5rem !important; }
     .footer-title     { font-size: 1.2rem; }
+    
+    /* Ajustes finos para mobile pequeno */
+    .service-card     { 
+        margin-bottom: 1.8rem; 
+        padding: 1rem; 
+    }
+    .service-img      { height: 200px; }
+    .service-title    { font-size: 1.5rem; }
+    .service-text     { font-size: 0.95rem; }
+    .service-list li  { font-size: 0.9rem; }
+    
+    .btn-whatsapp     { 
+        width: 55px; 
+        height: 55px; 
+        font-size: 1.6rem; 
+    }
+    
     .professional-img { height: 200px; }
     .logo-animate     { height: 55px; }
     .logo-text        { font-size: 1.6rem; }
-    .service-card     { margin-bottom: 1.8rem; }
+    
+    /* Formulário mais confortável em mobile pequeno */
+    .solicitar-form   { padding: 1rem; }
+    .form-control-sm, 
+    .form-select-sm   { font-size: 0.9rem; padding: 0.8rem 1rem; }
 }
 
     </style>
