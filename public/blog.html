@@ -175,6 +175,31 @@ nav ul {
     padding: 0.4rem;
 }
 
+/* Correção: mais espaço à direita no header (evita 3 pontinhos colados/cortados na borda) */
+@media (max-width: 991.98px) {
+    .header-container .container-fluid {
+        padding-left:  1.1rem !important;   /* ligeiro aumento esquerdo para equilíbrio */
+        padding-right: 1.6rem !important;   /* espaço principal à direita (~24-26px) */
+    }
+}
+
+@media (max-width: 576px) {
+    .header-container .container-fluid {
+        padding-right: 1.9rem !important;   /* mais agressivo em ecrãs pequenos (~30px) */
+    }
+
+    /* Empurra especificamente o botão dos 3 pontinhos para dentro */
+    .dropdown button[data-bs-toggle="dropdown"] {
+        margin-right: 0.9rem !important;    /* move o ícone ~14px para a esquerda */
+        padding: 0.5rem 0.8rem !important;  /* área maior para toque + respiro */
+    }
+
+    /* Hamburger também ganha um pouco de margem direita */
+    .navbar-toggler {
+        margin-right: 0.7rem !important;
+    }
+}
+
 
 
         /* Hero Section */
