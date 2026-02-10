@@ -683,6 +683,38 @@ nav ul {
     .logo-text        { font-size: 2rem; }
 }
 
+/* Ajustes finos no header para mobile – evita ficar colado na borda direita */
+@media (max-width: 991.98px) {
+
+    /* Mais espaço nas laterais do container */
+    .header-container .container-fluid {
+        padding-left:  1.1rem !important;
+        padding-right: 1.1rem !important;   /* ← aqui está o principal ganho */
+    }
+
+    /* Dá margem direita ao bloco da direita (orçamento + hamburger + 3 pontinhos) */
+    .header-container .d-flex.align-items-center.gap-2.gap-md-3 {
+        margin-right: -0.4rem;           /* compensa um pouco o padding */
+    }
+
+    /* Mais espaço à direita dos 3 pontinhos */
+    .dropdown.ms-1.ms-md-2 {
+        margin-right: 0.35rem !important;   /* 5–6px extras */
+    }
+
+    /* Botão dos 3 pontinhos com mais área de toque e respiro */
+    .menu-vertical,
+    .dropdown button[data-bs-toggle="dropdown"] {
+        padding: 0.5rem 0.6rem !important;
+        margin-right: 0.25rem;              /* pequeno empurrão à direita */
+    }
+
+    /* Último recurso (se ainda estiver muito colado) */
+    .dropdown-menu-end {
+        right: -0.5rem !important;          /* desloca o menu para dentro */
+    }
+}
+
 @media (max-width: 768px) {
     .hero-title       { font-size: 2.8rem; }
     .hero-subtitle    { font-size: 1.2rem; }
@@ -714,6 +746,12 @@ nav ul {
     .professional-img { height: 200px; }
     .logo-animate     { height: 55px; }
     .logo-text        { font-size: 1.6rem; }
+
+     .btn-whatsapp     { 
+        width: 55px; 
+        height: 55px; 
+        font-size: 1.6rem; 
+    }
     
     /* Ajuste fino para mobile pequeno */
     .blog-card, .post-card, .service-card { 
