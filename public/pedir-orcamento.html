@@ -386,54 +386,221 @@ nav ul {
 }
 
 
-/* Footer — CENTRALIZADO */
-        .footer-container {
-            background: #1a1a1a;
-            color: white;
-            padding: 4rem 0 2.5rem;
-            margin-top: 4rem;
-        }
- /* RETIFICADO TAMANHO DE LOGO */
-      /* Footer - correções finais para alinhamento e logo */
+/* ================================================ */
+/* FOOTER – DESKTOP INTACTO + TRAÇOS CENTRADOS NO MOBILE */
+/* ================================================ */
+
 .footer-container {
     background: #1a1a1a;
     color: white;
-    padding: 5rem 0 3rem; /* aumentei padding para melhor respiração */
+    padding: 5rem 0 3rem;
     margin-top: 5rem;
 }
 
-.footer-logo {
-    height: 200px !important;        /* tamanho grande como nos outros */
-    width: auto;
-    margin-bottom: 1.8rem;
-    transition: transform 0.4s ease;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    
-    /* REMOVA ou comente estas linhas */
-    /* filter: brightness(0) invert(1); */  
-    /* background: transparent !important; */
-}
+
+/* ================================================ */
+/* LOGO DO FOOTER – TAMANHO GRANDE E CONSISTENTE  */
+/* ================================================ */
 
 .footer-logo {
+    height: 200px !important;          /* tamanho grande como nas outras páginas */
+    width: auto !important;
+    max-width: 100%;                    /* evita overflow em telas pequenas */
+    margin: 0 auto 2rem auto !important;
+    display: block !important;
+    transition: transform 0.4s ease;
     filter: none !important;
     -webkit-filter: none !important;
 }
 
-/* Garante centralização total em mobile */
+.footer-logo:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+/* No telemóvel: mantém grande (ou ligeiramente reduzido se necessário) */
 @media (max-width: 768px) {
     .footer-logo {
-        margin-left: auto !important;
-        margin-right: auto !important;
-        height: 180px; /* ligeiramente menor em mobile para caber melhor */
+        height: 190px !important;       /* ligeira redução para caber melhor, mas ainda grande */
+        margin-bottom: 1.8rem !important;
     }
+}
 
-
+@media (max-width: 576px) {
+    .footer-logo {
+        height: 180px !important;       /* valor seguro para ecrãs muito pequenos */
+    }
 }
 
 
+/* Títulos e traços – desktop: alinhado à esquerda, traço centralizado no título */
+/* mobile: tudo centralizado, traço sempre no centro */
+.footer-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 1.6rem;
+    position: relative;
+    padding-bottom: 0.9rem;
+}
 
+.footer-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-warning);
+    border-radius: 2px;
+    box-shadow: 0 4px 12px rgba(245, 87, 108, 0.3);
+}
+
+/* Desktop: alinhamento à esquerda + traço centralizado no título */
+@media (min-width: 992px) {
+    .footer-title {
+        text-align: left;
+    }
+    
+    .footer-title::after {
+        left: 0;                          /* começa à esquerda no desktop */
+        transform: none;
+    }
+    
+    .footer-info,
+    .footer-info h5,
+    .footer-info p {
+        text-align: left;
+    }
+}
+
+/* Mobile: tudo centralizado + traço no centro do título */
+@media (max-width: 991.98px) {
+    .footer-logo {
+        height: 180px;
+    }
+    
+    .footer-title {
+        text-align: center !important;
+    }
+    
+    .footer-title::after {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 90px;                      /* um pouco maior para destaque no mobile */
+    }
+    
+    .footer-link,
+    .footer-info h5,
+    .footer-info p,
+    .footer-social {
+        text-align: center !important;
+    }
+    
+    .footer-social {
+        justify-content: center !important;
+    }
+    
+    .row > div[class*="col-"] {
+        margin-bottom: 3rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-title {
+        font-size: 1.3rem;
+    }
+    
+    .footer-title::after {
+        width: 80px;
+    }
+    
+    .footer-container {
+        padding: 4rem 1rem 2.5rem;
+    }
+}
+
+/* Mantém os outros estilos do footer que já tinhas (links, social, info, bottom) */
+.footer-link {
+    color: #cccccc;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.social-icon {
+    width: 55px;
+    height: 55px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.social-icon:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.4);
+}
+
+.footer-info {
+    background: rgba(255,255,255,0.05);
+    padding: 2.5rem;
+    border-radius: 25px;
+    margin-top: 2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-info h5 {
+    color: white;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+}
+
+.footer-info p {
+    color: #cccccc;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333333;
+    padding-top: 2.5rem;
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #cccccc;
+}
+
+.footer-bottom a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-bottom a:hover {
+    color: white;
+    text-decoration: underline;
+}
 
         
         /* RESPONSIVO - medidas IGUAIS às da página principal, testemunhos, contactos, serviços e blog */
@@ -816,9 +983,8 @@ textarea.form-control:focus {
         <a href="contactos.html" class="btn btn-promo">Aproveitar Oferta</a>
     </section>
 
-   <!-- Footer COMPLETO COMO NO FAQ -->
-     <!-- Footer -->
-     <!-- Footer — CENTRALIZADO -->
+
+   
     <!-- Footer — CENTRALIZADO e consistente com as outras páginas -->
 <footer class="footer-container">
     <div class="container">
