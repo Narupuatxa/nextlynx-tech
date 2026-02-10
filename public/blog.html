@@ -706,6 +706,16 @@ nav ul {
         margin-bottom: 1.8rem; 
     }
 }
+/* Correção específica: mais espaço à direita no header em mobile */
+@media (max-width: 576px) {
+    .header-container .container-fluid {
+        padding-right: 1.8rem !important;   /* ≈ 28–30px de espaço na borda direita */
+    }
+    
+    .dropdown button[data-bs-toggle="dropdown"] {
+        margin-right: 0.8rem !important;    /* empurra os 3 pontinhos para dentro */
+    }
+}
 
     </style>
 </head>
