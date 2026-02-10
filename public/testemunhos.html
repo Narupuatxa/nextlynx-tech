@@ -520,6 +520,32 @@ nav ul {
     .logo-animate     { height: 55px; }
     .logo-text        { font-size: 1.6rem; }
 }
+
+
+
+/* Animação única para títulos hero em todas as páginas */
+.hero-title,
+.display-3.hero-title {
+    opacity: 0;
+    animation: fadeInUp 1.3s ease-out forwards !important;
+    animation-delay: 0.4s !important;
+    animation-iteration-count: 1 !important; /* impede repetição */
+}
+
+/* Subtítulos e estrelas com delay progressivo */
+.lead.text-muted,
+.stars.mb-4 {
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out forwards !important;
+    animation-delay: 0.8s !important;
+    animation-iteration-count: 1 !important;
+}
+
+/* Garante que a animação não repita ao rolar ou recarregar */
+.fadeInUp {
+    animation-fill-mode: forwards !important;
+    animation-iteration-count: 1 !important;
+}
     </style>
 </head>
 <body>
@@ -617,16 +643,18 @@ nav ul {
 
 
     <!-- Hero -->
-    <section class="text-center py-5 bg-light">
-        <div class="container">
-            <h1 class="display-3 hero-title animate-slide-up">20 Estudantes Moçambicanos  e 40 Profissionais</h1>
-            <p class="lead text-muted animate-fade-in">20 estudantes da UEM, UCM, UniLúrio, UniSced, UP + 40 profissionais</p>
-            <div class="stars mb-4 animate-fade-in">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                <span class="ms-2 text-muted">4.9/5 (Baseado em 60 avaliações)</span>
-            </div>
+    <!-- Hero – TÍTULO ÚNICO COM ANIMAÇÃO -->
+<!-- Hero – TÍTULO ÚNICO COM ANIMAÇÃO -->
+<section class="text-center py-5 bg-light">
+    <div class="container">
+        <h1 class="display-3 hero-title fadeInUp">20 Estudantes Moçambicanos e 40 Profissionais</h1>
+        <p class="lead text-muted fadeInUp" style="animation-delay: 0.6s;">20 estudantes da UEM, UCM, UniLúrio, UniSced, UP + 40 profissionais</p>
+        <div class="stars mb-4 fadeInUp" style="animation-delay: 0.9s;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            <span class="ms-2 text-muted">4.9/5 (Baseado em 60 avaliações)</span>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Testemunhos -->
     <main class="container my-5">

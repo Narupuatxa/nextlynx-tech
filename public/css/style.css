@@ -140,3 +140,179 @@ nav ul {
     font-size: 1.3rem;
     padding: 1rem 0;
 }
+
+
+/* ================================================ */
+/* LOGO DO FOOTER – TAMANHO GRANDE E CONSISTENTE  */
+/* ================================================ */
+
+.footer-logo {
+    height: 200px !important;          /* tamanho grande como nas outras páginas */
+    width: auto !important;
+    max-width: 100%;                    /* evita overflow em telas pequenas */
+    margin: 0 auto 2rem auto !important;
+    display: block !important;
+    transition: transform 0.4s ease;
+    filter: none !important;
+    -webkit-filter: none !important;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+/* No telemóvel: mantém grande (ou ligeiramente reduzido se necessário) */
+@media (max-width: 768px) {
+    .footer-logo {
+        height: 190px !important;       /* ligeira redução para caber melhor, mas ainda grande */
+        margin-bottom: 1.8rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-logo {
+        height: 180px !important;       /* valor seguro para ecrãs muito pequenos */
+    }
+}
+
+/* ======================================================== */
+/* ESPAÇO NORMAL E CONSISTENTE ENTRE HEADER E CONTEÚDO     */
+/* ======================================================== */
+
+body > header + main,
+body > header + .container,
+body > header + section {
+    margin-top: 0 !important;           /* elimina qualquer margem extra em cima */
+    padding-top: 1.5rem !important;     /* espaço normal e confortável (≈24px) */
+}
+
+/* Ajuste fino para páginas com .form-section ou .hero-section */
+.form-section,
+.hero-section,
+.container.my-5 {
+    margin-top: 0 !important;
+    padding-top: 1.5rem !important;     /* valor equilibrado */
+}
+
+/* Em mobile: reduz ainda mais para não parecer vazio */
+@media (max-width: 991.98px) {
+    body > header + main,
+    .form-section,
+    .container.my-5 {
+        padding-top: 1rem !important;   /* ≈16px – fica colado mas respirado */
+    }
+    
+    main.container.my-5 {
+        margin-top: 0 !important;
+    }
+}
+
+@media (max-width: 576px) {
+    body > header + main,
+    .form-section {
+        padding-top: 0.75rem !important; /* muito pouco espaço em mobile pequeno */
+    }
+}
+
+
+/* ================================================ */
+/* ANIMAÇÃO AUTOMÁTICA NOS TÍTULOS DE TODAS AS PÁGINAS */
+/* ================================================ */
+
+.form-title,
+.hero-title,
+.section-title,
+.promo-title,
+.hero-section h1,
+.blog-section h2,
+.form-section h2 {
+    opacity: 0;                           /* começa invisível */
+    animation: fadeInUp 1.2s ease-out forwards;
+    animation-delay: 0.3s;                /* pequeno delay para não ser instantâneo */
+}
+
+/* Se quiseres delay maior para subtítulos ou promoções */
+.hero-subtitle,
+.hero-section p,
+.promo-section h3 {
+    opacity: 0;
+    animation: fadeInUp 1.3s ease-out forwards;
+    animation-delay: 0.7s;                /* entra um pouco depois do título principal */
+}
+
+/* Garante que a animação só rode uma vez ao carregar */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(60px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Opcional: animação mais suave em mobile */
+@media (max-width: 768px) {
+    .form-title,
+    .hero-title,
+    .section-title {
+        animation-duration: 1s;           /* mais rápida em telemóvel */
+        animation-delay: 0.2s;
+    }
+}
+
+/* ===================================================== */
+/* ESTUDANTES – TÍTULO POR CIMA + IMAGENS CENTRADAS    */
+/* ===================================================== */
+
+.students-section {
+    padding-top: 2rem !important;     /* reduz espaço em cima da secção */
+    padding-bottom: 4rem !important;
+}
+
+.students-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 2rem !important;   /* espaço normal abaixo do título */
+    text-align: center !important;
+}
+
+.student-img-container {
+    height: 180px;                    /* altura fixa para uniformidade */
+    overflow: hidden;
+    display: flex;
+    align-items: center;              /* centraliza verticalmente */
+    justify-content: center;          /* centraliza horizontalmente */
+    background: #f0f0f5;              /* fundo neutro se imagem não preencher */
+}
+
+.student-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                /* preenche sem distorcer */
+    object-position: center center;   /* garante centro perfeito */
+    transition: transform 0.5s ease;
+}
+
+.student-card:hover .student-img {
+    transform: scale(1.1);
+}
+
+/* Centraliza cards em mobile e desktop */
+.student-card {
+    max-width: 320px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* Em mobile pequeno: ocupa toda largura */
+@media (max-width: 576px) {
+    .student-card {
+        max-width: 100%;
+    }
+    
+    .students-section {
+        padding-top: 1.5rem !important;
+    }
+}
+
