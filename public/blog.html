@@ -706,52 +706,6 @@ nav ul {
         margin-bottom: 1.8rem; 
     }
 }
-/* ================================================ */
-/* FORÇA EQUILÍBRIO E ESPAÇO ADEQUADO NO HEADER MOBILE */
-/* ================================================ */
-
-@media (max-width: 991.98px) {
-    /* Container com mais espaço nas laterais – especialmente à direita */
-    .header-container .container-fluid {
-        padding-left:  1.25rem !important;
-        padding-right: 2rem !important;          /* ← mais espaço à direita */
-    }
-
-    /* Move TODO o bloco da direita (orçamento/hamburger/3 pontinhos) para dentro */
-    .header-container .d-flex.align-items-center.gap-3,
-    .header-container .d-flex.align-items-center.gap-2.gap-md-3 {
-        margin-right: 0.4rem !important;         /* empurra o grupo inteiro */
-    }
-
-    /* Ajuste forte nos 3 pontinhos – garante que fique afastado da borda */
-    .dropdown button[data-bs-toggle="dropdown"] {
-        margin-right: 1.2rem !important;         /* move os 3 pontinhos ~18–20px para dentro */
-        padding: 0.6rem 1rem !important;         /* área maior + respiro extra */
-    }
-
-    /* Hamburger também afastado */
-    .navbar-toggler {
-        margin-right: 1rem !important;
-        padding: 0.6rem 1rem !important;
-    }
-}
-
-/* Ajuste extra agressivo para ecrãs muito pequenos (onde o problema é pior) */
-@media (max-width: 576px) {
-    .header-container .container-fluid {
-        padding-left:  1.1rem !important;
-        padding-right: 2.4rem !important;        /* ainda mais espaço à direita */
-    }
-
-    .dropdown button[data-bs-toggle="dropdown"] {
-        margin-right: 1.5rem !important;         /* força mais afastamento */
-    }
-
-    .navbar-toggler {
-        margin-right: 1.2rem !important;
-    }
-}
-
     </style>
 </head>
 <body>
