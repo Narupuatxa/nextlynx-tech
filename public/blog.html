@@ -175,31 +175,6 @@ nav ul {
     padding: 0.4rem;
 }
 
-/* Correção: mais espaço à direita no header (evita 3 pontinhos colados/cortados na borda) */
-@media (max-width: 991.98px) {
-    .header-container .container-fluid {
-        padding-left:  1.1rem !important;   /* ligeiro aumento esquerdo para equilíbrio */
-        padding-right: 1.6rem !important;   /* espaço principal à direita (~24-26px) */
-    }
-}
-
-@media (max-width: 576px) {
-    .header-container .container-fluid {
-        padding-right: 1.9rem !important;   /* mais agressivo em ecrãs pequenos (~30px) */
-    }
-
-    /* Empurra especificamente o botão dos 3 pontinhos para dentro */
-    .dropdown button[data-bs-toggle="dropdown"] {
-        margin-right: 0.9rem !important;    /* move o ícone ~14px para a esquerda */
-        padding: 0.5rem 0.8rem !important;  /* área maior para toque + respiro */
-    }
-
-    /* Hamburger também ganha um pouco de margem direita */
-    .navbar-toggler {
-        margin-right: 0.7rem !important;
-    }
-}
-
 
 
         /* Hero Section */
@@ -731,14 +706,49 @@ nav ul {
         margin-bottom: 1.8rem; 
     }
 }
-/* Correção específica: mais espaço à direita no header em mobile */
+/* ================================================ */
+/* FORÇA EQUILÍBRIO E ESPAÇO ADEQUADO NO HEADER MOBILE */
+/* ================================================ */
+
+@media (max-width: 991.98px) {
+    /* Container com mais espaço nas laterais – especialmente à direita */
+    .header-container .container-fluid {
+        padding-left:  1.25rem !important;
+        padding-right: 2rem !important;          /* ← mais espaço à direita */
+    }
+
+    /* Move TODO o bloco da direita (orçamento/hamburger/3 pontinhos) para dentro */
+    .header-container .d-flex.align-items-center.gap-3,
+    .header-container .d-flex.align-items-center.gap-2.gap-md-3 {
+        margin-right: 0.4rem !important;         /* empurra o grupo inteiro */
+    }
+
+    /* Ajuste forte nos 3 pontinhos – garante que fique afastado da borda */
+    .dropdown button[data-bs-toggle="dropdown"] {
+        margin-right: 1.2rem !important;         /* move os 3 pontinhos ~18–20px para dentro */
+        padding: 0.6rem 1rem !important;         /* área maior + respiro extra */
+    }
+
+    /* Hamburger também afastado */
+    .navbar-toggler {
+        margin-right: 1rem !important;
+        padding: 0.6rem 1rem !important;
+    }
+}
+
+/* Ajuste extra agressivo para ecrãs muito pequenos (onde o problema é pior) */
 @media (max-width: 576px) {
     .header-container .container-fluid {
-        padding-right: 1.8rem !important;   /* ≈ 28–30px de espaço na borda direita */
+        padding-left:  1.1rem !important;
+        padding-right: 2.4rem !important;        /* ainda mais espaço à direita */
     }
-    
+
     .dropdown button[data-bs-toggle="dropdown"] {
-        margin-right: 0.8rem !important;    /* empurra os 3 pontinhos para dentro */
+        margin-right: 1.5rem !important;         /* força mais afastamento */
+    }
+
+    .navbar-toggler {
+        margin-right: 1.2rem !important;
     }
 }
 
@@ -746,14 +756,13 @@ nav ul {
 </head>
 <body>
 <!-- HEADER PERFEITO — MOBILE: Hamburger + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
- <!-- Header - FUNDO VERMELHO ESCURO -->
-   
-<!-- HEADER PERFEITO — MOBILE: Hamburger + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
+ 
+<!-- HEADER – compacto, com 3 pontinhos visíveis e sem cortar na borda em mobile -->
 <header class="header-container">
-    <div class="container-fluid">
+    <div class="container-fluid px-2 px-md-3">  <!-- padding lateral pequeno em mobile -->
         <div class="d-flex align-items-center justify-content-between w-100">
 
-            <!-- Logo + Nome -->
+            <!-- Logo + Nome – sem margem extra -->
             <div class="logo-container">
                 <img src="img/logo1.png" alt="NextLynx Tech" class="logo-animate">
                 <h1 class="logo-text">NextLynx Tech</h1>
@@ -762,24 +771,24 @@ nav ul {
             <!-- MENU HORIZONTAL — SÓ A PARTIR DE lg (≥992px) -->
             <nav class="d-none d-lg-flex flex-grow-1 justify-content-center">
                 <ul class="nav">
-                    <li class="nav-item"><a href="index.html"      class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="servicos.html"   class="nav-link">Serviços</a></li>
-                    <li class="nav-item"><a href="portfolio.html"  class="nav-link">Portfólio</a></li>
-                    <li class="nav-item"><a href="blog.html"       class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="contactos.html"  class="nav-link">Contactos</a></li>
-                    <li class="nav-item"><a href="testemunhos.html"class="nav-link">Testemunhos</a></li>
-                    <li class="nav-item"><a href="faq.html"        class="nav-link">FAQ</a></li>
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="servicos.html" class="nav-link">Serviços</a></li>
+                    <li class="nav-item"><a href="portfolio.html" class="nav-link">Portfólio</a></li>
+                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="contactos.html" class="nav-link">Contactos</a></li>
+                    <li class="nav-item"><a href="testemunhos.html" class="nav-link">Testemunhos</a></li>
+                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
                 </ul>
             </nav>
 
-            <!-- DIREITA: Orçamento (desktop) + Hamburger (mobile) + 3 pontinhos (todas telas) -->
-            <div class="d-flex align-items-center gap-3">
+            <!-- DIREITA: Orçamento + Hamburger + 3 pontinhos -->
+            <div class="d-flex align-items-center gap-2 gap-md-3">
                 <!-- Orçamento só em desktop -->
                 <a href="pedir-orcamento.html" class="btn btn-orcamento d-none d-lg-block">
                     Pedir Orçamento
                 </a>
 
-                <!-- Hamburger oficial — SÓ MOBILE -->
+                <!-- Hamburger – SÓ MOBILE -->
                 <button class="navbar-toggler d-lg-none" 
                         type="button" 
                         data-bs-toggle="offcanvas" 
@@ -790,14 +799,14 @@ nav ul {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- 3 pontinhos verticais — TODAS AS TELAS -->
-                <div class="dropdown">
+                <!-- 3 pontinhos – com pequeno espaço à direita -->
+                <div class="dropdown ms-1 ms-md-2">  <!-- ms-1/ms-2 = margem esquerda pequena -->
                     <button class="btn p-0 text-white" 
                             type="button" 
                             data-bs-toggle="dropdown" 
                             aria-expanded="false"
                             aria-label="Mais opções">
-                        <i class="fas fa-ellipsis-v fs-4"></i>  <!-- Mais consistente que ⋮ -->
+                        <i class="fas fa-ellipsis-v fs-4"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="background:#8B0000; min-width:260px;">
                         <li><a class="dropdown-item text-white py-3" href="sobre.html"><i class="fas fa-users me-3"></i>Sobre Nós</a></li>
@@ -811,7 +820,7 @@ nav ul {
         </div>
     </div>
 
-    <!-- MENU OFFCANVAS — MOBILE -->
+    <!-- MENU OFFCANVAS – igual -->
     <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="mainMenu">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title">Menu NextLynx Tech</h5>
@@ -819,13 +828,13 @@ nav ul {
         </div>
         <div class="offcanvas-body">
             <ul class="nav flex-column text-center">
-                <li class="nav-item my-3"><a href="index.html"      class="nav-link text-white fs-4">Home</a></li>
-                <li class="nav-item my-3"><a href="servicos.html"   class="nav-link text-white fs-4">Serviços</a></li>
-                <li class="nav-item my-3"><a href="portfolio.html"  class="nav-link text-white fs-4">Portfólio</a></li>
-                <li class="nav-item my-3"><a href="blog.html"       class="nav-link text-white fs-4">Blog</a></li>
-                <li class="nav-item my-3"><a href="contactos.html"  class="nav-link text-white fs-4">Contactos</a></li>
-                <li class="nav-item my-3"><a href="testemunhos.html"class="nav-link text-white fs-4">Testemunhos</a></li>
-                <li class="nav-item my-3"><a href="faq.html"        class="nav-link text-white fs-4">FAQ</a></li>
+                <li class="nav-item my-3"><a href="index.html" class="nav-link text-white fs-4">Home</a></li>
+                <li class="nav-item my-3"><a href="servicos.html" class="nav-link text-white fs-4">Serviços</a></li>
+                <li class="nav-item my-3"><a href="portfolio.html" class="nav-link text-white fs-4">Portfólio</a></li>
+                <li class="nav-item my-3"><a href="blog.html" class="nav-link text-white fs-4">Blog</a></li>
+                <li class="nav-item my-3"><a href="contactos.html" class="nav-link text-white fs-4">Contactos</a></li>
+                <li class="nav-item my-3"><a href="testemunhos.html" class="nav-link text-white fs-4">Testemunhos</a></li>
+                <li class="nav-item my-3"><a href="faq.html" class="nav-link text-white fs-4">FAQ</a></li>
                 <li class="mt-5">
                     <a href="pedir-orcamento.html" class="btn btn-warning btn-lg w-100 fw-bold">
                         Pedir Orçamento
@@ -835,8 +844,6 @@ nav ul {
         </div>
     </div>
 </header>
-
-
 
     <!-- Hero Section -->
     <section class="hero-section">
