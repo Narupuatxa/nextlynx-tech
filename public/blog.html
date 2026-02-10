@@ -637,7 +637,9 @@ nav ul {
             50% { transform: scale(1.1); }
         }
 
-        /* RESPONSIVO - medidas consistentes com FAQ, testemunhos, serviços e index */
+    /* RESPONSIVO - medidas consistentes com FAQ, testemunhos, serviços, index e blog */
+
+/* Telas até 992px (tablets e abaixo) */
 @media (max-width: 992px) {
     .hero-title       { font-size: 3.5rem; }
     .hero-subtitle    { font-size: 1.4rem; }
@@ -647,11 +649,15 @@ nav ul {
     .logo-text        { font-size: 2rem; }
 }
 
-
+/* Telas até 768px (tablets pequenos e mobiles maiores) */
 @media (max-width: 768px) {
     .hero-title       { font-size: 2.8rem; }
     .hero-subtitle    { font-size: 1.2rem; }
-    .hero-btn         { padding: 1rem 2rem; font-size: 1.1rem; }
+    .hero-btn         { 
+        padding: 1rem 2rem; 
+        font-size: 1.1rem; 
+    }
+    
     .btn-whatsapp     { 
         width: 65px; 
         height: 65px; 
@@ -659,47 +665,48 @@ nav ul {
         bottom: 20px; 
         right: 20px; 
     }
+    
     .footer-info      { padding: 1.5rem; }
     .professional-img { height: 250px; }
     .logo-animate     { height: 65px; }
     .logo-text        { font-size: 1.8rem; }
     
     /* Ajuste comum para cards/artigos em mobile */
-    .blog-card, .post-card, .service-card { 
+    .blog-card, 
+    .post-card, 
+    .service-card { 
         margin-bottom: 2rem; 
     }
+}
 
+/* Telas até 576px (móveis pequenos) */
 @media (max-width: 576px) {
-            .hero-title { font-size: 2.3rem; }
-            .hero-subtitle { font-size: 1.1rem; }
-            .section-title { font-size: 2rem; }
-            .nav-link { font-size: 0.9rem; padding: 0.5rem !important; }
-            .footer-title { font-size: 1.2rem; }
-            .professional-img { height: 200px; }
-            .logo-animate { height: 55px; }
-            .logo-text { font-size: 1.6rem; }
-        }
-
-     .btn-whatsapp     { 
+    .hero-title       { font-size: 2.3rem; }
+    .hero-subtitle    { font-size: 1.1rem; }
+    .section-title    { font-size: 2rem; }
+    .nav-link         { 
+        font-size: 0.9rem; 
+        padding: 0.5rem !important; 
+    }
+    .footer-title     { font-size: 1.2rem; }
+    .professional-img { height: 200px; }
+    .logo-animate     { height: 55px; }
+    .logo-text        { font-size: 1.6rem; }
+    
+    .btn-whatsapp     { 
         width: 55px; 
         height: 55px; 
         font-size: 1.6rem; 
     }
     
     /* Ajuste fino para mobile pequeno */
-    .blog-card, .post-card, .service-card { 
+    .blog-card, 
+    .post-card, 
+    .service-card { 
         margin-bottom: 1.8rem; 
     }
 }
 
-@media (max-width: 576px) {
-    .header-container .container-fluid {
-        padding-right: 1.8rem !important;
-    }
-    .dropdown button {
-        margin-right: 0.8rem !important;
-    }
-}
     </style>
 </head>
 <body>
