@@ -940,6 +940,145 @@ nav ul {
     .form-control-sm, 
     .form-select-sm   { font-size: 0.9rem; padding: 0.8rem 1rem; }
 }
+.services-section {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 5rem;
+            color: var(--primary);
+            position: relative;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 100px;
+            height: 8px;
+            background: var(--gradient-warning);
+            transform: translateX(-50%);
+            border-radius: 3px;
+        }
+
+
+
+        /* ================================================ */
+/* ESTILIZAÇÃO DAS IMAGENS E CAPTIONS – PUBLICIDADE */
+/* ================================================ */
+
+.publicidade-section {
+    background: #f8f9fa;
+    padding: 6rem 0;
+}
+
+.publicidade-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+.publicidade-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 6px;
+    background: var(--gradient-warning);
+    border-radius: 3px;
+    box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+}
+
+/* Wrapper de cada imagem + caption */
+.pub-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    transition: all 0.4s ease;
+}
+
+.pub-item:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.22);
+}
+
+/* Imagem */
+.pub-img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+    display: block;
+}
+
+.pub-item:hover .pub-img {
+    transform: scale(1.08);
+}
+
+/* Caption (título abaixo da imagem) – ESTILIZADO */
+.pub-caption {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: center;
+    padding: 1.2rem 1rem;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.95);
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.pub-caption i {
+    color: var(--primary-light);
+    font-size: 1.1rem;
+}
+
+.pub-item:hover .pub-caption {
+    background: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .pub-img {
+        height: 280px;
+    }
+    
+    .pub-caption {
+        font-size: 1.15rem;
+        padding: 1rem 0.8rem;
+    }
+    
+    .publicidade-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .pub-img {
+        height: 240px;
+    }
+    
+    .pub-caption {
+        font-size: 1rem;
+    }
+}
 
     </style>
 </head>
@@ -1051,10 +1190,13 @@ nav ul {
     </section>
 
     <!-- Serviços em Destaque -->
-    <section class="services-section" id="servicos">
+   <section class="services-section">
         <div class="container">
-            <h2 class="section-title">Escolha o Seu Serviço</h2>
-            <div class="row g-5">
+        <!-- Título com animação idêntica à página "Sobre Nós" -->
+     <h2 class="section-title text-blue text-center mb-5" style="margin-top: 0 !important; opacity: 1 !important;">
+            Escolha o seu Serviço
+        </h2>
+        <div class="row g-5">
                 <!-- DESIGN GRÁFICO -->
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card card-design visible">
@@ -1153,37 +1295,58 @@ nav ul {
     </section>
 
     <!-- PUBLICIDADE POR BAIXO — IMAGENS 100% VISÍVEIS -->
-    <section class="publicidade-section">
-        <div class="container">
-            <h2 class="publicidade-title">Exemplos de Trabalho Real</h2>
-            <div class="row g-5">
-                <!-- Flyer -->
-                <div class="col-lg-3 col-md-6 col-12">
+    <!-- Publicidade – EXEMPLOS DE TRABALHO REAL ESTILIZADOS -->
+<section class="publicidade-section py-5">
+    <div class="container">
+        <h2 class="publicidade-title text-center mb-5">Exemplos de Trabalho Real</h2>
+        
+        <div class="row g-4 justify-content-center">
+            <!-- Flyer -->
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="pub-item">
                     <img src="img/fitness2 ATUAL.png" class="pub-img" alt="Flyer Profissional"
                          onerror="this.src='https://via.placeholder.com/600x400/FF6B6B/FFFFFF?text=Flyer+Promocional';">
-                    <p class="pub-caption">Flyer Promocional</p>
+                    <p class="pub-caption">
+                        <i class="fas fa-palette me-2"></i> Flyer Promocional
+                    </p>
                 </div>
-                <!-- Cartão de Visita -->
-                <div class="col-lg-3 col-md-6 col-12">
+            </div>
+
+            <!-- Cartão de Visita -->
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="pub-item">
                     <img src="img/cartao-visita.jpg" class="pub-img" alt="Cartão de Visita"
                          onerror="this.src='https://images.tcdn.com.br/img/img_prod/613021/cartao_de_visita_premium_84_1_20180414154437.jpg';">
-                    <p class="pub-caption">Cartão de Visita Premium</p>
+                    <p class="pub-caption">
+                        <i class="fas fa-id-card me-2"></i> Cartão de Visita Premium
+                    </p>
                 </div>
-                <!-- Apresentação PowerPoint -->
-                <div class="col-lg-3 col-md-6 col-12">
+            </div>
+
+            <!-- Apresentação PowerPoint -->
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="pub-item">
                     <img src="img/powerpoint-exemplo.jpg" class="pub-img" alt="PowerPoint"
                          onerror="this.src='https://i.ytimg.com/vi/g0qBWZpk60g/maxresdefault.jpg';">
-                    <p class="pub-caption">Slides de Apresentação</p>
+                    <p class="pub-caption">
+                        <i class="fas fa-chalkboard-teacher me-2"></i> Slides de Apresentação
+                    </p>
                 </div>
-                <!-- Sistema de Venda -->
-                <div class="col-lg-3 col-md-6 col-12">
+            </div>
+
+            <!-- Sistema de Venda -->
+            <div class="col-lg-3 col-md-6 col-12">
+                <div class="pub-item">
                     <img src="img/deshbooord 12.png" class="pub-img" alt="Sistema de Venda"
                          onerror="this.src='https://via.placeholder.com/600x400/00F2FE/FFFFFF?text=Dashboard+de+Vendas';">
-                    <p class="pub-caption">Dashboard de Vendas</p>
+                    <p class="pub-caption">
+                        <i class="fas fa-tachometer-alt me-2"></i> Dashboard de Vendas
+                    </p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Promoção -->
     <section class="promo-section">
