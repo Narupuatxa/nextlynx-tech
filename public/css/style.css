@@ -315,4 +315,41 @@ body > header + section {
         padding-top: 1.5rem !important;
     }
 }
+/* ====================== LOGO E TEXTO – TAMANHO CONSISTENTE EM TODAS AS PÁGINAS ====================== */
 
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.9rem;           /* base maior e legível */
+    font-weight: 900;
+    margin: 0;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    letter-spacing: 1.3px;
+    white-space: nowrap;
+}
+
+/* Media queries uniformes – igual às páginas index/servicos/sobre */
+@media (max-width: 1200px) {
+    .logo-animate { height: 70px; }
+    .logo-text     { font-size: 1.9rem; letter-spacing: 1.3px; }
+}
+
+@media (max-width: 992px) {
+    .logo-animate { height: 75px; }
+    .logo-text     { font-size: 2.0rem; letter-spacing: 1.4px; } /* maior no tablet */
+}
+
+@media (max-width: 768px) {
+    .logo-animate { height: 65px; }
+    .logo-text     { font-size: 1.8rem; letter-spacing: 1.1px; } /* bom no mobile médio */
+}
+
+@media (max-width: 576px) {
+    .logo-animate { height: 60px; }
+    .logo-text     { font-size: 1.65rem; letter-spacing: 1.0px; } /* legível no telemóvel pequeno */
+}
+
+@media (max-width: 400px) {
+    .logo-animate { height: 55px; }
+    .logo-text     { font-size: 1.5rem; letter-spacing: 0.9px; } /* ainda bom, não minúsculo */
+}
