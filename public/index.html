@@ -419,68 +419,111 @@ nav ul {
             font-weight: 500;
         }
 
-        /* Estudantes em Destaque - 10 ESTUDANTES */
-        .students-section {
-            padding: 5rem 0;
-            background: var(--gradient-bg);
-        }
+      
 
-        .student-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            transition: all 0.5s ease;
-            opacity: 0;
-            transform: scale(0.9);
-            height: 100%;
-        }
+/* ===================================================== */
+/* CARDS DE ESTUDANTES – ELEGANTES, ANIMADOS E PROFISSIONAIS */
+/* ===================================================== */
 
-        .student-card.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
+.students-section {
+    padding-top: 2rem !important;
+    padding-bottom: 5rem !important;
+    background: var(--gradient-bg);
+}
 
-        .student-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
-        }
+.students-section .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 3rem !important;
+    font-size: 2.8rem !important;
+    font-weight: 900 !important;
+    color: white !important;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-align: center !important;
+}
 
-        .student-img {
-            height: 180px;
-            object-fit: cover;
-            filter: brightness(0.9);
-            transition: filter 0.4s ease;
-        }
+/* Card elegante */
+.student-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    height: 100%;
+    border: 1px solid rgba(255,255,255,0.2);
+}
 
-        .student-card:hover .student-img {
-            filter: brightness(1.1);
-        }
+.student-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.22);
+}
 
-        .student-body {
-            padding: 1.5rem;
-            text-align: center;
-        }
+/* Imagem centralizada e sem corte no rosto */
+.student-img-container {
+    height: 190px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
 
-        .student-name {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
+.student-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;      /* foca no topo (rosto/cabeça) */
+    transition: transform 0.6s ease;
+}
 
-        .student-uni {
-            font-size: 0.95rem;
-            color: #6c757d;
-            margin-bottom: 1rem;
-        }
+.student-card:hover .student-img {
+    transform: scale(1.12);
+}
 
-        .student-quote {
-            font-style: italic;
-            color: #495057;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
+/* Nome destacado */
+.student-name {
+    font-size: 1.4rem !important;
+    font-weight: 800 !important;
+    color: var(--primary) !important;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+/* Universidade em badge elegante */
+.student-uni-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(106, 17, 203, 0.1);
+    color: var(--primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(106, 17, 203, 0.2);
+}
+
+/* Quote elegante */
+.student-quote {
+    font-style: italic;
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+/* Animação suave ao carregar */
+.student-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.student-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
         /* Academia em Foco - NOVA SEÇÃO */
         .academy-section {
@@ -1001,7 +1044,9 @@ nav ul {
     <!-- Serviços em Destaque -->
     <section class="services-section">
         <div class="container">
-            <h2 class="section-title">Nossos Serviços Estrela</h2>
+          <h2 class="section-title text-blue text-center mb-4" style="margin-top: 0 !important; opacity: 1 !important;">
+            Nossos Serviços Estrela
+        </h2>
             <div class="row g-4">
                 <!-- Design Gráfico -->
                 <div class="col-lg-4 col-md-6">
@@ -1077,125 +1122,180 @@ nav ul {
     </section>
 
     <!-- Estudantes em Destaque - 10 ESTUDANTES -->
-    <section class="students-section">
-        <div class="container">
-            <h2 class="section-title text-blue text-center mb-4" style="margin-top: 0 !important; opacity: 1 !important;">
+    
+
+<!-- Estudantes em Destaque – ESTILIZADO, ANIMADO E PROFISSIONAL -->
+<section class="students-section py-5">
+    <div class="container">
+        <!-- Título principal – elegante e centralizado -->
+        <h2 class="section-title text-blue text-center mb-5" style="margin-top: 0; opacity: 1;">
             Estudantes que Acreditaram no Nosso Trabalho
         </h2>
-            <div class="row g-4">
-                <!-- 1 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://www.shutterstock.com/image-photo/portrait-happy-young-black-student-260nw-2627769095.jpg" class="student-img" alt="Amélia">
-                        <div class="student-body">
-                            <div class="student-name">Amélia Chongo</div>
-                            <div class="student-uni">UEM - Design</div>
-                            <p class="student-quote">"Meu TCC foi aprovado com louvor graças aos slides incríveis!"</p>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+                    <div class="student-img-container">
+                        <img src="https://www.shutterstock.com/image-photo/portrait-happy-young-black-student-260nw-2627769095.jpg" class="student-img" alt="Amélia Chongo">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Amélia Chongo</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UEM - Design
                         </div>
+                        <p class="student-quote">"Meu TCC foi aprovado com louvor graças aos slides incríveis!"</p>
                     </div>
                 </div>
-                <!-- 2 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VY3cy7qHsREogE3B35A8L7Mest8HFrMADQ&s" class="student-img" alt="Joaquim">
-                        <div class="student-body">
-                            <div class="student-name">Joaquim Nhaca</div>
-                            <div class="student-uni">UCM - Informática</div>
-                            <p class="student-quote">"Sistema de gestão para meu projeto final. Nota 10!"</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                    <div class="student-img-container">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VY3cy7qHsREogE3B35A8L7Mest8HFrMADQ&s" class="student-img" alt="Joaquim Nhaca">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Joaquim Nhaca</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UCM - Informática
                         </div>
+                        <p class="student-quote">"Sistema de gestão para meu projeto final. Nota 10!"</p>
                     </div>
                 </div>
-                <!-- 3 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://st.depositphotos.com/1011643/2013/i/450/depositphotos_20130467-stock-photo-beautiful-female-african-american-university.jpg" class="student-img" alt="Fátima">
-                        <div class="student-body">
-                            <div class="student-name">Fátima Mabjaia</div>
-                            <div class="student-uni">UniLúrio - Gestão</div>
-                            <p class="student-quote">"Loja online vendeu 300% mais no primeiro mês!"</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+                    <div class="student-img-container">
+                        <img src="https://st.depositphotos.com/1011643/2013/i/450/depositphotos_20130467-stock-photo-beautiful-female-african-american-university.jpg" class="student-img" alt="Fátima Mabjaia">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Fátima Mabjaia</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UniLúrio - Gestão
                         </div>
+                        <p class="student-quote">"Loja online vendeu 300% mais no primeiro mês!"</p>
                     </div>
                 </div>
-                <!-- 4 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://randomuser.me/api/portraits/men/49.jpg" class="student-img" alt="Domingos">
-                        <div class="student-body">
-                            <div class="student-name">Domingos Zandamela</div>
-                            <div class="student-uni">UniSced - Agronomia</div>
-                            <p class="student-quote">"Website para meu projeto rural. Aprovado com distinção!"</p>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                    <div class="student-img-container">
+                        <img src="https://randomuser.me/api/portraits/men/49.jpg" class="student-img" alt="Domingos Zandamela">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Domingos Zandamela</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UniSced - Agronomia
                         </div>
+                        <p class="student-quote">"Website para meu projeto rural. Aprovado com distinção!"</p>
                     </div>
                 </div>
-                <!-- 5 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://isctem.ac.mz/wp-content/uploads/2025/09/490462050_1129408875893010_2336014043087632781_n.jpg" class="student-img" alt="Carla">
-                        <div class="student-body">
-                            <div class="student-name">Carla Munguambe</div>
-                            <div class="student-uni">ISCTEM - Contabilidade</div>
-                            <p class="student-quote">"Artigo científico publicado na SciELO!"</p>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
+                    <div class="student-img-container">
+                        <img src="https://isctem.ac.mz/wp-content/uploads/2025/09/490462050_1129408875893010_2336014043087632781_n.jpg" class="student-img" alt="Carla Munguambe">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Carla Munguambe</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> ISCTEM - Contabilidade
                         </div>
+                        <p class="student-quote">"Artigo científico publicado na SciELO!"</p>
                     </div>
                 </div>
-                <!-- 6 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://www.up.ac.mz/images/2025/11/graduacao/UPMaputo_Graduacao_2025_3.jpg" class="student-img" alt="Elias">
-                        <div class="student-body">
-                            <div class="student-name">Elias Tembe</div>
-                            <div class="student-uni">UP - Engenharia</div>
-                            <p class="student-quote">"App mobile para monitoramento de culturas. Prêmio de inovação!"</p>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <div class="student-img-container">
+                        <img src="https://www.up.ac.mz/images/2025/11/graduacao/UPMaputo_Graduacao_2025_3.jpg" class="student-img" alt="Elias Tembe">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Elias Tembe</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UP - Engenharia
                         </div>
+                        <p class="student-quote">"App mobile para monitoramento de culturas. Prêmio de inovação!"</p>
                     </div>
                 </div>
-                <!-- 7 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://uem.mz/wp-content/uploads/2024/11/Foto_Celia.png" class="student-img" alt="Sónia">
-                        <div class="student-body">
-                            <div class="student-name">Sónia Cuna</div>
-                            <div class="student-uni">UCM - Relações Internacionais</div>
-                            <p class="student-quote">"Monografia com pesquisa bibliográfica impecável!"</p>
+            </div>
+
+            <!-- Card 7 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.7s;">
+                    <div class="student-img-container">
+                        <img src="https://uem.mz/wp-content/uploads/2024/11/Foto_Celia.png" class="student-img" alt="Sónia Cuna">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Sónia Cuna</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UCM - Relações Internacionais
                         </div>
+                        <p class="student-quote">"Monografia com pesquisa bibliográfica impecável!"</p>
                     </div>
                 </div>
-                <!-- 8 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://randomuser.me/api/portraits/men/53.jpg" class="student-img" alt="Raul">
-                        <div class="student-body">
-                            <div class="student-name">Raul Macuácua</div>
-                            <div class="student-uni">UniZambeze - Direito</div>
-                            <p class="student-quote">"Formatação APA perfeita. Aprovado na primeira entrega!"</p>
+            </div>
+
+            <!-- Card 8 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.8s;">
+                    <div class="student-img-container">
+                        <img src="https://randomuser.me/api/portraits/men/53.jpg" class="student-img" alt="Raul Macuácua">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Raul Macuácua</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UniZambeze - Direito
                         </div>
+                        <p class="student-quote">"Formatação APA perfeita. Aprovado na primeira entrega!"</p>
                     </div>
                 </div>
-                <!-- 9 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://api.uniscestudantil.org.br/images/aluna_unisc.png" class="student-img" alt="Lúcia">
-                        <div class="student-body">
-                            <div class="student-name">Lúcia Chongo</div>
-                            <div class="student-uni">UCM- Gestão de Marketing</div>
-                            <p class="student-quote">"Portfólio digital para defesa final. Banca impressionada!"</p>
+            </div>
+
+            <!-- Card 9 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.9s;">
+                    <div class="student-img-container">
+                        <img src="https://api.uniscestudantil.org.br/images/aluna_unisc.png" class="student-img" alt="Lúcia Chongo">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">Lúcia Chongo</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> UCM - Gestão de Marketing
                         </div>
+                        <p class="student-quote">"Portfólio digital para defesa final. Banca impressionada!"</p>
                     </div>
                 </div>
-                <!-- 10 -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="student-card">
-                        <img src="https://randomuser.me/api/portraits/men/55.jpg" class="student-img" alt="António">
-                        <div class="student-body">
-                            <div class="student-name">António Muando</div>
-                            <div class="student-uni">ISCTAC - Medicina</div>
-                            <p class="student-quote">"Artigo médico com APA 7ª edição. Publicado em revista internacional!"</p>
+            </div>
+
+            <!-- Card 10 -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 1.0s;">
+                    <div class="student-img-container">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" class="student-img" alt="António Muando">
+                    </div>
+                    <div class="student-body">
+                        <h5 class="student-name">António Muando</h5>
+                        <div class="student-uni-badge">
+                            <i class="fas fa-university me-1"></i> ISCTAC - Medicina
                         </div>
+                        <p class="student-quote">"Artigo médico com APA 7ª edição. Publicado em revista internacional!"</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Academia em Foco - NOVA SEÇÃO -->
     <section class="academy-section">
