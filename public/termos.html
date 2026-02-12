@@ -211,6 +211,44 @@ nav ul {
 }
 
 
+/* ====================== HEADER – TAMANHO CONSISTENTE EM TODAS AS PÁGINAS ====================== */
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;           /* tamanho base maior e consistente */
+    font-weight: 900;
+    margin: 0;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    letter-spacing: 1.2px;
+    white-space: nowrap;
+}
+
+/* Logo e texto – tamanhos progressivos e mais legíveis no mobile */
+@media (max-width: 1200px) {
+    .logo-animate { height: 70px; }
+    .logo-text     { font-size: 1.8rem; letter-spacing: 1.2px; }
+}
+
+@media (max-width: 992px) {
+    .logo-animate { height: 75px; }
+    .logo-text     { font-size: 2rem; letter-spacing: 1.4px; } /* maior que antes */
+}
+
+@media (max-width: 768px) {
+    .logo-animate { height: 65px; }
+    .logo-text     { font-size: 1.8rem; letter-spacing: 1.1px; } /* igual às outras páginas */
+}
+
+@media (max-width: 576px) {
+    .logo-animate { height: 60px; }
+    .logo-text     { font-size: 1.6rem; letter-spacing: 0.9px; } /* legível, não minúsculo */
+}
+
+@media (max-width: 400px) {
+    .logo-animate { height: 55px; }
+    .logo-text     { font-size: 1.45rem; letter-spacing: 0.8px; } /* ainda bom, não 0.95rem */
+}
 
 @media (max-width: 400px) {
     .logo-animate { height: 55px; }
@@ -536,21 +574,21 @@ nav ul {
             text-decoration: underline;
         }
 
-        /* WhatsApp Button — ORGANIZADO E PROFISSIONAL */
-        .btn-whatsapp {
+        /* WhatsApp Button */
+       .btn-whatsapp {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
+            bottom: 25px;
+            right: 25px;
+            width: 65px;
+            height: 65px;
             background: #25d366;
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 12px 35px rgba(37, 211, 102, 0.5);
+            font-size: 2rem;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
             z-index: 1000;
             transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
             animation: pulse 2s infinite;
@@ -558,8 +596,8 @@ nav ul {
         }
 
         .btn-whatsapp:hover {
-            transform: scale(1.15) translateY(-5px);
-            box-shadow: 0 20px 45px rgba(37, 211, 102, 0.7);
+            transform: scale(1.12) translateY(-4px);
+            box-shadow: 0 18px 40px rgba(37, 211, 102, 0.7);
             background: #128c7e;
         }
 
@@ -571,46 +609,38 @@ nav ul {
             content: 'Chat';
             position: absolute;
             top: 50%;
-            left: -80px;
+            left: -75px;
             transform: translateY(-50%);
             background: #25d366;
             color: white;
-            padding: 8px 15px;
+            padding: 7px 14px;
             border-radius: 25px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             white-space: nowrap;
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
         }
 
         .btn-whatsapp:hover::before {
             opacity: 1;
             visibility: visible;
-            left: -90px;
-        }
-        .footer-bottom {
-            border-top: 1px solid #333333;
-            padding-top: 2.5rem;
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 0.95rem;
-            color: #cccccc;
+            left: -85px;
         }
 
         .btn-whatsapp::after {
             content: '';
             position: absolute;
             top: 50%;
-            left: -15px;
+            left: -14px;
             transform: translateY(-50%);
             width: 0;
             height: 0;
-            border-left: 10px solid #25d366;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
+            border-left: 9px solid #25d366;
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s ease;
@@ -619,20 +649,35 @@ nav ul {
         .btn-whatsapp:hover::after {
             opacity: 1;
             visibility: visible;
-            left: -20px;
+            left: -18px;
         }
+
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from { transform: translateY(-120px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { transform: translateY(60px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
         }
-
-
         /* Responsive */
         @media (max-width: 992px) {
             .hero-title { font-size: 3.5rem; }
