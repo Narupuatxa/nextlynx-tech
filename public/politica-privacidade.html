@@ -888,69 +888,6 @@ nav ul {
         right: 20px; 
     }
 
-/* ====================== LOGO E TEXTO – TAMANHO CONSISTENTE EM TODAS AS PÁGINAS ====================== */
-
-.logo-text {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.9rem;           /* base maior e legível */
-    font-weight: 900;
-    margin: 0;
-    color: white;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    letter-spacing: 1.3px;
-    white-space: nowrap;
-}
-
-/* Media queries uniformes – igual às páginas index/servicos/sobre */
-@media (max-width: 1200px) {
-    .logo-animate { height: 70px; }
-    .logo-text     { font-size: 1.9rem; letter-spacing: 1.3px; }
-}
-
-@media (max-width: 992px) {
-    .logo-animate { height: 75px; }
-    .logo-text     { font-size: 2.0rem; letter-spacing: 1.4px; } /* maior no tablet */
-}
-
-@media (max-width: 768px) {
-    .logo-animate { height: 65px; }
-    .logo-text     { font-size: 1.8rem; letter-spacing: 1.1px; } /* bom no mobile médio */
-}
-
-@media (max-width: 576px) {
-    .logo-animate { height: 60px; }
-    .logo-text     { font-size: 1.65rem; letter-spacing: 1.0px; } /* legível no telemóvel pequeno */
-    .header-container .container-fluid { padding-left: 0.8rem; padding-right: 0.8rem; }
-    
-}
-
-/* Corrige alinhamento do header no mobile – evita deslocamento para direita */
-@media (max-width: 992px) {
-    .header-container .container-fluid {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        justify-content: space-between !important;
-    }
-
-    .logo-container {
-        flex-shrink: 0;
-        min-width: auto;
-    }
-
-    .d-flex.align-items-center.gap-3 {  /* grupo da direita */
-        justify-content: flex-end;
-        flex-shrink: 0;
-        margin-left: auto; /* empurra para a direita sem colar na borda */
-    }
-
-    /* Centraliza melhor o logo quando menu desaparece */
-    .logo-text {
-        font-size: 1.7rem !important; /* um pouco maior para equilíbrio */
-    }
-}
-
-
-
         }
     </style>
 </head>
