@@ -714,28 +714,6 @@ nav ul {
         right: 20px; 
     }
 
-
-    /* Mostra o "Chat" quando o botão está ativo (clique/pressão) */
-.btn-whatsapp.active::before {
-    opacity: 1 !important;
-    visibility: visible !important;
-    left: -85px !important;
-}
-
-.btn-whatsapp.active::after {
-    opacity: 1 !important;
-    visibility: visible !important;
-    left: -20px !important;
-}
-
-/* Garante que no mobile o hover não interfira */
-@media (max-width: 992px) {
-    .btn-whatsapp:hover::before,
-    .btn-whatsapp:hover::after {
-        opacity: 0; /* desativa hover normal no mobile */
-    }
-}
-
         
     </style>
 </head>
@@ -1001,38 +979,5 @@ nav ul {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/script.js"></script>
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const whatsappBtn = document.querySelector('.btn-whatsapp');
-        if (!whatsappBtn) return;
-
-        // Desktop: mantém o hover normal
-        // Mobile: adiciona classe 'active' ao pressionar (touchstart/touchend)
-        whatsappBtn.addEventListener('touchstart', function(e) {
-            e.preventDefault(); // evita scroll ou zoom acidental
-            whatsappBtn.classList.add('active');
-        });
-
-        whatsappBtn.addEventListener('touchend', function() {
-            whatsappBtn.classList.remove('active');
-        });
-
-        // Também suporta clique longo no mobile (opcional)
-        let timer;
-        whatsappBtn.addEventListener('touchstart', function() {
-            timer = setTimeout(() => {
-                whatsappBtn.classList.add('active');
-            }, 300); // após 300ms de pressão longa
-        });
-
-        whatsappBtn.addEventListener('touchend', function() {
-            clearTimeout(timer);
-            setTimeout(() => {
-                whatsappBtn.classList.remove('active');
-            }, 1500); // mantém visível por 1.5s após soltar
-        });
-    });
-</script>
 </body>
 </html>
