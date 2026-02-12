@@ -807,6 +807,51 @@ nav ul {
 }
 
 
+/* ====================== HEADER – TAMANHO CONSISTENTE EM TODAS AS PÁGINAS ====================== */
+
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;           /* tamanho base maior e consistente */
+    font-weight: 900;
+    margin: 0;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    letter-spacing: 1.2px;
+    white-space: nowrap;
+}
+
+/* Logo e texto – tamanhos progressivos e mais legíveis no mobile */
+@media (max-width: 1200px) {
+    .logo-animate { height: 70px; }
+    .logo-text     { font-size: 1.8rem; letter-spacing: 1.2px; }
+}
+
+@media (max-width: 992px) {
+    .logo-animate { height: 75px; }
+    .logo-text     { font-size: 2rem; letter-spacing: 1.4px; } /* maior que antes */
+}
+
+@media (max-width: 768px) {
+    .logo-animate { height: 65px; }
+    .logo-text     { font-size: 1.8rem; letter-spacing: 1.1px; } /* igual às outras páginas */
+}
+
+@media (max-width: 576px) {
+    .logo-animate { height: 60px; }
+    .logo-text     { font-size: 1.6rem; letter-spacing: 0.9px; } /* legível, não minúsculo */
+}
+
+@media (max-width: 400px) {
+    .logo-animate { height: 55px; }
+    .logo-text     { font-size: 1.45rem; letter-spacing: 0.8px; } /* ainda bom, não 0.95rem */
+}
+
+@media (max-width: 400px) {
+    .logo-animate { height: 55px; }
+    .logo-text     { font-size: 1.5rem; letter-spacing: 0.9px; } /* ainda bom, não minúsculo */
+}
+   
+
 
 
         }
