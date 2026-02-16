@@ -255,16 +255,67 @@ nav ul {
     .logo-text     { font-size: 1.5rem; letter-spacing: 0.9px; } /* ainda bom, não minúsculo */
 }
    
-        /* Hero Section */
-        .hero-section {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 7rem 0 5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-        }
+     
+/* Hero Section – TÍTULO MAIS CONTROLADO NO MOBILE */
+.hero-section {
+    padding: 6rem 1rem 4rem !important; /* reduz padding em cima/baixo para não empurrar demais */
+    text-align: center;
+}
+
+.hero-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4.2rem;              /* ligeiramente menor no desktop */
+    font-weight: 900;
+    line-height: 1.1;               /* ajuda a quebrar melhor */
+    margin-bottom: 1.5rem;
+    text-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    animation: slideInDown 1.2s ease-out;
+    word-break: break-word;         /* quebra palavras longas */
+    hyphens: auto;                  /* hifenização automática */
+    max-width: 95%;                 /* evita tocar nas bordas */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Mobile: tamanho e centralização perfeita */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 3.2rem !important;
+        line-height: 1.15;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.8rem !important;
+        padding: 0 0.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.3rem !important;
+        padding: 0 1rem;
+    }
+    
+    .hero-section {
+        padding: 5rem 0.8rem 3rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.4rem !important;  /* cabe bem sem tocar bordas */
+        line-height: 1.2;
+    }
+    
+    .hero-btn {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+
+
 
         .hero-section::before {
             content: '';
