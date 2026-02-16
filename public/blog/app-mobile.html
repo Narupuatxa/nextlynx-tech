@@ -256,66 +256,47 @@ nav ul {
 }
    
      
-/* Hero Section – TÍTULO MAIS CONTROLADO NO MOBILE */
-.hero-section {
-    padding: 6rem 1rem 4rem !important; /* reduz padding em cima/baixo para não empurrar demais */
-    text-align: center;
-}
-
+/* Corrige centralização e evita colar na borda esquerda no mobile */
 .hero-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 4.2rem;              /* ligeiramente menor no desktop */
-    font-weight: 900;
-    line-height: 1.1;               /* ajuda a quebrar melhor */
-    margin-bottom: 1.5rem;
-    text-shadow: 0 10px 25px rgba(0,0,0,0.4);
-    animation: slideInDown 1.2s ease-out;
-    word-break: break-word;         /* quebra palavras longas */
+    font-size: 4.2rem;              /* ligeiramente menor para caber melhor */
+    line-height: 1.15;
+    word-break: break-word;         /* força quebra de palavras longas */
     hyphens: auto;                  /* hifenização automática */
-    max-width: 95%;                 /* evita tocar nas bordas */
+    max-width: 100%;                /* ocupa toda largura disponível */
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1.2rem;              /* margem interna nas laterais */
+    box-sizing: border-box;
 }
 
-/* Mobile: tamanho e centralização perfeita */
-@media (max-width: 992px) {
-    .hero-title {
-        font-size: 3.2rem !important;
-        line-height: 1.15;
-        padding: 0 1rem;
-    }
-}
-
+/* Ajustes específicos para mobile – evita colar na borda esquerda */
 @media (max-width: 768px) {
     .hero-title {
         font-size: 2.8rem !important;
-        padding: 0 0.8rem;
+        padding: 0 1.5rem !important;   /* mais espaço lateral */
+        text-align: center !important;
+        margin: 0 auto !important;
     }
-    
-    .hero-subtitle {
-        font-size: 1.3rem !important;
-        padding: 0 1rem;
-    }
-    
-    .hero-section {
-        padding: 5rem 0.8rem 3rem !important;
+
+    /* Classe extra para títulos longos como "Desenvolvimento..." */
+    .hero-title--long {
+        font-size: 2.6rem !important;   /* um pouco menor para caber inteiro */
+        line-height: 1.2;
+        padding: 0 1.8rem !important;   /* mais margem para não colar esquerda */
     }
 }
 
 @media (max-width: 576px) {
     .hero-title {
-        font-size: 2.4rem !important;  /* cabe bem sem tocar bordas */
-        line-height: 1.2;
+        font-size: 2.4rem !important;
+        padding: 0 1.2rem !important;
     }
     
-    .hero-btn {
-        padding: 1rem 2rem;
-        font-size: 1.1rem;
+    .hero-title--long {
+        font-size: 2.2rem !important;
+        padding: 0 1.5rem !important;
     }
 }
-
-
-
 
         .hero-section::before {
             content: '';
@@ -973,7 +954,7 @@ nav ul {
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container position-relative">
-            <h1 class="hero-title">Desenvolvimento de Apps Mobile</h1>
+           <h1 class="hero-title hero-title--long">Desenvolvimento de Apps Mobile</h1>
             <p class="hero-subtitle">Do conceito ao lançamento: 8 etapas para criar apps que conquistam usuários em Moçambique</p>
             <a href="#artigo" class="btn hero-btn">
                 Ver o Processo Completo
