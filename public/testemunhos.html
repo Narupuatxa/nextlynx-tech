@@ -9,6 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
 
 /* CORREÇÃO DE SCROLL TREMENTE / ABANAR EM TELEMÓVEL */
@@ -115,6 +117,7 @@ body {
     white-space: nowrap;
 }
 
+
 /* Menu horizontal */
 nav {
     flex: 1;
@@ -198,18 +201,48 @@ nav ul {
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             margin: 0 auto 1rem;
         }
-        .stars {
-            color: #ffd700;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
+      
+
+#stars-input {
+            cursor: pointer !important;
         }
-        .testimonial-text {
-            font-style: italic;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
+        #stars-input .star {
+            cursor: pointer !important;
+            color: #ddd;
+            transition: all 0.3s ease;
+            font-size: 3rem;
+            padding: 0 8px;
+        }
+        #stars-input .star:hover,
+        #stars-input .star.active,
+        #stars-input .star:hover ~ .star {
+            color: #ffd700 !important;
+        }
+        #stars-input .fas.fa-star {
+            color: #ffd700 !important;
+        }
+
+        /* Teu CSS restante (mantido) */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y pinch-zoom;
+        }
+        body {
             position: relative;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #2c3e50;
         }
+
+
+
         .client-name {
             font-weight: 700;
             color: #2c3e50;
@@ -546,6 +579,202 @@ nav ul {
     animation-fill-mode: forwards !important;
     animation-iteration-count: 1 !important;
 }
+
+
+    /* Cards flutuantes reais */
+    .testimonial-card {
+        transition: all 0.5s ease;
+        animation: float 7s ease-in-out infinite;
+        animation-delay: calc(var(--delay) * 0.5s);
+    }
+    .testimonial-card:hover {
+        transform: translateY(-20px) scale(1.03) !important;
+        animation-play-state: paused;
+        box-shadow: 0 30px 70px rgba(0,0,0,0.25) !important;
+    }
+
+ .stars-input .star {
+    color: #ddd;
+    cursor: pointer !important;
+    transition: color 0.3s;
+    font-size: 2.5rem; /* maior para facilitar clique */
+}
+
+.stars-input .star.active,
+.stars-input .star:hover,
+.stars-input .star:hover ~ .star {
+    color: #ffd700 !important;
+}
+
+
+/* ================= ESTILIZAÇÃO PROFISSIONAL DO FORMULÁRIO ================= */
+#testimonial-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+    transition: all 0.4s ease;
+}
+
+#testimonial-form:hover {
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+}
+
+#testimonial-form .card-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+#testimonial-form .card-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    border-radius: 2px;
+}
+
+/* Labels e inputs mais elegantes */
+#testimonial-form .form-label {
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 0.6rem;
+}
+
+#testimonial-form .form-control,
+#testimonial-form .form-control:focus {
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+#testimonial-form .form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(106, 17, 203, 0.25);
+}
+
+/* Estrelas do formulário - maior, mais chamativas */
+#stars-input {
+    cursor: pointer;
+    user-select: none;
+    padding: 1rem 0;
+}
+
+#stars-input .star {
+    color: #ddd;
+    font-size: 3.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    padding: 0 10px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#stars-input .star.active,
+#stars-input .star:hover,
+#stars-input .star:hover ~ .star {
+    color: #ffd700 !important;
+    transform: scale(1.2);
+    text-shadow: 0 4px 12px rgba(255, 215, 0, 0.5);
+}
+
+/* Botão Enviar - destaque forte */
+#testimonial-form .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border: none;
+    border-radius: 50px;
+    padding: 1rem 3rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 30px rgba(106, 17, 203, 0.35);
+}
+
+#testimonial-form .btn-primary:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(106, 17, 203, 0.5);
+}
+
+/* ================= ESTILIZAÇÃO PROFISSIONAL DOS CARDS ================= */
+.testimonial-card {
+    border: none;
+    border-radius: 24px;
+    overflow: hidden;
+    background: white;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-15px) scale(1.04);
+    box-shadow: 0 30px 70px rgba(0,0,0,0.18);
+}
+
+.testimonial-card .card-body {
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9ff 100%);
+}
+
+.client-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-bottom: 1.5rem;
+}
+
+.stars {
+    font-size: 2rem;
+    color: #ffd700;
+    letter-spacing: 5px;
+    margin: 1.2rem 0;
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 1.8rem;
+}
+
+.client-name {
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 0.4rem;
+}
+
+.text-muted small {
+    font-size: 1rem;
+    color: #777;
+    font-weight: 500;
+}
+
+/* Animação de entrada suave nos cards */
+.testimonial-card {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeInUpCard 1s ease forwards;
+    animation-delay: calc(var(--delay) * 0.2s);
+}
+
+@keyframes fadeInUpCard {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
     </style>
 </head>
 <body>
@@ -638,34 +867,75 @@ nav ul {
             </ul>
         </div>
     </div>
+
 </header>
 
 
 
-    <!-- Hero -->
-    <!-- Hero – TÍTULO ÚNICO COM ANIMAÇÃO -->
-<!-- Hero – TÍTULO ÚNICO COM ANIMAÇÃO -->
-<section class="text-center py-5 bg-light">
-    <div class="container">
-        <h1 class="display-3 hero-title fadeInUp">20 Estudantes Moçambicanos e 40 Profissionais</h1>
-        <p class="lead text-muted fadeInUp" style="animation-delay: 0.6s;">20 estudantes da UEM, UCM, UniLúrio, UniSced, UP + 40 profissionais</p>
-        <div class="stars mb-4 fadeInUp" style="animation-delay: 0.9s;">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            <span class="ms-2 text-muted">4.9/5 (Baseado em 60 avaliações)</span>
-        </div>
-    </div>
-</section>
+    <!-- Teu header completo aqui (mantém igual) -->
 
-    <!-- Testemunhos -->
-    <main class="container my-5">
-        <div class="row g-4" id="testimonials-container">
-            <!-- 60 testemunhos serão inseridos aqui -->
+    <!-- Hero com título remodelado -->
+    <section class="text-center py-5 bg-light">
+        <div class="container">
+            <h1 class="display-3 fw-bold hero-title fadeInUp" style="color: var(--primary);">O que dizem quem já trabalhou connosco</h1>
+            <p class="lead text-muted fadeInUp" style="animation-delay: 0.6s;">Opiniões reais de estudantes e profissionais moçambicanos</p>
         </div>
+    </section>
+
+   <!-- Formulário + Lista -->
+    <main class="container my-5">
+        <div class="card shadow-lg mb-5 rounded-4 overflow-hidden">
+            <div class="card-body p-5">
+                <h3 class="fw-bold mb-4 text-center">Deixe o Seu Testemunho ou Comentário </h3>
+                <form id="testimonial-form">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="nome" class="form-label fw-medium">Nome *</label>
+                            <input type="text" class="form-control" id="nome" required placeholder="Como quer aparecer">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="avatar" class="form-label fw-medium">Foto (opcional)</label>
+                            <input type="file" class="form-control" id="avatar" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <label class="form-label fw-medium">Quantas estrelas? *</label>
+                        <div class="d-flex gap-2 fs-3" id="stars-input">
+                            <i class="far fa-star star" data-value="1"></i>
+                            <i class="far fa-star star" data-value="2"></i>
+                            <i class="far fa-star star" data-value="3"></i>
+                            <i class="far fa-star star" data-value="4"></i>
+                            <i class="far fa-star star" data-value="5"></i>
+                        </div>
+                        <input type="hidden" id="rating" required>
+                    </div>
+
+                    <div class="mt-4">
+                        <label for="comentario" class="form-label fw-medium">Seu testemunho *</label>
+                        <textarea class="form-control" id="comentario" rows="4" required placeholder="Conte sua experiência..."></textarea>
+                    </div>
+
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg px-5 py-3 fw-bold">
+                            <i class="fas fa-paper-plane me-2"></i> Enviar Testemunho
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <h2 class="text-center fw-bold mb-5" style="color: var(--primary);">Testemunhos Reais</h2>
+        <div class="row g-4" id="testimonials-container"></div>
     </main>
+
+    
+
+
 
     <!-- Promoções -->
     <section class="container promocoes animate-fade-in text-center py-5">
-        <h3 class="text-white mb-4">Promoção Exclusiva: 20% off em Logotipos e Ajuda com Trabalhos!</h3>
+        <h3 class="text-white mb-4">Promoção Exclusiva: 20% off em Logotipos e Aplicativos Web!</h3>
         <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Aproveitar Oferta</a>
     </section>
 
@@ -764,184 +1034,170 @@ nav ul {
   });
 </script>
 
-<!-- Teus scripts normais (mantém no final) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
 
-    <!-- SCRIPT: 60 TESTEMUNHOS (20 ESTUDANTES COM UNI + 40 PROFISSIONAIS) -->
-    <script>
-        // 20 ESTUDANTES COM UNIVERSIDADES (4 de cada: UEM, UCM, UniLúrio, UniSced, UP)
-        const estudantes = [
-            // UEM (4)
-            { nome: "Amélia Chongo", cargo: "Estudante de Design", servico: "Logotipo Profissional", categoria: "Design Gráfico", 
-              texto: "Logotipo perfeito para meu projeto final na UEM! Cores vibrantes, design moderno e profissional. Banca elogiou!", rating: 5, foto: "https://www.shutterstock.com/image-photo/portrait-happy-young-black-student-260nw-2627769095.jpg", uni: "UEM" },
-            { nome: "Joaquim Nhaca", cargo: "Estudante de Informática", servico: "TCC Completo", categoria: "Trabalhos Académicos", 
-              texto: "TCC entregue com antecedência, formatação ABNT perfeita e slides com animações incríveis. Aprovado com louvor na UEM!", rating: 5, foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5VY3cy7qHsREogE3B35A8L7Mest8HFrMADQ&s", uni: "UEM" },
-            { nome: "Fátima Mabjaia", cargo: "Estudante de Gestão", servico: "Loja Online", categoria: "Serviços de Tecnologia", 
-              texto: "Loja virtual para meu projeto de estágio na UEM. Vendas reais, integração M-Pesa e design responsivo!", rating: 5, foto: "https://st.depositphotos.com/1011643/2013/i/450/depositphotos_20130467-stock-photo-beautiful-female-african-american-university.jpg", uni: "UEM" },
-            { nome: "Domingos Zandamela", cargo: "Estudante de Agronomia", servico: "Website Institucional", categoria: "Serviços de Tecnologia", 
-              texto: "Site para meu projeto de extensão rural na UEM. SEO otimizado, galeria e contato. Aprovado com nota máxima!", rating: 5, foto: "https://st.depositphotos.com/1011643/2013/i/450/depositphotos_20131051-stock-photo-african-college-boy-standing-outdoors.jpg", uni: "UEM" },
+<!-- Notificação de envio -->
+<div id="notification" style="
+    display:none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #0d6efd;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-weight: bold;
+"></div>
 
-            // UCM (4)
-            { nome: "Lúcia Tembe", cargo: "Estudante de Artes", servico: "Flyer Publicitário", categoria: "Design Gráfico", 
-              texto: "Flyer que encheu minha exposição na UCM. Cores vibrantes, tipografia elegante e impressão de alta qualidade!", rating: 5, foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqifM9zQ56ATzcULTUsBJYZo5ewYiNQr7BHQ&s", uni: "UCM" },
-            { nome: "Manuel Cuna", cargo: "Estudante de Educação", servico: "Monografia", categoria: "Trabalhos Académicos", 
-              texto: "Monografia completa com pesquisa e defesa oral. Aprovado com distinção na UCM. Serviço impecável!", rating: 5, foto: "https://randomuser.me/api/portraits/men/49.jpg", uni: "UCM" },
-            { nome: "Rosa Munguambe", cargo: "Estudante de Marketing", servico: "Banner Digital", categoria: "Design Gráfico", 
-              texto: "Banner animado para campanha no Instagram. 100k visualizações em 24h na UCM. Conversões em vendas!", rating: 5, foto: "https://img.freepik.com/fotos-premium/uma-menina-com-um-livro-no-ombro-e-uma-fita-vermelha-ao-redor-do-pescoco_972478-14547.jpg?semt=ais_hybrid&w=740&q=80", uni: "UCM" },
-            { nome: "António Sitoe", cargo: "Estudante de Administração", servico: "Sistema de Gestão", categoria: "Serviços de Tecnologia", 
-              texto: "Sistema para meu negócio na UCM. Controle de estoque, faturas e relatórios. Lucro subiu 50%!", rating: 5, foto: "https://cdn.vanderbilt.edu/vu-news/files/20190417224239/AfricanAmericanmanorstudent.jpg", uni: "UCM" },
+<script>
+/* ================= SUPABASE ================= */
+const supabaseUrl = 'https://qgbblhwojxuknlhkeusy.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'; // usa a tua anon key
+const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-            // UniLúrio (4)
-            { nome: "Esmeralda Langa", cargo: "Estudante de Turismo", servico: "Convite Digital", categoria: "Design Gráfico", 
-              texto: "Convite interativo com RSVP online. Evento lotou o auditório da UniLúrio. Design elegante!", rating: 5, foto: "https://img.freepik.com/fotos-gratis/vista-lateral-de-mulher-com-mapa-e-mochila-ao-ar-livre_23-2148704451.jpg?semt=ais_hybrid&w=740&q=80", uni: "UniLúrio" },
-            { nome: "José Macuácua", cargo: "Estudante de Direito", servico: "Artigo Científico", categoria: "Trabalhos Académicos", 
-              texto: "Artigo publicado em revista internacional da UniLúrio. Redação acadêmica impecável. Qualidade de doutorado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/53.jpg", uni: "UniLúrio" },
-            { nome: "Celina Matsinhe", cargo: "Estudante de Pedagogia", servico: "Slides de Aula", categoria: "Trabalhos Académicos", 
-              texto: "Slides com animações e gráficos interativos. Aulas na UniLúrio ficaram dinâmicas. Alunos adoram!", rating: 5, foto: "https://st4.depositphotos.com/1049680/31234/i/450/depositphotos_312341060-stock-photo-african-american-student-woman-wearing.jpg", uni: "UniLúrio" },
-            { nome: "Elias Muholove", cargo: "Estudante de Comércio", servico: "Catálogo Digital", categoria: "Design Gráfico", 
-              texto: "Catálogo interativo com zoom e busca. Vendas B2B aumentaram 70% na UniLúrio. Clientes fecham negócio no mesmo dia!", rating: 5, foto: "https://randomuser.me/api/portraits/men/55.jpg", uni: "UniLúrio" },
+/* ================= ESTRELAS ================= */
+let selectedRating = 0;
 
-            // UniSced (4)
-            { nome: "Irene Zandamela", cargo: "Estudante de Psicologia", servico: "Cartão de Visita", categoria: "Design Gráfico", 
-              texto: "Cartão que transmite confiança. Pacientes aumentaram 40% na UniSced. Design elegante e funcional!", rating: 5, foto: "https://img.freepik.com/fotos-premium/retrato-de-estudante-de-rosto-e-mulher-negra-na-universidade-pronta-para-aprender-objetivos-ou-metas-bolsa-de-estudos-e-feliz-aluna-da-africa-do-sul-com-livros-para-estudar-e-conhecimento_590464-125173.jpg", uni: "UniSced" },
-            { nome: "Norberto Chongo", cargo: "Estudante de Engenharia", servico: "Dashboard", categoria: "Serviços de Tecnologia", 
-              texto: "Painel em tempo real com gráficos e alertas. Salvou meu projeto na UniSced. Aprovado com louvor!", rating: 5, foto: "https://img.freepik.com/fotos-premium/linda-mulher-negra-se-sentindo-feliz-surpresa-ao-perceber-uma-solucao-ou-ideia-estudante-com-conceito-de-livros_1194-331856.jpg", uni: "UniSced" },
-            { nome: "Odete Mabunda", cargo: "Estudante de Gastronomia", servico: "Menu Digital", categoria: "Design Gráfico", 
-              texto: "Menu com fotos apetitosas e QR Code. Pedidos online subiram 35% na UniSced. Clientes amam!", rating: 5, foto: "https://img.freepik.com/fotos-gratis/estudante-bela-jovem-africana-feliz-segurando-cadernos_171337-14002.jpg", uni: "UniSced" },
-            { nome: "Paulo Manjate", cargo: "Estudante de Jornalismo", servico: "Portfólio Digital", categoria: "Design Gráfico", 
-              texto: "Portfólio que me conseguiu estágio na UniSced. Design moderno, navegação fluida e responsivo. Perfeito!", rating: 5, foto: "https://randomuser.me/api/portraits/men/59.jpg", uni: "UniSced" },
+document.querySelectorAll('#stars-input .star').forEach(star => {
+    star.addEventListener('click', function () {
+        selectedRating = Number(this.dataset.value);
+        document.getElementById('rating').value = selectedRating;
 
-            // UP (4)
-            { nome: "Quitéria Sitoe", cargo: "Estudante de Enfermagem", servico: "Relatório de Estágio", categoria: "Trabalhos Académicos", 
-              texto: "Relatório aprovado com louvor na UP. Formatação impecável, pesquisa profunda e defesa tranquila. Nota máxima!", rating: 5, foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKfO2tN2BsTa2qZSqZBQWpbwyJpg6TYvZEHVCYWoqu3SzBJOKrpidNvFp3veEimpMOBUk&usqp=CAU", uni: "UP" },
-            { nome: "Raul Tembe", cargo: "Estudante de Arquitectura", servico: "Apresentação 3D", categoria: "Design Gráfico", 
-              texto: "Projeto 3D que impressionou a banca na UP. Animações realistas, renderização perfeita e defesa aprovada!", rating: 5, foto: "https://img.freepik.com/fotos-gratis/aluno-feliz-segurando-livros_23-2151936272.jpg?semt=ais_incoming&w=740&q=80", uni: "UP" },
-            { nome: "Sónia Langa", cargo: "Estudante de Contabilidade", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
-              texto: "Controle total das finanças da minha empresa na UP. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/women/62.jpg", uni: "UP" },
-            { nome: "Tomás Cuna", cargo: "Estudante de Economia", servico: "Landing Page", categoria: "Serviços de Tecnologia", 
-              texto: "Captura de leads para meu negócio na UP. Conversão subiu 200%. Design persuasivo e carregamento rápido!", rating: 5, foto: "https://randomuser.me/api/portraits/men/63.jpg", uni: "UP" }
-        ];
-
-        // 40 PROFISSIONAIS (sem universidade)
-        const profissionais = [
-            { nome: "Ussene Mabjaia", cargo: "Advogado", servico: "Revisão ABNT", categoria: "Trabalhos Académicos", 
-              texto: "Revisão que salvou meu relatório jurídico. Erros corrigidos, formatação perfeita e entrega no prazo. Cliente satisfeito!", rating: 5, foto: "https://randomuser.me/api/portraits/men/64.jpg" },
-            { nome: "Vânia Zandamela", cargo: "Estilista", servico: "Catálogo de Moda", categoria: "Design Gráfico", 
-              texto: "Catálogo que vendeu toda a coleção. Fotos profissionais, layout elegante e impressão de luxo. Clientes adoram!", rating: 5, foto: "https://randomuser.me/api/portraits/women/65.jpg" },
-            { nome: "Wilson Nhaca", cargo: "Desenvolvedor", servico: "App Mobile", categoria: "Serviços de Tecnologia", 
-              texto: "App para meu cliente. iOS e Android, design nativo e aprovação imediata. Excelente trabalho!", rating: 5, foto: "https://randomuser.me/api/portraits/men/66.jpg" },
-            { nome: "Ximena Chongo", cargo: "Turismóloga", servico: "Website Turístico", categoria: "Serviços de Tecnologia", 
-              texto: "Site que atraiu turistas de todo país. SEO, mapas e reservas online. Lucro mensal garantido!", rating: 5, foto: "https://randomuser.me/api/portraits/women/67.jpg" },
-            { nome: "Yara Tembe", cargo: "Comunicadora", servico: "Vídeo Promocional", categoria: "Design Gráfico", 
-              texto: "Vídeo que viralizou no TikTok com 500k views. Parcerias fechadas e marca fortalecida. Impacto real!", rating: 5, foto: "https://randomuser.me/api/portraits/women/68.jpg" },
-            { nome: "Zacarias Langa", cargo: "Engenheiro", servico: "Sistema de Monitoria", categoria: "Serviços de Tecnologia", 
-              texto: "Monitoria em tempo real do meu projeto. Dados precisos, alertas e relatórios. Cliente satisfeito!", rating: 5, foto: "https://randomuser.me/api/portraits/men/69.jpg" },
-            { nome: "Adelina Mabunda", cargo: "Professora de Letras", servico: "Artigo Académico", categoria: "Trabalhos Académicos", 
-              texto: "Artigo publicado em congresso. Redação fluida, pesquisa sólida e formatação perfeita. Sucesso!", rating: 5, foto: "https://randomuser.me/api/portraits/women/70.jpg" },
-            { nome: "Benvindo Sitoe", cargo: "Gestor", servico: "Dashboard Empresarial", categoria: "Serviços de Tecnologia", 
-              texto: "Dashboard que otimizou minha empresa. KPIs em tempo real, decisões rápidas e lucro subiu 60%!", rating: 5, foto: "https://randomuser.me/api/portraits/men/71.jpg" },
-            { nome: "Carla Manjate", cargo: "Enfermeira", servico: "Infográfico Médico", categoria: "Design Gráfico", 
-              texto: "Infográfico que salvou minha apresentação. Dados claros, design atraente e aprovação da equipe!", rating: 5, foto: "https://randomuser.me/api/portraits/women/72.jpg" },
-            { nome: "Délcio Cuna", cargo: "Advogado", servico: "Portfólio Jurídico", categoria: "Design Gráfico", 
-              texto: "Portfólio que me conseguiu novos clientes. Design profissional, navegação fluida e conteúdo organizado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/73.jpg" },
-            { nome: "Elsa Nhaca", cargo: "Psicóloga", servico: "Relatório de Pesquisa", categoria: "Trabalhos Académicos", 
-              texto: "Relatório aprovado com louvor. Análise estatística, gráficos e redação impecável. Nota máxima!", rating: 5, foto: "https://randomuser.me/api/portraits/women/74.jpg" },
-            { nome: "Filipe Zandamela", cargo: "Economista", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
-              texto: "Controle total das finanças. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/men/75.jpg" },
-            { nome: "Graça Tembe", cargo: "Artesã", servico: "Catálogo de Arte", categoria: "Design Gráfico", 
-              texto: "Catálogo que vendeu todas as peças na exposição. Fotos profissionais e layout elegante!", rating: 5, foto: "https://randomuser.me/api/portraits/women/76.jpg" },
-            { nome: "Hélder Langa", cargo: "Desenvolvedor", servico: "App de Entrega", categoria: "Serviços de Tecnologia", 
-              texto: "App com GPS, notificações e pagamento M-Pesa. Entregas em 30 min. Clientes fidelizados!", rating: 5, foto: "https://randomuser.me/api/portraits/men/77.jpg" },
-            { nome: "Inês Mabunda", cargo: "Comunicadora", servico: "Vídeo Institucional", categoria: "Design Gráfico", 
-              texto: "Vídeo que viralizou com 200k views. Drone, narração e edição profissional. Marca fortalecida!", rating: 5, foto: "https://randomuser.me/api/portraits/women/78.jpg" },
-            { nome: "Júlio Sitoe", cargo: "Engenheiro", servico: "Dashboard IoT", categoria: "Serviços de Tecnologia", 
-              texto: "Monitoria em tempo real de sensores. Dados precisos, alertas e relatórios. Projeto aprovado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/79.jpg" },
-            { nome: "Kátia Cuna", cargo: "Professora de Letras", servico: "Artigo Literário", categoria: "Trabalhos Académicos", 
-              texto: "Artigo publicado em revista. Redação fluida, pesquisa sólida e formatação perfeita!", rating: 5, foto: "https://randomuser.me/api/portraits/women/80.jpg" },
-            { nome: "Leandro Nhaca", cargo: "Gestor", servico: "Sistema de RH", categoria: "Serviços de Tecnologia", 
-              texto: "Controle total de funcionários. Ponto, folha de pagamento e férias automatizadas!", rating: 5, foto: "https://randomuser.me/api/portraits/men/81.jpg" },
-            { nome: "Marta Zandamela", cargo: "Enfermeira", servico: "Infográfico", categoria: "Design Gráfico", 
-              texto: "Infográfico que salvou minha apresentação. Dados claros, design atraente e aprovação da equipe!", rating: 5, foto: "https://randomuser.me/api/portraits/women/82.jpg" },
-            { nome: "Nuno Tembe", cargo: "Advogado", servico: "Portfólio Jurídico", categoria: "Design Gráfico", 
-              texto: "Portfólio que me conseguiu novos clientes. Design profissional, navegação fluida e conteúdo organizado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/83.jpg" },
-            { nome: "Olívia Langa", cargo: "Psicóloga", servico: "Relatório de Estágio", categoria: "Trabalhos Académicos", 
-              texto: "Relatório aprovado com louvor. Análise estatística, gráficos e redação impecável. Nota máxima!", rating: 5, foto: "https://randomuser.me/api/portraits/women/84.jpg" },
-            { nome: "Pedro Mabunda", cargo: "Economista", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
-              texto: "Controle total das finanças. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/men/85.jpg" },
-            { nome: "Quitéria Sitoe", cargo: "Artesã", servico: "Catálogo de Arte", categoria: "Design Gráfico", 
-              texto: "Catálogo que vendeu todas as peças na exposição. Fotos profissionais e layout elegante!", rating: 5, foto: "https://randomuser.me/api/portraits/women/86.jpg" },
-            { nome: "Rui Cuna", cargo: "Desenvolvedor", servico: "App de Entrega", categoria: "Serviços de Tecnologia", 
-              texto: "App com GPS, notificações e pagamento M-Pesa. Entregas em 30 min. Clientes fidelizados!", rating: 5, foto: "https://randomuser.me/api/portraits/men/87.jpg" },
-            { nome: "Sara Nhaca", cargo: "Comunicadora", servico: "Vídeo Institucional", categoria: "Design Gráfico", 
-              texto: "Vídeo que viralizou com 200k views. Drone, narração e edição profissional. Marca fortalecida!", rating: 5, foto: "https://randomuser.me/api/portraits/women/88.jpg" },
-            { nome: "Tiago Zandamela", cargo: "Engenheiro", servico: "Dashboard IoT", categoria: "Serviços de Tecnologia", 
-              texto: "Monitoria em tempo real de sensores. Dados precisos, alertas e relatórios. Projeto aprovado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/89.jpg" },
-            { nome: "Ursula Tembe", cargo: "Professora de Letras", servico: "Artigo Literário", categoria: "Trabalhos Académicos", 
-              texto: "Artigo publicado em revista. Redação fluida, pesquisa sólida e formatação perfeita!", rating: 5, foto: "https://randomuser.me/api/portraits/women/90.jpg" },
-            { nome: "Valter Langa", cargo: "Gestor", servico: "Sistema de RH", categoria: "Serviços de Tecnologia", 
-              texto: "Controle total de funcionários. Ponto, folha de pagamento e férias automatizadas!", rating: 5, foto: "https://randomuser.me/api/portraits/men/91.jpg" },
-            { nome: "Wanda Mabunda", cargo: "Enfermeira", servico: "Infográfico", categoria: "Design Gráfico", 
-              texto: "Infográfico que salvou minha apresentação. Dados claros, design atraente e aprovação da equipe!", rating: 5, foto: "https://randomuser.me/api/portraits/women/92.jpg" },
-            { nome: "Xavier Sitoe", cargo: "Advogado", servico: "Portfólio Jurídico", categoria: "Design Gráfico", 
-              texto: "Portfólio que me conseguiu novos clientes. Design profissional, navegação fluida e conteúdo organizado!", rating: 5, foto: "https://randomuser.me/api/portraits/men/93.jpg" },
-            { nome: "Yolanda Cuna", cargo: "Psicóloga", servico: "Relatório de Estágio", categoria: "Trabalhos Académicos", 
-              texto: "Relatório aprovado com louvor. Análise estatística, gráficos e redação impecável. Nota máxima!", rating: 5, foto: "https://randomuser.me/api/portraits/women/94.jpg" },
-            { nome: "Zacarias Nhaca", cargo: "Economista", servico: "Sistema Financeiro", categoria: "Serviços de Tecnologia", 
-              texto: "Controle total das finanças. Relatórios automáticos, integração bancária e segurança total!", rating: 5, foto: "https://randomuser.me/api/portraits/men/95.jpg" },
-            { nome: "Amade Zandamela", cargo: "Artesão", servico: "Catálogo de Arte", categoria: "Design Gráfico", 
-              texto: "Catálogo que vendeu todas as peças na exposição. Fotos profissionais e layout elegante!", rating: 5, foto: "https://randomuser.me/api/portraits/men/96.jpg" },
-            { nome: "Berta Tembe", cargo: "Desenvolvedora", servico: "App de Entrega", categoria: "Serviços de Tecnologia", 
-              texto: "App com GPS, notificações e pagamento M-Pesa. Entregas em 30 min. Clientes fidelizados!", rating: 5, foto: "https://randomuser.me/api/portraits/women/97.jpg" },
-            { nome: "Cláudio Langa", cargo: "Comunicador", servico: "Vídeo Institucional", categoria: "Design Gráfico", 
-              texto: "Vídeo que viralizou com 200k views. Drone, narração e edição profissional. Marca fortalecida!", rating: 5, foto: "https://randomuser.me/api/portraits/men/98.jpg" },
-            { nome: "Dulce Mabunda", cargo: "Engenheira", servico: "Dashboard IoT", categoria: "Serviços de Tecnologia", 
-              texto: "Monitoria em tempo real de sensores. Dados precisos, alertas e relatórios. Projeto aprovado!", rating: 5, foto: "https://randomuser.me/api/portraits/women/99.jpg" }
-        ];
-
-        // Junta todos
-        const todosTestemunhos = [...estudantes, ...profissionais];
-
-        // Gera estrelas
-        function gerarEstrelas(rating) {
-            let stars = '';
-            for (let i = 0; i < 5; i++) {
-                stars += i < rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
-            }
-            return stars;
-        }
-
-        // Cria card
-        function criarCard(t, i) {
-            const delay = i * 80;
-            const catClass = t.categoria === 'Design Gráfico' ? 'bg-design' : 
-                           t.categoria === 'Trabalhos Académicos' ? 'bg-academico' : 'bg-tech';
-            const uniBadge = t.uni ? `<span class="badge bg-secondary ms-2">${t.uni}</span>` : '';
-            
-            return `
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="testimonial-card h-100 position-relative float-animation" style="animation-delay: ${delay}ms;">
-                        <div class="category-badge text-white ${catClass}">${t.categoria}</div>
-                        <div class="card-body position-relative">
-                            <i class="fas fa-quote-left quote-icon"></i>
-                            <img src="${t.foto}" alt="${t.nome}" class="client-photo pulse-animation">
-                            <div class="testimonial-text">"${t.texto}"</div>
-                            <div class="stars mb-2">${gerarEstrelas(t.rating)}</div>
-                            <div class="client-name">${t.nome}${uniBadge}</div>
-                            <div class="client-role">${t.cargo} • ${t.servico}</div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        // Renderiza
-        document.addEventListener('DOMContentLoaded', () => {
-            const container = document.getElementById('testimonials-container');
-            todosTestemunhos.forEach((t, i) => {
-                container.innerHTML += criarCard(t, i);
-            });
+        document.querySelectorAll('#stars-input .star').forEach(s => {
+            s.classList.remove('fas', 'active');
+            s.classList.add('far');
         });
-    </script>
+
+        for (let i = 0; i < selectedRating; i++) {
+            const el = document.querySelectorAll('#stars-input .star')[i];
+            el.classList.remove('far');
+            el.classList.add('fas', 'active');
+        }
+    });
+});
+
+/* ================= FUNÇÃO NOTIFICAÇÃO ================= */
+function showNotification(msg, bgColor = '#0d6efd', duration = 3000) {
+    const notif = document.getElementById('notification');
+    notif.innerText = msg;
+    notif.style.backgroundColor = bgColor;
+    notif.style.display = 'block';
+    setTimeout(() => {
+        notif.style.display = 'none';
+    }, duration);
+}
+
+/* ================= ENVIAR FORM ================= */
+document.getElementById('testimonial-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const comentario = document.getElementById('comentario').value.trim();
+    const rating = document.getElementById('rating').value;
+    const fotoFile = document.getElementById('avatar').files[0];
+
+    if (!rating) {
+        showNotification('Selecione as estrelas.', '#dc3545');
+        return;
+    }
+
+    let fotoUrl = null;
+
+    // Mostrar processamento
+    showNotification('Processando...', '#0d6efd', 10000);
+
+    /* ===== UPLOAD FOTO ===== */
+    if (fotoFile) {
+        const fileName = Date.now() + '_' + fotoFile.name;
+
+        const { error: uploadError } = await supabaseClient.storage
+            .from('avatars')
+            .upload(fileName, fotoFile);
+
+        if (uploadError) {
+            console.error(uploadError);
+            showNotification('Erro ao enviar foto.', '#dc3545');
+            return;
+        }
+
+        const { data } = supabaseClient.storage
+            .from('avatars')
+            .getPublicUrl(fileName);
+
+        fotoUrl = data.publicUrl;
+    }
+
+    /* ===== INSERIR NO BANCO ===== */
+    const { error } = await supabaseClient
+        .from('testemunhos')
+        .insert([{
+            nome: nome,
+            comentario: comentario,
+            rating: Number(rating),
+            avatar_url: fotoUrl
+        }]);
+
+    if (error) {
+        console.error('Erro Supabase:', error);
+        showNotification('Erro ao enviar testemunho.', '#dc3545');
+        return;
+    }
+
+    // Resetar formulário e estrelas
+    this.reset();
+    selectedRating = 0;
+    document.querySelectorAll('#stars-input .star').forEach(s => {
+        s.classList.remove('fas', 'active');
+        s.classList.add('far');
+    });
+
+    showNotification('Testemunho enviado com sucesso!', '#198754');
+    loadTestimonials();
+});
+
+/* ================= CARREGAR TESTEMUNHOS ================= */
+async function loadTestimonials() {
+    const container = document.getElementById('testimonials-container');
+    if (!container) return;
+
+    const { data, error } = await supabaseClient
+        .from('testemunhos')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+
+    container.innerHTML = '';
+
+    data.forEach(t => {
+        const estrelas = '★'.repeat(t.rating || 0) + '☆'.repeat(5 - (t.rating || 0));
+
+        const col = document.createElement('div');
+        col.className = 'col-md-4';
+
+        col.innerHTML = `
+            <div class="card testimonial-card h-100 shadow">
+                <div class="card-body text-center">
+                    ${t.avatar_url ? `<img src="${t.avatar_url}" 
+                        style="width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:10px;">` : ''}
+                    <h5 class="client-name">${t.nome || 'Anónimo'}</h5>
+                    <div class="text-warning fs-4 mb-2">${estrelas}</div>
+                    <p class="testimonial-text">${t.comentario || ''}</p>
+                </div>
+            </div>
+        `;
+
+        container.appendChild(col);
+    });
+}
+
+/* ================= AUTO LOAD ================= */
+document.addEventListener('DOMContentLoaded', loadTestimonials);
+</script>
+
 </body>
 </html>

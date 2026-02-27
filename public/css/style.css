@@ -316,3 +316,30 @@ body > header + section {
     }
 }
 
+
+
+
+
+/* CORREÇÃO DO DROPDOWN DOS TRÊS PONTINHOS */
+.dropdown-menu {
+    background-color: #8B0000 !important; /* mantém o vermelho escuro */
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.dropdown-item {
+    color: white !important; /* força texto branco */
+    transition: all 0.3s ease;
+    padding: 0.75rem 1.5rem;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(255,255,255,0.15) !important; /* fundo branco semi-transparente no hover */
+    color: white !important; /* mantém texto branco */
+    transform: translateX(8px); /* leve deslocamento para a direita */
+}
+
+.dropdown-divider {
+    border-top-color: rgba(255,255,255,0.2) !important; /* divisor mais claro */
+}

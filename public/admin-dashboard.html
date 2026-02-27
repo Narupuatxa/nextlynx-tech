@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo | NextLynx Tech</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --dark: #2c3e50;
+            --light: #f8f9fa;
+            --success: #38ef7d;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+
+        body {
+            background: var(--light);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+
+        .admin-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .sidebar {
+            background: white;
+            border-right: 1px solid #dee2e6;
+            height: calc(100vh - 70px);
+            position: fixed;
+            width: 260px;
+            overflow-y: auto;
+            padding: 1.5rem 0;
+        }
+
+        .sidebar .nav-link {
+            color: var(--dark);
+            padding: 0.9rem 1.5rem;
+            border-radius: 10px;
+            margin: 0.3rem 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(106,17,203,0.1);
+            color: var(--primary);
+        }
+
+        .main-content {
+            margin-left: 260px;
+            padding: 2rem;
+        }
+
+        .card-admin {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .card-admin:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        /* Header fixo compacto (igual ao do aluno) */
+.admin-header, .navbar.fixed-top {
+    height: 56px; /* altura padrão do Bootstrap navbar */
+    padding: 0.5rem 1rem; /* reduz padding vertical */
+}
+
+.navbar-brand img {
+    height: 40px; /* logo menor */
+}
+
+.navbar-brand span {
+    font-size: 1.25rem; /* título menor que h4 */
+}
+
+body {
+    padding-top: 56px !important; /* espaço exato para o header fixo */
+}
+
+/* Em telas menores */
+@media (max-width: 991px) {
+    body {
+        padding-top: 56px !important;
+    }
+    .navbar-brand img {
+        height: 35px;
+    }
+}
+
+        .card-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .badge-status {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        /* Espaço para o header fixo do admin */
+body {
+    padding-top: 80px; /* altura aproximada do header + margem – ajusta se necessário */
+}
+
+/* O main-content ou container principal também ganha espaço */
+.main-content, .container-fluid, .row {
+    padding-top: 20px;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+    body {
+        padding-top: 70px; /* um pouco menos em mobile */
+    }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Header Admin -->
+   <!-- Header Admin – igual ao do aluno: compacto, fixo, com link Página Principal -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
+    <div class="container-fluid px-4">
+        <!-- Logo + Título -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="img/logo1.png" alt="Logo" style="height: 40px;"> <!-- Reduzido de 50px para 40px -->
+            <span class="ms-3 fw-bold fs-5">Painel Administrativo</span> <!-- fs-5 = tamanho médio -->
+        </a>
+
+        <!-- Botões à direita -->
+        <div class="d-flex align-items-center gap-3">
+            <!-- Página Principal -->
+            <a href="index.html" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-home me-1"></i>Página Principal
+            </a>
+            <!-- Sair -->
+            <button id="logoutAdmin" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-sign-out-alt me-1"></i>Sair
+            </button>
+        </div>
+    </div>
+</nav>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" href="#dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#alunos"><i class="fas fa-users me-2"></i>Gerenciar Alunos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#agendamentos"><i class="fas fa-calendar-check me-2"></i>Aulas Agendadas</a></li>
+                <li class="nav-item"><a class="nav-link" href="#duvidas"><i class="fas fa-question-circle me-2"></i>Dúvidas dos Alunos</a></li>
+                <li class="nav-item"><a class="nav-link" href="#materiais"><i class="fas fa-folder-open me-2"></i>Liberar Materiais</a></li>
+            </ul>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="main-content flex-grow-1">
+            <h2 class="mb-4 fw-bold">Dashboard Administrativo</h2>
+
+            <!-- Cards de estatísticas -->
+            <div class="row g-4" id="dashboard">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-admin text-center p-4">
+                        <i class="fas fa-users card-icon"></i>
+                        <h5 class="mb-2">Alunos Ativos</h5>
+                        <h3 id="totalAlunos" class="fw-bold text-primary">0</h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-admin text-center p-4">
+                        <i class="fas fa-calendar-check card-icon"></i>
+                        <h5 class="mb-2">Aulas Agendadas</h5>
+                        <h3 id="totalAgendamentos" class="fw-bold text-success">0</h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-admin text-center p-4">
+                        <i class="fas fa-question-circle card-icon"></i>
+                        <h5 class="mb-2">Dúvidas Pendentes</h5>
+                        <h3 id="duvidasPendentes" class="fw-bold text-warning">0</h3>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-admin text-center p-4">
+                        <i class="fas fa-file-upload card-icon"></i>
+                        <h5 class="mb-2">Materiais Liberados</h5>
+                        <h3 id="materiaisLiberados" class="fw-bold text-info">0</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+    <div class="card card-admin text-center p-4">
+        <i class="fas fa-credit-card card-icon"></i>
+        <h5 class="mb-2">Pagamentos Pendentes</h5>
+        <h3 id="pagamentosPendentes" class="fw-bold text-danger">0</h3>
+    </div>
+</div>
+
+
+            <!-- Tabela de alunos -->
+            <div class="card card-admin mt-5" id="alunos">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Lista de Alunos</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="tabelaAlunos">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Data de Registo</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de agendamentos -->
+            <div class="card card-admin mt-5" id="agendamentos">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Aulas Agendadas</h5>
+                    <small id="totalAgendamentosTexto">Carregando...</small>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="tabelaAgendamentos">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>Tema</th>
+                                    <th>Data/Hora</th>
+                                    <th>Link Meet</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de dúvidas pendentes -->
+            <div class="card card-admin mt-5" id="duvidas">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Dúvidas Pendentes dos Alunos</h5>
+                    <small id="totalDuvidasTexto">Carregando...</small>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="tabelaDuvidas">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Aluno</th>
+                                    <th>Dúvida</th>
+                                    <th>Data</th>
+                                    <th>Responder</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Tabela de Pagamentos (nova) -->
+            <div class="card card-admin mt-5" id="pagamentos">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Pagamentos dos Alunos</h5>
+                    <small id="totalPagamentosTexto">Carregando...</small>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0" id="tabelaPagamentos">
+                            <thead class="table-light">
+                                
+                                
+    <tr>
+        <th>Aluno</th>
+        <th>Plano</th>
+        <th>Periodicidade</th> <!-- ← ADICIONA AQUI -->
+        <th>Valor</th>
+        <th>Método</th>
+        <th>Referência</th>
+        <th>Data</th>
+        <th>Comprovativo</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+</thead>
+                            
+                            
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+    <!-- Modal para responder dúvida -->
+    <div class="modal fade" id="responderModal" tabindex="-1" aria-labelledby="responderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="responderModalLabel">Responder Dúvida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Aluno:</strong> <span id="alunoDuvida"></span></p>
+                    <p><strong>Dúvida:</strong> <span id="mensagemDuvida"></span></p>
+                    <textarea id="respostaAdmin" class="form-control" rows="5" placeholder="Escreva sua resposta aqui..."></textarea>
+                    <input type="hidden" id="mensagemId">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="salvarResposta">Enviar Resposta</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <!-- Scripts - Bootstrap primeiro! -->
+<!-- Scripts - Bootstrap primeiro! -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script type="module">
+    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+    const supabase = createClient(
+        'https://qgbblhwojxuknlhkeusy.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
+    );
+
+    // Proteção admin
+    async function verificarAdmin() {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const { data: perfil } = await supabase
+            .from('perfis')
+            .select('role')
+            .eq('id', user.id)
+            .single();
+
+        if (!perfil || perfil.role !== 'admin') {
+            alert('Acesso restrito.');
+            window.location.href = 'aluno.html';
+            return;
+        }
+
+        carregarDadosAdmin();
+    }
+
+    // Função auxiliar para restaurar scroll
+    function forcarScrollNormal() {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = 'auto !important';
+        document.body.style.paddingRight = '0px !important';
+        document.body.style.position = 'static !important';
+        document.body.style.top = '0px !important';
+        document.body.style.width = '100% !important';
+        document.body.style.height = 'auto !important';
+
+        document.querySelectorAll('.modal-backdrop, .modal-backdrop.fade').forEach(b => b.remove());
+    }
+
+    // Função principal – carrega tudo
+    async function carregarDadosAdmin() {
+        // Total alunos
+        const { count: totalAlunos } = await supabase
+            .from('perfis')
+            .select('*', { count: 'exact', head: true })
+            .eq('role', 'aluno');
+        document.getElementById('totalAlunos').textContent = totalAlunos || 0;
+
+        // Total agendamentos
+        const { count: totalAgendamentos } = await supabase
+            .from('agendamentos')
+            .select('*', { count: 'exact', head: true });
+        document.getElementById('totalAgendamentos').textContent = totalAgendamentos || 0;
+
+        // Dúvidas pendentes (apenas contador)
+        const { count: duvidasPendentes } = await supabase
+            .from('mensagens')
+            .select('*', { count: 'exact', head: true })
+            .eq('respondido', false);
+        document.getElementById('duvidasPendentes').textContent = duvidasPendentes || 0;
+
+        // Lista de alunos
+        const { data: alunos } = await supabase
+            .from('perfis')
+            .select('nome, email, criado_em, role')
+            .order('criado_em', { ascending: false });
+
+        const tbodyAlunos = document.querySelector('#tabelaAlunos tbody');
+        tbodyAlunos.innerHTML = '';
+        (alunos || []).forEach(aluno => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${aluno.nome || 'Sem nome'}</td>
+                <td>${aluno.email}</td>
+                <td>${new Date(aluno.criado_em).toLocaleDateString('pt-MZ')}</td>
+                <td>${aluno.role}</td>
+            `;
+            tbodyAlunos.appendChild(tr);
+        });
+
+        // Tabela de agendamentos
+        const loadingAgendamentos = document.querySelector('#agendamentos .card-header small') ||
+                                    document.getElementById('totalAgendamentosTexto');
+        if (loadingAgendamentos) loadingAgendamentos.textContent = 'A carregar agendamentos...';
+
+        const { data: agendamentos, error: ageError } = await supabase
+            .from('agendamentos')
+            .select('id, data_hora, meet_link, status, user_id, tema_id')
+            .order('data_hora', { ascending: false });
+
+        if (ageError) {
+            console.error('ERRO ao carregar agendamentos:', ageError.message);
+            if (loadingAgendamentos) loadingAgendamentos.textContent = 'Erro ao carregar';
+            alert('Erro ao carregar aulas: ' + ageError.message);
+        } else {
+            console.log('Agendamentos carregados:', agendamentos);
+
+            const agendamentosComNomes = [];
+            for (const age of agendamentos) {
+                const { data: aluno } = await supabase
+                    .from('perfis')
+                    .select('nome')
+                    .eq('id', age.user_id)
+                    .single();
+
+                const { data: tema } = await supabase
+                    .from('aulas_temas')
+                    .select('tema')
+                    .eq('id', age.tema_id)
+                    .single();
+
+                agendamentosComNomes.push({
+                    ...age,
+                    aluno_nome: aluno?.nome || 'Aluno desconhecido',
+                    tema_nome: tema?.tema || 'Sem tema'
+                });
+            }
+
+            const tbodyAgendamentos = document.querySelector('#tabelaAgendamentos tbody');
+            tbodyAgendamentos.innerHTML = '';
+
+            if (agendamentosComNomes.length === 0) {
+                tbodyAgendamentos.innerHTML = '<tr><td colspan="6" class="text-center py-4">Nenhuma aula agendada ainda.</td></tr>';
+            } else {
+                agendamentosComNomes.forEach(age => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${age.aluno_nome}</td>
+                        <td>${age.tema_nome}</td>
+                        <td>${new Date(age.data_hora).toLocaleString('pt-MZ')}</td>
+                        <td>
+                            ${age.meet_link 
+                                ? `<a href="${age.meet_link}" target="_blank" class="text-primary">Ver</a>` 
+                                : 'Sem link'}
+                        </td>
+                        <td>
+                            <span class="badge bg-${age.status === 'Pendente' ? 'warning' : 
+                                                    age.status === 'Confirmado' ? 'success' : 
+                                                    age.status === 'Rejeitado' ? 'danger' : 
+                                                    age.status === 'Cancelado' ? 'secondary' : 'secondary'}">
+                                ${age.status}
+                            </span>
+                        </td>
+                        <td>
+                            ${age.status === 'Pendente' ? `
+                                <button class="btn btn-sm btn-success me-1 aprovar-btn" data-id="${age.id}">Aprovar</button>
+                                <button class="btn btn-sm btn-danger rejeitar-btn" data-id="${age.id}">Rejeitar</button>
+                            ` : ''}
+                            ${(age.status === 'Confirmado' || age.status === 'Rejeitado' || age.status === 'Cancelado') ? `
+                                <button class="btn btn-sm btn-danger excluir-aula-btn" data-id="${age.id}">
+                                    <i class="fas fa-trash me-1"></i>Excluir
+                                </button>
+                            ` : ''}
+                        </td>
+                    `;
+                    tbodyAgendamentos.appendChild(tr);
+                });
+            }
+
+            if (loadingAgendamentos) {
+                loadingAgendamentos.textContent = `Total: ${agendamentosComNomes.length}`;
+            }
+        }
+
+        // Tabela de dúvidas (agora mostra todas, pendentes e respondidas)
+        const loadingDuvidas = document.querySelector('#duvidas .card-header small') ||
+                              document.getElementById('totalDuvidasTexto');
+        if (loadingDuvidas) loadingDuvidas.textContent = 'A carregar dúvidas...';
+
+        console.log('[DUVIDAS] Iniciando carregamento');
+
+        const { data: mensagens, error: msgError } = await supabase
+            .from('mensagens')
+            .select('id, mensagem, criado_em, user_id, respondido')
+            .order('criado_em', { ascending: false });
+
+        if (msgError) {
+            console.error('[DUVIDAS] Erro na query:', msgError.message);
+            if (loadingDuvidas) loadingDuvidas.textContent = 'Erro ao carregar dúvidas';
+        } else {
+            console.log('[DUVIDAS] Mensagens encontradas:', mensagens?.length || 0);
+
+            const mensagensComNomes = [];
+            for (const msg of mensagens || []) {
+                try {
+                    const { data: perfil } = await supabase
+                        .from('perfis')
+                        .select('nome')
+                        .eq('id', msg.user_id)
+                        .single();
+
+                    mensagensComNomes.push({
+                        ...msg,
+                        aluno_nome: perfil?.nome || 'Aluno desconhecido'
+                    });
+                } catch (err) {
+                    console.warn('[DUVIDAS] Erro ao buscar nome para msg ID', msg.id, err.message);
+                    mensagensComNomes.push({
+                        ...msg,
+                        aluno_nome: 'Aluno desconhecido'
+                    });
+                }
+            }
+
+            const tbodyDuvidas = document.querySelector('#tabelaDuvidas tbody');
+            if (!tbodyDuvidas) {
+                console.error('[DUVIDAS] tbody não encontrado!');
+                if (loadingDuvidas) loadingDuvidas.textContent = 'Erro: tabela não encontrada';
+            } else {
+                tbodyDuvidas.innerHTML = '';
+
+                if (mensagensComNomes.length === 0) {
+                    tbodyDuvidas.innerHTML = '<tr><td colspan="4" class="text-center py-4">Nenhuma dúvida.</td></tr>';
+                } else {
+                    mensagensComNomes.forEach(msg => {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td>${msg.aluno_nome}</td>
+                            <td>${msg.mensagem}</td>
+                            <td>${new Date(msg.criado_em).toLocaleString('pt-MZ')}</td>
+                            <td>
+                                ${msg.respondido === false ? `
+                                    <button class="btn btn-sm btn-primary responder-btn" data-id="${msg.id}">
+                                        Responder
+                                    </button>
+                                ` : `
+                                    <span class="badge bg-success me-1">Respondido</span>
+                                    <button class="btn btn-sm btn-danger excluir-duvida-btn" data-id="${msg.id}">
+                                        <i class="fas fa-trash me-1"></i>Excluir
+                                    </button>
+                                `}
+                            </td>
+                        `;
+                        tbodyDuvidas.appendChild(tr);
+                    });
+                }
+            }
+
+            if (loadingDuvidas) {
+                loadingDuvidas.textContent = `Total: ${mensagensComNomes.length}`;
+            }
+            console.log('[DUVIDAS] Tabela carregada. Total exibido:', mensagensComNomes.length);
+        }
+
+        // Pagamentos e contador sempre no final
+        await carregarTabelaPagamentos();
+        await atualizarContadorPagamentosPendentes();
+
+        // Restaura scroll no final
+        forcarScrollNormal();
+    }
+
+    verificarAdmin();
+
+    // Logout
+    document.getElementById('logoutAdmin').addEventListener('click', async () => {
+        await supabase.auth.signOut();
+        localStorage.clear();
+        window.location.href = 'login.html';
+    });
+
+    // Salvar resposta – restauração agressiva do scroll
+    document.getElementById('salvarResposta').addEventListener('click', async () => {
+        const resposta = document.getElementById('respostaAdmin').value.trim();
+        const id = document.getElementById('mensagemId').value;
+
+        if (!resposta) {
+            alert('Escreva uma resposta!');
+            return;
+        }
+
+        try {
+            const { error } = await supabase
+                .from('mensagens')
+                .update({
+                    resposta: resposta,
+                    respondido: true,
+                    respondido_em: new Date().toISOString()
+                })
+                .eq('id', id);
+
+            if (error) throw error;
+
+            // Fecha modal e restaura scroll ANTES do alert
+            const modalElement = document.getElementById('responderModal');
+            if (modalElement) {
+                modalElement.classList.remove('show', 'fade');
+                modalElement.setAttribute('aria-hidden', 'true');
+                modalElement.style.display = 'none';
+
+                document.body.classList.remove('modal-open');
+                document.body.style.overflow = 'auto !important';
+                document.body.style.paddingRight = '0px !important';
+                document.body.style.position = 'static !important';
+                document.body.style.top = '0px !important';
+                document.body.style.width = '100% !important';
+                document.body.style.height = 'auto !important';
+
+                document.querySelectorAll('.modal-backdrop, .modal-backdrop.fade').forEach(b => b.remove());
+            }
+
+            const modalInstance = bootstrap?.Modal?.getInstance(modalElement);
+            if (modalInstance) modalInstance.hide();
+
+            alert('Resposta enviada com sucesso!');
+
+            // Restaura novamente após alert
+            document.body.style.overflow = 'auto !important';
+            document.body.style.paddingRight = '0px !important';
+
+            carregarDadosAdmin();
+
+        } catch (err) {
+            console.error('[RESPONDER DÚVIDA] Erro:', err);
+            alert('Erro ao enviar resposta: ' + (err.message || 'Tente novamente.'));
+        }
+    });
+
+    // Função carregarTabelaPagamentos (mantida igual)
+    async function carregarTabelaPagamentos() {
+        const loading = document.querySelector('#pagamentos .card-header small') || 
+                        document.getElementById('totalPagamentosTexto');
+        
+        if (loading) {
+            loading.textContent = 'A carregar pagamentos...';
+            loading.style.color = 'blue';
+        }
+
+        console.log('[PAGAMENTOS ADMIN] Iniciando carregamento');
+
+        try {
+            const { data: pagamentos, error: pagError } = await supabase
+                .from('pagamentos')
+                .select(`
+                    id,
+                    user_id,
+                    plano,
+                    valor,
+                    metodo,
+                    referencia,
+                    comprovativo_url,
+                    status,
+                    criado_em,
+                    aprovado_em,
+                    periodicidade,
+                    perfis!user_id (nome)
+                `)
+                .order('criado_em', { ascending: false });
+
+            if (pagError) {
+                console.error('[PAGAMENTOS ADMIN] Erro na query:', pagError.message, pagError.details);
+                if (loading) loading.textContent = 'Erro ao carregar pagamentos';
+                return;
+            }
+
+            console.log('[PAGAMENTOS ADMIN] Registos encontrados:', pagamentos?.length || 0);
+
+            const tbody = document.querySelector('#tabelaPagamentos tbody');
+            if (!tbody) {
+                console.error('[PAGAMENTOS ADMIN] tbody não encontrado!');
+                if (loading) loading.textContent = 'Erro: tabela não encontrada';
+                return;
+            }
+
+            tbody.innerHTML = '';
+
+            if (!pagamentos || pagamentos.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="9" class="text-center py-4">Nenhum pagamento registado ainda.</td></tr>';
+            } else {
+                pagamentos.forEach(pag => {
+                    const nomeAluno = pag.perfis?.nome || 'Aluno desconhecido';
+
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+    <td>${nomeAluno}</td>
+    <td>${pag.plano || '-'}</td>
+    <td>${pag.periodicidade || '-'}</td>  <!-- ← ADICIONA AQUI -->
+    <td>${pag.valor || 0} MZN</td>
+    <td>${pag.metodo?.toUpperCase() || '-'}</td>
+    <td>${pag.referencia || '-'}</td>
+    <td>${new Date(pag.criado_em).toLocaleString('pt-MZ', { dateStyle: 'short', timeStyle: 'short' })}</td>
+    <td>
+        ${pag.comprovativo_url 
+            ? `<a href="${pag.comprovativo_url}" target="_blank" class="text-primary">Ver comprovativo</a>` 
+            : 'Sem comprovativo'}
+    </td>
+    <td>
+        <span class="badge bg-${pag.status === 'pendente' ? 'warning' : pag.status === 'confirmado' ? 'success' : 'danger'}">
+            ${pag.status === 'pendente' ? 'Pendente' : pag.status === 'confirmado' ? 'Confirmado' : pag.status}
+        </span>
+    </td>
+    <td>
+        ${pag.status === 'pendente' ? `
+            <button class="btn btn-sm btn-success me-1 confirmar-pagamento" data-id="${pag.id}">
+                Confirmar
+            </button>
+        ` : ''}
+        ${pag.status === 'confirmado' ? `
+            <button class="btn btn-sm btn-danger excluir-pagamento" data-id="${pag.id}">
+                Excluir
+            </button>
+        ` : ''}
+    </td>
+`;
+                    tbody.appendChild(tr);
+                });
+            }
+
+            const total = pagamentos.length;
+            if (loading) loading.textContent = `Total: ${total}`;
+            console.log('[PAGAMENTOS ADMIN] Tabela carregada. Total exibido:', total);
+
+        } catch (err) {
+            console.error('[PAGAMENTOS ADMIN] Erro geral:', err);
+            if (loading) loading.textContent = 'Erro ao carregar pagamentos';
+        }
+    }
+
+    // Função atualizarContadorPagamentosPendentes (mantida igual)
+    async function atualizarContadorPagamentosPendentes() {
+        const elemento = document.getElementById('pagamentosPendentes');
+        if (!elemento) {
+            console.warn('[CONTADOR] Elemento #pagamentosPendentes não encontrado no HTML');
+            return;
+        }
+
+        try {
+            const { count, error } = await supabase
+                .from('pagamentos')
+                .select('*', { count: 'exact', head: true })
+                .eq('status', 'pendente');
+
+            if (error) {
+                console.error('[CONTADOR] Erro na query:', error.message);
+                elemento.textContent = 'Erro';
+                return;
+            }
+
+            elemento.textContent = count || 0;
+            console.log('[CONTADOR] Atualizado para:', count || 0);
+        } catch (err) {
+            console.error('[CONTADOR] Erro geral:', err);
+            elemento.textContent = 'Erro';
+        }
+    }
+
+    // Eventos das tabelas – todos no final do script (delegação permanente)
+    document.querySelector('#tabelaPagamentos').addEventListener('click', async (e) => {
+        const btn = e.target;
+
+        if (btn.classList.contains('confirmar-pagamento')) {
+            const pagamentoId = btn.dataset.id;
+
+            if (!confirm('Tem certeza que deseja confirmar este pagamento? O aluno será notificado.')) {
+                return;
+            }
+
+            try {
+                const { error } = await supabase
+                    .from('pagamentos')
+                    .update({ 
+                        status: 'confirmado',
+                        aprovado_em: new Date().toISOString()
+                    })
+                    .eq('id', pagamentoId);
+
+                if (error) throw error;
+
+                alert('Pagamento confirmado com sucesso!');
+                await carregarTabelaPagamentos();
+                await atualizarContadorPagamentosPendentes();
+
+            } catch (err) {
+                alert('Erro ao confirmar pagamento: ' + (err.message || 'Tente novamente.'));
+            }
+        }
+
+        if (btn.classList.contains('excluir-pagamento')) {
+            const pagamentoId = btn.dataset.id;
+
+            if (!confirm('Tem certeza que deseja EXCLUIR este pagamento? Esta ação não pode ser desfeita.')) {
+                return;
+            }
+
+            try {
+                const { error } = await supabase
+                    .from('pagamentos')
+                    .delete()
+                    .eq('id', pagamentoId);
+
+                if (error) throw error;
+
+                alert('Pagamento excluído com sucesso!');
+                await carregarTabelaPagamentos();
+                await atualizarContadorPagamentosPendentes();
+
+            } catch (err) {
+                alert('Erro ao excluir pagamento: ' + (err.message || 'Tente novamente.'));
+            }
+        }
+    });
+
+    // Listener completo para tabela de agendamentos (no final do script – agora funciona após recarregar)
+    document.querySelector('#tabelaAgendamentos').addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const btn = e.target.closest('button');
+        if (!btn || !btn.dataset.id) return;
+
+        const aulaId = btn.dataset.id;
+
+        // Aprovar
+        if (btn.classList.contains('aprovar-btn')) {
+            if (!confirm('Tem certeza que deseja APROVAR esta aula?')) return;
+
+            try {
+                const { error } = await supabase
+                    .from('agendamentos')
+                    .update({ status: 'Confirmado' })
+                    .eq('id', aulaId);
+
+                if (error) throw error;
+
+                alert('Aula aprovada com sucesso!');
+                carregarDadosAdmin();
+
+            } catch (err) {
+                alert('Erro ao aprovar aula: ' + (err.message || 'Tente novamente.'));
+            }
+        }
+
+        // Rejeitar
+        if (btn.classList.contains('rejeitar-btn')) {
+            if (!confirm('Tem certeza que deseja REJEITAR esta aula?')) return;
+
+            try {
+                const { error } = await supabase
+                    .from('agendamentos')
+                    .update({ status: 'Rejeitado' })
+                    .eq('id', aulaId);
+
+                if (error) throw error;
+
+                alert('Aula rejeitada com sucesso!');
+                carregarDadosAdmin();
+
+            } catch (err) {
+                alert('Erro ao rejeitar aula: ' + (err.message || 'Tente novamente.'));
+            }
+        }
+
+        // Excluir (já funcionava, mantido)
+        if (btn.classList.contains('excluir-aula-btn')) {
+            if (!confirm('Tem certeza que deseja EXCLUIR esta aula? Esta ação não pode ser desfeita.')) return;
+
+            try {
+                const { error } = await supabase
+                    .from('agendamentos')
+                    .delete()
+                    .eq('id', aulaId);
+
+                if (error) throw error;
+
+                alert('Aula excluída com sucesso!');
+                carregarDadosAdmin();
+
+            } catch (err) {
+                alert('Erro ao excluir aula: ' + (err.message || 'Tente novamente.'));
+            }
+        }
+    });
+
+    // Listener para tabela de dúvidas (mantido igual)
+    document.querySelector('#tabelaDuvidas').addEventListener('click', async (e) => {
+        const btn = e.target;
+
+        if (btn.classList.contains('responder-btn')) {
+            const id = btn.dataset.id;
+
+            const { data: msg, error } = await supabase
+                .from('mensagens')
+                .select('mensagem, user_id')
+                .eq('id', id)
+                .single();
+
+            if (error) {
+                console.error('Erro ao buscar mensagem:', error);
+                alert('Erro ao carregar dúvida para responder.');
+                return;
+            }
+
+            const { data: perfil } = await supabase
+                .from('perfis')
+                .select('nome')
+                .eq('id', msg.user_id)
+                .single();
+
+            document.getElementById('alunoDuvida').textContent = perfil?.nome || 'Aluno desconhecido';
+            document.getElementById('mensagemDuvida').textContent = msg.mensagem;
+            document.getElementById('mensagemId').value = id;
+            document.getElementById('respostaAdmin').value = '';
+
+            if (typeof bootstrap === 'undefined') {
+                console.error('Bootstrap não carregado!');
+                alert('Erro: Bootstrap não carregado. Recarregue a página.');
+                return;
+            }
+
+            const modal = new bootstrap.Modal(document.getElementById('responderModal'));
+            modal.show();
+        }
+
+        if (btn.classList.contains('excluir-duvida-btn')) {
+            const id = btn.dataset.id;
+
+            if (!confirm('Tem certeza que deseja EXCLUIR esta dúvida? Esta ação não pode ser desfeita.')) return;
+
+            try {
+                const { error } = await supabase
+                    .from('mensagens')
+                    .delete()
+                    .eq('id', id);
+
+                if (error) throw error;
+
+                alert('Dúvida excluída com sucesso!');
+                carregarDadosAdmin();
+
+            } catch (err) {
+                alert('Erro ao excluir dúvida: ' + (err.message || 'Tente novamente.'));
+            }
+        }
+    });
+</script>
+</body>
+</html>

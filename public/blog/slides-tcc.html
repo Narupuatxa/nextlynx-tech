@@ -827,6 +827,21 @@ nav ul {
         right: 20px; 
     }
 
+    /* Animação de flutuar simples (sem Animate.css) */
+.pulse-float {
+    animation: pulse-float 2s infinite ease-in-out;
+}
+
+@keyframes pulse-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.pulse-float:hover {
+    transform: translateY(-12px) scale(1.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+}
+
     </style>
 </head>
 <body>
@@ -1002,16 +1017,41 @@ nav ul {
                     <h3>8. Backup em PDF</h3>
                     <p>Sempre leve uma versão em PDF. <strong>NextLynx Tech</strong> entrega <strong>PowerPoint + PDF + vídeo gravado</strong>.</p>
 
-                    <div class="article-cta">
-                        <h3>Slides Animados em 24h?</h3>
-                        <p>NextLynx Tech cria sua apresentação completa: design, animações, narração opcional. Entrega em 24h!</p>
-                        <a href="../pedir-orcamento.html" class="btn btn-cta">
-                            <i class="fas fa-play-circle"></i> Pedir Slides Agora
-                        </a>
-                    </div>
+                    <!-- Área de Slides – linguagem educativa, botões animados e texto visível -->
+<div class="text-center mt-5 mb-5">
+    <!-- CTA com fundo azul escuro -->
+    <div class="p-5 rounded-4 shadow-xl" style="background: linear-gradient(135deg, #1e3a8a, #4c1d95); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(10px); color: #ffffff !important; text-shadow: 0 3px 12px rgba(0,0,0,0.9) !important;">
+        <h3 class="fw-bold mb-4" style="font-size: 2.5rem; color: #ffffff !important; text-shadow: 0 6px 20px rgba(0,0,0,1) !important;">
+            Slides que Impressionam a Banca?
+        </h3>
 
-                    <p><strong>Conclusão:</strong> Slides bem feitos <strong>aumentam em 70% a percepção de profissionalismo</strong>. Deixe a NextLynx Tech transformar sua defesa em um show!</p>
-                </div>
+        <p class="lead fw-medium mb-5" style="color: #f0f0ff !important; font-size: 1.4rem; line-height: 1.8; max-width: 850px; margin: 0 auto;">
+            Na NextLynx Tech apoiamos-te na criação de apresentações académicas profissionais: design limpo e impactante, animações sutis e estratégicas, estrutura clara e narração opcional. Com slides bem elaborados e organizados, podes transmitir as tuas ideias com mais clareza e confiança, elevando a qualidade da tua defesa.
+        </p>
+
+        <!-- Botões animados (pulse + hover eleva) -->
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-5">
+            <a href="../pedir-orcamento.html" class="btn btn-lg px-5 py-3 fw-bold shadow-lg pulse-float" style="background: linear-gradient(135deg, #ff6b00, #ff8c00); color: white !important; border: none; border-radius: 50px; min-width: 260px; transition: all 0.4s ease;">
+    <i class="fas fa-file-invoice-dollar me-2"></i> Pedir Apresentação Personalizada
+</a>
+            
+            <a href="../cadastro.html" class="btn btn-lg px-5 py-3 fw-bold shadow-lg pulse-float" style="background: linear-gradient(135deg, #00f2fe, #667eea); color: white !important; border: none; border-radius: 50px; min-width: 260px; transition: all 0.4s ease;">
+                <i class="fas fa-graduation-cap me-2"></i> Cadastrar-se na Mentoria
+            </a>
+        </div>
+
+        <p class="small mb-0" style="color: #e0e0ff !important; font-size: 1.15rem; opacity: 0.95;">
+            Prazo rápido e atenção aos detalhes — assegura o teu lugar para uma defesa mais confiante.
+        </p>
+    </div>
+
+    <!-- Conclusão com fundo azul escuro separado -->
+    <div class="mt-5 p-4 rounded-4 shadow-lg" style="background: linear-gradient(135deg, #1e3a8a, #4c1d95); border: 1px solid rgba(255,255,255,0.25); color: #ffffff !important; text-shadow: 0 3px 12px rgba(0,0,0,0.9) !important; max-width: 900px; margin: 0 auto;">
+        <p class="fw-medium" style="font-size: 1.35rem; line-height: 1.8;">
+            <strong>Conclusão:</strong> Slides bem elaborados e estruturados podem aumentar significativamente a percepção de profissionalismo e clareza na defesa. Com orientação adequada na criação de apresentações visuais impactantes, é possível transmitir as tuas ideias de forma mais eficaz e valorizada pelas bancas académicas em Moçambique.
+        </p>
+    </div>
+</div>
 
                 <div class="text-center">
                     <a href="../blog.html" class="btn-back">

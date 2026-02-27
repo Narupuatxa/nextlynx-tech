@@ -448,24 +448,37 @@ nav ul {
             background: white;
         }
 
-        .btn-solicitar {
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            padding: 0.9rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            width: 100%;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
-            animation: pulse 2s infinite;
-        }
+        /* Botões "Solicitar Orçamento Agora" – menores e mais elegantes */
+.btn-solicitar {
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+    padding: 0.7rem 1.4rem;          /* reduzido (antes era 0.9rem 1.5rem) */
+    border-radius: 50px;
+    font-size: 1rem;                  /* fonte menor e mais refinada */
+    width: auto;                      /* não ocupa 100% da largura */
+    min-width: 180px;                 /* garante tamanho mínimo bom */
+    margin: 0 auto;                   /* centraliza se necessário */
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(106,17,203,0.3);
+    animation: none;                  /* remove pulse se estiver piscando */
+}
 
-        .btn-solicitar:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.4);
-            background: var(--primary-light);
-        }
+.btn-solicitar:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(106,17,203,0.4);
+    background: var(--primary-light);
+}
+
+/* Em mobile: ainda menor e 100% se quiser */
+@media (max-width: 576px) {
+    .btn-solicitar {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.95rem;
+        min-width: 160px;
+        width: 100%; /* opcional: ocupa toda a largura em mobile pequeno */
+    }
+}
 
         .msg-box {
             min-height: 45px;
@@ -1083,6 +1096,8 @@ nav ul {
     </style>
 </head>
 <body>
+
+
     <!-- HEADER PERFEITO — PREENCHE TUDO, TUDO EM UMA LINHA -->
      
 <!-- HEADER PERFEITO — MOBILE: Hamburger + 3 pontinhos | DESKTOP: menu horizontal + 3 pontinhos -->
@@ -1175,44 +1190,39 @@ nav ul {
 
 
 
-
-
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="container position-relative">
-            <h1 class="hero-title">Nossos Serviços</h1>
-            <p class="hero-subtitle">Design Gráfico, Trabalhos Académicos e Tecnologia — Tudo com Qualidade Premium e Entrega Rápida!</p>
+            <h1 class="hero-title">Nossos Serviços Premium</h1>
+            <p class="hero-subtitle">Soluções completas em Design Gráfico, Trabalhos Académicos e Tecnologia — com qualidade reconhecida e resultados comprovados em Moçambique.</p>
             <a href="#servicos" class="btn hero-btn">
-                Explorar Agora
+                Conheça Nossos Serviços
             </a>
-            <i class="fas fa-magic hero-icon"></i>
+            <i class="fas fa-rocket hero-icon"></i>
         </div>
     </section>
 
-    <!-- Serviços em Destaque -->
-   <section class="services-section">
+    <!-- Serviços em Destaque – textos remodelados, profissional e persuasivo -->
+    <section class="services-section">
         <div class="container">
-        <!-- Título com animação idêntica à página "Sobre Nós" -->
-     <h2 class="section-title text-blue text-center mb-5" style="margin-top: 0 !important; opacity: 1 !important;">
-            Escolha o seu Serviço
-        </h2>
-        <div class="row g-5">
+            <h2 class="section-title text-center mb-5 fw-bold" style="margin-top: 0 !important; opacity: 1 !important;">
+                Escolha o Serviço Ideal para o Seu Projecto
+            </h2>
+            <div class="row g-5">
                 <!-- DESIGN GRÁFICO -->
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card card-design visible">
-                        <img src="img/design-exemplo.jpg" class="service-img" alt="Design Gráfico">
+                        <img src="img/design-exemplo.jpg" class="service-img" alt="Design Gráfico Profissional">
                         <div class="service-body">
                             <h5 class="service-title">Design Gráfico Profissional</h5>
-                            <p class="service-text">Peças visuais que vendem, impressionam e marcam presença. Criatividade sem limites!</p>
+                            <p class="service-text">Criamos identidade visual impactante que transmite confiança, profissionalismo e diferencia a sua marca no mercado competitivo.</p>
                             <ul class="service-list">
-                                <li>Logotipo profissional com 3 revisões</li>
-                                <li>Flyer A5 frente e verso</li>
-                                <li>Cartões de visita 1000 unid.</li>
-                                <li>Convites digitais animados</li>
-                                <li>Portfólios digitais interativos</li>
-                                <li>Identidade visual completa</li>
+                                <li>Logotipo exclusivo com 3 revisões gratuitas</li>
+                                <li>Flyers e banners promocionais de alto impacto</li>
+                                <li>Cartões de visita premium (digital e impresso)</li>
+                                <li>Convites animados para eventos e redes sociais</li>
+                                <li>Portfólio digital interativo e estratégico</li>
+                                <li>Identidade visual completa (manual de marca)</li>
                             </ul>
-                            <!-- FORMULÁRIO RESPONSIVO -->
                             <form class="solicitar-form" data-categoria="Design Gráfico">
                                 <input type="text" class="form-control-sm" name="nome" placeholder="Seu Nome" required>
                                 <input type="email" class="form-control-sm" name="email" placeholder="Seu Email" required>
@@ -1221,7 +1231,7 @@ nav ul {
                                     <option value="">Selecione o serviço</option>
                                 </select>
                                 <button type="submit" class="btn btn-solicitar">
-                                    Solicitar Agora
+                                    Solicitar Orçamento Agora
                                 </button>
                                 <div class="msg-box"></div>
                             </form>
@@ -1232,17 +1242,17 @@ nav ul {
                 <!-- TRABALHOS ACADÉMICOS -->
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card card-academico visible">
-                        <img src="img/academico-exemplo.jpg" class="service-img" alt="Académicos">
+                        <img src="img/academico-exemplo.jpg" class="service-img" alt="Trabalhos Académicos">
                         <div class="service-body">
-                            <h5 class="service-title">Trabalhos Académicos</h5>
-                            <p class="service-text">TCC aprovado na primeira entrega. Artigos publicados. Slides que impressionam a banca!</p>
+                            <h5 class="service-title">Trabalhos Académicos de Excelência</h5>
+                            <p class="service-text">Apoio completo para aprovação com distinção: estruturação, redação, formatação e defesa que impressionam qualquer banca.</p>
                             <ul class="service-list">
-                                <li>TCC completo com ABNT/APA</li>
-                                <li>Artigos para SciELO e revistas</li>
-                                <li>Slides animados para defesa</li>
-                                <li>Revisão ortográfica e técnica</li>
-                                <li>Monografias e dissertações</li>
-                                <li>Relatórios de estágio</li>
+                                <li>TCC e monografias formatados ABNT/APA 100% corretos</li>
+                                <li>Artigos científicos prontos para publicação indexada</li>
+                                <li>Slides profissionais animados para defesa oral</li>
+                                <li>Revisão técnica, ortográfica e de coerência</li>
+                                <li>Orientação passo a passo até a aprovação</li>
+                                <li>Relatórios de estágio e projetos finais</li>
                             </ul>
                             <form class="solicitar-form" data-categoria="Trabalhos Académicos">
                                 <input type="text" class="form-control-sm" name="nome" placeholder="Seu Nome" required>
@@ -1252,7 +1262,7 @@ nav ul {
                                     <option value="">Selecione o serviço</option>
                                 </select>
                                 <button type="submit" class="btn btn-solicitar">
-                                    Solicitar Agora
+                                    Solicitar Orçamento Agora
                                 </button>
                                 <div class="msg-box"></div>
                             </form>
@@ -1263,17 +1273,17 @@ nav ul {
                 <!-- TECNOLOGIA -->
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="service-card card-tech visible">
-                        <img src="img/tech-exemplo.png" class="service-img" alt="Tecnologia">
+                        <img src="img/tech-exemplo.png" class="service-img" alt="Soluções Tecnológicas">
                         <div class="service-body">
-                            <h5 class="service-title">Serviços de Tecnologia</h5>
-                            <p class="service-text">Websites que vendem 24h, sistemas que controlam tudo, apps que conectam clientes.</p>
+                            <h5 class="service-title">Soluções Tecnológicas Personalizadas</h5>
+                            <p class="service-text">Desenvolvemos websites, sistemas e aplicações que geram resultados reais: mais vendas, controle eficiente e presença digital forte.</p>
                             <ul class="service-list">
-                                <li>Website institucional responsivo</li>
-                                <li>Loja online com M-Pesa</li>
-                                <li>Sistema de gestão completo</li>
-                                <li>App mobile Android/iOS</li>
-                                <li>Dashboard administrativo</li>
-                                <li>Integração com CRM</li>
+                                <li>Website institucional ou portfólio responsivo</li>
+                                <li>Loja online completa com integração M-Pesa</li>
+                                <li>Sistema de gestão (ERP, CRM, stock)</li>
+                                <li>App mobile Android e iOS personalizada</li>
+                                <li>Dashboard administrativo moderno e intuitivo</li>
+                                <li>Integração com pagamentos e APIs externas</li>
                             </ul>
                             <form class="solicitar-form" data-categoria="Serviços de Tecnologia">
                                 <input type="text" class="form-control-sm" name="nome" placeholder="Seu Nome" required>
@@ -1283,7 +1293,7 @@ nav ul {
                                     <option value="">Selecione o serviço</option>
                                 </select>
                                 <button type="submit" class="btn btn-solicitar">
-                                    Solicitar Agora
+                                    Solicitar Orçamento Agora
                                 </button>
                                 <div class="msg-box"></div>
                             </form>
@@ -1352,7 +1362,7 @@ nav ul {
     <section class="promo-section">
         <div class="container position-relative">
             <h3 class="promo-title">Promoção Exclusiva!</h3>
-            <p class="promo-subtitle">20% OFF em Logotipos Profissionais, Ajuda com Trabalhos — Só esta semana!</p>
+            <p class="promo-subtitle">20% de desconto em Logotipos Profissionais, Apoio Académico e Desenvolvimento Web. Garanta já o seu projecto com qualidade premium.</p>
             <a href="contactos.html" class="btn btn-promo">
                 Aproveitar Agora
             </a>
@@ -1539,5 +1549,93 @@ nav ul {
             }
         });
     </script>
+
+
+
+
+
+<script>
+    const mentoriaModal = document.getElementById('mentoriaModal');
+
+    mentoriaModal.addEventListener('show.bs.modal', async function (event) {
+        const button = event.relatedTarget;
+        const categoriaRaw = button.getAttribute('data-categoria')?.trim();
+        const nomeServico = button.getAttribute('data-nome-servico') || 'Serviço Selecionado';
+
+        // Normaliza categoria para matching seguro (remove acentos, espaços, maiúsculas)
+        const normalizar = str => (str || '')
+            .toLowerCase()
+            .trim()
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
+        const categoria = normalizar(categoriaRaw);
+
+        document.getElementById('categoriaSelecionada').textContent = 
+            `Aulas de ${nomeServico}`;
+
+        const container = document.getElementById('aulasContainer');
+        container.innerHTML = '<p class="text-center">A carregar opções disponíveis...</p>';
+
+        try {
+            // EXATAMENTE A MESMA requisição que já funciona nos formulários
+            const response = await fetch('/api/servicos');
+
+            if (!response.ok) {
+                throw new Error(`Erro na requisição: ${response.status}`);
+            }
+
+            const todosServicos = await response.json();
+
+            // Filtra pela categoria – mesma lógica dos dropdowns
+            const opcoesFiltradas = todosServicos.filter(servico => {
+                const catServico = normalizar(servico.categoria);
+                return catServico === categoria;
+            });
+
+            if (opcoesFiltradas.length === 0) {
+                container.innerHTML = `
+                    <p class="text-center text-muted">
+                        Ainda não há aulas disponíveis para esta categoria.<br>
+                        <small>Verifique se existem serviços com categoria "${categoriaRaw}" no painel.</small>
+                    </p>`;
+                return;
+            }
+
+            let html = '';
+            opcoesFiltradas.forEach(servico => {
+                html += `
+                    <div class="col-12 mb-3">
+                        <div class="card border-primary shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title mb-2">${servico.titulo || 'Opção sem título'}</h5>
+                                <p class="card-text small mb-3">
+                                    ${servico.descricao || 'Aula prática com explicação passo a passo, materiais incluídos e suporte personalizado.'}
+                                </p>
+                                <small class="text-muted d-block fw-bold">
+                                    Duração média: ${servico.duracao_estimada || '4–8 semanas'}
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+
+        } catch (error) {
+            console.error('Erro ao carregar aulas:', error);
+            container.innerHTML = `
+                <p class="text-center text-danger">
+                    Erro ao carregar as opções.<br>
+                    <small>Tente novamente ou verifique a conexão.</small>
+                </p>`;
+        }
+
+        // Botão "Pedir Orçamento Agora" redireciona para a página com parâmetros
+        const btnOrcamento = document.getElementById('btnOrcamentoMentoria');
+        btnOrcamento.href = `pedir-orcamento.html?tipo=mentoria&categoria=${encodeURIComponent(categoriaRaw)}&servico=${encodeURIComponent(nomeServico)}`;
+    });
+</script>
 </body>
 </html>

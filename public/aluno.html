@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Aluno | NextLynx Tech - Mentoria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6a11cb;
+            --primary-light: #a55eea;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --success: #38ef7d;
+            --dark: #2c3e50;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: var(--gradient-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .sidebar {
+            background: white;
+            border-right: 1px solid #dee2e6;
+            height: calc(100vh - 56px);
+            position: fixed;
+            width: 250px;
+            overflow-y: auto;
+        }
+
+        .sidebar .nav-link {
+            color: var(--dark);
+            padding: 0.9rem 1.5rem;
+            border-radius: 10px;
+            margin: 0.3rem 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: rgba(106,17,203,0.1);
+            color: var(--primary);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #dc3545;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: bold;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 2rem;
+        }
+
+        .card-dashboard {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .card-dashboard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        .cursor-pointer {
+            cursor: pointer !important;
+        }
+
+        .disabled {
+            cursor: not-allowed !important;
+            opacity: 0.6;
+        }
+
+
+
+        
+
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+
+            .card-header h5 {
+                font-size: 1.3rem !important;
+            }
+
+            iframe {
+                height: 500px !important;
+            }
+
+            .modal-body p {
+                font-size: 0.95rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .card-header {
+                padding: 1.2rem !important;
+            }
+
+            .card-header h5 {
+                font-size: 1.2rem !important;
+            }
+
+            .alert {
+                font-size: 0.9rem !important;
+                padding: 0.75rem !important;
+            }
+        }
+
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+
+
+        /* Corrige sobreposição da sidebar direita em telas médias/pequenas */
+.main-content {
+    margin-left: 250px; /* valor original da sidebar */
+    padding-bottom: 100px !important; /* espaço extra em baixo para rodapés longos */
+}
+
+/* Em telas menores que 992px (quando sidebar vira menu) */
+@media (max-width: 991.98px) {
+    .main-content {
+        margin-left: 0 !important; /* remove margem esquerda quando sidebar desaparece */
+        padding-bottom: 120px !important; /* mais espaço em baixo */
+    }
+
+    #planos .text-center.mt-5 {
+        padding-bottom: 80px; /* garante que o rodapé não fique escondido */
+    }
+}
+
+/* Garante que o rodapé não seja coberto pela barra de notificações */
+@media (min-width: 992px) {
+    .main-content {
+        padding-right: 20px; /* evita colar na sidebar direita */
+    }
+}
+
+/* Melhora legibilidade do rodapé */
+.text-center.mt-5.pt-4.pb-5 {
+    background: rgba(248, 249, 250, 0.6);
+    border-radius: 10px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+
+
+/* Espaço para o header fixo */
+body {
+    padding-top: 56px; /* altura padrão da navbar do Bootstrap – ajusta se a tua navbar for mais alta */
+}
+
+/* Garante que o main-content não seja coberto */
+.main-content {
+    margin-top: 20px; /* espaço extra após o header */
+    padding-top: 20px;
+}
+
+/* Responsividade: em telas pequenas, ajusta padding */
+@media (max-width: 991.98px) {
+    body {
+        padding-top: 56px;
+    }
+    .main-content {
+        margin-top: 10px;
+        padding-top: 10px;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar superior -->
+   
+<!-- Navbar superior – agora FIXED no topo -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="index.html"> <!-- ← Link para página principal -->
+            NextLynx Mentoria
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <!-- Novo item: Página Principal -->
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-home me-2"></i>Página Principal
+                    </a>
+                </li>
+                <!-- Botão Sair -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="logoutBtn">
+                        <i class="fas fa-sign-out-alt me-2"></i>Sair
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="d-flex">
+        <!-- Sidebar lateral -->
+        <div class="sidebar p-4">
+            <div class="text-center mb-5">
+                <img src="img/logo1.png" alt="Logo" style="height: 70px;">
+                <h5 class="mt-3 fw-bold" id="sidebarNome">Bem-vindo(a)</h5>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#materiais"><i class="fas fa-book me-2"></i>Materiais</a></li>
+                <li class="nav-item"><a class="nav-link" href="#agendar"><i class="fas fa-calendar-check me-2"></i>Agendar Aula</a></li>
+                <li class="nav-item"><a class="nav-link" href="#historicoCompleto"><i class="fas fa-history me-2"></i>Histórico</a></li>
+                <li class="nav-item"><a class="nav-link" href="#duvidas"><i class="fas fa-question-circle me-2"></i>Enviar Dúvida</a></li>
+                <li class="nav-item position-relative">
+                    <a class="nav-link" href="#notificacoes" id="sinoNotificacoes">
+                        <i class="fas fa-bell me-2"></i>Notificações
+                        <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Conteúdo principal -->
+        <div class="main-content flex-grow-1">
+            <!-- Boas-vindas com nome dinâmico -->
+            <h2 class="mb-4 fw-bold text-primary">
+                Olá, <span id="nomeAluno">Aluno(a)</span>!
+            </h2>
+
+            <!-- Modal de Confirmação de Agendamento – com 3 passos chamativos + campo para link Meet -->
+            <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content border-0 shadow-lg">
+                        <div class="modal-header bg-gradient-primary text-white">
+                            <h5 class="modal-title fw-bold" id="confirmModalLabel">
+                                <i class="fas fa-check-circle me-2"></i> Confirmar Agendamento
+                            </h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body p-4">
+                            <!-- 3 passos estilizados e chamativos -->
+                            <div class="bg-info-subtle border border-info rounded-3 p-3 mb-4 shadow-sm">
+                                <p class="fw-bold text-info mb-2 text-center">
+                                    <i class="fas fa-lightbulb me-2"></i> Passos para concluir o agendamento:
+                                </p>
+                                <ol class="mb-0 ps-4 small text-dark">
+                                    <li class="mb-1"><strong>Confirme a data e hora</strong> da aula abaixo</li>
+                                    <li class="mb-1"><strong>Agende no calendário Google abaixo</strong> para bloquear o horário na sua agenda</li>
+                                    <li class="mb-1"><strong>Clique em "Salvar Agendamento"</strong> para associar o tema e receber o link do Google Meet por email</li>
+                                </ol>
+                            </div>
+
+                            <p class="lead text-center mb-4 fw-bold text-primary">
+                                Confirme a data e hora da aula
+                            </p>
+
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label for="dataAgendamento" class="form-label fw-bold">Data</label>
+                                    <input type="date" class="form-control form-control-lg" id="dataAgendamento" required>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label for="horaAgendamento" class="form-label fw-bold">Hora</label>
+                                    <input type="time" class="form-control form-control-lg" id="horaAgendamento" required>
+                                </div>
+                            </div>
+
+                            <!-- Campo obrigatório: Link do Google Meet -->
+                            <div class="mt-4">
+                                <label for="meetLinkInput" class="form-label fw-bold">Link da Reunião (Google Meet)</label>
+                                <input type="url" class="form-control form-control-lg" id="meetLinkInput" placeholder="https://meet.google.com/xxx-yyyy-zzz" required value="">
+                                <small class="form-text text-muted">
+                                    Cole o link que recebeu por email do Google Calendar após agendar.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="modal-footer border-0">
+                            <button type="button" class="btn btn-secondary px-4" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary px-5 fw-bold" id="btnSalvarAgendamento">
+                                <i class="fas fa-save me-2"></i> Salvar Agendamento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secção Agendamento -->
+            <div class="card shadow-lg border-0 rounded-4 mt-5" id="agendar">
+                <div class="card-header bg-gradient-primary text-white py-4 text-center">
+                    <h5 class="mb-0 fw-bold fs-4 text-warning text-shadow">
+                        <i class="fas fa-calendar-check me-2 fs-3"></i> Agendar Nova Aula / Mentoria
+                    </h5>
+                </div>
+                <div class="card-body p-4">
+                    <!-- Form para escolha de categoria e tema -->
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label for="categoriaSelecionada" class="form-label fw-bold">Categoria</label>
+                            <select id="categoriaSelecionada" class="form-select" required>
+                                <option value="">Selecione...</option>
+                                <option value="Acadêmicos">Acadêmicos</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Design Gráfico">Design Gráfico</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="temaSelecionado" class="form-label fw-bold">Tema da Aula</label>
+                            <select id="temaSelecionado" class="form-select" required disabled>
+                                <option value="">Primeiro escolha a categoria...</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 text-center">
+                        <button id="btnConfirmarAgendamento" class="btn btn-success btn-lg px-5" disabled>
+                            <i class="fas fa-check-circle me-2"></i> Confirmar Agendamento
+                        </button>
+                    </div>
+
+                    <!-- Área para mensagem de lembrete -->
+                    <div id="mensagemConfirmacao" class="alert alert-success mt-4 d-none" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
+                        Agendamento confirmado! Lembre-se de agendar o mesmo horário no calendário Google abaixo para receber o link da aula (Google Meet) por email.
+                    </div>
+
+                    <!-- Calendário Google -->
+                    <div class="mt-4">
+                        <iframe src="https://calendar.app.google/teyTTmWiHZjF7Yay9" 
+                                style="border: 0; width: 100%; height: 600px;" 
+                                frameborder="0" scrolling="yes" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Próxima Aula Agendada – com botão Reagendar -->
+            <div class="card card-dashboard mt-5">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-video card-icon"></i>
+                            <h5 class="mb-0 ms-3">Próxima Aula Agendada</h5>
+                        </div>
+                        <button id="btnReagendar" class="btn btn-outline-warning btn-sm d-none">
+                            <i class="fas fa-redo me-2"></i> Reagendar
+                        </button>
+                    </div>
+                    <p><strong>Data/Hora:</strong> <span id="proximaData">A carregar...</span></p>
+                    <p><strong>Tema:</strong> <span id="proximaTema">A carregar...</span></p>
+                    <a href="#" id="linkMeet" class="btn btn-success btn-lg w-100 mt-3 disabled" target="_blank">
+                        <i class="fas fa-video me-2"></i> Entrar na Reunião (Google Meet)
+                    </a>
+                    <small id="semLinkMsg" class="text-muted d-none mt-2">
+                        Link da reunião ainda não disponível. Verifique seu email ou contacte o mentor.
+                    </small>
+                </div>
+            </div>
+
+            <!-- Nova secção: Notificações do aluno -->
+            <div class="card card-dashboard mt-5" id="notificacoes">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0"><i class="fas fa-bell me-2"></i> Suas Notificações / Respostas</h5>
+                        <button id="btnApagarMensagensLidas" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash me-2"></i> Apagar Lidas
+                        </button>
+                    </div>
+                    <div id="listaNotificacoes" class="list-group"></div>
+                </div>
+            </div>
+
+            <!-- Nova secção: Histórico completo do aluno -->
+            <div class="card card-dashboard mt-5" id="historicoCompleto">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="mb-0"><i class="fas fa-history me-2"></i> Histórico Completo</h5>
+                        <button id="btnLimparHistorico" class="btn btn-sm btn-danger">
+                            <i class="fas fa-trash me-2"></i> Limpar Histórico
+                        </button>
+                    </div>
+                    <div id="listaHistorico" class="list-group"></div>
+                </div>
+            </div>
+
+           
+
+<!-- Materiais -->
+<div class="card card-dashboard mt-4" id="materiais">
+    <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="card-title mb-0">
+                <i class="fas fa-folder-open me-2"></i>Materiais Disponíveis
+            </h5>
+            <small id="contadorMateriais" class="text-muted"></small>
+        </div>
+
+        <!-- Loading -->
+        <div id="loadingMateriais" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                <span class="visually-hidden">Carregando materiais...</span>
+            </div>
+            <p class="mt-3 text-muted">A carregar materiais do banco de dados...</p>
+        </div>
+
+        <!-- Mensagem sem materiais -->
+        <div id="semMateriais" class="alert alert-info text-center py-4 d-none">
+            <i class="fas fa-info-circle me-2"></i>
+            Nenhum material disponível no momento.
+        </div>
+
+        <!-- Erro -->
+        <div id="erroMateriais" class="alert alert-danger d-none"></div>
+
+        <!-- Lista dinâmica de materiais -->
+        <div id="listaMateriais" class="row g-3 d-none"></div>
+    </div>
+</div>
+
+            
+                <div class="col-lg-6">
+                    <div class="card card-dashboard">
+                        <div class="card-body">
+                            <h5><i class="fas fa-question-circle me-2"></i>Enviar Dúvida</h5>
+                            <textarea id="textoDuvida" class="form-control mb-3" rows="3" placeholder="Escreva sua dúvida aqui..."></textarea>
+                            <button id="btnEnviarDuvida" class="btn btn-primary w-100">Enviar Dúvida</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Secção de Planos e Preços -->
+
+<!-- Secção de Planos e Preços -->
+<div class="container my-5" id="planos">
+    <h2 class="text-center fw-bold mb-5 text-primary">
+        <i class="fas fa-tags me-2"></i>Escolha o Plano Ideal para Si
+    </h2>
+
+    <div class="row g-4 justify-content-center">
+        <!-- Académica -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card card-dashboard shadow-lg border-0 h-100 mx-auto" style="max-width: 380px;">
+                <div class="card-header bg-dark text-white text-center py-4">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-graduation-cap me-3"></i>Académica</h4>
+                </div>
+                <div class="card-body">
+                    <div class="plan mb-4 border-bottom pb-3">
+                        <h5 class="fw-bold text-success"><i class="fas fa-star me-2"></i>Plano Básico</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>500 MZN por semana</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>2.000 MZN por mês</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Indicado para iniciantes</li>
+                            <li><i class="fas fa-clock text-success me-2"></i>3 aulas de mentoria por semana (cada aula: 1 hora / 60 minutos)</li>
+                        </ul>
+                    </div>
+                    <div class="plan">
+                        <h5 class="fw-bold text-primary"><i class="fas fa-rocket me-2"></i>Plano Premium</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>700 MZN por semana</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>2.800 MZN por mês</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Indicado para nível médio</li>
+                            <li><i class="fas fa-clock text-success me-2"></i>3 aulas de mentoria por semana (cada aula: 1 hora / 60 minutos)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-light border-0">
+                    <button class="btn btn-primary btn-lg px-5 fw-bold escolher-plano w-100 mb-2"
+                            data-categoria="Académica"
+                            data-plano="Básico"
+                            data-valor-semanal="500"
+                            data-valor-mensal="2000">
+                        <i class="fas fa-shopping-cart me-2"></i>Escolher Plano Básico
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg px-5 fw-bold escolher-plano w-100"
+                            data-categoria="Académica"
+                            data-plano="Premium"
+                            data-valor-semanal="700"
+                            data-valor-mensal="2800">
+                        <i class="fas fa-crown me-2"></i>Escolher Plano Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tecnologia -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card card-dashboard shadow-lg border-0 h-100 mx-auto" style="max-width: 380px;">
+                <div class="card-header bg-dark text-white text-center py-4">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-laptop-code me-3"></i>Tecnologia</h4>
+                </div>
+                <div class="card-body">
+                    <div class="plan mb-4 border-bottom pb-3">
+                        <h5 class="fw-bold text-success"><i class="fas fa-star me-2"></i>Plano Básico</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>750 MZN por semana</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>3.000 MZN por mês</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Indicado para iniciantes</li>
+                            <li><i class="fas fa-clock text-success me-2"></i>4 aulas de mentoria por semana (cada aula: 1 hora / 60 minutos)</li>
+                        </ul>
+                    </div>
+                    <div class="plan">
+                        <h5 class="fw-bold text-primary"><i class="fas fa-rocket me-2"></i>Plano Premium</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>1.000 MZN por semana</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>4.000 MZN por mês</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Indicado para nível médio</li>
+                            <li><i class="fas fa-clock text-success me-2"></i>5 aulas de mentoria por semana (cada aula: 1 hora / 60 minutos)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-light border-0">
+                    <button class="btn btn-primary btn-lg px-5 fw-bold escolher-plano w-100 mb-2"
+                            data-categoria="Tecnologia"
+                            data-plano="Básico"
+                            data-valor-semanal="750"
+                            data-valor-mensal="3000">
+                        <i class="fas fa-shopping-cart me-2"></i>Escolher Plano Básico
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg px-5 fw-bold escolher-plano w-100"
+                            data-categoria="Tecnologia"
+                            data-plano="Premium"
+                            data-valor-semanal="1000"
+                            data-valor-mensal="4000">
+                        <i class="fas fa-crown me-2"></i>Escolher Plano Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design Gráfico -->
+        <div class="col-lg-4 col-md-6 col-12">
+            <div class="card card-dashboard shadow-lg border-0 h-100 mx-auto" style="max-width: 380px;">
+                <div class="card-header bg-dark text-white text-center py-4">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-paint-brush me-3"></i>Design Gráfico</h4>
+                </div>
+                <div class="card-body">
+                    <div class="plan mb-4 border-bottom pb-3">
+                        <h5 class="fw-bold text-success"><i class="fas fa-star me-2"></i>Plano Básico</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>600 MZN por semana</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>2.400 MZN por mês</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Indicado para iniciantes</li>
+                            <li><i class="fas fa-clock text-success me-2"></i>4 aulas de mentoria por semana (cada aula: 1 hora / 60 minutos)</li>
+                        </ul>
+                    </div>
+                    <div class="plan">
+                        <h5 class="fw-bold text-primary"><i class="fas fa-rocket me-2"></i>Plano Premium</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check-circle text-success me-2"></i>850 MZN por semana</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>3.400 MZN por mês</li>
+                            <li><i class="fas fa-check-circle text-success me-2"></i>Indicado para nível médio</li>
+                            <li><i class="fas fa-clock text-success me-2"></i>5 aulas de mentoria por semana (cada aula: 1 hora / 60 minutos)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-light border-0">
+                    <button class="btn btn-primary btn-lg px-5 fw-bold escolher-plano w-100 mb-2"
+                            data-categoria="DesignGrafico"
+                            data-plano="Básico"
+                            data-valor-semanal="600"
+                            data-valor-mensal="2400">
+                        <i class="fas fa-shopping-cart me-2"></i>Escolher Plano Básico
+                    </button>
+                    <button class="btn btn-outline-primary btn-lg px-5 fw-bold escolher-plano w-100"
+                            data-categoria="DesignGrafico"
+                            data-plano="Premium"
+                            data-valor-semanal="850"
+                            data-valor-mensal="3400">
+                        <i class="fas fa-crown me-2"></i>Escolher Plano Premium
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   <div class="text-center mt-5 pt-4 pb-5 border-top">
+        <p class="lead text-muted mb-3">
+            <i class="fas fa-shield-alt me-2 text-primary"></i>
+            Todos os planos incluem aulas individuais de 1 hora (60 minutos), suporte personalizado e materiais exclusivos.
+        </p>
+        <small class="text-muted d-block">
+            Pagamentos aceites via M-Pesa, e-Mola ou transferência bancária (Millennium BIM).<br>
+            Contacte-nos para mais detalhes ou opções personalizadas.
+        </small>
+    </div>
+</div>
+
+<!-- Secção de Pagamento (inicialmente escondida) -->
+<!-- Secção de Pagamento (inicialmente escondida) -->
+<div id="pagamentoSection" class="card mt-5 mx-auto shadow-lg border-0 d-none" style="max-width: 540px;">
+    <div class="card-header bg-primary text-white text-center py-3">
+        <h5 class="mb-0 fw-bold">Confirmação de Pagamento</h5>
+    </div>
+    <div class="card-body">
+        <p class="fw-bold mb-1">Categoria Selecionada:</p>
+        <p id="categoriaPagamento" class="mb-3"></p>
+
+        <p class="fw-bold mb-1">Plano Escolhido:</p>
+        <p id="planoPagamento" class="mb-3"></p>
+
+        <!-- Escolha: semanal ou mensal -->
+        <div class="mb-4">
+            <label class="fw-bold form-label">Periodicidade do Pagamento:</label>
+            <div class="d-flex gap-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="periodicidade" id="semanalRadio" value="semanal" checked>
+                    <label class="form-check-label" for="semanalRadio">Semanal</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="periodicidade" id="mensalRadio" value="mensal">
+                    <label class="form-check-label" for="mensalRadio">Mensal (recomendado)</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Valor final a pagar (atualiza dinamicamente) -->
+        <p class="fw-bold mb-1">Valor a Pagar Agora:</p>
+        <p class="mb-4">
+            <span id="valorSelecionado" class="fs-5 fw-bold text-success">0 MZN</span>
+        </p>
+
+        <div class="mb-4">
+            <label class="fw-bold form-label">Método de Pagamento:</label>
+            <select id="metodoPagamento" class="form-select">
+                <option value="">Selecione o método...</option>
+                <option value="mpesa">M-Pesa (84 965 4345)</option>
+                <option value="emola">e-Mola (86 818 7201)</option>
+                <option value="bim">Millennium BIM (368 442 861)</option>
+            </select>
+            <small class="text-muted d-block mt-1">
+                Beneficiário: Abdul Silva Narupuatxa (NextLynx Tech)
+            </small>
+        </div>
+
+        <div class="alert alert-info mt-3">
+            <strong>Referência obrigatória:</strong> <strong id="referenciaPagamento" class="text-dark"></strong><br>
+            <small class="d-block mt-2 text-danger fw-bold">
+                Insira exatamente esta referência no campo "Conteúdo " ou "Referência" ao efetuar o pagamento.
+            </small>
+        </div>
+
+        <div class="mt-4">
+            <label for="comprovativoFile" class="form-label fw-bold">Comprovativo de Pagamento</label>
+            <input type="file" class="form-control" id="comprovativoFile" accept="image/*">
+            <small class="text-muted d-block mt-1">
+                Envie uma captura de ecrã ou foto clara do comprovativo (obrigatório).
+            </small>
+        </div>
+
+        <div class="d-flex gap-3 mt-4">
+            <button id="btnCancelarPagamento" class="btn btn-secondary w-50 fw-bold">
+                <i class="fas fa-times me-2"></i>Cancelar
+            </button>
+            <button id="btnEnviarComprovativo" class="btn btn-success w-50 fw-bold" disabled>
+                <i class="fas fa-upload me-2"></i>Enviar Comprovativo
+            </button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module">
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+
+        const supabase = createClient(
+            'https://qgbblhwojxuknlhkeusy.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
+        );
+
+        // Adiciona isto logo após criar o supabase client
+supabase
+    .channel('materiais-changes')
+    .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'materiais' }, (payload) => {
+        console.log('[REALTIME] Novo material adicionado:', payload.new.titulo);
+        carregaMateriais(); // recarrega a lista automaticamente
+    })
+    .subscribe();
+
+        // Proteção e nome do aluno
+        if (!localStorage.getItem('sb-access-token')) {
+            window.location.href = 'login.html';
+        }
+
+        const nomeSalvo = localStorage.getItem('sb-user-nome');
+        if (nomeSalvo && nomeSalvo !== 'Aluno(a)') {
+            document.getElementById('nomeAluno').textContent = nomeSalvo;
+            document.getElementById('sidebarNome').textContent = nomeSalvo;
+        }
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            await supabase.auth.signOut();
+            localStorage.clear();
+            window.location.href = 'login.html';
+        });
+
+        // Elementos do DOM
+        const categoriaSelect = document.getElementById('categoriaSelecionada');
+        const temaSelect = document.getElementById('temaSelecionado');
+        const btnConfirmar = document.getElementById('btnConfirmarAgendamento');
+        const btnReagendar = document.getElementById('btnReagendar');
+        const mensagemConfirmacao = document.getElementById('mensagemConfirmacao');
+        const textoDuvida = document.getElementById('textoDuvida');
+        const btnEnviarDuvida = document.getElementById('btnEnviarDuvida');
+        const listaNotificacoes = document.getElementById('listaNotificacoes');
+        const listaHistorico = document.getElementById('listaHistorico');
+        const btnLimparHistorico = document.getElementById('btnLimparHistorico');
+        const btnApagarMensagensLidas = document.getElementById('btnApagarMensagensLidas');
+        const sinoNotificacoes = document.getElementById('sinoNotificacoes');
+        const badgeNotificacoes = document.getElementById('badgeNotificacoes');
+
+        let agendamentoAtualId = null;
+
+        // Carrega temas ao mudar categoria
+        categoriaSelect.addEventListener('change', async () => {
+            const categoria = categoriaSelect.value;
+            temaSelect.disabled = true;
+            temaSelect.innerHTML = '<option value="">Carregando temas...</option>';
+            btnConfirmar.disabled = true;
+            mensagemConfirmacao.classList.add('d-none');
+
+            if (categoria) {
+                const { data, error } = await supabase
+                    .from('aulas_temas')
+                    .select('id, tema')
+                    .eq('categoria', categoria);
+
+                if (error) {
+                    console.error('Erro ao carregar temas:', error);
+                    temaSelect.innerHTML = '<option value="">Erro ao carregar temas</option>';
+                    return;
+                }
+
+                temaSelect.innerHTML = '<option value="">Selecione o tema...</option>';
+                data.forEach(tema => {
+                    const option = document.createElement('option');
+                    option.value = tema.id;
+                    option.textContent = tema.tema;
+                    temaSelect.appendChild(option);
+                });
+                temaSelect.disabled = false;
+            }
+        });
+
+        // Ativa botão Confirmar quando tema é selecionado
+        temaSelect.addEventListener('change', () => {
+            btnConfirmar.disabled = !temaSelect.value;
+        });
+
+        // Abre modal para novo agendamento
+        btnConfirmar.addEventListener('click', () => {
+            if (!temaSelect.value) {
+                alert('Selecione um tema primeiro!');
+                return;
+            }
+
+            agendamentoAtualId = null;
+            document.getElementById('dataAgendamento').value = '';
+            document.getElementById('horaAgendamento').value = '';
+            document.getElementById('meetLinkInput').value = '';
+
+            const modalElement = document.getElementById('confirmModal');
+            if (!modalElement) {
+                console.error('Modal não encontrado!');
+                return;
+            }
+
+            const modal = new bootstrap.Modal(modalElement);
+            modal.show();
+        });
+
+        // Abre modal para reagendamento
+        btnReagendar.addEventListener('click', async () => {
+            const { data, error } = await supabase
+                .from('agendamentos')
+                .select('id, data_hora, meet_link')
+                .eq('user_id', (await supabase.auth.getUser()).data.user.id)
+                .eq('status', 'Pendente')
+                .order('data_hora', { ascending: true })
+                .limit(1)
+                .single();
+
+            if (error || !data) {
+                alert('Não há agendamento pendente para reagendar.');
+                return;
+            }
+
+            agendamentoAtualId = data.id;
+
+            const dataHora = new Date(data.data_hora);
+            document.getElementById('dataAgendamento').value = dataHora.toISOString().split('T')[0];
+            document.getElementById('horaAgendamento').value = dataHora.toTimeString().slice(0, 5);
+            document.getElementById('meetLinkInput').value = data.meet_link || '';
+
+            const modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+            modal.show();
+        });
+
+        // Salva ou atualiza agendamento
+        document.getElementById('btnSalvarAgendamento').addEventListener('click', async () => {
+            const temaId = temaSelect.value;
+            const data = document.getElementById('dataAgendamento').value;
+            const hora = document.getElementById('horaAgendamento').value;
+            const meetLink = document.getElementById('meetLinkInput').value.trim();
+
+            if (!data || !hora) {
+                alert('Por favor, preencha data e hora!');
+                return;
+            }
+
+            if (!meetLink) {
+                alert('Por favor, cole o link do Google Meet!');
+                return;
+            }
+
+            if (!meetLink.includes('meet.google.com')) {
+                alert('Link inválido. Deve ser do Google Meet.');
+                return;
+            }
+
+            const dataHora = new Date(`${data}T${hora}:00`);
+
+            const { data: userData } = await supabase.auth.getUser();
+            const userId = userData.user.id;
+
+            let error;
+
+            if (agendamentoAtualId) {
+                ({ error } = await supabase
+                    .from('agendamentos')
+                    .update({
+                        data_hora: dataHora,
+                        meet_link: meetLink,
+                        status: 'Pendente'
+                    })
+                    .eq('id', agendamentoAtualId)
+                    .eq('user_id', userId));
+            } else {
+                ({ error } = await supabase
+                    .from('agendamentos')
+                    .insert({
+                        user_id: userId,
+                        tema_id: temaId,
+                        data_hora: dataHora,
+                        meet_link: meetLink,
+                        status: 'Pendente'
+                    }));
+            }
+
+            if (error) {
+                alert('Erro ao salvar: ' + error.message);
+                return;
+            }
+
+            bootstrap.Modal.getInstance(document.getElementById('confirmModal')).hide();
+
+            mensagemConfirmacao.innerHTML = `
+                <i class="fas fa-check-circle me-2"></i>
+                ${agendamentoAtualId ? 'Reagendamento' : 'Agendamento'} confirmado com sucesso!
+            `;
+            mensagemConfirmacao.classList.remove('d-none');
+
+            setTimeout(() => {
+                mensagemConfirmacao.classList.add('d-none');
+            }, 10000);
+
+            categoriaSelect.value = '';
+            temaSelect.innerHTML = '<option value="">Primeiro escolha a categoria...</option>';
+            temaSelect.disabled = true;
+            btnConfirmar.disabled = true;
+            document.getElementById('meetLinkInput').value = '';
+
+            carregaProximaAula();
+            carregaNotificacoes();
+            atualizarBadgeNotificacoes();
+        });
+
+        // Carrega Próxima Aula
+        async function carregaProximaAula() {
+            const { data, error } = await supabase
+                .from('agendamentos')
+                .select(`
+                    id,
+                    data_hora,
+                    meet_link,
+                    aulas_temas (tema)
+                `)
+                .eq('user_id', (await supabase.auth.getUser()).data.user.id)
+                .eq('status', 'Pendente')
+                .order('data_hora', { ascending: true })
+                .limit(1)
+                .single();
+
+            if (error || !data) {
+                document.getElementById('proximaData').textContent = 'Nenhuma agendada';
+                document.getElementById('proximaTema').textContent = 'Nenhum tema';
+                document.getElementById('linkMeet').classList.add('disabled');
+                document.getElementById('linkMeet').href = '#';
+                document.getElementById('semLinkMsg').classList.remove('d-none');
+                document.getElementById('btnReagendar').classList.add('d-none');
+                return;
+            }
+
+            document.getElementById('proximaData').textContent = new Date(data.data_hora).toLocaleString('pt-MZ', {
+                dateStyle: 'short',
+                timeStyle: 'short'
+            });
+            document.getElementById('proximaTema').textContent = data.aulas_temas?.tema || 'Nenhum tema';
+
+            const meetLink = data.meet_link;
+            if (meetLink && meetLink.trim() !== '') {
+                document.getElementById('linkMeet').href = meetLink;
+                document.getElementById('linkMeet').classList.remove('disabled');
+                document.getElementById('semLinkMsg').classList.add('d-none');
+            } else {
+                document.getElementById('linkMeet').classList.add('disabled');
+                document.getElementById('linkMeet').href = '#';
+                document.getElementById('semLinkMsg').classList.remove('d-none');
+            }
+
+            document.getElementById('btnReagendar').classList.remove('d-none');
+        }
+
+        // Enviar dúvida
+        btnEnviarDuvida.addEventListener('click', async () => {
+            const mensagem = textoDuvida.value.trim();
+
+            if (!mensagem) {
+                alert('Escreva sua dúvida antes de enviar!');
+                return;
+            }
+
+            const { data: userData } = await supabase.auth.getUser();
+            const userId = userData.user.id;
+
+            const { error } = await supabase
+                .from('mensagens')
+                .insert({
+                    user_id: userId,
+                    mensagem: mensagem,
+                    respondido: false
+                });
+
+            if (error) {
+                alert('Erro ao enviar dúvida: ' + error.message);
+                return;
+            }
+
+            textoDuvida.value = '';
+            alert('Dúvida enviada com sucesso!');
+
+            carregaNotificacoes();
+            atualizarBadgeNotificacoes();
+        });
+
+        // Carrega notificações com botão de apagar individual
+        async function carregaNotificacoes() {
+            const { data: notificacoes, error } = await supabase
+                .from('mensagens')
+                .select('id, mensagem, resposta, criado_em, respondido_em, respondido, lido')
+                .eq('user_id', (await supabase.auth.getUser()).data.user.id)
+                .order('respondido_em', { ascending: false, nullsFirst: true });
+
+            if (error) {
+                console.error('Erro ao carregar notificações:', error);
+                listaNotificacoes.innerHTML = '<p class="text-danger">Erro ao carregar notificações.</p>';
+                return;
+            }
+
+            listaNotificacoes.innerHTML = '';
+
+            if (!notificacoes || notificacoes.length === 0) {
+                listaNotificacoes.innerHTML = '<p class="text-muted text-center py-4">Nenhuma notificação ainda.</p>';
+                return;
+            }
+
+            notificacoes.forEach(not => {
+                const item = document.createElement('div');
+                item.className = 'list-group-item d-flex justify-content-between align-items-start';
+                item.innerHTML = `
+                    <div class="flex-grow-1">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6 class="mb-1">
+                                ${not.respondido ? 'Resposta do mentor' : 'Sua dúvida enviada'}
+                            </h6>
+                            <small>${new Date(not.respondido_em || not.criado_em).toLocaleString('pt-MZ')}</small>
+                        </div>
+                        <p class="mb-1"><strong>Mensagem:</strong> ${not.mensagem}</p>
+                        ${not.respondido ? `<p class="mb-1 text-success"><strong>Resposta:</strong> ${not.resposta}</p>` : '<p class="mb-1 text-muted">Aguardando resposta...</p>'}
+                    </div>
+                    <button class="btn btn-sm btn-danger apagar-mensagem-btn ms-3" data-id="${not.id}">
+                        <i class="fas fa-trash"></i> Apagar
+                    </button>
+                `;
+                listaNotificacoes.appendChild(item);
+            });
+
+            atualizarBadgeNotificacoes();
+        }
+
+        // Apagar mensagem individual
+        listaNotificacoes.addEventListener('click', async (e) => {
+            const btn = e.target.closest('.apagar-mensagem-btn');
+            if (!btn) return;
+
+            const id = btn.dataset.id;
+
+            if (!confirm('Tem certeza que deseja apagar esta mensagem? Esta ação não pode ser desfeita.')) return;
+
+            const { error } = await supabase
+                .from('mensagens')
+                .delete()
+                .eq('id', id);
+
+            if (error) {
+                console.error('Erro ao apagar mensagem:', error);
+                alert('Erro ao apagar mensagem: ' + error.message);
+                return;
+            }
+
+            // Recarrega a página para atualizar visualmente (resolve cache)
+            location.reload();
+        });
+
+        // Apagar mensagens lidas (botão geral)
+        btnApagarMensagensLidas.addEventListener('click', async () => {
+            if (!confirm('Tem certeza que deseja apagar todas as mensagens lidas? Esta ação não pode ser desfeita.')) return;
+
+            const userId = (await supabase.auth.getUser()).data.user.id;
+
+            const { error } = await supabase
+                .from('mensagens')
+                .delete()
+                .eq('user_id', userId)
+                .eq('lido', true);
+
+            if (error) {
+                console.error('Erro ao apagar mensagens lidas:', error);
+                alert('Erro ao apagar mensagens lidas: ' + error.message);
+                return;
+            }
+
+            // Recarrega a página para atualizar visualmente
+            location.reload();
+        });
+
+        // Limpar histórico completo
+        btnLimparHistorico.addEventListener('click', async () => {
+            if (!confirm('Tem certeza que deseja limpar todo o histórico (agendamentos antigos + TODAS as mensagens)? Esta ação não pode ser desfeita.')) return;
+
+            const userId = (await supabase.auth.getUser()).data.user.id;
+
+            // Apaga agendamentos não pendentes
+            await supabase
+                .from('agendamentos')
+                .delete()
+                .eq('user_id', userId)
+                .neq('status', 'Pendente');
+
+            // Apaga TODAS as mensagens
+            await supabase
+                .from('mensagens')
+                .delete()
+                .eq('user_id', userId);
+
+            // Recarrega a página para atualizar visualmente
+            location.reload();
+        });
+
+        // Atualiza o badge do sino de notificações
+        async function atualizarBadgeNotificacoes() {
+            const { count: novasMensagens } = await supabase
+                .from('mensagens')
+                .select('*', { count: 'exact', head: true })
+                .eq('user_id', (await supabase.auth.getUser()).data.user.id)
+                .eq('respondido', true)
+                .is('lido', false);
+
+            const { count: agendamentosNovos } = await supabase
+                .from('agendamentos')
+                .select('*', { count: 'exact', head: true })
+                .eq('user_id', (await supabase.auth.getUser()).data.user.id)
+                .in('status', ['Confirmado', 'Cancelado'])
+                .is('notificado', false);
+
+            const totalNovidades = (novasMensagens || 0) + (agendamentosNovos || 0);
+
+            if (totalNovidades > 0) {
+                badgeNotificacoes.textContent = totalNovidades;
+                badgeNotificacoes.classList.remove('d-none');
+            } else {
+                badgeNotificacoes.classList.add('d-none');
+            }
+        }
+
+        // Clique no sino → marca como lido e esconde badge
+        sinoNotificacoes.addEventListener('click', async () => {
+            const userId = (await supabase.auth.getUser()).data.user.id;
+
+            await supabase
+                .from('mensagens')
+                .update({ lido: true })
+                .eq('user_id', userId)
+                .eq('respondido', true);
+
+            await supabase
+                .from('agendamentos')
+                .update({ notificado: true })
+                .eq('user_id', userId)
+                .in('status', ['Confirmado', 'Cancelado']);
+
+            badgeNotificacoes.classList.add('d-none');
+            carregaNotificacoes();
+        });
+
+       
+// Carrega histórico completo (agendamentos + mensagens + pagamentos)
+async function carregaHistorico() {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+        console.warn('Usuário não autenticado ao carregar histórico');
+        listaHistorico.innerHTML = '<p class="text-muted text-center py-4">Faça login para ver o histórico.</p>';
+        return;
+    }
+
+    const userId = user.id;
+
+    // 1. Agendamentos
+    const { data: agendamentos, error: errAgend } = await supabase
+        .from('agendamentos')
+        .select(`
+            id,
+            data_hora,
+            status,
+            meet_link,
+            aulas_temas (tema)
+        `)
+        .eq('user_id', userId)
+        .order('data_hora', { ascending: false });
+
+    if (errAgend) console.error('Erro ao carregar agendamentos:', errAgend);
+
+    // 2. Mensagens / Dúvidas
+    const { data: mensagens, error: errMsg } = await supabase
+        .from('mensagens')
+        .select('mensagem, resposta, criado_em, respondido')
+        .eq('user_id', userId)
+        .order('criado_em', { ascending: false });
+
+    if (errMsg) console.error('Erro ao carregar mensagens:', errMsg);
+
+   // 3. Pagamentos (inclui periodicidade)
+const { data: pagamentos, error: errPag } = await supabase
+    .from('pagamentos')
+    .select('plano, valor, metodo, referencia, status, criado_em, aprovado_em, periodicidade') // ← ADICIONADO AQUI
+    .eq('user_id', userId)
+    .order('criado_em', { ascending: false });
+
+if (errPag) console.error('Erro ao carregar pagamentos:', errPag);
+
+    // Limpa o container
+    listaHistorico.innerHTML = '';
+
+    // Se não houver nada
+    if ((!agendamentos || agendamentos.length === 0) &&
+        (!mensagens || mensagens.length === 0) &&
+        (!pagamentos || pagamentos.length === 0)) {
+        listaHistorico.innerHTML = '<p class="text-muted text-center py-4">Nenhum histórico ainda.</p>';
+        return;
+    }
+
+    // 1. Pagamentos (mostra primeiro, pois é o mais recente/relevante)
+    if (pagamentos && pagamentos.length > 0) {
+        const tituloPag = document.createElement('h6');
+        tituloPag.className = 'text-primary fw-bold mt-3 mb-2 border-bottom pb-1';
+        tituloPag.innerHTML = '<i class="fas fa-credit-card me-2"></i>Pagamentos';
+        listaHistorico.appendChild(tituloPag);
+
+        pagamentos.forEach(pag => {
+    const item = document.createElement('div');
+    item.className = 'list-group-item bg-light mb-2 border rounded';
+    item.innerHTML = `
+        <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1 fw-bold">${pag.plano}</h6>
+            <small>${new Date(pag.criado_em).toLocaleString('pt-MZ', { dateStyle: 'short', timeStyle: 'short' })}</small>
+        </div>
+        <p class="mb-1"><strong>Valor:</strong> ${pag.valor} MZN (${pag.metodo.toUpperCase()})</p>
+        <p class="mb-1"><strong>Periodicidade:</strong> ${pag.periodicidade || '-'}</p> <!-- ← ADICIONADO AQUI -->
+        <p class="mb-1"><strong>Referência:</strong> ${pag.referencia}</p>
+        <p class="mb-1">
+            <strong>Status:</strong>
+            <span class="badge bg-${pag.status === 'pendente' ? 'warning' : pag.status === 'confirmado' ? 'success' : 'danger'}">
+                ${pag.status === 'pendente' ? 'Pagamento Pendente' : pag.status === 'confirmado' ? 'Pagamento Confirmado' : pag.status}
+            </span>
+        </p>
+        ${pag.aprovado_em ? `<small class="text-muted">Confirmado em: ${new Date(pag.aprovado_em).toLocaleString('pt-MZ')}</small>` : ''}
+    `;
+    listaHistorico.appendChild(item);
+});
+    }
+
+    // 2. Agendamentos
+    if (agendamentos && agendamentos.length > 0) {
+        const tituloAge = document.createElement('h6');
+        tituloAge.className = 'text-primary fw-bold mt-4 mb-2 border-bottom pb-1';
+        tituloAge.innerHTML = '<i class="fas fa-calendar-check me-2"></i>Agendamentos / Aulas';
+        listaHistorico.appendChild(tituloAge);
+
+        agendamentos.forEach(age => {
+            const item = document.createElement('div');
+            item.className = 'list-group-item';
+            item.innerHTML = `
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">Aula: ${age.aulas_temas?.tema || 'Sem tema definido'}</h6>
+                    <small>${new Date(age.data_hora).toLocaleString('pt-MZ', { dateStyle: 'short', timeStyle: 'short' })}</small>
+                </div>
+                <p class="mb-1">
+                    <strong>Status:</strong> 
+                    <span class="badge bg-${age.status === 'Pendente' ? 'warning' : age.status === 'Confirmado' ? 'success' : 'danger'}">
+                        ${age.status}
+                    </span>
+                </p>
+                ${age.meet_link ? `
+                    <p class="mb-1">
+                        <strong>Link da Aula (Meet):</strong> 
+                        <a href="${age.meet_link}" target="_blank" class="text-primary">Entrar na reunião</a>
+                    </p>
+                ` : ''}
+            `;
+            listaHistorico.appendChild(item);
+        });
+    }
+
+    // 3. Mensagens / Dúvidas
+    if (mensagens && mensagens.length > 0) {
+        const tituloMsg = document.createElement('h6');
+        tituloMsg.className = 'text-primary fw-bold mt-4 mb-2 border-bottom pb-1';
+        tituloMsg.innerHTML = '<i class="fas fa-envelope me-2"></i>Mensagens e Dúvidas';
+        listaHistorico.appendChild(tituloMsg);
+
+        mensagens.forEach(msg => {
+            const item = document.createElement('div');
+            item.className = 'list-group-item';
+            item.innerHTML = `
+                <div class="d-flex w-100 justify-content-between">
+                    <h6 class="mb-1">${msg.respondido ? 'Resposta do mentor' : 'Sua dúvida enviada'}</h6>
+                    <small>${new Date(msg.criado_em).toLocaleString('pt-MZ', { dateStyle: 'short', timeStyle: 'short' })}</small>
+                </div>
+                <p class="mb-1"><strong>Mensagem:</strong> ${msg.mensagem}</p>
+                ${msg.respondido ? `
+                    <p class="mb-1 text-success"><strong>Resposta:</strong> ${msg.resposta}</p>
+                ` : `
+                    <p class="mb-1 text-muted fst-italic">Aguardando resposta do mentor...</p>
+                `}
+            `;
+            listaHistorico.appendChild(item);
+        });
+    }
+}
+
+        // Carrega ao abrir a página
+        carregaProximaAula();
+        carregaNotificacoes();
+        carregaHistorico();
+        carregaMateriais();
+        atualizarBadgeNotificacoes();
+
+
+        // Carrega materiais do Supabase de acordo com a estrutura existente
+async function carregaMateriais() {
+    console.log('[MATERIAIS] Iniciando carregamento...');
+
+    const loading = document.getElementById('loadingMateriais');
+    const semMateriais = document.getElementById('semMateriais');
+    const erroMateriais = document.getElementById('erroMateriais');
+    const listaMateriais = document.getElementById('listaMateriais');
+    const contador = document.getElementById('contadorMateriais');
+
+    loading.classList.remove('d-none');
+    semMateriais.classList.add('d-none');
+    erroMateriais.classList.add('d-none');
+    listaMateriais.classList.add('d-none');
+    listaMateriais.innerHTML = '';
+
+    try {
+        const { data: materiais, error } = await supabase
+            .from('materiais')
+            .select('id, titulo, descricao, arquivo_url, categoria, liberado_para, criado_em')
+            .order('criado_em', { ascending: false });
+
+        loading.classList.add('d-none');
+
+        if (error) throw error;
+
+        console.log('[MATERIAIS] Carregados com sucesso:', materiais?.length || 0);
+
+        if (!materiais || materiais.length === 0) {
+            semMateriais.classList.remove('d-none');
+            contador.textContent = '(0 materiais)';
+            return;
+        }
+
+        contador.textContent = `(${materiais.length} material${materiais.length !== 1 ? 'ais' : ''})`;
+
+        const agora = new Date();
+        const umaSemanaAtras = new Date(agora);
+        umaSemanaAtras.setDate(agora.getDate() - 7);
+
+        materiais.forEach(mat => {
+            const criadoEm = new Date(mat.criado_em);
+            const ehNovo = criadoEm > umaSemanaAtras;
+
+            let icone = '';
+            const extensao = mat.arquivo_url.split('.').pop().toLowerCase();
+
+            if (extensao === 'pdf') icone = '<i class="fas fa-file-pdf me-2 text-danger"></i>';
+            else if (['ppt', 'pptx'].includes(extensao)) icone = '<i class="fas fa-file-powerpoint me-2 text-warning"></i>';
+            else if (['doc', 'docx'].includes(extensao)) icone = '<i class="fas fa-file-word me-2 text-primary"></i>';
+            else if (['mp4', 'mov', 'avi'].includes(extensao)) icone = '<i class="fas fa-video me-2 text-success"></i>';
+            else icone = '<i class="fas fa-file me-2 text-secondary"></i>';
+
+            const col = document.createElement('div');
+            col.className = 'col-md-6';
+
+            const link = document.createElement('a');
+            link.href = mat.arquivo_url;
+            link.target = '_blank';
+            link.download = ''; // força download com nome original
+            link.className = 'list-group-item list-group-item-action d-flex justify-content-between align-items-center';
+
+            link.innerHTML = `
+                ${icone}
+                <div class="flex-grow-1 ms-2">
+                    <strong>${mat.titulo}</strong>
+                    ${ehNovo ? '<span class="badge bg-success ms-2">Novo!</span>' : ''}
+                    <small class="d-block text-muted">${mat.categoria || 'Geral'}</small>
+                    ${mat.descricao ? `<small class="d-block text-muted mt-1">${mat.descricao}</small>` : ''}
+                </div>
+                <i class="fas fa-download ms-3 text-muted"></i>
+            `;
+
+            col.appendChild(link);
+            listaMateriais.appendChild(col);
+        });
+
+        listaMateriais.classList.remove('d-none');
+    } catch (err) {
+        console.error('[MATERIAIS] ERRO:', err.message);
+        loading.classList.add('d-none');
+        erroMateriais.innerHTML = `<i class="fas fa-exclamation-triangle me-2"></i>Erro ao carregar materiais: ${err.message}`;
+        erroMateriais.classList.remove('d-none');
+    }
+}
+
+
+// Quando qualquer botão "Escolher Plano" é clicado
+document.querySelectorAll('.escolher-plano').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        // Verifica login
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            alert('Por favor, faça login para escolher um plano e prosseguir com o pagamento.');
+            return;
+        }
+
+        const userId = user.id;
+        const categoria = btn.getAttribute('data-categoria');
+        const plano = btn.getAttribute('data-plano');
+        const valorSemanal = btn.getAttribute('data-valor-semanal');
+        const valorMensal = btn.getAttribute('data-valor-mensal');
+
+        // Gera referência única (ex: NX-USERID-TIMESTAMP)
+        const referencia = `NX-${userId.slice(0,8).toUpperCase()}-${Date.now().toString().slice(-6)}`;
+
+        // Preenche os dados na secção de pagamento
+        document.getElementById('categoriaPagamento').textContent = categoria;
+        document.getElementById('planoPagamento').textContent = plano;
+        document.getElementById('valorSemanal').textContent = valorSemanal;
+        document.getElementById('valorMensal').textContent = valorMensal;
+        document.getElementById('referenciaPagamento').textContent = referencia;
+
+        // Mostra a secção
+        document.getElementById('pagamentoSection').classList.remove('d-none');
+
+        // Guarda temporariamente para usar no envio
+        localStorage.setItem('pagamentoAtual', JSON.stringify({
+            userId,
+            categoria,
+            plano,
+            valor: valorMensal, // ou valorSemanal – ajusta se cobras semanal
+            referencia
+        }));
+
+        // Scroll suave até a secção de pagamento
+        document.getElementById('pagamentoSection').scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Quando botão "Escolher Plano" é clicado
+document.querySelectorAll('.escolher-plano').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+            alert('Faça login para prosseguir.');
+            return;
+        }
+
+        const userId = user.id;
+        const categoria = btn.getAttribute('data-categoria');
+        const plano = btn.getAttribute('data-plano');
+        const valorSemanal = parseFloat(btn.getAttribute('data-valor-semanal'));
+        const valorMensal = parseFloat(btn.getAttribute('data-valor-mensal'));
+
+        const referencia = `NX-${userId.slice(0,8).toUpperCase()}-${Date.now().toString().slice(-6)}`;
+
+        // Preenche os dados fixos
+        document.getElementById('categoriaPagamento').textContent = categoria;
+        document.getElementById('planoPagamento').textContent = plano;
+        document.getElementById('referenciaPagamento').textContent = referencia;
+
+        // Define valor inicial (mensal por padrão)
+        document.getElementById('valorSelecionado').textContent = valorMensal.toLocaleString('pt-MZ');
+        document.getElementById('mensalRadio').checked = true;
+
+        // Função para atualizar valor conforme escolha
+        function atualizarValor() {
+            const periodicidade = document.querySelector('input[name="periodicidade"]:checked').value;
+            const valor = periodicidade === 'mensal' ? valorMensal : valorSemanal;
+            document.getElementById('valorSelecionado').textContent = valor.toLocaleString('pt-MZ');
+        }
+
+        // Listeners para atualizar valor
+        document.querySelectorAll('input[name="periodicidade"]').forEach(radio => {
+            radio.addEventListener('change', atualizarValor);
+        });
+
+        // Limpa campos
+        document.getElementById('metodoPagamento').value = '';
+        document.getElementById('comprovativoFile').value = '';
+        document.getElementById('btnEnviarComprovativo').disabled = true;
+
+        // Mostra e scroll
+        const section = document.getElementById('pagamentoSection');
+        section.classList.remove('d-none');
+        section.scrollIntoView({ behavior: 'smooth' });
+
+        // Guarda temporário (agora inclui valor selecionado)
+        localStorage.setItem('pagamentoAtual', JSON.stringify({
+            userId,
+            categoria,
+            plano,
+            valorSemanal,
+            valorMensal,
+            referencia
+        }));
+    });
+});
+
+// Ativa botão "Enviar" quando método E arquivo estão selecionados
+function verificaCamposPagamento() {
+    const metodo = document.getElementById('metodoPagamento').value;
+    const file = document.getElementById('comprovativoFile').files.length > 0;
+    document.getElementById('btnEnviarComprovativo').disabled = !(metodo && file);
+}
+
+document.getElementById('metodoPagamento')?.addEventListener('change', verificaCamposPagamento);
+document.getElementById('comprovativoFile')?.addEventListener('change', verificaCamposPagamento);
+
+// Botão Cancelar
+document.getElementById('btnCancelarPagamento')?.addEventListener('click', () => {
+    if (confirm('Tem certeza que deseja cancelar este pagamento?')) {
+        localStorage.removeItem('pagamentoAtual');
+        document.getElementById('pagamentoSection').classList.add('d-none');
+    }
+});
+
+// Enviar comprovativo (atualizado com valor escolhido)
+document.getElementById('btnEnviarComprovativo')?.addEventListener('click', async () => {
+    const file = document.getElementById('comprovativoFile').files[0];
+    const metodo = document.getElementById('metodoPagamento').value;
+    const periodicidade = document.querySelector('input[name="periodicidade"]:checked').value;
+
+    if (!file || !metodo) {
+        alert('Selecione método de pagamento e comprovativo.');
+        return;
+    }
+
+    const dados = JSON.parse(localStorage.getItem('pagamentoAtual') || '{}');
+    if (!dados.referencia) {
+        alert('Sessão expirada.');
+        return;
+    }
+
+    try {
+        const userId = dados.userId;
+        const referencia = dados.referencia;
+        const valor = periodicidade === 'mensal' ? dados.valorMensal : dados.valorSemanal;
+        const fileName = `${referencia}_${file.name.replace(/\s+/g, '_')}`;
+        const filePath = `${userId}/${fileName}`;
+
+        // Upload
+        const { error: uploadError } = await supabase.storage
+            .from('comprovativos')
+            .upload(filePath, file);
+
+        if (uploadError) throw uploadError;
+
+        const { data: urlData } = supabase.storage.from('comprovativos').getPublicUrl(filePath);
+        const comprovativoUrl = urlData.publicUrl;
+
+        // INSERT com valor correto e periodicidade
+        const { error: insertError } = await supabase
+            .from('pagamentos')
+            .insert({
+                user_id: userId,
+                categoria: dados.categoria,
+                plano: dados.plano,
+                valor: valor,
+                referencia: referencia,
+                metodo: metodo,
+                periodicidade: periodicidade,  // novo campo (adiciona na tabela se quiseres)
+                comprovativo_url: comprovativoUrl,
+                status: 'pendente'
+            });
+
+        if (insertError) throw insertError;
+
+        alert('Pagamento enviado com sucesso! Aguarde confirmação.');
+
+        // Limpa
+        localStorage.removeItem('pagamentoAtual');
+        document.getElementById('metodoPagamento').value = '';
+        document.getElementById('comprovativoFile').value = '';
+        document.getElementById('btnEnviarComprovativo').disabled = true;
+        document.getElementById('pagamentoSection').classList.add('d-none');
+
+        // Atualiza histórico
+        if (typeof carregaHistorico === 'function') carregaHistorico();
+
+    } catch (err) {
+        console.error('Erro:', err);
+        alert('Erro ao enviar: ' + (err.message || 'Tente novamente.'));
+    }
+});
+
+
+    </script>
+</body>
+</html>

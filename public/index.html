@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -319,28 +323,14 @@ nav ul {
             border-radius: 3px;
         }
 
-        .service-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-            opacity: 0;
-            transform: translateY(50px);
-            height: 100%;
-            position: relative;
-        }
+    
 
         .service-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .service-card:hover {
-            transform: translateY(-20px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.22);
-        }
-
+    
         .service-img {
             height: 250px;
             object-fit: cover;
@@ -356,12 +346,7 @@ nav ul {
             text-align: center;
         }
 
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 1rem 0;
-            color: var(--dark);
-        }
+      
 
         .service-text {
             color: #6c757d;
@@ -369,20 +354,61 @@ nav ul {
             line-height: 1.7;
         }
 
-        .service-btn {
-            background: var(--gradient-primary);
-            color: white;
-            font-weight: 600;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
-        }
+       
+    
 
-        .service-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
-        }
+/* Melhorias nos cards de serviços */
+.service-card {
+    transition: all 0.4s ease;
+    border-radius: 20px !important;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.18) !important;
+}
+
+.service-title {
+    position: relative;
+    padding-bottom: 0.8rem;
+}
+
+.service-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.service-list li {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #495057;
+}
+
+.service-list i {
+    font-size: 1.2rem;
+}
+
+.service-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    font-weight: 600;
+    transition: all 0.4s ease;
+}
+
+.service-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(102,17,203,0.4);
+}
+
 
         /* Imagens Profissionais */
         .professional-section {
@@ -420,6 +446,17 @@ nav ul {
         }
 
       
+
+/* Título por cima das imagens – sempre visível e profissional */
+.professional-section .section-title {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    z-index: 2;
+}
+
 
 /* ===================================================== */
 /* CARDS DE ESTUDANTES – ELEGANTES, ANIMADOS E PROFISSIONAIS */
@@ -932,9 +969,134 @@ nav ul {
             .logo-animate { height: 55px; }
             .logo-text { font-size: 1.6rem; }
         }
+
+
+.mentoria-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .mentoria-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+      .mentoria-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(90deg, #ffffff, #e0e0ff, #a0a0ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    
+    text-shadow: none !important;           /* remove qualquer sombra escura */
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); /* drop-shadow mais suave, se quiseres */
+    position: relative;
+    z-index: 2;
+}
+        .area-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            height: 100%;
+        }
+
+        .area-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        .benefits-box {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 15px;
+            padding: 2.5rem;
+        }
+
+        .mentoria-btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+        }
+
+        .mentoria-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        /* Responsividade para a nova secção */
+        @media (max-width: 992px) {
+            .mentoria-title {
+                font-size: 2.8rem;
+            }
+            .area-card {
+                padding: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .mentoria-title {
+                font-size: 2.4rem;
+            }
+            .mentoria-btn {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+
+
+
+        /* Ícones circulares – mais visíveis e modernos */
+.icon-circle {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.benefits-box li:hover .icon-circle {
+    transform: scale(1.15);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Texto mais legível e destaque nas palavras-chave */
+.benefits-box strong {
+    transition: all 0.3s ease;
+}
+
+.benefits-box li:hover strong {
+    text-shadow: 0 2px 8px rgba(255,255,255,0.4);
+}
+
+/* Responsividade – em mobile fica bonito */
+@media (max-width: 768px) {
+    .benefits-box {
+        padding: 2.5rem 1.5rem !important;
+    }
+    .icon-circle {
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .icon-circle i {
+        font-size: 1.8rem !important;
+    }
+    .benefits-box h5 {
+        font-size: 1.9rem !important;
+    }
+}
+
+
     </style>
 </head>
 <body>
+
 
     <!-- Header - FUNDO VERMELHO ESCURO -->
    
@@ -1028,74 +1190,163 @@ nav ul {
 
 
 
+   <!-- Hero Section – Linguagem de mentoria/apoio + destaque colorido VISÍVEL -->
+<section class="hero-section">
+    <div class="container position-relative">
+        <h1 class="hero-title">NextLynx Tech</h1>
+        <p class="hero-subtitle">
+            Mentoria e acompanhamento personalizado em<br>
+            <span style="color: #ff6b00; font-weight: 900; text-shadow: 0 2px 8px rgba(255,107,0,0.7);">Design Gráfico</span>, 
+            <span style="color: #00f2fe; font-weight: 900; text-shadow: 0 2px 8px rgba(0,242,254,0.6);">Tecnologia</span> e 
+            <span style="color: #38ef7d; font-weight: 900; text-shadow: 0 2px 8px rgba(56,239,125,0.6);">Mentoria Académica</span><br>
+            para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
+        </p>
+        <a href="servicos.html" class="btn hero-btn">
+            Explorar Nossas Áreas de Mentoria
+        </a>
+        <i class="fas fa-laptop-code hero-icon"></i>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container position-relative">
-            <h1 class="hero-title">NextLynx Tech</h1>
-            <p class="hero-subtitle">Design Gráfico, Trabalhos Académicos e Tecnologia para Estudantes e Empresas em Moçambique</p>
-            <a href="servicos.html" class="btn hero-btn">
-                Explorar Serviços
-            </a>
-            <i class="fas fa-laptop-code hero-icon"></i>
-        </div>
-    </section>
-
-    <!-- Serviços em Destaque -->
-    <section class="services-section">
-        <div class="container">
-          <h2 class="section-title text-blue text-center mb-4" style="margin-top: 0 !important; opacity: 1 !important;">
-            Nossos Serviços Estrela
+    
+<!-- Serviços / Áreas de Mentoria – Versão profissional, destacada e listada -->
+<section class="services-section py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: visible;">
+    <div class="container position-relative" style="z-index: 2;">
+        <!-- Título sempre visível – removidas animações problemáticas -->
+        <h2 class="section-title text-center mb-5 fw-bold" style="font-size: 3rem; color: #ffffff; text-shadow: 0 6px 18px rgba(0,0,0,0.7); opacity: 1 !important; visibility: visible !important; transform: none !important;">
+            Nossas Áreas de Mentoria e Acompanhamento Profissional
         </h2>
-            <div class="row g-4">
-                <!-- Design Gráfico -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <img src="img/design-exemplo.jpg" class="service-img" alt="Design Gráfico">
-                        <div class="service-body">
-                            <h5 class="service-title">Design Gráfico Profissional</h5>
-                            <p class="service-text">Logotipos, flyers, cartões de visita, banners — tudo com design moderno e impacto visual.</p>
-                            <a href="servicos.html#design" class="btn service-btn">
-                                Ver Mais
-                            </a>
-                        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Card 1: Design Gráfico -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
+                    <img src="img/design-exemplo.jpg" class="service-img w-100" alt="Mentoria em Design Gráfico">
+                    <div class="service-body p-4 bg-white">
+                        <h5 class="service-title fw-bold text-primary mb-4" style="font-size: 1.6rem; color: #6a11cb !important;">
+                            <i class="fas fa-paint-brush me-2"></i> Mentoria em Design Gráfico
+                        </h5>
+                        <ul class="list-unstyled service-list">
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Criação de logotipos profissionais</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Panfletos, cartazes e banners impactantes</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Convites digitais e materiais promocionais</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Identidade visual completa e branding</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Desenvolvimento de portfólio atrativo</strong>
+                            </li>
+                        </ul>
+                        <a href="servicos.html#design" class="btn service-btn mt-3 w-100">
+                            Conhecer Mentoria
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Trabalhos Académicos -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <img src="img/academico-exemplo.jpg" class="service-img" alt="TCC">
-                        <div class="service-body">
-                            <h5 class="service-title">TCC, Monografias e Artigos</h5>
-                            <p class="service-text">Formatação ABNT/APA, pesquisa, redação e slides para defesa. Aprovado em UEM, UCM, UniLúrio!</p>
-                            <a href="servicos.html#academicos" class="btn service-btn">
-                                Ver Mais
-                            </a>
-                        </div>
+            <!-- Card 2: Mentoria Académica -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
+                    <img src="img/academico-exemplo.jpg" class="service-img w-100" alt="Mentoria Académica">
+                    <div class="service-body p-4 bg-white">
+                        <h5 class="service-title fw-bold text-success mb-4" style="font-size: 1.6rem; color: #38ef7d !important;">
+                            <i class="fas fa-graduation-cap me-2"></i> Mentoria Académica Profissional
+                        </h5>
+                        <ul class="list-unstyled service-list">
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Formatação de trabalhos (normas APA e ABNT)</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Como fazer trabalhos de pesquisa e relatórios</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Estruturação de projetos e monografias</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Preparação para defesa e apresentação oral</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Orientação passo a passo para aprovação</strong>
+                            </li>
+                        </ul>
+                        <a href="servicos.html#academicos" class="btn service-btn mt-3 w-100">
+                            Conhecer Mentoria
+                        </a>
                     </div>
                 </div>
+            </div>
 
-                <!-- Tecnologia -->
-                <div class="col-lg-4 col-md-6">
-                    <div class="service-card">
-                        <img src="img/tech-exemplo.png" class="service-img" alt="Tecnologia">
-                        <div class="service-body">
-                            <h5 class="service-title">Websites e Sistemas</h5>
-                            <p class="service-text">Lojas online, sistemas de gestão, apps mobile. Tudo responsivo e com M-Pesa integrado.</p>
-                            <a href="servicos.html#tech" class="btn service-btn">
-                                Ver Mais
-                            </a>
-                        </div>
+            <!-- Card 3: Tecnologia -->
+            <div class="col-lg-4 col-md-6">
+                <div class="service-card h-100 shadow-lg border-0 rounded-4 overflow-hidden">
+                    <img src="img/tech-exemplo.png" class="service-img w-100" alt="Mentoria em Tecnologia">
+                    <div class="service-body p-4 bg-white">
+                        <h5 class="service-title fw-bold text-info mb-4" style="font-size: 1.6rem; color: #00d4ff !important;">
+                            <i class="fas fa-laptop-code me-2"></i> Mentoria em Tecnologia e Desenvolvimento
+                        </h5>
+                        <ul class="list-unstyled service-list">
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Criação de páginas web responsivas</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Desenvolvimento de sistemas básicos do zero</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Programação prática e lógica de código</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Integração de soluções digitais reais</strong>
+                            </li>
+                            <li class="mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <strong>Melhores práticas do mercado atual</strong>
+                            </li>
+                        </ul>
+                        <a href="servicos.html#tech" class="btn service-btn mt-3 w-100">
+                            Conhecer Mentoria
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+
+
 
     <!-- Imagens Profissionais Grandes -->
     <section class="professional-section">
         <div class="container">
+           <h2 class="section-title text-center mb-5 fw-bold" style="font-size: 2.8rem; 
+     background: linear-gradient(90deg, #1e40af, #3b82f6, #60a5fa); 
+     -webkit-background-clip: text;
+     background-clip: text;
+     -webkit-text-fill-color: transparent;
+     color: transparent;
+     text-shadow: 0 6px 18px rgba(30,64,175,0.5); letter-spacing: -0.5px;">
+    Criatividade, Código e Estratégia em Ação
+</h2>
             <div class="row g-4">
                 <div class="col-lg-6">
                     <img src="img/tecnologia.png" class="professional-img" alt="Equipe Profissional">
@@ -1121,8 +1372,9 @@ nav ul {
         </div>
     </section>
 
-    <!-- Estudantes em Destaque - 10 ESTUDANTES -->
-    
+
+
+
 
 <!-- Estudantes em Destaque – ESTILIZADO, ANIMADO E PROFISSIONAL -->
 <section class="students-section py-5">
@@ -1265,7 +1517,7 @@ nav ul {
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="student-card animate__animated animate__fadeInUp" style="animation-delay: 0.9s;">
                     <div class="student-img-container">
-                        <img src="https://api.uniscestudantil.org.br/images/aluna_unisc.png" class="student-img" alt="Lúcia Chongo">
+                        <img src="img/ESTUDANTE UCM.jpg" class="student-img" alt="Lúcia Chongo">
                     </div>
                     <div class="student-body">
                         <h5 class="student-name">Lúcia Chongo</h5>
@@ -1295,6 +1547,7 @@ nav ul {
         </div>
     </div>
 </section>
+
 
 
     <!-- Academia em Foco - NOVA SEÇÃO -->
@@ -1349,17 +1602,188 @@ nav ul {
         </div>
     </section>
 
+
+
+     <!-- NOVA SECÇÃO DE MENTORIA – adicionada aqui, antes do footer -->
+    <section class="mentoria-section py-5">
+        <div class="container">
+            <!-- Cabeçalho da secção de mentoria – título azul carregado + destaques coloridos -->
+<div class="text-center mb-5 pb-4">
+    <h2 class="mentoria-title mb-5 fw-black" style="font-size: 3.8rem; color: #ffffff; text-shadow: 0 8px 25px rgba(0,0,0,0.8); letter-spacing: -1px;">
+    Programa de Mentoria Personalizada
+</h2>
+
+    <p class="lead fw-medium" style="color: #f0f0ff; font-size: 1.45rem; max-width: 950px; margin: 0 auto; line-height: 1.7; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">
+        Faça o seu <strong style="color: #00f2fe; font-weight: 900; background: rgba(0,242,254,0.15); padding: 4px 10px; border-radius: 10px;">cadastro</strong> agora e acesse o nosso programa de mentoria / acompanhamento personalizado profissional,<br>
+        com direito a <strong style="color: #ffeb3b; font-weight: 800; text-shadow: 0 2px 8px rgba(255,235,59,0.6);">materiais exclusivos</strong>, 
+        <strong style="color: #00f2fe; font-weight: 800; text-shadow: 0 2px 8px rgba(0,242,254,0.6);">feedback direto</strong>, 
+        <strong style="color: #ff6b00; font-weight: 800; text-shadow: 0 2px 8px rgba(255,107,0,0.6);">plano individualizado</strong> e 
+        <strong style="color: #38ef7d; font-weight: 800; text-shadow: 0 2px 8px rgba(56,239,125,0.6);">suporte contínuo</strong>.
+    </p>
+</div>
+
+                    <!-- 3 Áreas em cards destacados -->
+                    <div class="row g-4 mb-5">
+                        <!-- Design Gráfico -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="area-card p-4 rounded-4 h-100" style="background: linear-gradient(135deg, #7c3aed, #a78bfa); border: 2px solid #c084fc;"">
+                                <h5 class="fw-bold mb-4" style="color: #ffeb3b; font-size: 1.8rem; ">
+                                    <i class="fas fa-paint-brush me-2"></i> Design Gráfico
+                                </h5>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Criação de logotipos únicos e memoráveis</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Identidade visual completa e profissional</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Panfletos, cartazes, banners e materiais promocionais</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Convites digitais e design para redes sociais</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Portfólio profissional atrativo e estratégico</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Tecnologia -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="area-card p-4 rounded-4 h-100" style="background: rgba(0,242,254,0.25); border: 2px solid #00f2fe;">
+                                <h5 class="fw-bold mb-4" style="color: #00f2fe; font-size: 1.8rem;">
+                                    <i class="fas fa-laptop-code me-2"></i> Tecnologia e Desenvolvimento
+                                </h5>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Páginas web modernas, responsivas e funcionais</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Sistemas básicos desenvolvidos do zero</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Programação prática e lógica de código</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Integração de soluções digitais reais para negócios</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #00f2fe;">Melhores práticas e tendências atuais do mercado</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Mentoria Académica -->
+                        <div class="col-lg-4 col-md-6">
+                            <div class="area-card p-4 rounded-4 h-100" style="background: rgba(56,239,125,0.25); border: 2px solid #38ef7d;">
+                                <h5 class="fw-bold mb-4" style="color: #38ef7d; font-size: 1.8rem;">
+                                    <i class="fas fa-graduation-cap me-2"></i> Mentoria Académica
+                                </h5>
+                                <ul class="list-unstyled text-start">
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Formatação profissional (normas APA e ABNT)</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Estruturação de trabalhos de pesquisa e relatórios</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Organização de projetos, monografias e TCCs</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Preparação para defesa e apresentação oral</strong></li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i> <strong style="color: #ffeb3b;">Orientação passo a passo para aprovação com distinção</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- Benefícios exclusivos – versão melhorada, visível e profissional -->
+<div class="benefits-box p-5 mb-5 rounded-4 text-center shadow-lg" style="background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(10px);">
+    <h5 class="fw-bold mb-5" style="color: #ffeb3b; font-size: 2.2rem; text-shadow: 0 4px 12px rgba(0,0,0,0.5); letter-spacing: -0.5px;">
+        Benefícios Exclusivos do Programa
+    </h5>
+
+    <ul class="list-unstyled d-inline-block text-start mx-auto" style="max-width: 850px;">
+        <li class="mb-4 d-flex align-items-start gap-4 fs-5 fw-medium" style="color: #f0f0ff;">
+            <div class="icon-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: rgba(255,235,59,0.2); border-radius: 50%; flex-shrink: 0;">
+                <i class="fas fa-book-open text-warning" style="font-size: 2.2rem;"></i>
+            </div>
+            <div>
+                <strong style="color: #ffeb3b; font-weight: 800; font-size: 1.25rem;">Materiais exclusivos</strong><br>
+                <span style="color: #e0e0ff; opacity: 0.9;">e constantemente atualizados para te manter à frente</span>
+            </div>
+        </li>
+
+        <li class="mb-4 d-flex align-items-start gap-4 fs-5 fw-medium" style="color: #f0f0ff;">
+            <div class="icon-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: rgba(0,242,254,0.2); border-radius: 50%; flex-shrink: 0;">
+                <i class="fas fa-comments text-info" style="font-size: 2.2rem;"></i>
+            </div>
+            <div>
+                <strong style="color: #00f2fe; font-weight: 800; font-size: 1.25rem;">Feedback direto</strong><br>
+                <span style="color: #e0e0ff; opacity: 0.9;">e personalizado em cada etapa do teu percurso</span>
+            </div>
+        </li>
+
+        <li class="mb-4 d-flex align-items-start gap-4 fs-5 fw-medium" style="color: #f0f0ff;">
+            <div class="icon-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: rgba(255,107,0,0.2); border-radius: 50%; flex-shrink: 0;">
+                <i class="fas fa-file-alt text-danger" style="font-size: 2.2rem;"></i>
+            </div>
+            <div>
+                <strong style="color: #ff6b00; font-weight: 800; font-size: 1.25rem;">Plano individualizado</strong><br>
+                <span style="color: #e0e0ff; opacity: 0.9;">de desenvolvimento adaptado ao teu nível e objetivos</span>
+            </div>
+        </li>
+
+        <li class="mb-4 d-flex align-items-start gap-4 fs-5 fw-medium" style="color: #f0f0ff;">
+            <div class="icon-circle d-flex align-items-center justify-content-center" style="width: 60px; height: 60px; background: rgba(56,239,125,0.2); border-radius: 50%; flex-shrink: 0;">
+                <i class="fas fa-headset text-success" style="font-size: 2.2rem;"></i>
+            </div>
+            <div>
+                <strong style="color: #38ef7d; font-weight: 800; font-size: 1.25rem;">Suporte contínuo</strong><br>
+                <span style="color: #e0e0ff; opacity: 0.9;">durante todo o teu percurso – estamos contigo até ao sucesso</span>
+            </div>
+        </li>
+    </ul>
+</div>
+
+                    <!-- Botões de ação -->
+                    <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-5">
+                        <a href="cadastro.html" class="mentoria-btn btn-lg px-5 py-3 fw-bold shadow-lg" style="background: linear-gradient(135deg, #ff6b00, #ff8c00); color: white;">
+                            <i class="fas fa-user-plus me-2"></i>Fazer Cadastro Agora
+                        </a>
+                        <a href="login.html" class="mentoria-btn entrar btn-lg px-5 py-3 fw-bold shadow-lg" style="background: transparent; border: 3px solid white; color: white;">
+                            <i class="fas fa-sign-in-alt me-2"></i>Entrar
+                        </a>
+                    </div>
+
+                    <!-- Chamada para profissionais – mais profissional, com destaques vivos -->
+<!-- Chamada final – versão remodelada e profissional -->
+<div class="text-center mt-5 pt-5 px-3 px-md-5" style="background: rgba(0,0,0,0.35); border-radius: 24px; padding: 3.5rem 2.5rem; max-width: 1000px; margin: 0 auto; box-shadow: 0 15px 40px rgba(0,0,0,0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.15);">
+    <p class="lead fw-bold mb-4" style="color: #ffffff; font-size: 1.65rem; line-height: 1.6; text-shadow: 0 3px 10px rgba(0,0,0,0.6);">
+        Já és profissional e procuras serviços personalizados de 
+        <strong style="color: #00f2fe; font-weight: 900;">Design Gráfico</strong> 
+        ou 
+        <strong style="color: #00f2fe; font-weight: 900;">Tecnologia</strong>?
+    </p>
+
+    <p class="lead fw-medium mb-4" style="color: #e0e0ff; font-size: 1.35rem;">
+        <strong style="color: #ffeb3b; font-weight: 800;">Escolha o Serviço Ideal para o Seu Projecto</strong><br>
+        ou explore todas as nossas áreas de mentoria e acompanhamento profissional.
+    </p>
+
+    <!-- Botão principal – "Explorar nossas áreas de mentoria" -->
+    <div class="d-flex flex-column flex-md-row justify-content-center gap-4 mb-4">
+        <a href="servicos.html" class="btn btn-lg px-5 py-3 fw-bold shadow-lg transition-all" style="background: linear-gradient(135deg, #00f2fe, #667eea); color: white; border: none; border-radius: 50px; min-width: 280px;">
+            Explorar Nossas Áreas de Mentoria
+        </a>
+    </div>
+
+    <p class="lead fw-medium mt-4" style="color: #e0e0ff; font-size: 1.35rem;">
+        Ou simplesmente<br>
+        <strong style="color: #ffeb3b; font-size: 1.6rem; font-weight: 900; text-shadow: 0 4px 12px rgba(255,235,59,0.6);">
+            Clique no botão "Pedir Orçamento"
+        </strong><br>
+        ou utilize o 
+        <strong style="color: #25d366; font-size: 1.6rem; font-weight: 900; text-shadow: 0 4px 12px rgba(37,211,102,0.6);">
+            botão flutuante do WhatsApp
+        </strong><br>
+        para falar diretamente connosco e receber um orçamento personalizado em minutos.
+    </p>
+</div>
+    </section>
+
+
     <!-- Promoção -->
     <section class="promo-section">
         <div class="container position-relative">
             <h3 class="promo-title">Promoção Exclusiva!</h3>
-            <p class="promo-subtitle">20% OFF em Logotipos Profissionais — Só esta semana!</p>
+            <p class="promo-subtitle">20% de desconto em Logotipos Profissionais, Apoio Académico e Desenvolvimento Web. Garanta já o seu projecto com qualidade premium.</p>
             <a href="contactos.html" class="btn btn-promo">
                 Aproveitar Agora
             </a>
         </div>
     </section>
 
+
+
+
+   
     <!-- Footer - FUNDO PRETO E LETRAS BRANCAS -->
     
 <footer class="footer-container">
@@ -1476,5 +1900,6 @@ nav ul {
             });
         });
     </script>
+
 </body>
 </html>

@@ -687,20 +687,57 @@ nav ul {
             text-decoration: underline;
         }
 
-        /* Promoções */
-        .promocoes {
+         /* Promoção */
+        .promo-section {
             background: var(--gradient-warning);
             color: white;
-            padding: 5rem 0;
+            padding: 4rem 0;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .btn-pulse {
+        .promo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,80 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .promo-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .promo-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .btn-promo {
+            background: white;
+            color: var(--warning);
+            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
             animation: pulse 2s infinite;
         }
 
+        .btn-promo:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: #f8f9fa;
+        }
         /* Footer */
         
  /* Footer — CENTRALIZADO */
@@ -888,7 +925,7 @@ nav ul {
     <!-- Promoções -->
     <section class="container promocoes text-center py-5">
         <h3 class="text-white mb-4">Dúvidas? Fale Conosco!</h3>
-        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Solicitar Orçamento</a>
+        <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Fazer Pedido Agora!</a>
     </section>
 
     <!-- Footer Completo -->
