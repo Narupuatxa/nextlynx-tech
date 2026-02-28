@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* Mesmo estilo profissional do login – copiado para consistência */
+
+/* CORREÇÃO DE SCROLL TREMENTE / ABANAR EM TELEMÓVEL */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;              /* impede scroll horizontal */
+    overscroll-behavior: none;       /* desativa o "bounce" elástico nas bordas */
+    -webkit-overflow-scrolling: touch; /* melhora o scroll suave no iOS */
+    touch-action: pan-y pinch-zoom;  /* permite scroll vertical + zoom, bloqueia horizontal */
+}
+
+/* Evita recalculo louco do layout quando há elementos fixed animados */
+body {
+    position: relative;
+}
+
         :root {
             --primary: #6a11cb;
             --primary-light: #a55eea;
@@ -25,14 +42,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: clamp(1rem, 5vw, 2rem); /* padding responsivo */
+            margin: 0;
         }
 
         .signup-container {
             background: rgba(255, 255, 255, 0.97);
-            border-radius: 25px;
+            border-radius: clamp(15px, 5vw, 25px);
             box-shadow: 0 25px 70px rgba(0,0,0,0.35);
-            max-width: 500px;
+            max-width: clamp(320px, 90vw, 500px);
             width: 100%;
             animation: fadeInUp 0.9s ease-out;
             overflow: hidden;
@@ -40,43 +58,46 @@
 
         .signup-header {
             background: var(--gradient-primary);
-            padding: 3.5rem 2rem 2.5rem;
+            padding: clamp(2rem, 8vw, 3.5rem) clamp(1.2rem, 5vw, 2rem) clamp(1.8rem, 7vw, 2.5rem);
             text-align: center;
         }
 
         .signup-logo {
-            height: 90px;
-            margin-bottom: 1.2rem;
+            height: clamp(60px, 20vw, 90px);
+            margin-bottom: clamp(0.8rem, 3vw, 1.2rem);
             filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
         }
 
         .signup-title {
             font-family: 'Montserrat', sans-serif;
             font-weight: 900;
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            font-size: clamp(1.8rem, 7vw, 2.5rem);
+            margin-bottom: clamp(0.3rem, 2vw, 0.5rem);
             text-shadow: 0 3px 10px rgba(0,0,0,0.5);
         }
 
         .signup-subtitle {
-            font-size: 1.15rem;
+            font-size: clamp(0.95rem, 4vw, 1.15rem);
             opacity: 0.92;
         }
 
         .signup-body {
-            padding: 2.5rem 2.5rem 3rem;
+            padding: clamp(1.8rem, 6vw, 2.5rem);
         }
 
         .form-label {
             font-weight: 600;
             color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
         }
 
         .form-control, .form-select {
             border-radius: 15px;
-            padding: 0.85rem 1.25rem;
+            padding: clamp(0.7rem, 3vw, 0.85rem) clamp(1rem, 4vw, 1.25rem);
             border: 1px solid #d1d8e0;
             transition: all 0.3s ease;
+            font-size: clamp(0.95rem, 4vw, 1rem);
         }
 
         .form-control:focus, .form-select:focus {
@@ -88,23 +109,27 @@
             background: var(--gradient-primary);
             color: white;
             font-weight: 700;
-            font-size: 1.15rem;
-            padding: 1rem;
+            font-size: clamp(1rem, 4vw, 1.15rem);
+            padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2rem);
             border-radius: 50px;
             border: none;
             transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(106,17,203,0.35);
             animation: pulse 2.5s infinite;
+            width: 100%;
+            min-height: 48px; /* área mínima confortável para toque */
         }
 
         .btn-signup:hover {
             transform: translateY(-5px);
             box-shadow: 0 18px 45px rgba(106,17,203,0.5);
+            animation: none;
         }
 
         .alert {
             border-radius: 15px;
             margin-top: 1.2rem;
+            font-size: clamp(0.9rem, 3.5vw, 0.95rem);
         }
 
         .link-login {
@@ -128,11 +153,23 @@
             50% { transform: scale(1.04); }
         }
 
+        /* Responsividade unificada – ajusta tudo automaticamente */
         @media (max-width: 576px) {
-            .signup-container { margin: 1rem; border-radius: 20px; }
-            .signup-header { padding: 2.5rem 1.5rem 2rem; }
-            .signup-title { font-size: 2.1rem; }
-            .signup-body { padding: 2rem 1.8rem 2.5rem; }
+            body { padding: 1rem; }
+            .signup-container { margin: 0.5rem; border-radius: 20px; }
+            .signup-header { padding: clamp(2rem, 8vw, 2.5rem) 1.5rem 2rem; }
+            .signup-title { font-size: clamp(1.8rem, 7vw, 2.1rem); }
+            .signup-subtitle { font-size: clamp(0.95rem, 4vw, 1.1rem); }
+            .signup-body { padding: 1.8rem 1.5rem 2.5rem; }
+            .form-control, .form-select { font-size: 0.95rem; padding: 0.7rem 1rem; }
+            .btn-signup { font-size: 1rem; padding: 0.9rem 1.5rem; }
+        }
+
+        @media (max-width: 400px) {
+            .signup-container { border-radius: 15px; }
+            .signup-title { font-size: 1.6rem; }
+            .signup-subtitle { font-size: 0.9rem; }
+            .btn-signup { padding: 0.8rem 1rem; font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -174,7 +211,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-signup w-100">
+                <button type="submit" class="btn btn-signup">
                     <i class="fas fa-user-plus me-2"></i> Criar Minha Conta
                 </button>
 
@@ -191,97 +228,47 @@
     </div>
 
     <!-- Script Supabase Signup -->
-<script type="module">
-    import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
+    <script type="module">
+        import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
-    const supabase = createClient(
-        'https://qgbblhwojxuknlhkeusy.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
-    );
+        const supabase = createClient(
+            'https://qgbblhwojxuknlhkeusy.supabase.co',
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
+        );
 
-    document.getElementById('signupForm').addEventListener('submit', async e => {
-        e.preventDefault();
-        const msg = document.getElementById('msgSignup');
-        msg.innerHTML = '<div class="alert alert-info d-flex align-items-center"><i class="fas fa-spinner fa-spin me-2"></i>Criando conta...</div>';
+        document.getElementById('signupForm').addEventListener('submit', async e => {
+            e.preventDefault();
+            const msg = document.getElementById('msgSignup');
+            msg.innerHTML = '<div class="alert alert-info d-flex align-items-center"><i class="fas fa-spinner fa-spin me-2"></i>Criando conta...</div>';
 
-        const nome = document.getElementById('nomeSignup').value.trim();
-        const email = document.getElementById('emailSignup').value.trim();
-        const senha = document.getElementById('senhaSignup').value;
-        const confirmSenha = document.getElementById('confirmSenha').value;
+            const nome = document.getElementById('nomeSignup').value.trim();
+            const email = document.getElementById('emailSignup').value.trim();
+            const senha = document.getElementById('senhaSignup').value;
+            const confirmSenha = document.getElementById('confirmSenha').value;
 
-        if (senha !== confirmSenha) {
-            msg.innerHTML = '<div class="alert alert-danger">As senhas não coincidem.</div>';
-            return;
-        }
-
-        // 1. Signup
-        const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-            email,
-            password: senha,
-            options: {
-                data: { nome },
-                emailRedirectTo: window.location.origin + '/login.html'
+            if (senha !== confirmSenha) {
+                msg.innerHTML = '<div class="alert alert-danger">As senhas não coincidem.</div>';
+                return;
             }
-        });
 
-        if (signUpError) {
-            console.error('Erro no signup:', signUpError);
-            msg.innerHTML = `<div class="alert alert-danger">${signUpError.message}</div>`;
-            return;
-        }
-
-        console.log('Signup sucesso - User ID:', signUpData.user?.id);
-
-        // 2. Login automático para ter sessão ativa
-        const { data: loginData, error: loginError } = await supabase.auth.signInWithPassword({
-            email,
-            password: senha
-        });
-
-        if (loginError) {
-            console.error('Erro login automático:', loginError);
-            msg.innerHTML = `<div class="alert alert-warning">
-                Conta criada, mas login automático falhou: ${loginError.message}.<br>
-                Faça login manualmente em login.html
-            </div>`;
-        } else {
-            console.log('Login automático sucesso - Sessão ativa:', loginData.session);
-        }
-
-        // 3. Insere na tabela perfis (com sessão ativa ou fallback para ID do signup)
-        const userId = loginData?.user?.id || signUpData.user?.id;
-        if (!userId) {
-            msg.innerHTML += '<div class="alert alert-danger mt-2">ID do usuário não encontrado.</div>';
-            return;
-        }
-
-        const { error: perfilError } = await supabase
-            .from('perfis')
-            .insert({
-                id: userId,
-                nome,
+            const { data, error } = await supabase.auth.signUp({
                 email,
-                role: 'aluno'
+                password: senha,
+                options: {
+                    data: { nome }
+                }
             });
 
-        if (perfilError) {
-            console.error('Erro ao inserir perfil:', perfilError);
-            msg.innerHTML += `<div class="alert alert-danger mt-2">Perfil não salvo: ${perfilError.message}</div>`;
-        } else {
-            console.log('Perfil salvo com sucesso! ID:', userId, 'Nome:', nome);
-            msg.innerHTML += '<div class="alert alert-success mt-2">Perfil salvo com sucesso!</div>';
-        }
+            if (error) {
+                msg.innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+                return;
+            }
 
-        // Logout automático para login limpo
-        await supabase.auth.signOut();
-        localStorage.clear();
+            msg.innerHTML = `<div class="alert alert-success">Conta criada! Verifique seu email para confirmar.</div>`;
+            setTimeout(() => window.location.href = 'login.html', 3000);
+        });
+    </script>
 
-        msg.innerHTML += '<div class="alert alert-success mt-2">Redirecionando para login...</div>';
-
-        setTimeout(() => {
-            window.location.href = 'login.html';
-        }, 3000);
-    });
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
