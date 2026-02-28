@@ -255,7 +255,9 @@ body {
         <div class="sidebar p-4">
             <div class="text-center mb-5">
                 <img src="img/logo1.png" alt="Logo" style="height: 70px;">
-                <h5 class="mt-3 fw-bold" id="sidebarNome">Bem-vindo(a)</h5>
+                <h5 class="mt-3 fw-bold">
+  Bem-vindo(a), <span id="sidebarNome">Utilizador</span>
+</h5>
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i>Dashboard</a></li>
@@ -722,10 +724,49 @@ body {
     <script type="module">
         import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
+        
         const supabase = createClient(
-            'https://qgbblhwojxuknlhkeusy.supabase.co',
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0'
-        );
+  'https://qgbblhwojxuknlhkeusy.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFnYmJsaHdvanh1a25saGtldXN5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI5NTc1NjYsImV4cCI6MjA3ODUzMzU2Nn0.YpI8xjMqpwJSjHnrvOHfABnyMeIfxsLGJNeXrFoB3p0',
+  {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true
+    }
+  }
+);
+
+// 🔹 CARREGAR UTILIZADOR
+// ===============================
+(async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+
+  // 🔒 se não estiver logado → volta login
+  if (!session) {
+    window.location.replace('login.html');
+    return;
+  }
+
+  // 🔍 buscar perfil
+  const { data: perfil, error } = await supabase
+    .from('perfis')
+    .select('nome')
+    .eq('id', session.user.id)
+    .single();
+
+  if (error || !perfil) {
+    console.warn('Perfil não encontrado');
+    return;
+  }
+
+  // ✅ colocar nome no sidebar
+  const nomeSidebar = document.getElementById('sidebarNome');
+  if (nomeSidebar) {
+    nomeSidebar.textContent = perfil.nome || 'Utilizador';
+  }
+
+})();
 
         // Adiciona isto logo após criar o supabase client
 supabase
@@ -736,16 +777,50 @@ supabase
     })
     .subscribe();
 
-        // Proteção e nome do aluno
-        if (!localStorage.getItem('sb-access-token')) {
-            window.location.href = 'login.html';
-        }
+   // ===============================
+// 🔹 CARREGAR DADOS DO UTILIZADOR
+// ===============================
+(async () => {
+    const { data: { session } } = await supabase.auth.getSession();
 
-        const nomeSalvo = localStorage.getItem('sb-user-nome');
-        if (nomeSalvo && nomeSalvo !== 'Aluno(a)') {
-            document.getElementById('nomeAluno').textContent = nomeSalvo;
-            document.getElementById('sidebarNome').textContent = nomeSalvo;
-        }
+    if (!session) {
+        window.location.replace('login.html');
+        return;
+    }
+
+    // 🔹 buscar perfil
+    const { data: perfil, error } = await supabase
+        .from('perfis')
+        .select('nome, role')
+        .eq('id', session.user.id)
+        .single();
+
+    if (error || !perfil) {
+        console.warn('Perfil não encontrado');
+        return;
+    }
+
+    const nome = perfil.nome || 'Utilizador';
+
+    // ===============================
+    // 🔹 SIDEBAR
+    // ===============================
+    const sidebarNome = document.getElementById('sidebarNome');
+    if (sidebarNome) {
+        sidebarNome.textContent = nome;
+    }
+
+    // ===============================
+    // 🔹 TÍTULO "OLÁ"
+    // ===============================
+    const nomeAluno = document.getElementById('nomeAluno');
+    if (nomeAluno) {
+        nomeAluno.textContent = nome;
+    }
+
+    console.log('Usuário carregado:', nome);
+})();
+
 
         // Logout
         document.getElementById('logoutBtn').addEventListener('click', async () => {

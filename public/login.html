@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
+
+
+        /* CORREÇÃO DE SCROLL TREMENTE / ABANAR EM TELEMÓVEL */
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;              /* impede scroll horizontal */
+    overscroll-behavior: none;       /* desativa o "bounce" elástico nas bordas */
+    -webkit-overflow-scrolling: touch; /* melhora o scroll suave no iOS */
+    touch-action: pan-y pinch-zoom;  /* permite scroll vertical + zoom, bloqueia horizontal */
+}
+
+/* Evita recalculo louco do layout quando há elementos fixed animados */
+body {
+    position: relative;
+}
         :root {
             --primary: #6a11cb;
             --primary-light: #a55eea;
@@ -207,7 +225,7 @@
         </div>
     </div>
 
-   <script type="module">
+ <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 
 const supabase = createClient(
@@ -218,17 +236,47 @@ const supabase = createClient(
 const loginForm = document.getElementById('loginForm');
 const msg = document.getElementById('msgLogin');
 
+let redirecionando = false; // 🛑 trava anti-loop
+
 // ===============================
-// 🔹 FUNÇÃO REDIRECIONAR POR ROLE
+// 🔹 mensagens
 // ===============================
-function redirecionarPorRole(role) {
-    if (role === 'admin') {
-        window.location.href = 'admin-dashboard.html';
-    } else if (role === 'tutor' || role === 'mentor') {
-        window.location.href = 'tutores.html';
-    } else {
-        window.location.href = 'aluno.html';
-    }
+function showMsg(text, type = 'info') {
+    msg.innerHTML = `<div class="alert alert-${type} mt-3">${text}</div>`;
+}
+
+// ===============================
+// 🔹 destino por role
+// ===============================
+function destinoPorRole(role) {
+    if (role === 'admin') return 'admin-dashboard.html';
+    if (role === 'tutor' || role === 'mentor') return 'tutores.html';
+    return 'aluno.html';
+}
+
+// ===============================
+// 🔹 redirecionar seguro
+// ===============================
+async function redirecionarSeguro(userId) {
+    if (redirecionando) return;
+    redirecionando = true;
+
+    console.log('🔄 Buscando role...');
+
+    const { data: perfil } = await supabase
+        .from('perfis')
+        .select('role')
+        .eq('id', userId)
+        .maybeSingle();
+
+    const role = perfil?.role || 'aluno';
+    const destino = destinoPorRole(role);
+
+    showMsg(`Bem-vindo! A redirecionar... (${role})`, 'success');
+
+    setTimeout(() => {
+        window.location.href = destino;
+    }, 900);
 }
 
 // ===============================
@@ -237,99 +285,65 @@ function redirecionarPorRole(role) {
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    msg.innerHTML =
-        '<div class="alert alert-info d-flex align-items-center">' +
-        '<i class="fas fa-spinner fa-spin me-2"></i>A autenticar...' +
-        '</div>';
+    if (redirecionando) return;
 
     const email = document.getElementById('emailLogin').value.trim();
     const password = document.getElementById('senhaLogin').value;
 
-    // 🔐 Login
-    const { data: loginData, error: loginError } =
-        await supabase.auth.signInWithPassword({
-            email,
-            password
-        });
-
-    if (loginError) {
-        msg.innerHTML = `<div class="alert alert-danger">${loginError.message}</div>`;
-        console.error('Erro login:', loginError);
+    if (!email || !password) {
+        showMsg('Preencha email e senha.', 'danger');
         return;
     }
 
-    const userId = loginData.user.id;
+    showMsg('A autenticar...', 'info');
 
-    // ===============================
-    // 🔹 BUSCAR PERFIL
-    // ===============================
-    const { data: perfil, error: perfilError } = await supabase
-        .from('perfis')
-        .select('nome, role')
-        .eq('id', userId)
-        .single();
+    const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
+    });
 
-    let nomeUsuario = 'Utilizador';
-    let role = 'aluno';
+    if (error) {
+        console.error(error);
 
-    if (perfilError || !perfil) {
-        console.warn('Perfil não encontrado:', perfilError);
-        msg.innerHTML +=
-            `<div class="alert alert-warning mt-2">
-                Perfil não encontrado. Usando modo aluno.
-            </div>`;
-    } else {
-        nomeUsuario = perfil.nome || 'Utilizador';
-        role = perfil.role || 'aluno';
+        let texto = error.message;
+        if (texto.includes('Invalid login credentials')) texto = 'Email ou senha incorretos.';
+        if (texto.includes('Email not confirmed')) texto = 'Email não confirmado.';
+
+        showMsg(texto, 'danger');
+        return;
     }
 
-    // guardar dados úteis
-    localStorage.setItem('sb-user-nome', nomeUsuario);
-    localStorage.setItem('sb-user-role', role);
+    if (!data?.user) {
+        showMsg('Falha ao obter utilizador.', 'danger');
+        return;
+    }
 
-    msg.innerHTML =
-        `<div class="alert alert-success mt-2">
-            Bem-vindo, ${nomeUsuario}! (${role})
-        </div>`;
+    console.log('✅ Login OK:', data.user.email);
 
-    // 🚀 redirecionar
-    setTimeout(() => redirecionarPorRole(role), 1200);
+    await redirecionarSeguro(data.user.id);
 });
 
-// =======================================
-// 🔹 VERIFICA SESSÃO (SEM AUTO-ENTRAR NO LOGIN)
-// =======================================
+// ===============================
+// 🔹 VERIFICAR SESSÃO AO CARREGAR
+// (AGORA SEM LOOP)
+// ===============================
 (async () => {
     const { data: { session } } = await supabase.auth.getSession();
 
-    // ✅ detecta se estamos na página de login
-    const isLoginPage =
-        window.location.pathname.includes('login') ||
-        window.location.pathname.endsWith('/') ||
-        window.location.pathname.endsWith('index.html');
-
-    // ❗ se NÃO houver sessão → não faz nada
     if (!session) return;
 
-    // ❗ se estiver na página de login → NÃO redireciona
-    if (isLoginPage) {
-        console.log('Sessão existe, mas estamos na página de login.');
+    // 🛑 só redireciona se NÃO estiver na página de login
+    const paginaLogin =
+        window.location.pathname.includes('login');
+
+    if (paginaLogin) {
+        console.log('Sessão existe mas estamos no login — não redireciona.');
         return;
     }
 
-    // ===============================
-    // 🔹 BUSCA PERFIL
-    // ===============================
-    const { data: perfil } = await supabase
-        .from('perfis')
-        .select('nome, role')
-        .eq('id', session.user.id)
-        .single();
+    console.log('Sessão ativa detectada');
 
-    const role = perfil?.role || 'aluno';
-
-    // 🚀 redireciona automaticamente nas páginas protegidas
-    redirecionarPorRole(role);
+    await redirecionarSeguro(session.user.id);
 })();
 </script>
 </body>

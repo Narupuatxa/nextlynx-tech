@@ -986,79 +986,53 @@ nav ul {
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-      .mentoria-title {
-    font-size: 3.5rem;
+    /* ==============================================
+   TÍTULOS – RESPONSIVOS E IMPACTANTES
+============================================== */
+.mentoria-title {
+    font-size: clamp(2.2rem, 7vw, 3.8rem);  /* mínimo 2.2rem (mobile), ideal 7% largura, máximo 3.8rem */
     font-weight: 900;
     background: linear-gradient(90deg, #ffffff, #e0e0ff, #a0a0ff);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;
-    
-    text-shadow: none !important;           /* remove qualquer sombra escura */
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3)); /* drop-shadow mais suave, se quiseres */
-    position: relative;
-    z-index: 2;
+    text-shadow: none !important;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+    line-height: 1.15;
+    word-break: break-word;
+    hyphens: auto;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: -0.5px;
 }
-        .area-card {
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            height: 100%;
-        }
 
-        .area-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
+/* ==============================================
+   CARDS DE ÁREAS – RESPONSIVOS E HOVER SUAVE
+============================================== */
+.area-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: clamp(1.2rem, 4vw, 2rem);  /* padding responsivo */
+    transition: all 0.4s ease;
+    height: 100%;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
 
-        .benefits-box {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.25);
-            border-radius: 15px;
-            padding: 2.5rem;
-        }
+.area-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
 
-        .mentoria-btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.2rem;
-            border-radius: 50px;
-            transition: all 0.4s ease;
-        }
-
-        .mentoria-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-        }
-
-        /* Responsividade para a nova secção */
-        @media (max-width: 992px) {
-            .mentoria-title {
-                font-size: 2.8rem;
-            }
-            .area-card {
-                padding: 1.8rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .mentoria-title {
-                font-size: 2.4rem;
-            }
-            .mentoria-btn {
-                width: 100%;
-                margin-bottom: 1rem;
-            }
-        }
-
-
-
-
-        /* Ícones circulares – mais visíveis e modernos */
-.icon-circle {
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+/* ==============================================
+   CAIXAS DE BENEFÍCIOS – LEGÍVEIS E INTERATIVAS
+============================================== */
+.benefits-box {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 15px;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
 }
 
 .benefits-box li:hover .icon-circle {
@@ -1066,7 +1040,6 @@ nav ul {
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
 }
 
-/* Texto mais legível e destaque nas palavras-chave */
 .benefits-box strong {
     transition: all 0.3s ease;
 }
@@ -1075,23 +1048,122 @@ nav ul {
     text-shadow: 0 2px 8px rgba(255,255,255,0.4);
 }
 
-/* Responsividade – em mobile fica bonito */
+/* Ícones circulares – ajustam em mobile */
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 1.8rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
 @media (max-width: 768px) {
-    .benefits-box {
-        padding: 2.5rem 1.5rem !important;
-    }
     .icon-circle {
-        width: 50px !important;
-        height: 50px !important;
-    }
-    .icon-circle i {
-        font-size: 1.8rem !important;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        font-size: 1.6rem;
     }
     .benefits-box h5 {
-        font-size: 1.9rem !important;
+        font-size: 1.6rem;
     }
 }
 
+/* ==============================================
+   BOTÕES – RESPONSIVOS E CHAMATIVOS
+============================================== */
+.mentoria-btn {
+    padding: clamp(0.8rem, 3vw, 1rem) clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    min-width: 180px; /* evita botões muito pequenos em mobile */
+}
+
+.mentoria-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 576px) {
+    .mentoria-btn {
+        width: 100%;
+        margin-bottom: 1rem;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* ==============================================
+   RESPONSIVIDADE GLOBAL – UNIFICADA
+============================================== */
+@media (max-width: 992px) {
+    .mentoria-title {
+        font-size: clamp(2rem, 6.5vw, 3rem);
+    }
+    .aulas-card, .benefits-box {
+        padding: 1.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .mentoria-title {
+        font-size: clamp(1.8rem, 6vw, 2.6rem);
+    }
+    .section-title, .mentoria-title {
+        margin-bottom: 2rem !important;
+    }
+    .text-center.mb-5.pb-4 {
+        padding-bottom: 1.5rem !important;
+    }
+}
+
+
+
+/* Botões responsivos – tamanho e padding ajustam automaticamente */
+.mentoria-btn,
+.btn-login,
+.btn-logout,
+.btn-meet {
+    padding: clamp(0.7rem, 3vw, 1rem) clamp(1.2rem, 5vw, 2rem);  /* padding responsivo */
+    font-size: clamp(0.95rem, 4vw, 1.2rem);                       /* fonte responsiva */
+    border-radius: 50px;
+    min-width: 160px;                                             /* evita botões muito pequenos */
+    transition: all 0.4s ease;
+    white-space: nowrap;                                          /* evita quebra de texto */
+}
+
+/* Em mobile: botões ocupam mais espaço, mas não ficam gigantes */
+@media (max-width: 576px) {
+    .mentoria-btn,
+    .btn-login,
+    .btn-logout,
+    .btn-meet {
+        width: 100%;                  /* full-width em celular */
+        margin-bottom: 1rem;          /* espaçamento entre botões */
+        padding: 0.9rem 1.5rem;       /* padding fixo confortável para dedo */
+        font-size: 1rem;              /* fonte legível */
+        min-width: unset;             /* remove mínimo em mobile */
+    }
+    
+    /* Se houver vários botões juntos, empilha */
+    .d-flex.flex-wrap.gap-3 {
+        flex-direction: column !important;
+        align-items: center;
+    }
+}
+
+/* Hover mais suave em desktop */
+@media (min-width: 577px) {
+    .mentoria-btn:hover,
+    .btn-login:hover,
+    .btn-logout:hover,
+    .btn-meet:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    }
+}
 
     </style>
 </head>
@@ -1194,13 +1266,20 @@ nav ul {
 <section class="hero-section">
     <div class="container position-relative">
         <h1 class="hero-title">NextLynx Tech</h1>
+        
         <p class="hero-subtitle">
-            Mentoria e acompanhamento personalizado em<br>
-            <span style="color: #ff6b00; font-weight: 900; text-shadow: 0 2px 8px rgba(255,107,0,0.7);">Design Gráfico</span>, 
-            <span style="color: #00f2fe; font-weight: 900; text-shadow: 0 2px 8px rgba(0,242,254,0.6);">Tecnologia</span> e 
-            <span style="color: #38ef7d; font-weight: 900; text-shadow: 0 2px 8px rgba(56,239,125,0.6);">Mentoria Académica</span><br>
-            para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
-        </p>
+    Mentoria e acompanhamento personalizado em<br>
+    <span class="highlight" style="color: #ffffff; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px;">
+        Design Gráfico
+    </span>, 
+    <span class="highlight" style="color: #ffffff; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px;">
+        Tecnologia
+    </span> e 
+    <span class="highlight" style="color: #ffffff; font-weight: 900; text-shadow: 0 2px 10px rgba(0,0,0,0.8); background: rgba(0,0,0,0.4); padding: 4px 10px; border-radius: 8px;">
+        Mentoria Académica
+    </span><br>
+    para estudantes e profissionais que querem crescer com suporte dedicado, feedback direto e materiais exclusivos.
+</p>
         <a href="servicos.html" class="btn hero-btn">
             Explorar Nossas Áreas de Mentoria
         </a>
