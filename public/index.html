@@ -986,11 +986,16 @@ nav ul {
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
-    /* ==============================================
+
+        /* ==============================================
    TÍTULOS – RESPONSIVOS E IMPACTANTES
 ============================================== */
 .mentoria-title {
-    font-size: clamp(2.2rem, 7vw, 3.8rem);  /* mínimo 2.2rem (mobile), ideal 7% largura, máximo 3.8rem */
+    font-size: clamp(2rem, 6.5vw, 3.5rem);  /* 
+        - Mínimo: 2rem (celulares pequenos ~320px)
+        - Ideal: 6.5% da largura da viewport (cresce proporcional)
+        - Máximo: 3.5rem (desktop grande, evita exageros)
+    */
     font-weight: 900;
     background: linear-gradient(90deg, #ffffff, #e0e0ff, #a0a0ff);
     -webkit-background-clip: text;
@@ -998,16 +1003,41 @@ nav ul {
     -webkit-text-fill-color: transparent;
     color: transparent;
     text-shadow: none !important;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
-    line-height: 1.15;
-    word-break: break-word;
-    hyphens: auto;
-    max-width: 95%;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.35)); /* sombra suave e moderna */
+    line-height: 1.15;                           /* evita sobreposição de linhas */
+    word-break: break-word;                      /* quebra palavras longas */
+    hyphens: auto;                               /* hífen automático em quebras */
+    max-width: 95%;                              /* nunca ultrapassa a tela */
     margin-left: auto;
     margin-right: auto;
-    letter-spacing: -0.5px;
+    letter-spacing: -0.5px;                      /* melhora legibilidade */
+    text-align: center;                          /* reforça centralização */
 }
 
+/* Ajustes finos para telas pequenas (celulares) */
+@media (max-width: 576px) {
+    .mentoria-title {
+        font-size: clamp(1.8rem, 6vw, 2.6rem); /* ainda menor em mobile pequeno */
+        line-height: 1.2;
+        padding: 0 0.5rem;                       /* evita que encoste nas bordas */
+        letter-spacing: -0.3px;
+    }
+}
+
+/* Telas médias (tablets) */
+@media (min-width: 577px) and (max-width: 992px) {
+    .mentoria-title {
+        font-size: clamp(2.4rem, 7vw, 3.2rem);
+    }
+}
+
+/* Telas grandes – mantém o máximo bonito */
+@media (min-width: 1200px) {
+    .mentoria-title {
+        font-size: 3.5rem; /* fixa o máximo em desktops grandes */
+    }
+}
+ 
 /* ==============================================
    CARDS DE ÁREAS – RESPONSIVOS E HOVER SUAVE
 ============================================== */
@@ -1163,6 +1193,18 @@ nav ul {
         transform: translateY(-5px);
         box-shadow: 0 15px 35px rgba(0,0,0,0.3);
     }
+}
+
+
+.mentoria-title-responsive {
+    font-size: clamp(2rem, 7vw, 3.8rem);
+    line-height: 1.15;
+    word-break: break-word;
+    hyphens: auto;
+    max-width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
     </style>
@@ -1688,7 +1730,8 @@ nav ul {
         <div class="container">
             <!-- Cabeçalho da secção de mentoria – título azul carregado + destaques coloridos -->
 <div class="text-center mb-5 pb-4">
-    <h2 class="mentoria-title mb-5 fw-black" style="font-size: 3.8rem; color: #ffffff; text-shadow: 0 8px 25px rgba(0,0,0,0.8); letter-spacing: -1px;">
+    <h2 class="mentoria-title mb-5 fw-black mentoria-title-responsive"
+    style="color: #ffffff; text-shadow: 0 8px 25px rgba(0,0,0,0.8); letter-spacing: -1px;">
     Programa de Mentoria Personalizada
 </h2>
 
