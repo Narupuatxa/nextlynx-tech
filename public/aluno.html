@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary: #6a11cb;
@@ -310,71 +311,63 @@ body {
 <!-- Navbar superior – fixo no topo -->
 
 
-<nav class="navbar navbar-dark fixed-top" style="background: linear-gradient(90deg, #4e73df, #6f42c1);">
-  <div class="container-fluid">
+<!-- Navbar superior – exatamente como estava, mas responsivo -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" style="background: var(--gradient-primary);">
+    <div class="container-fluid px-4">
+        <!-- Logo + Título com link para Página Principal -->
+        <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+            <img src="img/logo1.png" alt="Logo" style="height: 40px;">
+            <span class="ms-3">NextLynx Mentoria</span>
+        </a>
 
-    <!-- ESQUERDA -->
-    <a class="navbar-brand d-flex align-items-center" href="#">
-      <img src="img/logo1.png" style="height:35px;">
-      <span class="ms-2">NextLynx Mentoria</span>
-    </a>
+        <!-- Hamburger (só aparece em celular) -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarAluno" aria-controls="sidebarAluno" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- DIREITA -->
-    <div class="d-flex align-items-center ms-auto gap-2">
-
-      <!-- Sair -->
-      <button class="btn btn-outline-light btn-sm">
-        Sair
-      </button>
-
-      <!-- Hamburger -->
-      <button class="navbar-toggler"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#menuMobile">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
+        <!-- Botões à direita (Sair sempre visível) -->
+        <div class="d-flex align-items-center gap-3">
+            <!-- Página Principal (visível em desktop, opcional em mobile) -->
+            <a href="index.html" class="btn btn-outline-light btn-sm d-none d-lg-block">
+                <i class="fas fa-home me-1"></i>Página Principal
+            </a>
+            <!-- Sair -->
+            <button id="logoutBtn" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-sign-out-alt me-1"></i>Sair
+            </button>
+        </div>
     </div>
-
-  </div>
 </nav>
 
 
 
-    <div class="d-flex">
+
+<div class="d-flex">
         <!-- Sidebar lateral -->
-      
-        <!-- Offcanvas sidebar – abre como drawer lateral no telemóvel -->
-<div class="offcanvas offcanvas-start bg-white" tabindex="-1" id="sidebarAluno" aria-labelledby="sidebarAlunoLabel">
-    <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title fw-bold" id="sidebarAlunoLabel">
-            <img src="img/logo1.png" alt="Logo" style="height: 50px; vertical-align: middle;">
-            <span class="ms-2">Menu do Aluno</span>
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body p-4">
-        <div class="text-center mb-4">
-            <h6 class="fw-bold">
-                Bem-vindo(a), <span id="sidebarNome">Utilizador</span>
-            </h6>
+        <div class="sidebar p-4">
+            <div class="text-center mb-5">
+                <img src="img/logo1.png" alt="Logo" style="height: 70px;">
+                <h5 class="mt-3 fw-bold">
+  Bem-vindo(a), <span id="sidebarNome">Utilizador</span>
+</h5>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i>Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link" href="#materiais"><i class="fas fa-book me-2"></i>Materiais</a></li>
+                <li class="nav-item"><a class="nav-link" href="#agendar"><i class="fas fa-calendar-check me-2"></i>Agendar Aula</a></li>
+                <li class="nav-item"><a class="nav-link" href="#historicoCompleto"><i class="fas fa-history me-2"></i>Histórico</a></li>
+                <li class="nav-item"><a class="nav-link" href="#duvidas"><i class="fas fa-question-circle me-2"></i>Enviar Dúvida</a></li>
+                <li class="nav-item position-relative">
+                    <a class="nav-link" href="#notificacoes" id="sinoNotificacoes">
+                        <i class="fas fa-bell me-2"></i>Notificações
+                        <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="nav flex-column">
-            <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i>Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="#materiais"><i class="fas fa-book me-2"></i>Materiais</a></li>
-            <li class="nav-item"><a class="nav-link" href="#agendar"><i class="fas fa-calendar-check me-2"></i>Agendar Aula</a></li>
-            <li class="nav-item"><a class="nav-link" href="#historicoCompleto"><i class="fas fa-history me-2"></i>Histórico</a></li>
-            <li class="nav-item"><a class="nav-link" href="#duvidas"><i class="fas fa-question-circle me-2"></i>Enviar Dúvida</a></li>
-            <li class="nav-item position-relative">
-                <a class="nav-link" href="#notificacoes" id="sinoNotificacoes">
-                    <i class="fas fa-bell me-2"></i>Notificações
-                    <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
-                </a>
-            </li>
-        </ul>
-    </div>
-</div>
+
+
+
         <!-- Conteúdo principal -->
        <div class="main-content container-fluid px-3 py-5">
             <!-- Boas-vindas com nome dinâmico -->
@@ -510,6 +503,8 @@ body {
                     </small>
                 </div>
             </div>
+
+
 
             <!-- Nova secção: Notificações do aluno -->
             <div class="card card-dashboard mt-5" id="notificacoes">
@@ -1775,7 +1770,6 @@ document.getElementById('btnEnviarComprovativo')?.addEventListener('click', asyn
     }
 })
     </script>
-
 
 </body>
 </html>
