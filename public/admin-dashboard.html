@@ -19,145 +19,115 @@
             --danger: #dc3545;
         }
 
-        body {
-            background: var(--light);
-            font-family: 'Poppins', sans-serif;
-            min-height: 100vh;
-            margin: 0;
-        }
+      body {
+    background: var(--light);
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding-top: clamp(60px, 15vw, 80px); /* espaço para header fixo */
+}
 
-        /* Header fixo compacto */
-        .admin-header {
-            background: var(--gradient-primary);
-            color: white;
-            padding: 0.8rem 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1030;
-        }
+/* Header fixo compacto */
+.admin-header {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.8rem 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+}
 
-        .admin-header .navbar-brand img {
-            height: clamp(35px, 10vw, 45px);
-        }
+.admin-header .navbar-brand img {
+    height: clamp(35px, 10vw, 45px);
+}
 
-        .admin-header .navbar-brand span {
-            font-size: clamp(1.1rem, 4vw, 1.3rem);
-        }
+.admin-header .navbar-brand span {
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+}
 
-        /* Espaço para header fixo */
-        body {
-            padding-top: clamp(60px, 15vw, 80px);
-        }
+/* Conteúdo principal sem sidebar */
+.main-content {
+    padding: 1.5rem;
+}
 
-        /* Sidebar */
-        .sidebar {
-            background: white;
-            border-right: 1px solid #dee2e6;
-            height: calc(100vh - 80px);
-            position: fixed;
-            width: 260px;
-            overflow-y: auto;
-            padding: 1.5rem 0;
-            transition: all 0.3s ease;
-        }
+/* Cards administrativos */
+.card-admin {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    padding: 2rem 1rem;
+}
 
-        .sidebar .nav-link {
-            color: var(--dark);
-            padding: 0.9rem 1.5rem;
-            border-radius: 10px;
-            margin: 0.3rem 1rem;
-            transition: all 0.3s ease;
-        }
+.card-admin:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
 
-        .sidebar .nav-link:hover,
-        .sidebar .nav-link.active {
-            background: rgba(106,17,203,0.1);
-            color: var(--primary);
-        }
+.card-icon {
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
 
-        /* Conteúdo principal */
-        .main-content {
-            margin-left: 260px;
-            padding: 1.5rem;
-            min-height: calc(100vh - 80px);
-        }
+.card-admin h5 {
+    font-size: clamp(0.9rem, 3vw, 1.1rem);
+    margin-bottom: 0.5rem;
+}
 
-        /* Cards */
-        .card-admin {
-            border: none;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.4s ease;
-        }
+.card-admin h3 {
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+}
 
-        .card-admin:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
-        }
+/* Tabelas responsivas */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 
-        .card-icon {
-            font-size: clamp(2rem, 6vw, 2.8rem);
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
+.table th, .table td {
+    font-size: clamp(0.85rem, 3vw, 1rem);
+    padding: clamp(0.6rem, 2vw, 1rem);
+}
 
-        .badge-status {
-            font-size: clamp(0.8rem, 3vw, 0.9rem);
-            padding: 0.5rem 1rem;
-        }
+/* Badges de status */
+.badge-status {
+    font-size: clamp(0.8rem, 3vw, 0.9rem);
+    padding: 0.5rem 1rem;
+}
 
-        /* Tabelas responsivas */
-        .table-responsive {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
+/* Responsividade geral */
+@media (max-width: 991px) {
+    .main-content {
+        padding: 1rem;
+    }
+    .card-admin {
+        padding: 1.2rem;
+    }
+    .card-icon {
+        font-size: 2rem;
+    }
+}
 
-        .table th, .table td {
-            font-size: clamp(0.85rem, 3vw, 1rem);
-            padding: clamp(0.6rem, 2vw, 1rem);
-        }
-
-        /* Responsividade – sidebar vira menu colapsável em mobile */
-        @media (max-width: 991px) {
-            .sidebar {
-                width: 100%;
-                height: auto;
-                position: relative;
-                border-right: none;
-                border-bottom: 1px solid #dee2e6;
-                padding: 1rem;
-            }
-            .main-content {
-                margin-left: 0;
-                padding: 1rem;
-            }
-            body {
-                padding-top: 70px; /* header menor em mobile */
-            }
-            .admin-header {
-                padding: 0.6rem 1rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .card-admin {
-                padding: 1.2rem;
-            }
-            .card-icon {
-                font-size: 2rem;
-            }
-            .table th, .table td {
-                font-size: 0.8rem;
-                padding: 0.6rem 0.4rem;
-            }
-            .badge-status {
-                font-size: 0.75rem;
-                padding: 0.4rem 0.8rem;
-            }
-        }
+@media (max-width: 576px) {
+    .card-admin {
+        padding: 1rem;
+    }
+    .card-icon {
+        font-size: 1.8rem;
+    }
+    .table th, .table td {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.4rem;
+    }
+    .badge-status {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -192,64 +162,74 @@
         </div>
     </nav>
 
-    <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link active" href="#dashboard"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#alunos"><i class="fas fa-users me-2"></i>Gerenciar Alunos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#agendamentos"><i class="fas fa-calendar-check me-2"></i>Aulas Agendadas</a></li>
-                <li class="nav-item"><a class="nav-link" href="#duvidas"><i class="fas fa-question-circle me-2"></i>Dúvidas dos Alunos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#materiais"><i class="fas fa-folder-open me-2"></i>Liberar Materiais</a></li>
-            </ul>
+    <!-- Header Admin -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm admin-header">
+    <div class="container-fluid px-4">
+        <!-- Logo + Título -->
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="img/logo1.png" alt="Logo">
+            <span class="ms-3 fw-bold fs-5">Painel Administrativo</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-3 ms-auto">
+            <!-- Página Principal -->
+            <a href="index.html" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-home me-1"></i>Página Principal
+            </a>
+            <!-- Sair -->
+            <button id="logoutAdmin" class="btn btn-outline-light btn-sm">
+                <i class="fas fa-sign-out-alt me-1"></i>Sair
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Conteúdo principal -->
+<div class="main-content flex-grow-1">
+    <h2 class="mb-4 fw-bold text-center">Dashboard Administrativo</h2>
+
+    <!-- Cards de estatísticas organizados responsivamente -->
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-3 col-md-6">
+            <div class="card card-admin text-center">
+                <i class="fas fa-users card-icon"></i>
+                <h5>Alunos Ativos</h5>
+                <h3 id="totalAlunos" class="fw-bold text-primary">0</h3>
+            </div>
         </div>
 
-        <!-- Conteúdo principal -->
-        <div class="main-content flex-grow-1">
-            <h2 class="mb-4 fw-bold">Dashboard Administrativo</h2>
-
-            <!-- Cards de estatísticas -->
-            <div class="row g-4" id="dashboard">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card card-admin text-center p-4">
-                        <i class="fas fa-users card-icon"></i>
-                        <h5 class="mb-2">Alunos Ativos</h5>
-                        <h3 id="totalAlunos" class="fw-bold text-primary">0</h3>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="card card-admin text-center p-4">
-                        <i class="fas fa-calendar-check card-icon"></i>
-                        <h5 class="mb-2">Aulas Agendadas</h5>
-                        <h3 id="totalAgendamentos" class="fw-bold text-success">0</h3>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="card card-admin text-center p-4">
-                        <i class="fas fa-question-circle card-icon"></i>
-                        <h5 class="mb-2">Dúvidas Pendentes</h5>
-                        <h3 id="duvidasPendentes" class="fw-bold text-warning">0</h3>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="card card-admin text-center p-4">
-                        <i class="fas fa-file-upload card-icon"></i>
-                        <h5 class="mb-2">Materiais Liberados</h5>
-                        <h3 id="materiaisLiberados" class="fw-bold text-info">0</h3>
-                    </div>
-                </div>
+        <div class="col-lg-3 col-md-6">
+            <div class="card card-admin text-center">
+                <i class="fas fa-calendar-check card-icon"></i>
+                <h5>Aulas Agendadas</h5>
+                <h3 id="totalAgendamentos" class="fw-bold text-success">0</h3>
             </div>
-            
-            <div class="col-lg-3 col-md-6">
-    <div class="card card-admin text-center p-4">
-        <i class="fas fa-credit-card card-icon"></i>
-        <h5 class="mb-2">Pagamentos Pendentes</h5>
-        <h3 id="pagamentosPendentes" class="fw-bold text-danger">0</h3>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card card-admin text-center">
+                <i class="fas fa-question-circle card-icon"></i>
+                <h5>Dúvidas Pendentes</h5>
+                <h3 id="duvidasPendentes" class="fw-bold text-warning">0</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card card-admin text-center">
+                <i class="fas fa-file-upload card-icon"></i>
+                <h5>Materiais Liberados</h5>
+                <h3 id="materiaisLiberados" class="fw-bold text-info">0</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+            <div class="card card-admin text-center">
+                <i class="fas fa-credit-card card-icon"></i>
+                <h5>Pagamentos Pendentes</h5>
+                <h3 id="pagamentosPendentes" class="fw-bold text-danger">0</h3>
+            </div>
+        </div>
     </div>
-</div>
 
 
             <!-- Tabela de alunos -->
@@ -275,29 +255,30 @@
             </div>
 
             <!-- Tabela de agendamentos -->
-            <div class="card card-admin mt-5" id="agendamentos">
-                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Aulas Agendadas</h5>
-                    <small id="totalAgendamentosTexto">Carregando...</small>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <table class="table table-hover mb-0" id="tabelaAgendamentos">
-                            <thead class="table-light">
-                                <tr>
-                                    <th>Aluno</th>
-                                    <th>Tema</th>
-                                    <th>Data/Hora</th>
-                                    <th>Link Meet</th>
-                                    <th>Status</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+            <!-- Tabela de agendamentos -->
+<div class="card card-admin mt-5" id="agendamentos">
+    <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Aulas Agendadas</h5>
+        <small id="totalAgendamentosTexto">Carregando...</small>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="tabelaAgendamentos">
+                <thead class="table-light">
+                    <tr>
+                        <th>Aluno</th>
+                        <th>Tema</th>
+                        <th>Data/Hora</th>
+                        <th>Link Meet</th>
+                        <th>Status</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
             <!-- Tabela de dúvidas pendentes -->
             <div class="card card-admin mt-5" id="duvidas">
@@ -892,75 +873,85 @@
     });
 
     // Listener completo para tabela de agendamentos (no final do script – agora funciona após recarregar)
-    document.querySelector('#tabelaAgendamentos').addEventListener('click', async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+   // Listener completo para tabela de agendamentos (corrigido – não bloqueia links <a>)
+document.querySelector('#tabelaAgendamentos').addEventListener('click', async (e) => {
+    const target = e.target;
 
-        const btn = e.target.closest('button');
-        if (!btn || !btn.dataset.id) return;
+    // Se clicou no link "Ver" (ou qualquer <a> dentro da célula), NÃO bloqueia
+    if (target.tagName === 'A' && target.href) {
+        // Deixa o navegador abrir o link normalmente (target="_blank" já está no HTML)
+        return;
+    }
 
-        const aulaId = btn.dataset.id;
+    // Só trata cliques nos botões (aprovar, rejeitar, excluir)
+    const btn = target.closest('button');
+    if (!btn || !btn.dataset.id) return;
 
-        // Aprovar
-        if (btn.classList.contains('aprovar-btn')) {
-            if (!confirm('Tem certeza que deseja APROVAR esta aula?')) return;
+    e.preventDefault(); // só bloqueia se for botão, não link
+    e.stopPropagation();
 
-            try {
-                const { error } = await supabase
-                    .from('agendamentos')
-                    .update({ status: 'Confirmado' })
-                    .eq('id', aulaId);
+    const aulaId = btn.dataset.id;
 
-                if (error) throw error;
+    // Aprovar
+    if (btn.classList.contains('aprovar-btn')) {
+        if (!confirm('Tem certeza que deseja APROVAR esta aula?')) return;
 
-                alert('Aula aprovada com sucesso!');
-                carregarDadosAdmin();
+        try {
+            const { error } = await supabase
+                .from('agendamentos')
+                .update({ status: 'Confirmado' })
+                .eq('id', aulaId);
 
-            } catch (err) {
-                alert('Erro ao aprovar aula: ' + (err.message || 'Tente novamente.'));
-            }
+            if (error) throw error;
+
+            alert('Aula aprovada com sucesso!');
+            carregarDadosAdmin();
+
+        } catch (err) {
+            alert('Erro ao aprovar aula: ' + (err.message || 'Tente novamente.'));
         }
+    }
 
-        // Rejeitar
-        if (btn.classList.contains('rejeitar-btn')) {
-            if (!confirm('Tem certeza que deseja REJEITAR esta aula?')) return;
+    // Rejeitar
+    if (btn.classList.contains('rejeitar-btn')) {
+        if (!confirm('Tem certeza que deseja REJEITAR esta aula?')) return;
 
-            try {
-                const { error } = await supabase
-                    .from('agendamentos')
-                    .update({ status: 'Rejeitado' })
-                    .eq('id', aulaId);
+        try {
+            const { error } = await supabase
+                .from('agendamentos')
+                .update({ status: 'Rejeitado' })
+                .eq('id', aulaId);
 
-                if (error) throw error;
+            if (error) throw error;
 
-                alert('Aula rejeitada com sucesso!');
-                carregarDadosAdmin();
+            alert('Aula rejeitada com sucesso!');
+            carregarDadosAdmin();
 
-            } catch (err) {
-                alert('Erro ao rejeitar aula: ' + (err.message || 'Tente novamente.'));
-            }
+        } catch (err) {
+            alert('Erro ao rejeitar aula: ' + (err.message || 'Tente novamente.'));
         }
+    }
 
-        // Excluir (já funcionava, mantido)
-        if (btn.classList.contains('excluir-aula-btn')) {
-            if (!confirm('Tem certeza que deseja EXCLUIR esta aula? Esta ação não pode ser desfeita.')) return;
+    // Excluir
+    if (btn.classList.contains('excluir-aula-btn')) {
+        if (!confirm('Tem certeza que deseja EXCLUIR esta aula? Esta ação não pode ser desfeita.')) return;
 
-            try {
-                const { error } = await supabase
-                    .from('agendamentos')
-                    .delete()
-                    .eq('id', aulaId);
+        try {
+            const { error } = await supabase
+                .from('agendamentos')
+                .delete()
+                .eq('id', aulaId);
 
-                if (error) throw error;
+            if (error) throw error;
 
-                alert('Aula excluída com sucesso!');
-                carregarDadosAdmin();
+            alert('Aula excluída com sucesso!');
+            carregarDadosAdmin();
 
-            } catch (err) {
-                alert('Erro ao excluir aula: ' + (err.message || 'Tente novamente.'));
-            }
+        } catch (err) {
+            alert('Erro ao excluir aula: ' + (err.message || 'Tente novamente.'));
         }
-    });
+    }
+});
 
     // Listener para tabela de dúvidas (mantido igual)
     document.querySelector('#tabelaDuvidas').addEventListener('click', async (e) => {
