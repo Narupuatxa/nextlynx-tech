@@ -129,24 +129,15 @@
     }
 }
 
-
-/* Header fixo – altura reduzida */
+/* Header compacto – altura reduzida */
 .admin-header {
-    min-height: 48px !important; /* altura compacta */
+    min-height: 50px !important;
     padding: 0.4rem 0 !important;
 }
 
-/* Espaço para header fixo (ajustado para nova altura) */
+/* Espaço para header fixo (ajustado) */
 body {
-    padding-top: 48px !important; /* exatamente a altura do header */
-}
-
-/* Logo e texto menores */
-.navbar-brand img {
-    height: 32px !important;
-}
-.navbar-brand span {
-    font-size: 1.1rem !important;
+    padding-top: 50px !important;
 }
 
 /* Botões compactos */
@@ -155,60 +146,118 @@ body {
     font-size: 0.85rem !important;
 }
 
-/* Evita quebra de linha no telemóvel */
+/* Evita quebra de linha no header no telemóvel */
 .navbar .container-fluid {
     flex-wrap: nowrap !important;
-    align-items: center !important;
 }
 
-/* Desktop: botões normais */
+/* Hamburger e Sair na mesma linha */
+.navbar .ms-auto.d-flex {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+/* Menu colapsável – abre de cima no telemóvel */
+.navbar-collapse {
+    background: white;
+    border-top: 1px solid #dee2e6;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    margin-top: 1px;
+}
+
+/* Desktop: menu horizontal (se tiver mais itens) */
 @media (min-width: 992px) {
-    .btn-sm {
-        padding: 0.375rem 0.75rem !important;
-        font-size: 0.95rem !important;
+    .navbar-collapse {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        margin-top: 0;
+    }
+    .navbar-nav .nav-link {
+        color: white !important;
+        padding: 0.5rem 1rem;
     }
 }
 
-/* Telemóvel: tudo compacto e na mesma linha */
+/* Telemóvel: menu abre de cima, full-width */
 @media (max-width: 991px) {
-    .navbar-brand span {
-        font-size: 1rem !important;
+    .navbar-collapse {
+        position: absolute;
+        top: 50px; /* ajustado para nova altura do header */
+        left: 0;
+        right: 0;
+        padding: 1rem;
+        background:black;
+        z-index: 1020;
     }
-    .btn-sm {
-        font-size: 0.8rem !important;
-        padding: 0.2rem 0.6rem !important;
-    }
-    .navbar .d-flex.ms-auto {
-        gap: 0.5rem !important;
+    .main-content {
+        margin-left: 0 !important;
+        padding: 1rem;
     }
 }
+
+/* Centraliza cards no telemóvel */
+.row.g-4.justify-content-center {
+    justify-content: center !important;
+}
+.card-dashboard {
+    max-width: 100% !important;
+    margin: 0 auto;
+}
+
+
+
+
     </style>
 </head>
 <body>
 
 
-<!-- Header Admin – compacto, fixo, sem quebra no telemóvel -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm admin-header">
-    <div class="container-fluid px-3 py-1"> <!-- py-1 reduz padding vertical -->
+
+
+   
+<!-- Navbar superior – compacto, fixo, sem quebra no telemóvel -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm" style="background: var(--gradient-primary); z-index: 1030; min-height: 50px;">
+    <div class="container-fluid px-3 py-1">
         <!-- Logo + Título -->
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <img src="img/logo1.png" alt="Logo" style="height: 32px;"> <!-- logo menor -->
-            <span class="ms-2 fw-bold fs-6">Painel Administrativo</span> <!-- fs-6 menor -->
+        <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+            <img src="img/logo1.png" alt="Logo" style="height: 32px;">
+            <span class="ms-2 fw-bold fs-6">Painel Administrativo</span>
         </a>
 
-        <!-- Botões à direita – na mesma linha -->
+        <!-- Botões à direita – tudo na mesma linha -->
         <div class="d-flex align-items-center ms-auto gap-2">
-            <!-- Página Principal -->
-            <a href="index.html" class="btn btn-outline-light btn-sm py-1 px-2">
-                <i class="fas fa-home me-1"></i>Página Principal
-            </a>
             <!-- Sair -->
             <button id="logoutAdmin" class="btn btn-outline-light btn-sm py-1 px-2">
                 <i class="fas fa-sign-out-alt me-1"></i>Sair
             </button>
+
+            <!-- Hamburger – abre menu com Página Principal -->
+            <button class="navbar-toggler d-lg-none py-1 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuAdmin" aria-controls="menuAdmin" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+
+        <!-- Menu colapsável – abre de cima no telemóvel -->
+        <div class="collapse navbar-collapse" id="menuAdmin">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <!-- Página Principal – aparece só no menu (com ícone) -->
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-home me-1"></i>Página Principal
+                    </a>
+                </li>
+
+                <!-- Outros itens (se quiseres manter no menu) -->
+                <!-- <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-tachometer-alt me-1"></i>Dashboard</a></li> -->
+                <!-- ... adiciona outros se necessário ... -->
+            </ul>
         </div>
     </div>
 </nav>
+
+
+
 
 <!-- Conteúdo principal -->
 <div class="main-content flex-grow-1">
