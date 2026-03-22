@@ -119,13 +119,7 @@
                 margin-left: 250px;
                 padding: 2rem;
             }
-            .sidebar {
-                position: fixed;
-                top: 56px;
-                bottom: 0;
-                width: 250px;
-                overflow-y: auto;
-            }
+           
         }
 
         @media (max-width: 576px) {
@@ -220,84 +214,37 @@ body {
 
 
 
-/* ===============================
-   MOBILE
-=============================== */
-@media (max-width: 991.98px) {
-
-    /* sidebar escondida */
-    .sidebar {
-        transform: translateX(-100%);
-        top: 0;
-        height: 100vh;
-        width: 260px;
-        z-index: 1050;
-    }
-
-    /* quando aberta */
-    .sidebar.show {
-        transform: translateX(0);
-    }
-
-    /* conteúdo ocupa tudo */
-    .main-content {
-        margin-left: 0;
-        padding-top: 90px;
-    }
-}
-
-
-
-
-/* Header fixo */
 body {
-    padding-top: 56px !important;
+    padding-top: 56px;
+    overflow-x: hidden;
 }
 
-/* Offcanvas sidebar (drawer lateral no telemóvel) */
-.offcanvas {
-    width: 280px !important;
-}
-
-/* Desktop: sidebar fixa à esquerda */
+/* DESKTOP */
 @media (min-width: 992px) {
     .offcanvas {
-        display: block !important;
         position: fixed;
         top: 56px;
         left: 0;
-        bottom: 0;
+        width: 250px;
+        height: 100%;
         transform: none !important;
-        width: 250px !important;
+        visibility: visible !important;
         border-right: 1px solid #dee2e6;
-        box-shadow: none;
     }
+
     .main-content {
         margin-left: 250px;
-        padding: 2rem 1.5rem;
     }
 }
-
 
 /* MOBILE */
 @media (max-width: 991px) {
-
-  /* ESCONDE COMPLETAMENTE O SIDEBAR */
-  .offcanvas {
-    visibility: hidden !important;
-  }
-
-  .offcanvas.show {
-    visibility: visible !important;
-  }
-
-  /* REMOVE espaço lateral */
-  .main-content {
-    margin-left: 0 !important;
-    width: 100% !important;
-  }
-
+    .main-content {
+        margin-left: 0;
+    }
 }
+
+
 
 
 
@@ -321,9 +268,11 @@ body {
         </a>
 
         <!-- Hamburger (só aparece em celular) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarAluno" aria-controls="sidebarAluno" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+       <button class="navbar-toggler" type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#sidebarAluno">
+    <span class="navbar-toggler-icon"></span>
+</button>
 
         <!-- Botões à direita (Sair sempre visível) -->
         <div class="d-flex align-items-center gap-3">
@@ -340,32 +289,65 @@ body {
 </nav>
 
 
+<div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarAluno">
 
+    <div class="offcanvas-header border-bottom">
+        <h5 class="fw-bold mb-0">Menu do Aluno</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
 
-<div class="d-flex">
-        <!-- Sidebar lateral -->
-        <div class="sidebar p-4">
-            <div class="text-center mb-5">
-                <img src="img/logo1.png" alt="Logo" style="height: 70px;">
-                <h5 class="mt-3 fw-bold">
-  Bem-vindo(a), <span id="sidebarNome">Utilizador</span>
-</h5>
-            </div>
-            <ul class="nav flex-column">
-                <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-home me-2"></i>Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#materiais"><i class="fas fa-book me-2"></i>Materiais</a></li>
-                <li class="nav-item"><a class="nav-link" href="#agendar"><i class="fas fa-calendar-check me-2"></i>Agendar Aula</a></li>
-                <li class="nav-item"><a class="nav-link" href="#historicoCompleto"><i class="fas fa-history me-2"></i>Histórico</a></li>
-                <li class="nav-item"><a class="nav-link" href="#duvidas"><i class="fas fa-question-circle me-2"></i>Enviar Dúvida</a></li>
-                <li class="nav-item position-relative">
-                    <a class="nav-link" href="#notificacoes" id="sinoNotificacoes">
-                        <i class="fas fa-bell me-2"></i>Notificações
-                        <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
-                    </a>
-                </li>
-            </ul>
+    <div class="offcanvas-body p-4">
+
+        <!-- TOPO (IGUAL AO TEU) -->
+        <div class="text-center mb-5">
+            <img src="img/logo1.png" alt="Logo" style="height: 70px;">
+            <h5 class="mt-3 fw-bold">
+                Bem-vindo(a), <span id="sidebarNome">Utilizador</span>
+            </h5>
         </div>
 
+        <!-- MENU (IGUAL AO TEU) -->
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <i class="fas fa-home me-2"></i>Dashboard
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#materiais">
+                    <i class="fas fa-book me-2"></i>Materiais
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#agendar">
+                    <i class="fas fa-calendar-check me-2"></i>Agendar Aula
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#historicoCompleto">
+                    <i class="fas fa-history me-2"></i>Histórico
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#duvidas">
+                    <i class="fas fa-question-circle me-2"></i>Enviar Dúvida
+                </a>
+            </li>
+
+            <li class="nav-item position-relative">
+                <a class="nav-link" href="#notificacoes" id="sinoNotificacoes">
+                    <i class="fas fa-bell me-2"></i>Notificações
+                    <span id="badgeNotificacoes" class="notification-badge d-none">0</span>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
 
 
         <!-- Conteúdo principal -->
@@ -1771,5 +1753,7 @@ document.getElementById('btnEnviarComprovativo')?.addEventListener('click', asyn
 })
     </script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
