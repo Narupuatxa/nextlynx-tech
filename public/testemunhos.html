@@ -1158,26 +1158,31 @@ document.getElementById('testimonial-form').addEventListener('submit', async fun
     showNotification('Processando...', '#0d6efd', 10000);
 
     /* ===== UPLOAD FOTO ===== */
-    if (fotoFile) {
-        const fileName = Date.now() + '_' + fotoFile.name;
+   if (fotoFile) {
 
-        const { error: uploadError } = await supabaseClient.storage
-            .from('avatars')
-            .upload(fileName, fotoFile);
-
-        if (uploadError) {
-            console.error(uploadError);
-            showNotification('Erro ao enviar foto.', '#dc3545');
-            return;
-        }
-
-        const { data } = supabaseClient.storage
-            .from('avatars')
-            .getPublicUrl(fileName);
-
-        fotoUrl = data.publicUrl;
+    if (fotoFile.size > 2 * 1024 * 1024) {
+        showNotification('Imagem muito grande! Máx: 2MB', '#dc3545');
+        return;
     }
 
+    const fileName = Date.now() + '_' + Math.random().toString(36).substring(2) + '_' + fotoFile.name.replace(/\s/g, '_');
+
+    const { error: uploadError } = await supabaseClient.storage
+        .from('avatars')
+        .upload(fileName, fotoFile, { upsert: true });
+
+    if (uploadError) {
+        console.error('Erro upload:', uploadError.message);
+        showNotification(uploadError.message, '#dc3545');
+        return;
+    }
+
+    const { data } = supabaseClient.storage
+        .from('avatars')
+        .getPublicUrl(fileName);
+
+    fotoUrl = data.publicUrl;
+}
     /* ===== INSERIR NO BANCO ===== */
     const { error } = await supabaseClient
         .from('testemunhos')
