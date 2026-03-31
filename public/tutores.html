@@ -80,7 +80,7 @@ body {
 
 .table {
   color: var(--text-light);
-  min-width: 700px; /* força scroll horizontal em mobile se necessário */
+  width: 100%;
 }
 
 .table thead th {
@@ -226,19 +226,26 @@ body {
 
 /* Ajustes para telas pequenas (celular) */
 @media (max-width: 576px) {
-  .header {
-    padding: 1.8rem 1rem;
+  @media (max-width: 576px) {
+  .container-main {
+    padding: 1rem 0.5rem;
   }
-  .header h1 {
-    font-size: 1.8rem;
-  }
+
   .aulas-card {
-    padding: 1.5rem;
+    padding: 1.2rem;
+    border-radius: 16px;
   }
+
   .table th, .table td {
     font-size: 0.85rem;
-    padding: 0.8rem 0.5rem;
+    padding: 0.7rem 0.4rem;
   }
+
+  .table-responsive {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+}
   .btn-meet, .btn-logout {
     width: 100%;
     margin-bottom: 0.8rem;
@@ -246,6 +253,9 @@ body {
     font-size: 0.95rem;
   }
 }
+
+
+
 </style>
 </head>
 
