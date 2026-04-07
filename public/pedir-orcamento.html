@@ -759,6 +759,37 @@ textarea.form-control:focus {
 }
 
 
+/* Aplica prioridade ao botão responsivo dentro do formulário */
+.btn-submit.btn-responsive {
+    width: auto !important;       /* Ajusta ao tamanho do texto */
+    max-width: 90%;               /* Não ultrapassa a tela em celulares pequenos */
+    display: inline-block;        /* Ocupa apenas o necessário */
+    padding: 1.2rem 3rem;         /* Mantém padding atual */
+    font-size: 1.3rem;            /* Mantém o tamanho da fonte */
+    white-space: nowrap;          /* Evita quebra de linha */
+    text-align: center;           /* Centraliza o texto */
+    box-sizing: border-box;
+}
+
+/* Tablets e celulares médios */
+@media (max-width: 768px) {
+    .btn-submit.btn-responsive {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        max-width: 95%;
+    }
+}
+
+/* Telemóveis muito pequenos */
+@media (max-width: 400px) {
+    .btn-submit.btn-responsive {
+        font-size: 1rem;
+        padding: 0.8rem 1.6rem;
+        white-space: normal; /* Permite quebrar em 2 linhas se necessário */
+    }
+}
+
+
         /* ====================== RESTO DO CÓDIGO 100% IGUAL ====================== */
         .form-section { padding: 5rem 0; }
         .form-title { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; font-weight: 900; text-align: center; margin-bottom: 3rem; color: var(--primary); position: relative; animation: fadeInUp 1s ease-out; }
@@ -969,12 +1000,12 @@ textarea.form-control:focus {
         </div>
 
         <!-- Botão -->
-        <div class="col-12 text-center mt-5">
-            <button type="submit" class="btn btn-submit px-5 py-3 fw-bold">
-                Solicitar Orçamento Agora
-            </button>
-        </div>
-
+       <div class="col-12 text-center mt-5">
+    <button type="submit" class="btn btn-submit btn-responsive">
+        Solicitar Orçamento Agora
+    </button>
+</div>
+</div>
     </form>
 </main>
    
