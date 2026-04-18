@@ -991,6 +991,24 @@ nav ul {
         <a href="contactos.html" class="btn btn-light btn-lg btn-pulse">Aproveitar Oferta</a>
     </section>
 
+<div id="notification" style="
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    display: none;
+    z-index: 9999;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    font-weight: 600;
+">
+    <span id="notif-message"></span>
+</div>
+
+
+
     <!-- Footer COMPLETO COMO NO FAQ -->
     
  <footer class="footer-container">
@@ -1088,7 +1106,7 @@ nav ul {
 
 <!-- Teus scripts normais (mantém no final) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/script.js"></script>
+<!-- <script src="js/script.js"></script> -->
     <!-- SCRIPT: ENVIO SEM DUPLICAÇÃO + NOTIFICAÇÃO NA TELA -->
     <script>
         // Variável para prevenir duplo envio
@@ -1191,6 +1209,20 @@ nav ul {
                 isSubmitting = false;
             }, 1000);
         }
+
+        function showNotification(message, type = 'success') {
+    const notif = document.getElementById('notification');
+    const msg = document.getElementById('notif-message');
+
+    msg.textContent = message;
+
+    notif.style.background = type === 'success' ? '#4CAF50' : '#f44336';
+    notif.style.display = 'block';
+
+    setTimeout(() => {
+        notif.style.display = 'none';
+    }, 4000);
+}
     </script>
 </body>
 </html>
