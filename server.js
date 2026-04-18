@@ -63,6 +63,7 @@ app.post('/submit', async (req, res) => {
       error: 'Nome, email e serviço são obrigatórios' 
     });
   }
+  
 
   const { data, error } = await supabase
     .from('pedidos')
@@ -255,3 +256,6 @@ app.get('/admin', (req, res) => {
 app.listen(port, () => {
   console.log(`NextLynx Tech rodando em http://localhost:${port}`);
 });
+
+
+
